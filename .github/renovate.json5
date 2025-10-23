@@ -25,10 +25,10 @@
     {
       customType: 'regex',
       managerFilePatterns: [
-        '/crds/.*sh$/',
+        '/crds/*.sh$/',
       ],
       matchStrings: [
-        'renovate: datasource=(?<datasource>.*)\\sdepName=(?<depName>.*)\\nexport VERSION=\\s(?<currentValue>.*)',
+        'renovate: datasource=(?<datasource>.*)\\sdepName=(?<depName>.*)\\n.*VERSION=\\s(?<currentValue>.*)',
       ],
     },
   ],

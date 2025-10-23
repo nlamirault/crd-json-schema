@@ -1,0 +1,311 @@
+{
+  "description": "Agent is the Schema for the Agents API",
+  "properties": {
+    "apiVersion": {
+      "description": "APIVersion defines the versioned schema of this representation of an object.\nServers should convert recognized schemas to the latest internal value, and\nmay reject unrecognized values.\nMore info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+      "type": "string"
+    },
+    "kind": {
+      "description": "Kind is a string value representing the REST resource this object represents.\nServers may infer this from the endpoint the client submits requests to.\nCannot be updated.\nIn CamelCase.\nMore info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+      "type": "string"
+    },
+    "metadata": {
+      "type": "object"
+    },
+    "spec": {
+      "description": "AgentSpec defines the desired state of Agent.\n\nContains details about an agent.",
+      "properties": {
+        "agentCollaboration": {
+          "description": "The agent's collaboration role.",
+          "type": "string"
+        },
+        "agentName": {
+          "description": "A name for the agent that you create.\n\nRegex Pattern: `^([0-9a-zA-Z][_-]?){1,100}$`",
+          "type": "string"
+        },
+        "agentResourceRoleARN": {
+          "description": "The Amazon Resource Name (ARN) of the IAM role with permissions to invoke\nAPI operations on the agent.\n\nRegex Pattern: `^arn:aws(-[^:]+)?:iam::([0-9]{12})?:role/.+$`",
+          "type": "string"
+        },
+        "agentResourceRoleRef": {
+          "description": "AWSResourceReferenceWrapper provides a wrapper around *AWSResourceReference\ntype to provide more user friendly syntax for references using 'from' field\nEx:\nAPIIDRef:\n\n\tfrom:\n\t  name: my-api",
+          "properties": {
+            "from": {
+              "description": "AWSResourceReference provides all the values necessary to reference another\nk8s resource for finding the identifier(Id/ARN/Name)",
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "namespace": {
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            }
+          },
+          "type": "object"
+        },
+        "customOrchestration": {
+          "description": "Contains details of the custom orchestration configured for the agent.",
+          "properties": {
+            "executor": {
+              "description": "Contains details about the Lambda function containing the orchestration logic\ncarried out upon invoking the custom orchestration.",
+              "properties": {
+                "lambda": {
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            }
+          },
+          "type": "object"
+        },
+        "customerEncryptionKeyARN": {
+          "description": "The Amazon Resource Name (ARN) of the KMS key with which to encrypt the agent.\n\nRegex Pattern: `^arn:aws(|-cn|-us-gov):kms:[a-zA-Z0-9-]*:[0-9]{12}:key/[a-zA-Z0-9-]{36}$`",
+          "type": "string"
+        },
+        "description": {
+          "description": "A description of the agent.",
+          "type": "string"
+        },
+        "foundationModel": {
+          "description": "The identifier for the model that you want to be used for orchestration by\nthe agent you create.\n\nThe modelId to provide depends on the type of model or throughput that you\nuse:\n\n  - If you use a base model, specify the model ID or its ARN. For a list\n    of model IDs for base models, see Amazon Bedrock base model IDs (on-demand\n    throughput) (https://docs.aws.amazon.com/bedrock/latest/userguide/model-ids.html#model-ids-arns)\n    in the Amazon Bedrock User Guide.\n\n  - If you use an inference profile, specify the inference profile ID or\n    its ARN. For a list of inference profile IDs, see Supported Regions and\n    models for cross-region inference (https://docs.aws.amazon.com/bedrock/latest/userguide/cross-region-inference-support.html)\n    in the Amazon Bedrock User Guide.\n\n  - If you use a provisioned model, specify the ARN of the Provisioned Throughput.\n    For more information, see Run inference using a Provisioned Throughput\n    (https://docs.aws.amazon.com/bedrock/latest/userguide/prov-thru-use.html)\n    in the Amazon Bedrock User Guide.\n\n  - If you use a custom model, first purchase Provisioned Throughput for\n    it. Then specify the ARN of the resulting provisioned model. For more\n    information, see Use a custom model in Amazon Bedrock (https://docs.aws.amazon.com/bedrock/latest/userguide/model-customization-use.html)\n    in the Amazon Bedrock User Guide.\n\n  - If you use an imported model (https://docs.aws.amazon.com/bedrock/latest/userguide/model-customization-import-model.html),\n    specify the ARN of the imported model. You can get the model ARN from\n    a successful call to CreateModelImportJob (https://docs.aws.amazon.com/bedrock/latest/APIReference/API_CreateModelImportJob.html)\n    or from the Imported models page in the Amazon Bedrock console.\n\nRegex Pattern: `^(arn:aws(-[^:]{1,12})?:(bedrock|sagemaker):[a-z0-9-]{1,20}:([0-9]{12})?:([a-z-]+/)?)?([a-zA-Z0-9.-]{1,63}){0,2}(([:][a-z0-9-]{1,63}){0,2})?(/[a-z0-9]{1,12})?$`",
+          "type": "string"
+        },
+        "guardrailConfiguration": {
+          "description": "The unique Guardrail configuration assigned to the agent when it is created.",
+          "properties": {
+            "guardrailIdentifier": {
+              "type": "string"
+            },
+            "guardrailVersion": {
+              "type": "string"
+            }
+          },
+          "type": "object"
+        },
+        "idleSessionTTLInSeconds": {
+          "description": "The number of seconds for which Amazon Bedrock keeps information about a\nuser's conversation with the agent.\n\nA user interaction remains active for the amount of time specified. If no\nconversation occurs during this time, the session expires and Amazon Bedrock\ndeletes any data provided before the timeout.",
+          "format": "int64",
+          "type": "integer"
+        },
+        "instruction": {
+          "description": "Instructions that tell the agent what it should do and how it should interact\nwith users.",
+          "type": "string"
+        },
+        "memoryConfiguration": {
+          "description": "Contains the details of the memory configured for the agent.",
+          "properties": {
+            "enabledMemoryTypes": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            "sessionSummaryConfiguration": {
+              "description": "Configuration for SESSION_SUMMARY memory type enabled for the agent.",
+              "properties": {
+                "maxRecentSessions": {
+                  "format": "int64",
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            },
+            "storageDays": {
+              "format": "int64",
+              "type": "integer"
+            }
+          },
+          "type": "object"
+        },
+        "orchestrationType": {
+          "description": "Specifies the type of orchestration strategy for the agent. This is set to\nDEFAULT orchestration type, by default.",
+          "type": "string"
+        },
+        "promptOverrideConfiguration": {
+          "description": "Contains configurations to override prompts in different parts of an agent\nsequence. For more information, see Advanced prompts (https://docs.aws.amazon.com/bedrock/latest/userguide/advanced-prompts.html).",
+          "properties": {
+            "overrideLambda": {
+              "type": "string"
+            },
+            "promptConfigurations": {
+              "items": {
+                "description": "Contains configurations to override a prompt template in one part of an agent\nsequence. For more information, see Advanced prompts (https://docs.aws.amazon.com/bedrock/latest/userguide/advanced-prompts.html).",
+                "properties": {
+                  "basePromptTemplate": {
+                    "type": "string"
+                  },
+                  "foundationModel": {
+                    "type": "string"
+                  },
+                  "inferenceConfiguration": {
+                    "description": "Contains inference parameters to use when the agent invokes a foundation\nmodel in the part of the agent sequence defined by the promptType. For more\ninformation, see Inference parameters for foundation models (https://docs.aws.amazon.com/bedrock/latest/userguide/model-parameters.html).",
+                    "properties": {
+                      "maximumLength": {
+                        "format": "int64",
+                        "type": "integer"
+                      },
+                      "stopSequences": {
+                        "items": {
+                          "type": "string"
+                        },
+                        "type": "array"
+                      },
+                      "temperature": {
+                        "type": "number"
+                      },
+                      "topK": {
+                        "format": "int64",
+                        "type": "integer"
+                      },
+                      "topP": {
+                        "type": "number"
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "parserMode": {
+                    "type": "string"
+                  },
+                  "promptCreationMode": {
+                    "type": "string"
+                  },
+                  "promptState": {
+                    "type": "string"
+                  },
+                  "promptType": {
+                    "type": "string"
+                  }
+                },
+                "type": "object"
+              },
+              "type": "array"
+            }
+          },
+          "type": "object"
+        },
+        "tags": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "description": "An object containing key-value pairs that define the tags to attach to the\nresource.",
+          "type": "object"
+        }
+      },
+      "required": [
+        "agentName"
+      ],
+      "type": "object"
+    },
+    "status": {
+      "description": "AgentStatus defines the observed state of Agent",
+      "properties": {
+        "ackResourceMetadata": {
+          "description": "All CRs managed by ACK have a common `Status.ACKResourceMetadata` member\nthat is used to contain resource sync state, account ownership,\nconstructed ARN for the resource",
+          "properties": {
+            "arn": {
+              "description": "ARN is the Amazon Resource Name for the resource. This is a\nglobally-unique identifier and is set only by the ACK service controller\nonce the controller has orchestrated the creation of the resource OR\nwhen it has verified that an \"adopted\" resource (a resource where the\nARN annotation was set by the Kubernetes user on the CR) exists and\nmatches the supplied CR's Spec field values.\nhttps://github.com/aws/aws-controllers-k8s/issues/270",
+              "type": "string"
+            },
+            "ownerAccountID": {
+              "description": "OwnerAccountID is the AWS Account ID of the account that owns the\nbackend AWS service API resource.",
+              "type": "string"
+            },
+            "region": {
+              "description": "Region is the AWS region in which the resource exists or will exist.",
+              "type": "string"
+            }
+          },
+          "required": [
+            "ownerAccountID",
+            "region"
+          ],
+          "type": "object"
+        },
+        "agentID": {
+          "description": "The unique identifier of the agent.\n\nRegex Pattern: `^[0-9a-zA-Z]{10}$`",
+          "type": "string"
+        },
+        "agentStatus": {
+          "description": "The status of the agent and whether it is ready for use. The following statuses\nare possible:\n\n   * CREATING – The agent is being created.\n\n   * PREPARING – The agent is being prepared.\n\n   * PREPARED – The agent is prepared and ready to be invoked.\n\n   * NOT_PREPARED – The agent has been created but not yet prepared.\n\n   * FAILED – The agent API operation failed.\n\n   * UPDATING – The agent is being updated.\n\n   * DELETING – The agent is being deleted.",
+          "type": "string"
+        },
+        "agentVersion": {
+          "description": "The version of the agent.\n\nRegex Pattern: `^DRAFT$`",
+          "type": "string"
+        },
+        "clientToken": {
+          "description": "A unique, case-sensitive identifier to ensure that the API request completes\nno more than one time. If this token matches a previous request, Amazon Bedrock\nignores the request, but does not return an error. For more information,\nsee Ensuring idempotency (https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html).\n\nRegex Pattern: `^[a-zA-Z0-9](-*[a-zA-Z0-9]){0,256}$`",
+          "type": "string"
+        },
+        "conditions": {
+          "description": "All CRs managed by ACK have a common `Status.Conditions` member that\ncontains a collection of `ackv1alpha1.Condition` objects that describe\nthe various terminal states of the CR and its backend AWS service API\nresource",
+          "items": {
+            "description": "Condition is the common struct used by all CRDs managed by ACK service\ncontrollers to indicate terminal states  of the CR and its backend AWS\nservice API resource",
+            "properties": {
+              "lastTransitionTime": {
+                "description": "Last time the condition transitioned from one status to another.",
+                "format": "date-time",
+                "type": "string"
+              },
+              "message": {
+                "description": "A human readable message indicating details about the transition.",
+                "type": "string"
+              },
+              "reason": {
+                "description": "The reason for the condition's last transition.",
+                "type": "string"
+              },
+              "status": {
+                "description": "Status of the condition, one of True, False, Unknown.",
+                "type": "string"
+              },
+              "type": {
+                "description": "Type is the type of the Condition",
+                "type": "string"
+              }
+            },
+            "required": [
+              "status",
+              "type"
+            ],
+            "type": "object"
+          },
+          "type": "array"
+        },
+        "createdAt": {
+          "description": "The time at which the agent was created.",
+          "format": "date-time",
+          "type": "string"
+        },
+        "failureReasons": {
+          "description": "Contains reasons that the agent-related API that you invoked failed.",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "preparedAt": {
+          "description": "The time at which the agent was last prepared.",
+          "format": "date-time",
+          "type": "string"
+        },
+        "recommendedActions": {
+          "description": "Contains recommended actions to take for the agent-related API that you invoked\nto succeed.",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "updatedAt": {
+          "description": "The time at which the agent was last updated.",
+          "format": "date-time",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    }
+  },
+  "type": "object"
+}

@@ -10,7 +10,7 @@ export FILES=(
 )
 
 # renovate: datasource=github-tags depName=argoproj/argo-cd
-export VERSION=1.5.1
+export VERSION=3.1.9
 
 function generate_url {
   echo "https://raw.githubusercontent.com/kubernetes/autoscaler/refs/tags/vertical-pod-autoscaler-${VERSION}/vertical-pod-autoscaler/deploy/vpa-v1-crd-gen.yaml"

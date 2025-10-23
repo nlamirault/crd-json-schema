@@ -11,26 +11,7 @@ area/github:
 - changed-files:
   - any-glob-to-any-file: .github/**
 
-area/go:
+area/crd:
 - changed-files:
-  - any-glob-to-any-file: apps/otel-go/**
-
-area/python:
-- changed-files:
-  - any-glob-to-any-file: apps/otel-python/**
-
-area/java:
-- changed-files:
-  - any-glob-to-any-file: apps/otel-java/**
-
-area/js:
-- changed-files:
-  - any-glob-to-any-file: apps/otel-js/**
-
-area/rust:
-- changed-files:
-  - any-glob-to-any-file: apps/otel-rust/**
-
-area/swift:
-- changed-files:
-  - any-glob-to-any-file: apps/otel-swift/**
+  - any-glob-to-any-file: crds/*.sh
+  - any-glob-to-any-file: schemas/**/*.json

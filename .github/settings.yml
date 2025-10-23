@@ -3,11 +3,10 @@
 
 ---
 # These settings are synced to GitHub by https://probot.github.io/apps/settings/
-
 repository:
-  name: k8s-json-schema
+  name: crd-schema-store
   description: JSON Schema for Kubernetes CRDs
-  homepage: https://github.com/nlamirault/k8s-json-schema
+  homepage: https://github.com/nlamirault/crd-json-schema
   topics: kubernetes, json-schema, crds
   private: false
   has_issues: true
@@ -195,28 +194,8 @@ labels:
   description: "Github"
   color: "cc317c"
 
-- name: "area/go"
-  description: "Go"
-  color: "cc317c"
-
-- name: "area/python"
-  description: "Python"
-  color: "cc317c"
-
-- name: "area/java"
-  description: "Java"
-  color: "cc317c"
-
-- name: "area/javascript"
-  description: "Javascript"
-  color: "cc317c"
-
-- name: "area/rust"
-  description: "Rust"
-  color: "cc317c"
-
-- name: "area/swift"
-  description: "Swift"
+- name: "area/crd"
+  description: "CRD"
   color: "cc317c"
 
 ## DEPENDENCY

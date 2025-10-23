@@ -2,6 +2,51 @@
 
 A collection of JSON schemas extracted from Kubernetes Custom Resource Definitions (CRDs) for popular cloud-native applications and operators.
 
+## Supported Applications & Operators
+
+### AWS Controllers for Kubernetes (ACK)
+- **Bedrock Agent** - AI agent management
+- **DynamoDB** - NoSQL database service
+- **EC2** - Compute instances and networking
+- **ECR** - Container registry
+- **ECS** - Container service
+- **EKS** - Kubernetes service
+- **EventBridge** - Event-driven architectures
+- **IAM** - Identity and access management
+- **Kafka (MSK)** - Managed streaming for Apache Kafka
+- **KMS** - Key management service
+- **RDS** - Relational database service
+- **S3** - Object storage
+- **Secrets Manager** - Secret storage and rotation
+- **SNS** - Notification service
+- **SQS** - Message queuing service
+
+### Multi-Cloud Operators
+- **Azure Service Operator** - 250+ Azure services management
+- **GCP Config Connector** - Google Cloud resource management
+
+### GitOps & Deployment
+- **Argo CD** - GitOps continuous delivery
+- **Argo Events** - Event-driven workflow automation
+- **Argo Rollouts** - Progressive delivery and blue-green deployments
+- **Argo Workflows** - Container-native workflow engine
+- **Kargo** - GitOps promotion engine
+
+### Infrastructure & Autoscaling
+- **Karpenter AWS** - Node autoscaling for Amazon EKS
+- **Karpenter Azure** - Node autoscaling for Azure AKS
+- **VPA (Vertical Pod Autoscaler)** - Automatic resource scaling
+
+### Observability
+- **Grafana Operator** - Grafana instance management
+- **Prometheus Operator** - Monitoring and alerting
+
+### Security & Secrets
+- **External Secrets** - External secret management integration
+
+### Networking
+- **Gateway API** - Next-generation ingress and traffic management
+
 ## Schema Organization
 
 Schemas are organized by API group and follow the naming convention:

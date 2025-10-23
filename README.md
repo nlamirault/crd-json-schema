@@ -5,6 +5,7 @@ A collection of JSON schemas extracted from Kubernetes Custom Resource Definitio
 ## Supported Applications & Operators
 
 ### AWS Controllers for Kubernetes (ACK)
+
 - **Bedrock Agent** - AI agent management
 - **DynamoDB** - NoSQL database service
 - **EC2** - Compute instances and networking
@@ -21,11 +22,16 @@ A collection of JSON schemas extracted from Kubernetes Custom Resource Definitio
 - **SNS** - Notification service
 - **SQS** - Message queuing service
 
-### Multi-Cloud Operators
-- **Azure Service Operator** - 250+ Azure services management
+### Google Cloud
+
 - **GCP Config Connector** - Google Cloud resource management
 
+### Azure
+
+- **Azure Service Operator** - 250+ Azure services management
+
 ### GitOps & Deployment
+
 - **Argo CD** - GitOps continuous delivery
 - **Argo Events** - Event-driven workflow automation
 - **Argo Rollouts** - Progressive delivery and blue-green deployments
@@ -33,19 +39,23 @@ A collection of JSON schemas extracted from Kubernetes Custom Resource Definitio
 - **Kargo** - GitOps promotion engine
 
 ### Infrastructure & Autoscaling
+
 - **KEDA** - Event-driven autoscaling for Kubernetes workloads
 - **Karpenter AWS** - Node autoscaling for Amazon EKS
 - **Karpenter Azure** - Node autoscaling for Azure AKS
 - **VPA (Vertical Pod Autoscaler)** - Automatic resource scaling
 
 ### Observability
+
 - **Grafana Operator** - Grafana instance management
 - **Prometheus Operator** - Monitoring and alerting
 
 ### Security & Secrets
+
 - **External Secrets** - External secret management integration
 
 ### Networking & Service Mesh
+
 - **Gateway API** - Next-generation ingress and traffic management
 - **Istio** - Service mesh for secure, fast, and reliable service-to-service communication
 

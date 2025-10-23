@@ -24,12 +24,21 @@
   customManagers: [
     {
       customType: 'regex',
-      fileMatch: [
-        'crds/.*\\.sh$',
+      managerFilePatterns: [
+        '/crds/.*\\.sh$/',
       ],
       matchStrings: [
         '#\\s*renovate:\\s*datasource=(?<datasource>\\S+)\\s+depName=(?<depName>\\S+)\\s*\\n(?:export\\s+)?VERSION=(?<currentValue>\\S+)',
       ],
+      postUpgradeTasks: {
+        commands: [
+          'scripts/schema-store.sh {{{replace "^crds/" "" (replace "\\.sh$" "" packageFile)}}}',
+        ],
+        fileFilters: [
+          'schemas/**/*.json',
+        ],
+        executionMode: 'update',
+      },
     },
   ],
   packageRules: [

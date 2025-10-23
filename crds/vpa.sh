@@ -9,7 +9,7 @@ export FILES=(
   "verticalpodautoscalers.autoscaling.k8s.io.yaml"
 )
 
-# renovate: datasource=github-tags depName=argoproj/argo-cd
+# renovate: datasource=github-tags depName=kubernetes/autoscaler
 export VERSION=1.5.1
 
 function generate_url {

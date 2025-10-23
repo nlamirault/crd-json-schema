@@ -39,6 +39,21 @@ Add the following to your VSCode `settings.json`:
 }
 ```
 
+#### yaml-language-server
+
+For file-specific schema validation, add a comment at the top of your YAML files:
+
+```yaml
+# yaml-language-server: $schema=https://raw.githubusercontent.com/nlamirault/kubernetes-schema-store/main/schemas/argoproj.io/application_v1alpha1.json
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: my-app
+# ... rest of your YAML
+```
+
+This provides inline validation and autocomplete for the specific CRD schema without global IDE configuration.
+
 ### CLI Tools
 
 Use with tools like `yq`, `kubeval`, or custom validation scripts:

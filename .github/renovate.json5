@@ -1,62 +1,136 @@
 {
-  "extends": [
-    "config:base",
-    ":dependencyDashboard",
-    ":gitSignOff"
+  extends: [
+    'config:recommended',
+    ':dependencyDashboard',
+    ':gitSignOff',
   ],
-  "enabled": true,
-  "timezone": "Europe/Paris",
-  "dependencyDashboard": true,
-  "dependencyDashboardTitle": "Renovate Dashboard",
-  // "gitAuthor": "Nicolas Lamirault <nlamirault@users.noreply.github.com>",
-  // "commitBody": "Signed-off-by: Nicolas Lamirault <nlamirault@users.noreply.github.com>",
-  // Do not notify on closed unmerged PRs
-  "suppressNotifications": ["prIgnoreNotification"],
-  // Do not rebase PRs
-  "rebaseWhen": "conflicted",
-  "assignees": ["@nlamirault"],
-  "reviewersFromCodeOwners": true,
-  "labels": ["kind/renovate", "lifecycle/active", "status/review_needed"],
-  "regexManagers": [
-    {
-      "fileMatch": [".*py$"],
-      "matchStrings": [
-        "datasource=(?<datasource>.*)\\sdepName=(?<depName>.*)\\n.*version:\\s(?<currentValue>.*)"
-      ]
-    }
+  enabled: true,
+  timezone: 'Europe/Paris',
+  dependencyDashboard: true,
+  dependencyDashboardTitle: 'Renovate Dashboard',
+  suppressNotifications: [
+    'prIgnoreNotification',
   ],
-  "packageRules": [
-    // Labels for Docker
+  rebaseWhen: 'conflicted',
+  assignees: [
+    '@nlamirault',
+  ],
+  reviewersFromCodeOwners: true,
+  labels: [
+    'kind/renovate',
+    'lifecycle/active',
+    'status/review_needed',
+  ],
+  customManagers: [
     {
-      "datasources": ["docker"],
-      "updateTypes": ["major"],
-      "labels": ["kind/renovate", "lifecycle/active", "status/review_needed", "dependency/docker", "priority/high", "size/xs"]
+      customType: 'regex',
+      managerFilePatterns: [
+        '/.*py$/',
+      ],
+      matchStrings: [
+        'datasource=(?<datasource>.*)\\sdepName=(?<depName>.*)\\n.*version:\\s(?<currentValue>.*)',
+      ],
+    },
+  ],
+  packageRules: [
+    {
+      matchDatasources: [
+        'docker',
+      ],
+      matchUpdateTypes: [
+        'major',
+      ],
+      labels: [
+        'kind/renovate',
+        'lifecycle/active',
+        'status/review_needed',
+        'dependency/docker',
+        'priority/high',
+        'size/xs',
+      ],
     },
     {
-      "datasources": ["docker"],
-      "updateTypes": ["minor"],
-      "labels": ["kind/renovate", "lifecycle/active", "status/review_needed", "dependency/docker", "priority/medium", "size/xs"]
+      matchDatasources: [
+        'docker',
+      ],
+      matchUpdateTypes: [
+        'minor',
+      ],
+      labels: [
+        'kind/renovate',
+        'lifecycle/active',
+        'status/review_needed',
+        'dependency/docker',
+        'priority/medium',
+        'size/xs',
+      ],
     },
     {
-      "datasources": ["docker"],
-      "updateTypes": ["patch"],
-      "labels": ["kind/renovate", "lifecycle/active", "status/review_needed", "dependency/docker", "priority/low", "size/xs"]
+      matchDatasources: [
+        'docker',
+      ],
+      matchUpdateTypes: [
+        'patch',
+      ],
+      labels: [
+        'kind/renovate',
+        'lifecycle/active',
+        'status/review_needed',
+        'dependency/docker',
+        'priority/low',
+        'size/xs',
+      ],
     },
-    // Labels for Github Actions
     {
-      "datasources": ["action"],
-      "updateTypes": ["major"],
-      "labels": ["kind/renovate", "lifecycle/active", "status/review_needed", "area/github", "dependency/github", "priority/high", "size/xs"]
+      matchDatasources: [
+        'action',
+      ],
+      matchUpdateTypes: [
+        'major',
+      ],
+      labels: [
+        'kind/renovate',
+        'lifecycle/active',
+        'status/review_needed',
+        'area/github',
+        'dependency/github',
+        'priority/high',
+        'size/xs',
+      ],
     },
     {
-      "datasources": ["action"],
-      "updateTypes": ["minor"],
-      "labels": ["kind/renovate", "lifecycle/active", "status/review_needed", "area/github", "dependency/github", "priority/medium", "size/xs"]
+      matchDatasources: [
+        'action',
+      ],
+      matchUpdateTypes: [
+        'minor',
+      ],
+      labels: [
+        'kind/renovate',
+        'lifecycle/active',
+        'status/review_needed',
+        'area/github',
+        'dependency/github',
+        'priority/medium',
+        'size/xs',
+      ],
     },
     {
-      "datasources": ["action"],
-      "updateTypes": ["patch"],
-      "labels": ["kind/renovate", "lifecycle/active", "status/review_needed", "area/github", "dependency/github", "priority/low", "size/xs"]
+      matchDatasources: [
+        'action',
+      ],
+      matchUpdateTypes: [
+        'patch',
+      ],
+      labels: [
+        'kind/renovate',
+        'lifecycle/active',
+        'status/review_needed',
+        'area/github',
+        'dependency/github',
+        'priority/low',
+        'size/xs',
+      ],
     },
-  ]
+  ],
 }

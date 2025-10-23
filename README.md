@@ -45,8 +45,9 @@ A collection of JSON schemas extracted from Kubernetes Custom Resource Definitio
 ### Security & Secrets
 - **External Secrets** - External secret management integration
 
-### Networking
+### Networking & Service Mesh
 - **Gateway API** - Next-generation ingress and traffic management
+- **Istio** - Service mesh for secure, fast, and reliable service-to-service communication
 
 ## Schema Organization
 

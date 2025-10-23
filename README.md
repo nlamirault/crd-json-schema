@@ -33,6 +33,7 @@ A collection of JSON schemas extracted from Kubernetes Custom Resource Definitio
 - **Kargo** - GitOps promotion engine
 
 ### Infrastructure & Autoscaling
+- **KEDA** - Event-driven autoscaling for Kubernetes workloads
 - **Karpenter AWS** - Node autoscaling for Amazon EKS
 - **Karpenter Azure** - Node autoscaling for Azure AKS
 - **VPA (Vertical Pod Autoscaler)** - Automatic resource scaling

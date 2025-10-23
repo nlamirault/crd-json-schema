@@ -28,7 +28,7 @@
         '/.*py$/',
       ],
       matchStrings: [
-        'datasource=(?<datasource>.*)\\sdepName=(?<depName>.*)\\n.*version:\\s(?<currentValue>.*)',
+        'renovate: datasource=(?<datasource>.*)\\sdepName=(?<depName>.*)\\nexport VERSION=\\s(?<currentValue>.*)',
       ],
     },
   ],

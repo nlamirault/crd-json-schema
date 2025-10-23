@@ -13,7 +13,7 @@ export FILES=(
   "cert-manager.io_issuers.yaml"
 )
 
-# renovate: datasource=github-tags depName=argoproj/argo-cd
+# renovate: datasource=github-tags depName=cert-manager/cert-manager
 export VERSION=1.19.1
 
 function generate_url {

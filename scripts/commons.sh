@@ -42,6 +42,7 @@ function generate_json_schema {
   group=$(dirname "${output_file}")
   schema=$(basename "${output_file}")
   output_path="${json_dir}/${group}"
+  log_debug "Group: ${group} / Schema: ${schema}"
   mkdir -p "${output_path}"
   log_info "[openapi] Extract openAPIV3Schema and convert to JSON: ${output_path}"
   yq e '.spec.versions[].schema.openAPIV3Schema' "${crd_file}" -o=json >"${output_path}/${schema}"

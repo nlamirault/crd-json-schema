@@ -1,0 +1,31 @@
+# SPDX-FileCopyrightText: Copyright (C) Nicolas Lamirault <nicolas.lamirault@gmail.com>
+# SPDX-License-Identifier: Apache-2.0
+
+---
+
+name: Project / Issues and PR labels comments
+
+on: # yamllint disable-line rule:truthy
+  issues:
+    types: [labeled, unlabeled]
+  pull_request_target:
+    types: [labeled, unlabeled]
+
+permissions:
+  contents: read
+  issues: write
+  pull-requests: write
+
+jobs:
+  comment:
+    runs-on: ubuntu-22.04
+    steps:
+    - name: Monitor Actions
+      uses: GitHubSecurityLab/actions-permissions/monitor@v1
+      with:
+        config: ${{ vars.PERMISSIONS_CONFIG }}
+
+    - uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
+
+    - name: Label Commenter
+      uses: peaceiris/actions-label-commenter@v1

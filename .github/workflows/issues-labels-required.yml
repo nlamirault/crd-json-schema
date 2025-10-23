@@ -1,0 +1,62 @@
+# SPDX-FileCopyrightText: Copyright (C) Nicolas Lamirault <nicolas.lamirault@gmail.com>
+# SPDX-License-Identifier: Apache-2.0
+
+---
+name: Project / Issues and PR labels required
+
+on: # yamllint disable-line rule:truthy
+  issues:
+    types: [opened]
+  pull_request_target:
+    types: [opened]
+    # schedule:
+    #   - cron: "0 0 * * *"
+
+jobs:
+  required_labels:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Monitor Actions
+      uses: GitHubSecurityLab/actions-permissions/monitor@v1
+      with:
+        config: ${{ vars.PERMISSIONS_CONFIG }}
+
+    - name: Require prefix kind
+      uses: trstringer/require-label-prefix@v1
+      with:
+        secret: ${{ github.TOKEN }}
+        prefix: kind
+        addLabel: true
+        defaultLabel: needs/kind
+
+    - name: Require prefix area
+      uses: trstringer/require-label-prefix@v1
+      with:
+        secret: ${{ github.TOKEN }}
+        prefix: area
+        addLabel: true
+        defaultLabel: needs/area
+
+    - name: Require prefix priority
+      uses: trstringer/require-label-prefix@v1
+      with:
+        secret: ${{ github.TOKEN }}
+        prefix: priority
+        addLabel: true
+        defaultLabel: needs/priority
+
+    # - name: Require prefix size
+    #   uses: trstringer/require-label-prefix@v1
+    #   with:
+    #     secret: ${{ github.TOKEN }}
+    #     prefix: size
+    #     addLabel: true
+    #     defaultLabel: needs/size
+
+    - name: Require prefix status
+      uses: trstringer/require-label-prefix@v1
+      with:
+        secret: ${{ github.TOKEN }}
+        prefix: status
+        addLabel: true
+        defaultLabel: needs/status

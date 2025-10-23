@@ -1,0 +1,35 @@
+# SPDX-FileCopyrightText: Copyright (C) Nicolas Lamirault <nicolas.lamirault@gmail.com>
+# SPDX-License-Identifier: Apache-2.0
+
+---
+# name: "Label PRs from globs"
+# on:
+#   schedule:
+#   - cron: "0 * * * *"
+
+# jobs:
+#   execute:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - uses: jpmcb/prow-github-actions@v1.1.1
+#         with:
+#           jobs: 'pr-labeler'
+#           github-token: "${{ secrets.GITHUB_TOKEN }}"
+
+name: Project / Pull Request Labeler
+
+on: # yamllint disable-line rule:truthy
+  pull_request:
+    types: [opened, reopened, edited]
+
+jobs:
+  triage:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Monitor Actions
+      uses: GitHubSecurityLab/actions-permissions/monitor@v1
+      with:
+        config: ${{ vars.PERMISSIONS_CONFIG }}
+    - uses: actions/labeler@v5.0.0
+      with:
+        repo-token: "${{ secrets.GITHUB_TOKEN }}"

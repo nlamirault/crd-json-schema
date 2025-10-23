@@ -1,0 +1,82 @@
+#!/usr/bin/env bash
+
+# SPDX-FileCopyrightText: Copyright (C) Nicolas Lamirault <nicolas.lamirault@gmail.com>
+# SPDX-License-Identifier: Apache-2.0
+
+reset_color="\\e[0m"
+color_red="\\e[31m"
+color_green="\\e[32m"
+color_blue="\\e[36m"
+color_yellow="\\e[33m"
+
+# Define log levels
+LOG_LEVEL_ERROR=0
+LOG_LEVEL_WARN=1
+LOG_LEVEL_INFO=2
+LOG_LEVEL_DEBUG=3
+LOG_LEVEL_TRACE=4
+
+# Set default log level (can be overridden by env or arg)
+LOG_LEVEL="${LOG_LEVEL:=$LOG_LEVEL_INFO}"
+
+function log_trace { [ "${LOG_LEVEL_TRACE}" -le "${LOG_LEVEL}" ] && echo -e "${color_blue}🟡 $*${reset_color}"; }
+function log_debug { [ "${LOG_LEVEL_DEBUG}" -le "${LOG_LEVEL}" ] && echo -e "${color_blue}🔵 $*${reset_color}"; }
+function log_info { [ "${LOG_LEVEL_INFO}" -le "${LOG_LEVEL}" ] && echo -e "${color_green}🟢 $*${reset_color}"; }
+function log_warn { [ "${LOG_LEVEL_WARN}" -le "${LOG_LEVEL}" ] && echo -e "${color_yellow}🟠 $*${reset_color}"; }
+function log_error { [ "${LOG_LEVEL_ERROR}" -le "${LOG_LEVEL}" ] && echo -e "${color_red}🔴 $*${reset_color}"; }
+
+function generate_output_filename {
+  local crd_file=$1
+  local group=$(yq e '.spec.group' "${crd_file}" 2>/dev/null)
+  [[ -z "$group" || "${group}" == "null" ]] && return
+  local kind=$(yq e '.spec.names.kind' "${crd_file}" 2>/dev/null)
+  local version=$(yq e '.spec.versions[0].name' "${crd_file}" 2>/dev/null)
+  [[ -n "$kind" && -n "${version}" ]] && echo "${group}/${kind}_${version}.json" | tr '[:upper:]' '[:lower:]'
+}
+
+function generate_json_schema {
+  local crd_file=$1
+  local json_dir=$2
+
+  output_file=$(generate_output_filename "${crd_file}")
+  group=$(dirname "${output_file}")
+  schema=$(basename "${output_file}")
+  output_path="${json_dir}/${group}"
+  mkdir -p "${output_path}"
+  log_info "[openapi] Extract openAPIV3Schema and convert to JSON: ${output_path}"
+  yq e '.spec.versions[].schema.openAPIV3Schema' "${crd_file}" -o=json >"${output_path}/${schema}"
+}
+
+function download_crd_bundle {
+  local crd_dir=$1
+  local url=$2
+
+  local bundle_file="bundle.yaml"
+  log_debug "[kubernetes] Download the bundle file and create CRD files"
+  if ! curl --silent --retry-all-errors --fail --location "${url}" >"${crd_dir}/${bundle_file}"; then
+    echo_fail -e "Failed to download ${url}"
+  else
+    kubectl slice -q -f "${crd_dir}/bundle.yaml" -t "{{.metadata.name}}.yaml" -o "${crd_dir}"
+    rm "${crd_dir}/${bundle_file}"
+  fi
+}
+
+function download_crd {
+  local crd_dir=$1
+  local file=$2
+  local url=$3
+
+  log_debug "[kubernetes] CRD to download: ${url}"
+  if ! curl --silent --retry-all-errors --fail --location "${url}" >"${crd_dir}/${file}"; then
+    log_error -e "Failed to download ${url}"
+  fi
+}
+
+function manage_crd {
+  local crd_file=$1
+  local jsonschema_dir=$2
+
+  log_debug "[kubernetes] CRD file: ${crd_file}"
+  yq e '.kind == "CustomResourceDefinition"' "${crd_file}" &>/dev/null
+  generate_json_schema "${crd_file}" "${jsonschema_dir}"
+}

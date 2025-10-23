@@ -1,0 +1,23 @@
+# SPDX-FileCopyrightText: Copyright (C) Nicolas Lamirault <nicolas.lamirault@gmail.com>
+# SPDX-License-Identifier: Apache-2.0
+
+# Note, to run this locally, use:
+# 1. cargo install hawkeye
+# 2. hawkeye (check | format)
+# Check shows files that do not conform with expectation
+# Format updates those files with the inlineHeader below
+
+headerPath = "hack/header.txt"
+
+includes = [
+  "*.yaml",
+  "*.yml",
+  "*.toml",
+  "*.sh",
+  "Makefile",
+]
+excludes = [
+  "hack/header.txt",
+  "*.json",
+  "*.json5",
+]

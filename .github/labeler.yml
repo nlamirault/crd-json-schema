@@ -1,0 +1,36 @@
+# SPDX-FileCopyrightText: Copyright (C) Nicolas Lamirault <nicolas.lamirault@gmail.com>
+# SPDX-License-Identifier: Apache-2.0
+
+---
+# Labels for action/labeler
+
+######################################
+# Label area/xxx
+
+area/github:
+- changed-files:
+  - any-glob-to-any-file: .github/**
+
+area/go:
+- changed-files:
+  - any-glob-to-any-file: apps/otel-go/**
+
+area/python:
+- changed-files:
+  - any-glob-to-any-file: apps/otel-python/**
+
+area/java:
+- changed-files:
+  - any-glob-to-any-file: apps/otel-java/**
+
+area/js:
+- changed-files:
+  - any-glob-to-any-file: apps/otel-js/**
+
+area/rust:
+- changed-files:
+  - any-glob-to-any-file: apps/otel-rust/**
+
+area/swift:
+- changed-files:
+  - any-glob-to-any-file: apps/otel-swift/**

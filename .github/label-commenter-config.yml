@@ -1,0 +1,22 @@
+# SPDX-FileCopyrightText: Copyright (C) Nicolas Lamirault <nicolas.lamirault@gmail.com>
+# SPDX-License-Identifier: Apache-2.0
+
+---
+comment:
+  header: Hi, there.
+  footer: "---\n\n> This is an automated comment created by the [peaceiris/actions-label-commenter]. Responding to the bot
+    or mentioning it won't have any effect.\n\n[peaceiris/actions-label-commenter]: https://github.com/peaceiris/actions-label-commenter"
+
+labels:
+- name: "status/abandoned"
+  labeled:
+    issue:
+      body: This will not be worked on but we appreciate your contribution.
+      action: close
+    pr:
+      body: Thank you @{{ pull_request.user.login }}. This will not be worked on but we appreciate your contribution.
+      action: close
+  unlabeled:
+    issue:
+      body: This has become active again.
+      action: open

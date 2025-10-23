@@ -1,0 +1,8 @@
+# SPDX-FileCopyrightText: Copyright (C) Nicolas Lamirault <nicolas.lamirault@gmail.com>
+# SPDX-License-Identifier: Apache-2.0
+
+---
+label-alias:
+  bug: 'kind/bug'
+  feature_request: 'kind/feature'
+  question: 'kind/question'

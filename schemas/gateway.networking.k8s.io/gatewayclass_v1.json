@@ -158,6 +158,27 @@
             "type"
           ],
           "x-kubernetes-list-type": "map"
+        },
+        "supportedFeatures": {
+          "description": "SupportedFeatures is the set of features the GatewayClass support.\nIt MUST be sorted in ascending alphabetical order by the Name key.",
+          "items": {
+            "properties": {
+              "name": {
+                "description": "FeatureName is used to describe distinct features that are covered by\nconformance tests.",
+                "type": "string"
+              }
+            },
+            "required": [
+              "name"
+            ],
+            "type": "object"
+          },
+          "maxItems": 64,
+          "type": "array",
+          "x-kubernetes-list-map-keys": [
+            "name"
+          ],
+          "x-kubernetes-list-type": "map"
         }
       },
       "type": "object"
@@ -326,6 +347,27 @@
           "type": "array",
           "x-kubernetes-list-map-keys": [
             "type"
+          ],
+          "x-kubernetes-list-type": "map"
+        },
+        "supportedFeatures": {
+          "description": "SupportedFeatures is the set of features the GatewayClass support.\nIt MUST be sorted in ascending alphabetical order by the Name key.",
+          "items": {
+            "properties": {
+              "name": {
+                "description": "FeatureName is used to describe distinct features that are covered by\nconformance tests.",
+                "type": "string"
+              }
+            },
+            "required": [
+              "name"
+            ],
+            "type": "object"
+          },
+          "maxItems": 64,
+          "type": "array",
+          "x-kubernetes-list-map-keys": [
+            "name"
           ],
           "x-kubernetes-list-type": "map"
         }

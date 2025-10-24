@@ -27,6 +27,7 @@ function log_error { [ "${LOG_LEVEL_ERROR}" -le "${LOG_LEVEL}" ] && echo -e "${c
 
 function generate_output_filename {
   local crd_file=$1
+
   local group=$(yq e '.spec.group' "${crd_file}" 2>/dev/null)
   [[ -z "$group" || "${group}" == "null" ]] && return
   local kind=$(yq e '.spec.names.kind' "${crd_file}" 2>/dev/null)
@@ -38,11 +39,16 @@ function generate_json_schema {
   local crd_file=$1
   local json_dir=$2
 
+  echo yq e '.spec.group' "${crd_file}"
+
+  log_debug "[io] Generate output filename from ${crd_file}"
   output_file=$(generate_output_filename "${crd_file}")
   group=$(dirname "${output_file}")
+  [ "${group}" == "." ] && log_error "Invalid group" && return
   schema=$(basename "${output_file}")
+  [ "${schema}" == "." ] && log_error "Invalid schema" && return
+  log_info "[crd] Group: ${group} / Schema: ${schema}"
   output_path="${json_dir}/${group}"
-  log_debug "Group: ${group} / Schema: ${schema}"
   mkdir -p "${output_path}"
   log_info "[openapi] Extract openAPIV3Schema and convert to JSON: ${output_path}"
   yq e '.spec.versions[].schema.openAPIV3Schema' "${crd_file}" -o=json >"${output_path}/${schema}"
@@ -82,8 +88,9 @@ function download_crd_kustomize {
   log_debug "[url] Kustomize: ${url}"
   kustomize build "${url}" >"${crd_dir}/${bundle_file}"
   [ -f "${crd_dir}/${bundle_file}}" ] && log_error "Bundle file not exists" && exit 1
-  kubectl slice -q -f "${crd_dir}/${bundle_file}" -t "{{.metadata.name}}.yaml" -o "${crd_dir}"
-  rm "${crd_dir}/${bundle_file}"
+  kubectl slice -f "${crd_dir}/${bundle_file}" -t "{{.metadata.name}}.yaml" -o "${crd_dir}"
+  ls -alFrt "${crd_dir}"
+  # rm "${crd_dir}/${bundle_file}"
 }
 
 function manage_crd {

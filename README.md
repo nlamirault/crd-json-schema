@@ -49,6 +49,7 @@ A collection of JSON schemas extracted from Kubernetes Custom Resource Definitio
 ### Observability
 
 - **Grafana Operator** - Grafana instance management
+- **OpenTelemetry Operator** - OpenTelemetry instrumentation and data collection
 - **Prometheus Operator** - Monitoring and alerting
 
 ### Security & Secrets
@@ -140,7 +141,7 @@ curl -s https://raw.githubusercontent.com/nlamirault/kubernetes-schema-store/mai
 ```bash
 #!/usr/bin/env bash
 
-export choice=individual  # 'individual' for separate files, 'bundle' for single file
+export choice=individual  # 'individual' for separate files, 'bundle' for single file, 'kustomize' for kustomize directory
 export FILES=(
   "crd-file1.yaml"
   "crd-file2.yaml"

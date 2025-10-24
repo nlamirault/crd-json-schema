@@ -36,6 +36,7 @@ A collection of JSON schemas extracted from Kubernetes Custom Resource Definitio
 - **Argo Events** - Event-driven workflow automation
 - **Argo Rollouts** - Progressive delivery and blue-green deployments
 - **Argo Workflows** - Container-native workflow engine
+- **Flux** - GitOps toolkit for Kubernetes
 - **Kargo** - GitOps promotion engine
 
 ### Infrastructure & Autoscaling
@@ -139,7 +140,7 @@ curl -s https://raw.githubusercontent.com/nlamirault/kubernetes-schema-store/mai
 ```bash
 #!/usr/bin/env bash
 
-export separated=0  # 0 for individual files, 1 for bundle
+export choice=individual  # 'individual' for separate files, 'bundle' for single file
 export FILES=(
   "crd-file1.yaml"
   "crd-file2.yaml"

@@ -3,7 +3,7 @@
 # SPDX-FileCopyrightText: Copyright (C) Nicolas Lamirault <nicolas.lamirault@gmail.com>
 # SPDX-License-Identifier: Apache-2.0
 
-export separated=1
+export choice=bundle
 export FILES=(
   "acraccesstokens.generators.external-secrets.io.yaml"
   "clusterexternalsecrets.external-secrets.io.yaml"

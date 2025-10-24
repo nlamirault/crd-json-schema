@@ -12,7 +12,7 @@ export FILES=(
 )
 
 # renovate: datasource=github-tags depName=aws/karpenter-provider-aws
-export VERSION=1.8.1
+export VERSION=1.8.2
 
 function generate_url {
   local crd_file=$1

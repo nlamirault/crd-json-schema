@@ -3,7 +3,7 @@
 # SPDX-FileCopyrightText: Copyright (C) Nicolas Lamirault <nicolas.lamirault@gmail.com>
 # SPDX-License-Identifier: Apache-2.0
 
-export separated=0
+export choice=individual
 export FILES=(
   "kms.services.k8s.aws_aliases.yaml"
   "kms.services.k8s.aws_grants.yaml"

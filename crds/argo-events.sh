@@ -3,7 +3,7 @@
 # SPDX-FileCopyrightText: Copyright (C) Nicolas Lamirault <nicolas.lamirault@gmail.com>
 # SPDX-License-Identifier: Apache-2.0
 
-export separated=0
+export choice=individual
 export FILES=(
   "argoproj.io_eventbus.yaml"
   "argoproj.io_eventsources.yaml"

@@ -48,29 +48,42 @@ function generate_json_schema {
   yq e '.spec.versions[].schema.openAPIV3Schema' "${crd_file}" -o=json >"${output_path}/${schema}"
 }
 
-function download_crd_bundle {
-  local crd_dir=$1
-  local url=$2
-
-  local bundle_file="bundle.yaml"
-  log_debug "[kubernetes] Download the bundle file and create CRD files"
-  if ! curl --silent --retry-all-errors --fail --location "${url}" >"${crd_dir}/${bundle_file}"; then
-    echo_fail -e "Failed to download ${url}"
-  else
-    kubectl slice -q -f "${crd_dir}/bundle.yaml" -t "{{.metadata.name}}.yaml" -o "${crd_dir}"
-    rm "${crd_dir}/${bundle_file}"
-  fi
-}
-
 function download_crd {
   local crd_dir=$1
   local file=$2
   local url=$3
 
-  log_debug "[kubernetes] CRD to download: ${url}"
+  log_debug "[url] CRD to download: ${url}"
   if ! curl --silent --retry-all-errors --fail --location "${url}" >"${crd_dir}/${file}"; then
     log_error -e "Failed to download ${url}"
   fi
+}
+
+function download_crd_bundle {
+  local crd_dir=$1
+  local url=$2
+
+  local bundle_file="bundle.yaml"
+  log_debug "[url] Bundle file: ${url}"
+  if ! curl --silent --retry-all-errors --fail --location "${url}" >"${crd_dir}/${bundle_file}"; then
+    echo_fail -e "Failed to download ${url}"
+  else
+    [ -f "${crd_dir}/${bundle_file}}" ] && log_error "Bundle file not exists" && exit 1
+    kubectl slice -q -f "${crd_dir}/${bundle_file}" -t "{{.metadata.name}}.yaml" -o "${crd_dir}"
+    rm "${crd_dir}/${bundle_file}"
+  fi
+}
+
+function download_crd_kustomize {
+  local crd_dir=$1
+  local url=$2
+
+  local bundle_file="bundle.yaml"
+  log_debug "[url] Kustomize: ${url}"
+  kustomize build "${url}" >"${crd_dir}/${bundle_file}"
+  [ -f "${crd_dir}/${bundle_file}}" ] && log_error "Bundle file not exists" && exit 1
+  kubectl slice -q -f "${crd_dir}/${bundle_file}" -t "{{.metadata.name}}.yaml" -o "${crd_dir}"
+  rm "${crd_dir}/${bundle_file}"
 }
 
 function manage_crd {

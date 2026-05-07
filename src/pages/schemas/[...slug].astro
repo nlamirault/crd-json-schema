@@ -10,8 +10,22 @@ import * as path from 'node:path';
 export async function getStaticPaths() {
     const paths = [];
     for (const [group, resources] of Object.entries(catalog.groups)) {
+        // Group-level listing page: /schemas/traefik.io
+        paths.push({
+            params: { slug: group },
+            props: {
+                pageType: 'group' as const,
+                group,
+                resources,
+                file: undefined,
+                version: undefined,
+                kind: undefined,
+                siblingVersions: undefined,
+            }
+        });
+
+        // Resource-level pages: /schemas/traefik.io/v1alpha1/ingressroute
         for (const res of resources) {
-            // Find all versions of the same kind within this group
             const siblingVersions = resources
                 .filter(r => r.kind === res.kind)
                 .map(r => ({ version: r.version, file: r.file, slug: r.slug }));
@@ -19,11 +33,13 @@ export async function getStaticPaths() {
             paths.push({
                 params: { slug: res.slug },
                 props: {
+                    pageType: 'resource' as const,
                     file: res.file,
                     group,
                     version: res.version,
                     kind: res.kind,
                     siblingVersions,
+                    resources: undefined,
                 }
             });
         }
@@ -31,65 +47,141 @@ export async function getStaticPaths() {
     return paths;
 }
 
-const { file, group, version, kind, siblingVersions } = Astro.props;
+const { pageType, group, resources, file, version, kind, siblingVersions } = Astro.props;
 
-const fullPath = path.resolve('schemas', file);
-const content = fs.readFileSync(fullPath, 'utf-8');
-let schema;
-try {
-    schema = JSON.parse(content.split('}\n{')[0] + (content.includes('}\n{') ? '}' : ''));
-} catch (e) {
-    schema = { title: kind, description: "Could not parse JSON schema" };
+let schema: any;
+let schemaDescription: string;
+
+if (pageType === 'resource') {
+    const fullPath = path.resolve('schemas', file!);
+    const content = fs.readFileSync(fullPath, 'utf-8');
+    try {
+        schema = JSON.parse(content.split('}\n{')[0] + (content.includes('}\n{') ? '}' : ''));
+    } catch (e) {
+        schema = { title: kind, description: 'Could not parse JSON schema' };
+    }
+    schemaDescription = schema.description || `Kubernetes CRD schema for ${kind} (${version}) in ${group}`;
 }
 
-const schemaDescription = schema.description || `Kubernetes CRD schema for ${kind} (${version}) in ${group}`;
+// For group page: group resources by version
+const resourcesByVersion: Record<string, typeof resources> = {};
+if (pageType === 'group' && resources) {
+    for (const res of resources) {
+        if (!resourcesByVersion[res.version]) resourcesByVersion[res.version] = [];
+        resourcesByVersion[res.version].push(res);
+    }
+}
+const sortedVersions = Object.keys(resourcesByVersion).sort((a, b) => b.localeCompare(a));
 ---
 
-<Layout title={`${kind} (${version})`} description={schemaDescription}>
-	<div class="max-w-4xl mx-auto px-6 py-12">
-		<header class="mb-12 border-b border-gray-100 dark:border-slate-800 pb-8">
-			<nav class="flex text-[11px] font-bold text-gray-400 dark:text-slate-500 mb-4 gap-2 uppercase tracking-widest flex-wrap">
-				<a href="/" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Home</a>
-				<span>/</span>
-				<a href="/" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors truncate max-w-[200px]">{group}</a>
-				<span>/</span>
-				<span class="text-blue-500 dark:text-blue-400">{version}</span>
-				<span>/</span>
-				<span class="text-gray-600 dark:text-slate-300">{kind}</span>
-			</nav>
-			<h1 class="text-4xl font-extrabold text-gray-900 dark:text-white tracking-tight mb-4">
-				{kind}
-			</h1>
-			<p class="text-lg text-gray-600 dark:text-slate-400 leading-relaxed font-medium">
-				{schema.description || 'No description provided.'}
-			</p>
-		</header>
+{pageType === 'group' ? (
+<Layout title={group} description={`All Kubernetes CRD schemas for the ${group} API group`}>
+    <div class="max-w-4xl mx-auto px-6 py-12">
+        <header class="mb-10 border-b border-gray-100 dark:border-slate-800 pb-8">
+            <nav class="flex text-[11px] font-bold text-gray-400 dark:text-slate-500 mb-4 gap-2 uppercase tracking-widest flex-wrap">
+                <a href="/" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Home</a>
+                <span>/</span>
+                <span class="text-blue-500 dark:text-blue-400">{group}</span>
+            </nav>
+            <h1 class="text-4xl font-extrabold text-gray-900 dark:text-white tracking-tight mb-3">
+                {group}
+            </h1>
+            <p class="text-base text-gray-500 dark:text-slate-400 font-medium">
+                {resources!.length} resource{resources!.length !== 1 ? 's' : ''} across {sortedVersions.length} version{sortedVersions.length !== 1 ? 's' : ''}
+            </p>
+        </header>
 
-		<section>
-			<SchemaViewToggle
-				client:load
-				initialSchema={schema}
-				titles={titles as any}
-				schemaJson={JSON.stringify(schema, null, 2)}
-				schemaFile={file}
-			/>
-		</section>
+        <div class="space-y-10">
+            {sortedVersions.map((ver) => (
+                <section>
+                    <div class="flex items-center gap-3 mb-4">
+                        <span class="text-[10px] font-black uppercase tracking-widest text-gray-400 dark:text-slate-500 border border-gray-200 dark:border-slate-700 rounded-lg px-2.5 py-1 bg-gray-50 dark:bg-slate-800">
+                            {ver}
+                        </span>
+                        <div class="flex-1 h-px bg-gray-100 dark:bg-slate-800"></div>
+                        <span class="text-[10px] font-bold text-gray-300 dark:text-slate-600">{resourcesByVersion[ver].length} kind{resourcesByVersion[ver].length !== 1 ? 's' : ''}</span>
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                        {resourcesByVersion[ver].map((res) => (
+                            <a
+                                href={`/schemas/${res.slug}`}
+                                class="group flex items-center justify-between px-5 py-4 bg-white dark:bg-slate-900 border border-gray-200 dark:border-slate-700 rounded-2xl hover:border-blue-300 dark:hover:border-blue-600 hover:shadow-md transition-all"
+                            >
+                                <div class="flex items-center gap-3 min-w-0">
+                                    <div class="w-8 h-8 rounded-lg bg-blue-50 dark:bg-blue-900/30 flex items-center justify-center shrink-0">
+                                        <span class="text-[9px] font-black text-blue-500 dark:text-blue-400 uppercase">CRD</span>
+                                    </div>
+                                    <span class="text-sm font-semibold text-gray-900 dark:text-white group-hover:text-blue-700 dark:group-hover:text-blue-300 truncate transition-colors">
+                                        {res.kind}
+                                    </span>
+                                </div>
+                                <svg class="w-4 h-4 text-gray-300 dark:text-slate-600 group-hover:text-blue-400 shrink-0 ml-2 transition-colors" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+                                </svg>
+                            </a>
+                        ))}
+                    </div>
+                </section>
+            ))}
+        </div>
 
-		{siblingVersions.length > 1 && (
-			<SchemaDiffViewer
-				client:load
-				currentVersion={version}
-				versions={siblingVersions}
-			/>
-		)}
-
-		<footer class="mt-20 pt-8 border-t border-gray-100 dark:border-slate-800 flex justify-between items-center">
-			<div class="text-[10px] text-gray-400 dark:text-slate-500 font-bold uppercase tracking-widest">
-				OpenSpec HUB
-			</div>
-			<div class="text-[10px] text-gray-300 dark:text-slate-600 font-mono">
-				Source: {file}
-			</div>
-		</footer>
-	</div>
+        <footer class="mt-20 pt-8 border-t border-gray-100 dark:border-slate-800 flex justify-between items-center">
+            <div class="text-[10px] text-gray-400 dark:text-slate-500 font-bold uppercase tracking-widest">
+                OpenSpec HUB
+            </div>
+            <div class="text-[10px] text-gray-300 dark:text-slate-600 font-mono">
+                {group}
+            </div>
+        </footer>
+    </div>
 </Layout>
+) : (
+<Layout title={`${kind} (${version})`} description={schemaDescription}>
+    <div class="max-w-4xl mx-auto px-6 py-12">
+        <header class="mb-12 border-b border-gray-100 dark:border-slate-800 pb-8">
+            <nav class="flex text-[11px] font-bold text-gray-400 dark:text-slate-500 mb-4 gap-2 uppercase tracking-widest flex-wrap">
+                <a href="/" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Home</a>
+                <span>/</span>
+                <a href={`/schemas/${group}`} class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors truncate max-w-[200px]">{group}</a>
+                <span>/</span>
+                <span class="text-blue-500 dark:text-blue-400">{version}</span>
+                <span>/</span>
+                <span class="text-gray-600 dark:text-slate-300">{kind}</span>
+            </nav>
+            <h1 class="text-4xl font-extrabold text-gray-900 dark:text-white tracking-tight mb-4">
+                {kind}
+            </h1>
+            <p class="text-lg text-gray-600 dark:text-slate-400 leading-relaxed font-medium">
+                {schema.description || 'No description provided.'}
+            </p>
+        </header>
+
+        <section>
+            <SchemaViewToggle
+                client:load
+                initialSchema={schema}
+                titles={titles as any}
+                schemaJson={JSON.stringify(schema, null, 2)}
+                schemaFile={file!}
+            />
+        </section>
+
+        {siblingVersions!.length > 1 && (
+            <SchemaDiffViewer
+                client:load
+                currentVersion={version!}
+                versions={siblingVersions!}
+            />
+        )}
+
+        <footer class="mt-20 pt-8 border-t border-gray-100 dark:border-slate-800 flex justify-between items-center">
+            <div class="text-[10px] text-gray-400 dark:text-slate-500 font-bold uppercase tracking-widest">
+                OpenSpec HUB
+            </div>
+            <div class="text-[10px] text-gray-300 dark:text-slate-600 font-mono">
+                Source: {file}
+            </div>
+        </footer>
+    </div>
+</Layout>
+)}

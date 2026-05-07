@@ -11,7 +11,7 @@ export FILES=(
 )
 
 # renovate: datasource=github-tags depName=kubernetes-sigs/karpenter
-export VERSION=1.8.0
+export VERSION=1.12.0
 
 function generate_url {
   local crd_file=$1

@@ -22,5 +22,5 @@ export FILES=(
 export VERSION=v26.3.0
 
 function generate_url {
-  echo "https://github.com/mariadb-operator/mariadb-operator/config/crd?ref=v${VERSION}"
+  echo "https://github.com/mariadb-operator/mariadb-operator/config/crd?ref=${VERSION}"
 }

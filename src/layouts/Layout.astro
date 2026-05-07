@@ -76,11 +76,11 @@ const currentPath = Astro.url.pathname;
 			</div>
 			<nav class="flex-1 overflow-y-auto p-4 space-y-1 scrollbar-thin">
 				{groups.map(([group, resources]) => {
-					const isActiveGroup = resources.some(r => currentPath === `/schemas/${r.slug}`);
+					const isActiveGroup = currentPath === `/schemas/${group}` || resources.some(r => currentPath === `/schemas/${r.slug}`);
 					return (
 						<details class="api-group" data-group={group} open={isActiveGroup || undefined}>
 							<summary class="text-[10px] font-bold text-gray-400 dark:text-slate-500 uppercase tracking-widest border-b border-gray-100 dark:border-slate-800 pb-1 pt-3 cursor-pointer list-none flex justify-between items-center hover:text-blue-500 dark:hover:text-blue-400 transition-colors select-none">
-								<span class="truncate">{group}</span>
+								<a href={`/schemas/${group}`} class="truncate hover:text-blue-600 dark:hover:text-blue-400" onclick="event.stopPropagation()">{group}</a>
 								<span class="flex items-center gap-1 shrink-0 ml-1">
 									<span class="text-[9px] px-1.5 bg-gray-100 dark:bg-slate-800 text-gray-400 dark:text-slate-500 rounded font-normal normal-case tracking-normal">{resources.length}</span>
 									<span class="text-gray-300 dark:text-slate-600 text-[8px]">▾</span>

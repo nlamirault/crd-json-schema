@@ -1,9 +1,11 @@
 {
   "properties": {
     "apiVersion": {
+      "description": "APIVersion defines the versioned schema of this representation of an object.\nServers should convert recognized schemas to the latest internal value, and\nmay reject unrecognized values.\nMore info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
       "type": "string"
     },
     "kind": {
+      "description": "Kind is a string value representing the REST resource this object represents.\nServers may infer this from the endpoint the client submits requests to.\nCannot be updated.\nIn CamelCase.\nMore info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
       "type": "string"
     },
     "metadata": {
@@ -1262,6 +1264,27 @@
                       },
                       "useSDKCreds": {
                         "type": "boolean"
+                      }
+                    },
+                    "required": [
+                      "key"
+                    ],
+                    "type": "object"
+                  },
+                  "plugin": {
+                    "properties": {
+                      "configuration": {
+                        "type": "string"
+                      },
+                      "connectionTimeoutSeconds": {
+                        "format": "int32",
+                        "type": "integer"
+                      },
+                      "key": {
+                        "type": "string"
+                      },
+                      "name": {
+                        "type": "string"
                       }
                     },
                     "required": [
@@ -4217,9 +4240,12 @@
                                   },
                                   "mode": {
                                     "format": "int32",
+                                    "maximum": 511,
+                                    "minimum": 0,
                                     "type": "integer"
                                   },
                                   "name": {
+                                    "pattern": "^[-a-zA-Z0-9_{}.]+$",
                                     "type": "string"
                                   },
                                   "optional": {
@@ -4304,6 +4330,27 @@
                                   },
                                   "path": {
                                     "type": "string"
+                                  },
+                                  "plugin": {
+                                    "properties": {
+                                      "configuration": {
+                                        "type": "string"
+                                      },
+                                      "connectionTimeoutSeconds": {
+                                        "format": "int32",
+                                        "type": "integer"
+                                      },
+                                      "key": {
+                                        "type": "string"
+                                      },
+                                      "name": {
+                                        "type": "string"
+                                      }
+                                    },
+                                    "required": [
+                                      "key"
+                                    ],
+                                    "type": "object"
                                   },
                                   "raw": {
                                     "properties": {
@@ -4486,12 +4533,14 @@
                                     "items": {
                                       "type": "string"
                                     },
+                                    "minItems": 1,
                                     "type": "array"
                                   },
                                   "globalName": {
                                     "type": "string"
                                   },
                                   "name": {
+                                    "pattern": "^[-a-zA-Z0-9_]+$",
                                     "type": "string"
                                   },
                                   "value": {
@@ -5171,9 +5220,12 @@
                                         },
                                         "mode": {
                                           "format": "int32",
+                                          "maximum": 511,
+                                          "minimum": 0,
                                           "type": "integer"
                                         },
                                         "name": {
+                                          "pattern": "^[-a-zA-Z0-9_{}.]+$",
                                           "type": "string"
                                         },
                                         "optional": {
@@ -5258,6 +5310,27 @@
                                         },
                                         "path": {
                                           "type": "string"
+                                        },
+                                        "plugin": {
+                                          "properties": {
+                                            "configuration": {
+                                              "type": "string"
+                                            },
+                                            "connectionTimeoutSeconds": {
+                                              "format": "int32",
+                                              "type": "integer"
+                                            },
+                                            "key": {
+                                              "type": "string"
+                                            },
+                                            "name": {
+                                              "type": "string"
+                                            }
+                                          },
+                                          "required": [
+                                            "key"
+                                          ],
+                                          "type": "object"
                                         },
                                         "raw": {
                                           "properties": {
@@ -5440,12 +5513,14 @@
                                           "items": {
                                             "type": "string"
                                           },
+                                          "minItems": 1,
                                           "type": "array"
                                         },
                                         "globalName": {
                                           "type": "string"
                                         },
                                         "name": {
+                                          "pattern": "^[-a-zA-Z0-9_]+$",
                                           "type": "string"
                                         },
                                         "value": {
@@ -5539,6 +5614,8 @@
                           "x-kubernetes-preserve-unknown-fields": true
                         },
                         "name": {
+                          "maxLength": 128,
+                          "pattern": "^[a-zA-Z0-9][-a-zA-Z0-9]*$",
                           "type": "string"
                         },
                         "onExit": {
@@ -5617,6 +5694,8 @@
                       ],
                       "type": "object"
                     },
+                    "maxItems": 200,
+                    "minItems": 1,
                     "type": "array"
                   }
                 },
@@ -6218,9 +6297,12 @@
                           },
                           "mode": {
                             "format": "int32",
+                            "maximum": 511,
+                            "minimum": 0,
                             "type": "integer"
                           },
                           "name": {
+                            "pattern": "^[-a-zA-Z0-9_{}.]+$",
                             "type": "string"
                           },
                           "optional": {
@@ -6305,6 +6387,27 @@
                           },
                           "path": {
                             "type": "string"
+                          },
+                          "plugin": {
+                            "properties": {
+                              "configuration": {
+                                "type": "string"
+                              },
+                              "connectionTimeoutSeconds": {
+                                "format": "int32",
+                                "type": "integer"
+                              },
+                              "key": {
+                                "type": "string"
+                              },
+                              "name": {
+                                "type": "string"
+                              }
+                            },
+                            "required": [
+                              "key"
+                            ],
+                            "type": "object"
                           },
                           "raw": {
                             "properties": {
@@ -8258,9 +8361,12 @@
                         },
                         "mode": {
                           "format": "int32",
+                          "maximum": 511,
+                          "minimum": 0,
                           "type": "integer"
                         },
                         "name": {
+                          "pattern": "^[-a-zA-Z0-9_{}.]+$",
                           "type": "string"
                         },
                         "optional": {
@@ -8345,6 +8451,27 @@
                         },
                         "path": {
                           "type": "string"
+                        },
+                        "plugin": {
+                          "properties": {
+                            "configuration": {
+                              "type": "string"
+                            },
+                            "connectionTimeoutSeconds": {
+                              "format": "int32",
+                              "type": "integer"
+                            },
+                            "key": {
+                              "type": "string"
+                            },
+                            "name": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "key"
+                          ],
+                          "type": "object"
                         },
                         "raw": {
                           "properties": {
@@ -8527,12 +8654,14 @@
                           "items": {
                             "type": "string"
                           },
+                          "minItems": 1,
                           "type": "array"
                         },
                         "globalName": {
                           "type": "string"
                         },
                         "name": {
+                          "pattern": "^[-a-zA-Z0-9_]+$",
                           "type": "string"
                         },
                         "value": {
@@ -8592,6 +8721,7 @@
                       ],
                       "type": "object"
                     },
+                    "maxItems": 500,
                     "type": "array"
                   }
                 },
@@ -8603,20 +8733,11 @@
                     "properties": {
                       "configMap": {
                         "properties": {
-                          "key": {
-                            "type": "string"
-                          },
                           "name": {
                             "default": "",
                             "type": "string"
-                          },
-                          "optional": {
-                            "type": "boolean"
                           }
                         },
-                        "required": [
-                          "key"
-                        ],
                         "type": "object",
                         "x-kubernetes-map-type": "atomic"
                       }
@@ -8665,6 +8786,7 @@
                         "counter": {
                           "properties": {
                             "value": {
+                              "minLength": 1,
                               "type": "string"
                             }
                           },
@@ -8676,12 +8798,19 @@
                         "gauge": {
                           "properties": {
                             "operation": {
+                              "enum": [
+                                "Set",
+                                "Add",
+                                "Sub"
+                              ],
                               "type": "string"
                             },
                             "realtime": {
                               "type": "boolean"
                             },
                             "value": {
+                              "maxLength": 256,
+                              "minLength": 1,
                               "type": "string"
                             }
                           },
@@ -8692,6 +8821,7 @@
                           "type": "object"
                         },
                         "help": {
+                          "minLength": 1,
                           "type": "string"
                         },
                         "histogram": {
@@ -8703,6 +8833,7 @@
                               "type": "array"
                             },
                             "value": {
+                              "minLength": 1,
                               "type": "string"
                             }
                           },
@@ -8716,6 +8847,7 @@
                           "items": {
                             "properties": {
                               "key": {
+                                "pattern": "^[a-zA-Z_][a-zA-Z0-9_]*$",
                                 "type": "string"
                               },
                               "value": {
@@ -8731,6 +8863,7 @@
                           "type": "array"
                         },
                         "name": {
+                          "pattern": "^[a-zA-Z_][a-zA-Z0-9_]*$",
                           "type": "string"
                         },
                         "when": {
@@ -8743,6 +8876,7 @@
                       ],
                       "type": "object"
                     },
+                    "maxItems": 100,
                     "type": "array"
                   }
                 },
@@ -8752,6 +8886,8 @@
                 "type": "object"
               },
               "name": {
+                "maxLength": 128,
+                "pattern": "^[a-zA-Z0-9][-a-zA-Z0-9]*$",
                 "type": "string"
               },
               "nodeSelector": {
@@ -9352,9 +9488,12 @@
                         },
                         "mode": {
                           "format": "int32",
+                          "maximum": 511,
+                          "minimum": 0,
                           "type": "integer"
                         },
                         "name": {
+                          "pattern": "^[-a-zA-Z0-9_{}.]+$",
                           "type": "string"
                         },
                         "optional": {
@@ -9439,6 +9578,27 @@
                         },
                         "path": {
                           "type": "string"
+                        },
+                        "plugin": {
+                          "properties": {
+                            "configuration": {
+                              "type": "string"
+                            },
+                            "connectionTimeoutSeconds": {
+                              "format": "int32",
+                              "type": "integer"
+                            },
+                            "key": {
+                              "type": "string"
+                            },
+                            "name": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "key"
+                          ],
+                          "type": "object"
                         },
                         "raw": {
                           "properties": {
@@ -9624,12 +9784,14 @@
                           "items": {
                             "type": "string"
                           },
+                          "minItems": 1,
                           "type": "array"
                         },
                         "globalName": {
                           "type": "string"
                         },
                         "name": {
+                          "pattern": "^[-a-zA-Z0-9_]+$",
                           "type": "string"
                         },
                         "value": {
@@ -9699,6 +9861,7 @@
               },
               "parallelism": {
                 "format": "int64",
+                "minimum": 1,
                 "type": "integer"
               },
               "plugin": {
@@ -9714,6 +9877,14 @@
               "resource": {
                 "properties": {
                   "action": {
+                    "enum": [
+                      "get",
+                      "create",
+                      "apply",
+                      "delete",
+                      "replace",
+                      "patch"
+                    ],
                     "type": "string"
                   },
                   "failureCondition": {
@@ -10319,9 +10490,12 @@
                           },
                           "mode": {
                             "format": "int32",
+                            "maximum": 511,
+                            "minimum": 0,
                             "type": "integer"
                           },
                           "name": {
+                            "pattern": "^[-a-zA-Z0-9_{}.]+$",
                             "type": "string"
                           },
                           "optional": {
@@ -10406,6 +10580,27 @@
                           },
                           "path": {
                             "type": "string"
+                          },
+                          "plugin": {
+                            "properties": {
+                              "configuration": {
+                                "type": "string"
+                              },
+                              "connectionTimeoutSeconds": {
+                                "format": "int32",
+                                "type": "integer"
+                              },
+                              "key": {
+                                "type": "string"
+                              },
+                              "name": {
+                                "type": "string"
+                              }
+                            },
+                            "required": [
+                              "key"
+                            ],
+                            "type": "object"
                           },
                           "raw": {
                             "properties": {
@@ -10580,6 +10775,11 @@
                     "type": "object"
                   },
                   "mergeStrategy": {
+                    "enum": [
+                      "strategic",
+                      "merge",
+                      "json"
+                    ],
                     "type": "string"
                   },
                   "setOwnerReference": {
@@ -10644,6 +10844,12 @@
                     "x-kubernetes-int-or-string": true
                   },
                   "retryPolicy": {
+                    "enum": [
+                      "Always",
+                      "OnFailure",
+                      "OnError",
+                      "OnTransientError"
+                    ],
                     "type": "string"
                   }
                 },
@@ -13490,9 +13696,12 @@
                                     },
                                     "mode": {
                                       "format": "int32",
+                                      "maximum": 511,
+                                      "minimum": 0,
                                       "type": "integer"
                                     },
                                     "name": {
+                                      "pattern": "^[-a-zA-Z0-9_{}.]+$",
                                       "type": "string"
                                     },
                                     "optional": {
@@ -13577,6 +13786,27 @@
                                     },
                                     "path": {
                                       "type": "string"
+                                    },
+                                    "plugin": {
+                                      "properties": {
+                                        "configuration": {
+                                          "type": "string"
+                                        },
+                                        "connectionTimeoutSeconds": {
+                                          "format": "int32",
+                                          "type": "integer"
+                                        },
+                                        "key": {
+                                          "type": "string"
+                                        },
+                                        "name": {
+                                          "type": "string"
+                                        }
+                                      },
+                                      "required": [
+                                        "key"
+                                      ],
+                                      "type": "object"
                                     },
                                     "raw": {
                                       "properties": {
@@ -13759,12 +13989,14 @@
                                       "items": {
                                         "type": "string"
                                       },
+                                      "minItems": 1,
                                       "type": "array"
                                     },
                                     "globalName": {
                                       "type": "string"
                                     },
                                     "name": {
+                                      "pattern": "^[-a-zA-Z0-9_]+$",
                                       "type": "string"
                                     },
                                     "value": {
@@ -14435,9 +14667,12 @@
                                           },
                                           "mode": {
                                             "format": "int32",
+                                            "maximum": 511,
+                                            "minimum": 0,
                                             "type": "integer"
                                           },
                                           "name": {
+                                            "pattern": "^[-a-zA-Z0-9_{}.]+$",
                                             "type": "string"
                                           },
                                           "optional": {
@@ -14522,6 +14757,27 @@
                                           },
                                           "path": {
                                             "type": "string"
+                                          },
+                                          "plugin": {
+                                            "properties": {
+                                              "configuration": {
+                                                "type": "string"
+                                              },
+                                              "connectionTimeoutSeconds": {
+                                                "format": "int32",
+                                                "type": "integer"
+                                              },
+                                              "key": {
+                                                "type": "string"
+                                              },
+                                              "name": {
+                                                "type": "string"
+                                              }
+                                            },
+                                            "required": [
+                                              "key"
+                                            ],
+                                            "type": "object"
                                           },
                                           "raw": {
                                             "properties": {
@@ -14704,12 +14960,14 @@
                                             "items": {
                                               "type": "string"
                                             },
+                                            "minItems": 1,
                                             "type": "array"
                                           },
                                           "globalName": {
                                             "type": "string"
                                           },
                                           "name": {
+                                            "pattern": "^[-a-zA-Z0-9_]+$",
                                             "type": "string"
                                           },
                                           "value": {
@@ -14803,6 +15061,8 @@
                             "x-kubernetes-preserve-unknown-fields": true
                           },
                           "name": {
+                            "maxLength": 128,
+                            "pattern": "^[a-zA-Z0-9][-a-zA-Z0-9]*$",
                             "type": "string"
                           },
                           "onExit": {
@@ -14886,6 +15146,7 @@
                   ],
                   "type": "object"
                 },
+                "minItems": 1,
                 "type": "array"
               },
               "suspend": {
@@ -14898,20 +15159,6 @@
               },
               "synchronization": {
                 "properties": {
-                  "mutex": {
-                    "properties": {
-                      "database": {
-                        "type": "boolean"
-                      },
-                      "name": {
-                        "type": "string"
-                      },
-                      "namespace": {
-                        "type": "string"
-                      }
-                    },
-                    "type": "object"
-                  },
                   "mutexes": {
                     "items": {
                       "properties": {
@@ -14928,44 +15175,6 @@
                       "type": "object"
                     },
                     "type": "array"
-                  },
-                  "semaphore": {
-                    "properties": {
-                      "configMapKeyRef": {
-                        "properties": {
-                          "key": {
-                            "type": "string"
-                          },
-                          "name": {
-                            "default": "",
-                            "type": "string"
-                          },
-                          "optional": {
-                            "type": "boolean"
-                          }
-                        },
-                        "required": [
-                          "key"
-                        ],
-                        "type": "object",
-                        "x-kubernetes-map-type": "atomic"
-                      },
-                      "database": {
-                        "properties": {
-                          "key": {
-                            "type": "string"
-                          }
-                        },
-                        "required": [
-                          "key"
-                        ],
-                        "type": "object"
-                      },
-                      "namespace": {
-                        "type": "string"
-                      }
-                    },
-                    "type": "object"
                   },
                   "semaphores": {
                     "items": {
@@ -16259,18 +16468,25 @@
                 "type": "string"
               },
               "outputs": {
+                "description": "Outputs hold parameters, artifacts, and results from a step",
                 "properties": {
                   "artifacts": {
+                    "description": "Artifacts holds the list of output artifacts produced by a step",
                     "items": {
+                      "description": "Artifact indicates an artifact to place at a specified path",
                       "properties": {
                         "archive": {
+                          "description": "Archive controls how the artifact will be saved to the artifact repository.",
                           "properties": {
                             "none": {
+                              "description": "NoneStrategy indicates to skip tar process and upload the files or directory tree as independent\nfiles. Note that if the artifact is a directory, the artifact driver must support the ability to\nsave/load the directory appropriately.",
                               "type": "object"
                             },
                             "tar": {
+                              "description": "TarStrategy will tar and gzip the file or directory when saving",
                               "properties": {
                                 "compressionLevel": {
+                                  "description": "CompressionLevel specifies the gzip compression level to use for the artifact.\nDefaults to gzip.DefaultCompression.",
                                   "format": "int32",
                                   "type": "integer"
                                 }
@@ -16278,17 +16494,21 @@
                               "type": "object"
                             },
                             "zip": {
+                              "description": "ZipStrategy will unzip zipped input artifacts",
                               "type": "object"
                             }
                           },
                           "type": "object"
                         },
                         "archiveLogs": {
+                          "description": "ArchiveLogs indicates if the container logs should be archived",
                           "type": "boolean"
                         },
                         "artifactGC": {
+                          "description": "ArtifactGC describes the strategy to use when to deleting an artifact from completed or deleted workflows",
                           "properties": {
                             "podMetadata": {
+                              "description": "PodMetadata is an optional field for specifying the Labels and Annotations that should be assigned to the Pod doing the deletion",
                               "properties": {
                                 "annotations": {
                                   "additionalProperties": {
@@ -16306,9 +16526,11 @@
                               "type": "object"
                             },
                             "serviceAccountName": {
+                              "description": "ServiceAccountName is an optional field for specifying the Service Account that should be assigned to the Pod doing the deletion",
                               "type": "string"
                             },
                             "strategy": {
+                              "description": "Strategy is the strategy to use.",
                               "enum": [
                                 "",
                                 "OnWorkflowCompletion",
@@ -16321,17 +16543,22 @@
                           "type": "object"
                         },
                         "artifactory": {
+                          "description": "Artifactory contains artifactory artifact location details",
                           "properties": {
                             "passwordSecret": {
+                              "description": "PasswordSecret is the secret selector to the repository password",
                               "properties": {
                                 "key": {
+                                  "description": "The key of the secret to select from.  Must be a valid secret key.",
                                   "type": "string"
                                 },
                                 "name": {
                                   "default": "",
+                                  "description": "Name of the referent.\nThis field is effectively required, but due to backwards compatibility is\nallowed to be empty. Instances of this type with an empty value here are\nalmost certainly wrong.\nMore info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names",
                                   "type": "string"
                                 },
                                 "optional": {
+                                  "description": "Specify whether the Secret or its key must be defined",
                                   "type": "boolean"
                                 }
                               },
@@ -16342,18 +16569,23 @@
                               "x-kubernetes-map-type": "atomic"
                             },
                             "url": {
+                              "description": "URL of the artifact",
                               "type": "string"
                             },
                             "usernameSecret": {
+                              "description": "UsernameSecret is the secret selector to the repository username",
                               "properties": {
                                 "key": {
+                                  "description": "The key of the secret to select from.  Must be a valid secret key.",
                                   "type": "string"
                                 },
                                 "name": {
                                   "default": "",
+                                  "description": "Name of the referent.\nThis field is effectively required, but due to backwards compatibility is\nallowed to be empty. Instances of this type with an empty value here are\nalmost certainly wrong.\nMore info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names",
                                   "type": "string"
                                 },
                                 "optional": {
+                                  "description": "Specify whether the Secret or its key must be defined",
                                   "type": "boolean"
                                 }
                               },
@@ -16370,17 +16602,22 @@
                           "type": "object"
                         },
                         "azure": {
+                          "description": "Azure contains Azure Storage artifact location details",
                           "properties": {
                             "accountKeySecret": {
+                              "description": "AccountKeySecret is the secret selector to the Azure Blob Storage account access key",
                               "properties": {
                                 "key": {
+                                  "description": "The key of the secret to select from.  Must be a valid secret key.",
                                   "type": "string"
                                 },
                                 "name": {
                                   "default": "",
+                                  "description": "Name of the referent.\nThis field is effectively required, but due to backwards compatibility is\nallowed to be empty. Instances of this type with an empty value here are\nalmost certainly wrong.\nMore info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names",
                                   "type": "string"
                                 },
                                 "optional": {
+                                  "description": "Specify whether the Secret or its key must be defined",
                                   "type": "boolean"
                                 }
                               },
@@ -16391,15 +16628,19 @@
                               "x-kubernetes-map-type": "atomic"
                             },
                             "blob": {
+                              "description": "Blob is the blob name (i.e., path) in the container where the artifact resides",
                               "type": "string"
                             },
                             "container": {
+                              "description": "Container is the container where resources will be stored",
                               "type": "string"
                             },
                             "endpoint": {
+                              "description": "Endpoint is the service url associated with an account. It is most likely \"https://<ACCOUNT_NAME>.blob.core.windows.net\"",
                               "type": "string"
                             },
                             "useSDKCreds": {
+                              "description": "UseSDKCreds tells the driver to figure out credentials based on sdk defaults.",
                               "type": "boolean"
                             }
                           },
@@ -16411,32 +16652,42 @@
                           "type": "object"
                         },
                         "deleted": {
+                          "description": "Has this been deleted?",
                           "type": "boolean"
                         },
                         "from": {
+                          "description": "From allows an artifact to reference an artifact from a previous step",
                           "type": "string"
                         },
                         "fromExpression": {
+                          "description": "FromExpression, if defined, is evaluated to specify the value for the artifact",
                           "type": "string"
                         },
                         "gcs": {
+                          "description": "GCS contains GCS artifact location details",
                           "properties": {
                             "bucket": {
+                              "description": "Bucket is the name of the bucket",
                               "type": "string"
                             },
                             "key": {
+                              "description": "Key is the path in the bucket where the artifact resides",
                               "type": "string"
                             },
                             "serviceAccountKeySecret": {
+                              "description": "ServiceAccountKeySecret is the secret selector to the bucket's service account key",
                               "properties": {
                                 "key": {
+                                  "description": "The key of the secret to select from.  Must be a valid secret key.",
                                   "type": "string"
                                 },
                                 "name": {
                                   "default": "",
+                                  "description": "Name of the referent.\nThis field is effectively required, but due to backwards compatibility is\nallowed to be empty. Instances of this type with an empty value here are\nalmost certainly wrong.\nMore info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names",
                                   "type": "string"
                                 },
                                 "optional": {
+                                  "description": "Specify whether the Secret or its key must be defined",
                                   "type": "boolean"
                                 }
                               },
@@ -16453,39 +16704,50 @@
                           "type": "object"
                         },
                         "git": {
+                          "description": "Git contains git artifact location details",
                           "properties": {
                             "branch": {
+                              "description": "Branch is the branch to fetch when `SingleBranch` is enabled",
                               "type": "string"
                             },
                             "depth": {
+                              "description": "Depth specifies clones/fetches should be shallow and include the given\nnumber of commits from the branch tip",
                               "format": "int64",
                               "type": "integer"
                             },
                             "disableSubmodules": {
+                              "description": "DisableSubmodules disables submodules during git clone",
                               "type": "boolean"
                             },
                             "fetch": {
+                              "description": "Fetch specifies a number of refs that should be fetched before checkout",
                               "items": {
                                 "type": "string"
                               },
                               "type": "array"
                             },
                             "insecureIgnoreHostKey": {
+                              "description": "InsecureIgnoreHostKey disables SSH strict host key checking during git clone",
                               "type": "boolean"
                             },
                             "insecureSkipTLS": {
+                              "description": "InsecureSkipTLS disables server certificate verification resulting in insecure HTTPS connections",
                               "type": "boolean"
                             },
                             "passwordSecret": {
+                              "description": "PasswordSecret is the secret selector to the repository password",
                               "properties": {
                                 "key": {
+                                  "description": "The key of the secret to select from.  Must be a valid secret key.",
                                   "type": "string"
                                 },
                                 "name": {
                                   "default": "",
+                                  "description": "Name of the referent.\nThis field is effectively required, but due to backwards compatibility is\nallowed to be empty. Instances of this type with an empty value here are\nalmost certainly wrong.\nMore info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names",
                                   "type": "string"
                                 },
                                 "optional": {
+                                  "description": "Specify whether the Secret or its key must be defined",
                                   "type": "boolean"
                                 }
                               },
@@ -16496,24 +16758,31 @@
                               "x-kubernetes-map-type": "atomic"
                             },
                             "repo": {
+                              "description": "Repo is the git repository",
                               "type": "string"
                             },
                             "revision": {
+                              "description": "Revision is the git commit, tag, branch to checkout",
                               "type": "string"
                             },
                             "singleBranch": {
+                              "description": "SingleBranch enables single branch clone, using the `branch` parameter",
                               "type": "boolean"
                             },
                             "sshPrivateKeySecret": {
+                              "description": "SSHPrivateKeySecret is the secret selector to the repository ssh private key",
                               "properties": {
                                 "key": {
+                                  "description": "The key of the secret to select from.  Must be a valid secret key.",
                                   "type": "string"
                                 },
                                 "name": {
                                   "default": "",
+                                  "description": "Name of the referent.\nThis field is effectively required, but due to backwards compatibility is\nallowed to be empty. Instances of this type with an empty value here are\nalmost certainly wrong.\nMore info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names",
                                   "type": "string"
                                 },
                                 "optional": {
+                                  "description": "Specify whether the Secret or its key must be defined",
                                   "type": "boolean"
                                 }
                               },
@@ -16524,15 +16793,19 @@
                               "x-kubernetes-map-type": "atomic"
                             },
                             "usernameSecret": {
+                              "description": "UsernameSecret is the secret selector to the repository username",
                               "properties": {
                                 "key": {
+                                  "description": "The key of the secret to select from.  Must be a valid secret key.",
                                   "type": "string"
                                 },
                                 "name": {
                                   "default": "",
+                                  "description": "Name of the referent.\nThis field is effectively required, but due to backwards compatibility is\nallowed to be empty. Instances of this type with an empty value here are\nalmost certainly wrong.\nMore info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names",
                                   "type": "string"
                                 },
                                 "optional": {
+                                  "description": "Specify whether the Secret or its key must be defined",
                                   "type": "boolean"
                                 }
                               },
@@ -16549,35 +16822,45 @@
                           "type": "object"
                         },
                         "globalName": {
+                          "description": "GlobalName exports an output artifact to the global scope, making it available as\n'{{workflow.outputs.artifacts.XXXX}} and in workflow.status.outputs.artifacts",
                           "type": "string"
                         },
                         "hdfs": {
+                          "description": "HDFS contains HDFS artifact location details",
                           "properties": {
                             "addresses": {
+                              "description": "Addresses is accessible addresses of HDFS name nodes",
                               "items": {
                                 "type": "string"
                               },
                               "type": "array"
                             },
                             "dataTransferProtection": {
+                              "description": "DataTransferProtection is the protection level for HDFS data transfer.\nIt corresponds to the dfs.data.transfer.protection configuration in HDFS.",
                               "type": "string"
                             },
                             "force": {
+                              "description": "Force copies a file forcibly even if it exists",
                               "type": "boolean"
                             },
                             "hdfsUser": {
+                              "description": "HDFSUser is the user to access HDFS file system.\nIt is ignored if either ccache or keytab is used.",
                               "type": "string"
                             },
                             "krbCCacheSecret": {
+                              "description": "KrbCCacheSecret is the secret selector for Kerberos ccache\nEither ccache or keytab can be set to use Kerberos.",
                               "properties": {
                                 "key": {
+                                  "description": "The key of the secret to select from.  Must be a valid secret key.",
                                   "type": "string"
                                 },
                                 "name": {
                                   "default": "",
+                                  "description": "Name of the referent.\nThis field is effectively required, but due to backwards compatibility is\nallowed to be empty. Instances of this type with an empty value here are\nalmost certainly wrong.\nMore info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names",
                                   "type": "string"
                                 },
                                 "optional": {
+                                  "description": "Specify whether the Secret or its key must be defined",
                                   "type": "boolean"
                                 }
                               },
@@ -16588,15 +16871,19 @@
                               "x-kubernetes-map-type": "atomic"
                             },
                             "krbConfigConfigMap": {
+                              "description": "KrbConfig is the configmap selector for Kerberos config as string\nIt must be set if either ccache or keytab is used.",
                               "properties": {
                                 "key": {
+                                  "description": "The key to select.",
                                   "type": "string"
                                 },
                                 "name": {
                                   "default": "",
+                                  "description": "Name of the referent.\nThis field is effectively required, but due to backwards compatibility is\nallowed to be empty. Instances of this type with an empty value here are\nalmost certainly wrong.\nMore info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names",
                                   "type": "string"
                                 },
                                 "optional": {
+                                  "description": "Specify whether the ConfigMap or its key must be defined",
                                   "type": "boolean"
                                 }
                               },
@@ -16607,15 +16894,19 @@
                               "x-kubernetes-map-type": "atomic"
                             },
                             "krbKeytabSecret": {
+                              "description": "KrbKeytabSecret is the secret selector for Kerberos keytab\nEither ccache or keytab can be set to use Kerberos.",
                               "properties": {
                                 "key": {
+                                  "description": "The key of the secret to select from.  Must be a valid secret key.",
                                   "type": "string"
                                 },
                                 "name": {
                                   "default": "",
+                                  "description": "Name of the referent.\nThis field is effectively required, but due to backwards compatibility is\nallowed to be empty. Instances of this type with an empty value here are\nalmost certainly wrong.\nMore info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names",
                                   "type": "string"
                                 },
                                 "optional": {
+                                  "description": "Specify whether the Secret or its key must be defined",
                                   "type": "boolean"
                                 }
                               },
@@ -16626,15 +16917,19 @@
                               "x-kubernetes-map-type": "atomic"
                             },
                             "krbRealm": {
+                              "description": "KrbRealm is the Kerberos realm used with Kerberos keytab\nIt must be set if keytab is used.",
                               "type": "string"
                             },
                             "krbServicePrincipalName": {
+                              "description": "KrbServicePrincipalName is the principal name of Kerberos service\nIt must be set if either ccache or keytab is used.",
                               "type": "string"
                             },
                             "krbUsername": {
+                              "description": "KrbUsername is the Kerberos username used with Kerberos keytab\nIt must be set if keytab is used.",
                               "type": "string"
                             },
                             "path": {
+                              "description": "Path is a file path in HDFS",
                               "type": "string"
                             }
                           },
@@ -16644,21 +16939,28 @@
                           "type": "object"
                         },
                         "http": {
+                          "description": "HTTP contains HTTP artifact location details",
                           "properties": {
                             "auth": {
+                              "description": "Auth contains information for client authentication",
                               "properties": {
                                 "basicAuth": {
+                                  "description": "BasicAuth describes the secret selectors required for basic authentication",
                                   "properties": {
                                     "passwordSecret": {
+                                      "description": "PasswordSecret is the secret selector to the repository password",
                                       "properties": {
                                         "key": {
+                                          "description": "The key of the secret to select from.  Must be a valid secret key.",
                                           "type": "string"
                                         },
                                         "name": {
                                           "default": "",
+                                          "description": "Name of the referent.\nThis field is effectively required, but due to backwards compatibility is\nallowed to be empty. Instances of this type with an empty value here are\nalmost certainly wrong.\nMore info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names",
                                           "type": "string"
                                         },
                                         "optional": {
+                                          "description": "Specify whether the Secret or its key must be defined",
                                           "type": "boolean"
                                         }
                                       },
@@ -16669,15 +16971,19 @@
                                       "x-kubernetes-map-type": "atomic"
                                     },
                                     "usernameSecret": {
+                                      "description": "UsernameSecret is the secret selector to the repository username",
                                       "properties": {
                                         "key": {
+                                          "description": "The key of the secret to select from.  Must be a valid secret key.",
                                           "type": "string"
                                         },
                                         "name": {
                                           "default": "",
+                                          "description": "Name of the referent.\nThis field is effectively required, but due to backwards compatibility is\nallowed to be empty. Instances of this type with an empty value here are\nalmost certainly wrong.\nMore info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names",
                                           "type": "string"
                                         },
                                         "optional": {
+                                          "description": "Specify whether the Secret or its key must be defined",
                                           "type": "boolean"
                                         }
                                       },
@@ -16691,17 +16997,22 @@
                                   "type": "object"
                                 },
                                 "clientCert": {
+                                  "description": "ClientCertAuth holds necessary information for client authentication via certificates",
                                   "properties": {
                                     "clientCertSecret": {
+                                      "description": "SecretKeySelector selects a key of a Secret.",
                                       "properties": {
                                         "key": {
+                                          "description": "The key of the secret to select from.  Must be a valid secret key.",
                                           "type": "string"
                                         },
                                         "name": {
                                           "default": "",
+                                          "description": "Name of the referent.\nThis field is effectively required, but due to backwards compatibility is\nallowed to be empty. Instances of this type with an empty value here are\nalmost certainly wrong.\nMore info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names",
                                           "type": "string"
                                         },
                                         "optional": {
+                                          "description": "Specify whether the Secret or its key must be defined",
                                           "type": "boolean"
                                         }
                                       },
@@ -16712,15 +17023,19 @@
                                       "x-kubernetes-map-type": "atomic"
                                     },
                                     "clientKeySecret": {
+                                      "description": "SecretKeySelector selects a key of a Secret.",
                                       "properties": {
                                         "key": {
+                                          "description": "The key of the secret to select from.  Must be a valid secret key.",
                                           "type": "string"
                                         },
                                         "name": {
                                           "default": "",
+                                          "description": "Name of the referent.\nThis field is effectively required, but due to backwards compatibility is\nallowed to be empty. Instances of this type with an empty value here are\nalmost certainly wrong.\nMore info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names",
                                           "type": "string"
                                         },
                                         "optional": {
+                                          "description": "Specify whether the Secret or its key must be defined",
                                           "type": "boolean"
                                         }
                                       },
@@ -16734,17 +17049,22 @@
                                   "type": "object"
                                 },
                                 "oauth2": {
+                                  "description": "OAuth2Auth holds all information for client authentication via OAuth2 tokens",
                                   "properties": {
                                     "clientIDSecret": {
+                                      "description": "SecretKeySelector selects a key of a Secret.",
                                       "properties": {
                                         "key": {
+                                          "description": "The key of the secret to select from.  Must be a valid secret key.",
                                           "type": "string"
                                         },
                                         "name": {
                                           "default": "",
+                                          "description": "Name of the referent.\nThis field is effectively required, but due to backwards compatibility is\nallowed to be empty. Instances of this type with an empty value here are\nalmost certainly wrong.\nMore info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names",
                                           "type": "string"
                                         },
                                         "optional": {
+                                          "description": "Specify whether the Secret or its key must be defined",
                                           "type": "boolean"
                                         }
                                       },
@@ -16755,15 +17075,19 @@
                                       "x-kubernetes-map-type": "atomic"
                                     },
                                     "clientSecretSecret": {
+                                      "description": "SecretKeySelector selects a key of a Secret.",
                                       "properties": {
                                         "key": {
+                                          "description": "The key of the secret to select from.  Must be a valid secret key.",
                                           "type": "string"
                                         },
                                         "name": {
                                           "default": "",
+                                          "description": "Name of the referent.\nThis field is effectively required, but due to backwards compatibility is\nallowed to be empty. Instances of this type with an empty value here are\nalmost certainly wrong.\nMore info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names",
                                           "type": "string"
                                         },
                                         "optional": {
+                                          "description": "Specify whether the Secret or its key must be defined",
                                           "type": "boolean"
                                         }
                                       },
@@ -16775,11 +17099,14 @@
                                     },
                                     "endpointParams": {
                                       "items": {
+                                        "description": "EndpointParam is for requesting optional fields that should be sent in the oauth request",
                                         "properties": {
                                           "key": {
+                                            "description": "Name is the header name",
                                             "type": "string"
                                           },
                                           "value": {
+                                            "description": "Value is the literal value to use for the header",
                                             "type": "string"
                                           }
                                         },
@@ -16797,15 +17124,19 @@
                                       "type": "array"
                                     },
                                     "tokenURLSecret": {
+                                      "description": "SecretKeySelector selects a key of a Secret.",
                                       "properties": {
                                         "key": {
+                                          "description": "The key of the secret to select from.  Must be a valid secret key.",
                                           "type": "string"
                                         },
                                         "name": {
                                           "default": "",
+                                          "description": "Name of the referent.\nThis field is effectively required, but due to backwards compatibility is\nallowed to be empty. Instances of this type with an empty value here are\nalmost certainly wrong.\nMore info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names",
                                           "type": "string"
                                         },
                                         "optional": {
+                                          "description": "Specify whether the Secret or its key must be defined",
                                           "type": "boolean"
                                         }
                                       },
@@ -16822,12 +17153,16 @@
                               "type": "object"
                             },
                             "headers": {
+                              "description": "Headers are an optional list of headers to send with HTTP requests for artifacts",
                               "items": {
+                                "description": "Header indicate a key-value request header to be used when fetching artifacts over HTTP",
                                 "properties": {
                                   "name": {
+                                    "description": "Name is the header name",
                                     "type": "string"
                                   },
                                   "value": {
+                                    "description": "Value is the literal value to use for the header",
                                     "type": "string"
                                   }
                                 },
@@ -16840,6 +17175,7 @@
                               "type": "array"
                             },
                             "url": {
+                              "description": "URL of the artifact",
                               "type": "string"
                             }
                           },
@@ -16849,27 +17185,38 @@
                           "type": "object"
                         },
                         "mode": {
+                          "description": "mode bits to use on this file, must be a value between 0 and 0777.\nSet when loading input artifacts. It is recommended to set the mode value\nto ensure the artifact has the expected permissions in your container.",
                           "format": "int32",
+                          "maximum": 511,
+                          "minimum": 0,
                           "type": "integer"
                         },
                         "name": {
+                          "description": "name of the artifact. must be unique within a template's inputs/outputs.",
+                          "pattern": "^[-a-zA-Z0-9_{}.]+$",
                           "type": "string"
                         },
                         "optional": {
+                          "description": "Make Artifacts optional, if Artifacts doesn't generate or exist",
                           "type": "boolean"
                         },
                         "oss": {
+                          "description": "OSS contains OSS artifact location details",
                           "properties": {
                             "accessKeySecret": {
+                              "description": "AccessKeySecret is the secret selector to the bucket's access key",
                               "properties": {
                                 "key": {
+                                  "description": "The key of the secret to select from.  Must be a valid secret key.",
                                   "type": "string"
                                 },
                                 "name": {
                                   "default": "",
+                                  "description": "Name of the referent.\nThis field is effectively required, but due to backwards compatibility is\nallowed to be empty. Instances of this type with an empty value here are\nalmost certainly wrong.\nMore info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names",
                                   "type": "string"
                                 },
                                 "optional": {
+                                  "description": "Specify whether the Secret or its key must be defined",
                                   "type": "boolean"
                                 }
                               },
@@ -16880,24 +17227,31 @@
                               "x-kubernetes-map-type": "atomic"
                             },
                             "bucket": {
+                              "description": "Bucket is the name of the bucket",
                               "type": "string"
                             },
                             "createBucketIfNotPresent": {
+                              "description": "CreateBucketIfNotPresent tells the driver to attempt to create the OSS bucket for output artifacts, if it doesn't exist",
                               "type": "boolean"
                             },
                             "endpoint": {
+                              "description": "Endpoint is the hostname of the bucket endpoint",
                               "type": "string"
                             },
                             "key": {
+                              "description": "Key is the path in the bucket where the artifact resides",
                               "type": "string"
                             },
                             "lifecycleRule": {
+                              "description": "LifecycleRule specifies how to manage bucket's lifecycle",
                               "properties": {
                                 "markDeletionAfterDays": {
+                                  "description": "MarkDeletionAfterDays is the number of days before we delete objects in the bucket",
                                   "format": "int32",
                                   "type": "integer"
                                 },
                                 "markInfrequentAccessAfterDays": {
+                                  "description": "MarkInfrequentAccessAfterDays is the number of days before we convert the objects in the bucket to Infrequent Access (IA) storage type",
                                   "format": "int32",
                                   "type": "integer"
                                 }
@@ -16905,15 +17259,19 @@
                               "type": "object"
                             },
                             "secretKeySecret": {
+                              "description": "SecretKeySecret is the secret selector to the bucket's secret key",
                               "properties": {
                                 "key": {
+                                  "description": "The key of the secret to select from.  Must be a valid secret key.",
                                   "type": "string"
                                 },
                                 "name": {
                                   "default": "",
+                                  "description": "Name of the referent.\nThis field is effectively required, but due to backwards compatibility is\nallowed to be empty. Instances of this type with an empty value here are\nalmost certainly wrong.\nMore info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names",
                                   "type": "string"
                                 },
                                 "optional": {
+                                  "description": "Specify whether the Secret or its key must be defined",
                                   "type": "boolean"
                                 }
                               },
@@ -16924,9 +17282,11 @@
                               "x-kubernetes-map-type": "atomic"
                             },
                             "securityToken": {
+                              "description": "SecurityToken is the user's temporary security token. For more details, check out: https://www.alibabacloud.com/help/doc-detail/100624.htm",
                               "type": "string"
                             },
                             "useSDKCreds": {
+                              "description": "UseSDKCreds tells the driver to figure out credentials based on sdk defaults.",
                               "type": "boolean"
                             }
                           },
@@ -16936,11 +17296,40 @@
                           "type": "object"
                         },
                         "path": {
+                          "description": "Path is the container path to the artifact",
                           "type": "string"
                         },
+                        "plugin": {
+                          "description": "Plugin contains plugin artifact location details",
+                          "properties": {
+                            "configuration": {
+                              "description": "Configuration is the plugin defined configuration for the artifact driver plugin",
+                              "type": "string"
+                            },
+                            "connectionTimeoutSeconds": {
+                              "description": "ConnectionTimeoutSeconds is the timeout for the artifact driver connection, overriding the driver's timeout",
+                              "format": "int32",
+                              "type": "integer"
+                            },
+                            "key": {
+                              "description": "Key is the path in the artifact repository where the artifact resides",
+                              "type": "string"
+                            },
+                            "name": {
+                              "description": "Name is the name of the artifact driver plugin",
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "key"
+                          ],
+                          "type": "object"
+                        },
                         "raw": {
+                          "description": "Raw contains raw artifact location details",
                           "properties": {
                             "data": {
+                              "description": "Data is the string contents of the artifact",
                               "type": "string"
                             }
                           },
@@ -16950,20 +17339,26 @@
                           "type": "object"
                         },
                         "recurseMode": {
+                          "description": "If mode is set, apply the permission recursively into the artifact if it is a folder",
                           "type": "boolean"
                         },
                         "s3": {
+                          "description": "S3 contains S3 artifact location details",
                           "properties": {
                             "accessKeySecret": {
+                              "description": "AccessKeySecret is the secret selector to the bucket's access key",
                               "properties": {
                                 "key": {
+                                  "description": "The key of the secret to select from.  Must be a valid secret key.",
                                   "type": "string"
                                 },
                                 "name": {
                                   "default": "",
+                                  "description": "Name of the referent.\nThis field is effectively required, but due to backwards compatibility is\nallowed to be empty. Instances of this type with an empty value here are\nalmost certainly wrong.\nMore info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names",
                                   "type": "string"
                                 },
                                 "optional": {
+                                  "description": "Specify whether the Secret or its key must be defined",
                                   "type": "boolean"
                                 }
                               },
@@ -16974,18 +17369,23 @@
                               "x-kubernetes-map-type": "atomic"
                             },
                             "bucket": {
+                              "description": "Bucket is the name of the bucket",
                               "type": "string"
                             },
                             "caSecret": {
+                              "description": "CASecret specifies the secret that contains the CA, used to verify the TLS connection",
                               "properties": {
                                 "key": {
+                                  "description": "The key of the secret to select from.  Must be a valid secret key.",
                                   "type": "string"
                                 },
                                 "name": {
                                   "default": "",
+                                  "description": "Name of the referent.\nThis field is effectively required, but due to backwards compatibility is\nallowed to be empty. Instances of this type with an empty value here are\nalmost certainly wrong.\nMore info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names",
                                   "type": "string"
                                 },
                                 "optional": {
+                                  "description": "Specify whether the Secret or its key must be defined",
                                   "type": "boolean"
                                 }
                               },
@@ -16996,34 +17396,44 @@
                               "x-kubernetes-map-type": "atomic"
                             },
                             "createBucketIfNotPresent": {
+                              "description": "CreateBucketIfNotPresent tells the driver to attempt to create the S3 bucket for output artifacts, if it doesn't exist. Setting Enabled Encryption will apply either SSE-S3 to the bucket if KmsKeyId is not set or SSE-KMS if it is.",
                               "properties": {
                                 "objectLocking": {
+                                  "description": "ObjectLocking Enable object locking",
                                   "type": "boolean"
                                 }
                               },
                               "type": "object"
                             },
                             "encryptionOptions": {
+                              "description": "S3EncryptionOptions used to determine encryption options during s3 operations",
                               "properties": {
                                 "enableEncryption": {
+                                  "description": "EnableEncryption tells the driver to encrypt objects if set to true. If kmsKeyId and serverSideCustomerKeySecret are not set, SSE-S3 will be used",
                                   "type": "boolean"
                                 },
                                 "kmsEncryptionContext": {
+                                  "description": "KmsEncryptionContext is a json blob that contains an encryption context. See https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#encrypt_context for more information",
                                   "type": "string"
                                 },
                                 "kmsKeyId": {
+                                  "description": "KMSKeyId tells the driver to encrypt the object using the specified KMS Key.",
                                   "type": "string"
                                 },
                                 "serverSideCustomerKeySecret": {
+                                  "description": "ServerSideCustomerKeySecret tells the driver to encrypt the output artifacts using SSE-C with the specified secret.",
                                   "properties": {
                                     "key": {
+                                      "description": "The key of the secret to select from.  Must be a valid secret key.",
                                       "type": "string"
                                     },
                                     "name": {
                                       "default": "",
+                                      "description": "Name of the referent.\nThis field is effectively required, but due to backwards compatibility is\nallowed to be empty. Instances of this type with an empty value here are\nalmost certainly wrong.\nMore info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names",
                                       "type": "string"
                                     },
                                     "optional": {
+                                      "description": "Specify whether the Secret or its key must be defined",
                                       "type": "boolean"
                                     }
                                   },
@@ -17037,30 +17447,39 @@
                               "type": "object"
                             },
                             "endpoint": {
+                              "description": "Endpoint is the hostname of the bucket endpoint",
                               "type": "string"
                             },
                             "insecure": {
+                              "description": "Insecure will connect to the service with TLS",
                               "type": "boolean"
                             },
                             "key": {
+                              "description": "Key is the key in the bucket where the artifact resides",
                               "type": "string"
                             },
                             "region": {
+                              "description": "Region contains the optional bucket region",
                               "type": "string"
                             },
                             "roleARN": {
+                              "description": "RoleARN is the Amazon Resource Name (ARN) of the role to assume.",
                               "type": "string"
                             },
                             "secretKeySecret": {
+                              "description": "SecretKeySecret is the secret selector to the bucket's secret key",
                               "properties": {
                                 "key": {
+                                  "description": "The key of the secret to select from.  Must be a valid secret key.",
                                   "type": "string"
                                 },
                                 "name": {
                                   "default": "",
+                                  "description": "Name of the referent.\nThis field is effectively required, but due to backwards compatibility is\nallowed to be empty. Instances of this type with an empty value here are\nalmost certainly wrong.\nMore info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names",
                                   "type": "string"
                                 },
                                 "optional": {
+                                  "description": "Specify whether the Secret or its key must be defined",
                                   "type": "boolean"
                                 }
                               },
@@ -17071,15 +17490,19 @@
                               "x-kubernetes-map-type": "atomic"
                             },
                             "sessionTokenSecret": {
+                              "description": "SessionTokenSecret is used for ephemeral credentials like an IAM assume role or S3 access grant",
                               "properties": {
                                 "key": {
+                                  "description": "The key of the secret to select from.  Must be a valid secret key.",
                                   "type": "string"
                                 },
                                 "name": {
                                   "default": "",
+                                  "description": "Name of the referent.\nThis field is effectively required, but due to backwards compatibility is\nallowed to be empty. Instances of this type with an empty value here are\nalmost certainly wrong.\nMore info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names",
                                   "type": "string"
                                 },
                                 "optional": {
+                                  "description": "Specify whether the Secret or its key must be defined",
                                   "type": "boolean"
                                 }
                               },
@@ -17090,12 +17513,14 @@
                               "x-kubernetes-map-type": "atomic"
                             },
                             "useSDKCreds": {
+                              "description": "UseSDKCreds tells the driver to figure out credentials based on sdk defaults.",
                               "type": "boolean"
                             }
                           },
                           "type": "object"
                         },
                         "subPath": {
+                          "description": "SubPath allows an artifact to be sourced from a subpath within the specified source",
                           "type": "string"
                         }
                       },
@@ -17107,44 +17532,61 @@
                     "type": "array"
                   },
                   "exitCode": {
+                    "description": "ExitCode holds the exit code of a script template",
                     "type": "string"
                   },
                   "parameters": {
+                    "description": "Parameters holds the list of output parameters produced by a step",
                     "items": {
+                      "description": "Parameter indicate a passed string parameter to a service template with an optional default value",
                       "properties": {
                         "default": {
+                          "description": "Default is the default value to use for an input parameter if a value was not supplied",
                           "type": "string"
                         },
                         "description": {
+                          "description": "Description is the parameter description",
                           "type": "string"
                         },
                         "enum": {
+                          "description": "Enum holds a list of string values to choose from, for the actual value of the parameter",
                           "items": {
+                            "description": "* It's JSON type is just string.\n* It will unmarshall int64, int32, float64, float32, boolean, a plain string and represents it as string.\n* It will marshall back to string - marshalling is not symmetric.",
                             "type": "string"
                           },
+                          "minItems": 1,
                           "type": "array"
                         },
                         "globalName": {
+                          "description": "GlobalName exports an output parameter to the global scope, making it available as\n'{{workflow.outputs.parameters.XXXX}} and in workflow.status.outputs.parameters",
                           "type": "string"
                         },
                         "name": {
+                          "description": "Name is the parameter name",
+                          "pattern": "^[-a-zA-Z0-9_]+$",
                           "type": "string"
                         },
                         "value": {
+                          "description": "Value is the literal value to use for the parameter.\nIf specified in the context of an input parameter, any passed values take precedence over the specified value",
                           "type": "string"
                         },
                         "valueFrom": {
+                          "description": "ValueFrom is the source for the output parameter's value",
                           "properties": {
                             "configMapKeyRef": {
+                              "description": "ConfigMapKeyRef is configmap selector for input parameter configuration",
                               "properties": {
                                 "key": {
+                                  "description": "The key to select.",
                                   "type": "string"
                                 },
                                 "name": {
                                   "default": "",
+                                  "description": "Name of the referent.\nThis field is effectively required, but due to backwards compatibility is\nallowed to be empty. Instances of this type with an empty value here are\nalmost certainly wrong.\nMore info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names",
                                   "type": "string"
                                 },
                                 "optional": {
+                                  "description": "Specify whether the ConfigMap or its key must be defined",
                                   "type": "boolean"
                                 }
                               },
@@ -17155,27 +17597,35 @@
                               "x-kubernetes-map-type": "atomic"
                             },
                             "default": {
+                              "description": "Default specifies a value to be used if retrieving the value from the specified source fails",
                               "type": "string"
                             },
                             "event": {
+                              "description": "Selector (https://github.com/expr-lang/expr) that is evaluated against the event to get the value of the parameter. E.g. `payload.message`",
                               "type": "string"
                             },
                             "expression": {
+                              "description": "Expression, if defined, is evaluated to specify the value for the parameter",
                               "type": "string"
                             },
                             "jqFilter": {
+                              "description": "JQFilter expression against the resource object in resource templates",
                               "type": "string"
                             },
                             "jsonPath": {
+                              "description": "JSONPath of a resource to retrieve an output parameter value from in resource templates",
                               "type": "string"
                             },
                             "parameter": {
+                              "description": "Parameter reference to a step or dag task in which to retrieve an output parameter value from\n(e.g. '{{steps.mystep.outputs.myparam}}')",
                               "type": "string"
                             },
                             "path": {
+                              "description": "Path in the container to retrieve an output parameter value from in container templates",
                               "type": "string"
                             },
                             "supplied": {
+                              "description": "Supplied value to be filled in directly, either through the CLI, API, etc.",
                               "type": "object"
                             }
                           },
@@ -17190,15 +17640,18 @@
                     "type": "array"
                   },
                   "result": {
+                    "description": "Result holds the result (stdout) of a script or container template, or the response body of an HTTP template",
                     "type": "string"
                   }
                 },
                 "type": "object"
               },
               "phase": {
+                "description": "NodePhase is a label for the condition of a node at the current time.",
                 "type": "string"
               },
               "progress": {
+                "description": "Progress in N/M format. N is number of task complete. M is number of tasks.",
                 "type": "string"
               }
             },

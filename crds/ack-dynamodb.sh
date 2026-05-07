@@ -12,7 +12,7 @@ export FILES=(
 )
 
 # renovate: datasource=github-tags depName=aws-controllers-k8s/dynamodb-controller
-export VERSION=1.7.2
+export VERSION=1.7.3
 
 function generate_url {
   local crd_file=$1

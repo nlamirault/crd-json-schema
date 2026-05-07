@@ -1,5 +1,34 @@
 # Changelog
 
+## [1.3.0](https://github.com/nlamirault/openspec-hub/compare/openspec-hub-v1.2.1...openspec-hub-v1.3.0) (2026-05-07)
+
+
+### 🚀 Features
+
+* **traefik:** add support for traefik crds ([#262](https://github.com/nlamirault/openspec-hub/issues/262)) ([65c239d](https://github.com/nlamirault/openspec-hub/commit/65c239dd1bbfb0277a978496e25733015cbb1019))
+
+
+### 🚨 Maintenance
+
+* **deps:** update actions/labeler action to v6.1.0 ([#271](https://github.com/nlamirault/openspec-hub/issues/271)) ([ad7938c](https://github.com/nlamirault/openspec-hub/commit/ad7938c9bacdb9953fa2b3cff176b38d21137e12))
+* **deps:** update dependency argoproj/argo-workflows to v3.7.14 ([#260](https://github.com/nlamirault/openspec-hub/issues/260)) ([4ef36ed](https://github.com/nlamirault/openspec-hub/commit/4ef36ed7246c6a17800d6e21f196b1caba3930f8))
+* **deps:** update dependency argoproj/argo-workflows to v4 ([#266](https://github.com/nlamirault/openspec-hub/issues/266)) ([3999782](https://github.com/nlamirault/openspec-hub/commit/3999782bd715d798b6c082b738669137d4ed7cd0))
+* **deps:** update dependency aws-controllers-k8s/acm-controller to v1.3.6 ([#254](https://github.com/nlamirault/openspec-hub/issues/254)) ([2d1fc01](https://github.com/nlamirault/openspec-hub/commit/2d1fc01f2a087d614cca58ebb2bbfb94532393f7))
+* **deps:** update dependency aws-controllers-k8s/acmpca-controller to v1.2.3 ([#255](https://github.com/nlamirault/openspec-hub/issues/255)) ([5eac6b9](https://github.com/nlamirault/openspec-hub/commit/5eac6b9db635449c0c0e5a867402701a9fdf72e6))
+* **deps:** update dependency aws-controllers-k8s/apigatewayv2-controller to v1.2.3 ([#252](https://github.com/nlamirault/openspec-hub/issues/252)) ([4d504ba](https://github.com/nlamirault/openspec-hub/commit/4d504ba5c733099a76a36ef40ae02f28eb1e2060))
+* **deps:** update dependency aws-controllers-k8s/applicationautoscaling-controller to v1.2.3 ([#253](https://github.com/nlamirault/openspec-hub/issues/253)) ([9d35d31](https://github.com/nlamirault/openspec-hub/commit/9d35d313288629ade1df64169deec743329ee17c))
+* **deps:** update dependency aws-controllers-k8s/bedrockagent-controller to v1.1.3 ([#256](https://github.com/nlamirault/openspec-hub/issues/256)) ([a02fd18](https://github.com/nlamirault/openspec-hub/commit/a02fd186f8c39adc022dbe142d7d84c274850585))
+* **deps:** update dependency aws-controllers-k8s/cloudfront-controller to v1.3.3 ([#257](https://github.com/nlamirault/openspec-hub/issues/257)) ([ceb012c](https://github.com/nlamirault/openspec-hub/commit/ceb012c8089bb7a867c146569b73f141a88d19d8))
+* **deps:** update dependency aws-controllers-k8s/cloudtrail-controller to v1.2.3 ([#258](https://github.com/nlamirault/openspec-hub/issues/258)) ([0f21e7e](https://github.com/nlamirault/openspec-hub/commit/0f21e7e29e19b664dd9ad903840e07a442726433))
+* **deps:** update dependency aws-controllers-k8s/cloudwatch-controller to v1.4.3 ([#259](https://github.com/nlamirault/openspec-hub/issues/259)) ([aad34b5](https://github.com/nlamirault/openspec-hub/commit/aad34b530d31dff8e232ef13a0208794751a1daf))
+* **deps:** update dependency aws-controllers-k8s/cloudwatchlogs-controller to v1.2.4 ([#261](https://github.com/nlamirault/openspec-hub/issues/261)) ([d1b34c0](https://github.com/nlamirault/openspec-hub/commit/d1b34c013ad0ffea22243cf17776b6a9961d16c8))
+* **deps:** update dependency aws-controllers-k8s/dynamodb-controller to v1.7.3 ([#264](https://github.com/nlamirault/openspec-hub/issues/264)) ([80c1280](https://github.com/nlamirault/openspec-hub/commit/80c128081e89b3f71e3060dfd74f8175a96fd0e4))
+* **deps:** update dependency aws-controllers-k8s/ecr-controller to v1.5.3 ([#265](https://github.com/nlamirault/openspec-hub/issues/265)) ([d62584a](https://github.com/nlamirault/openspec-hub/commit/d62584a52979dc35bb007552759b522a972b14c1))
+* **deps:** update dependency external-secrets/external-secrets to v2 ([#267](https://github.com/nlamirault/openspec-hub/issues/267)) ([9a657c4](https://github.com/nlamirault/openspec-hub/commit/9a657c4c93b9b84cb6dcfe77c0d1c1ce1ab3c7ab))
+* **deps:** update dependency mariadb-operator/mariadb-operator to v26 ([#268](https://github.com/nlamirault/openspec-hub/issues/268)) ([3dbf8ec](https://github.com/nlamirault/openspec-hub/commit/3dbf8ec59af9b074bc343b4897c3c145a46b2946))
+* **deps:** update googleapis/release-please-action action to v5 ([#269](https://github.com/nlamirault/openspec-hub/issues/269)) ([3f46c3d](https://github.com/nlamirault/openspec-hub/commit/3f46c3df946ae81a41271fd70c2391fcd0c64913))
+* **deps:** update tj-actions/changed-files action to v47 ([#270](https://github.com/nlamirault/openspec-hub/issues/270)) ([ff49c1e](https://github.com/nlamirault/openspec-hub/commit/ff49c1e594472773de53937ef4692139d074764b))
+
 ## [1.2.1](https://github.com/nlamirault/openspec-hub/compare/openspec-hub-v1.2.0...openspec-hub-v1.2.1) (2026-04-22)
 
 

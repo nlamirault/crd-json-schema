@@ -18,7 +18,7 @@ export FILES=(
 )
 
 # renovate: datasource=github-tags depName=traefik/traefik
-export VERSION=3.6.15
+export VERSION=3.7.1
 
 function generate_url {
   echo "https://raw.githubusercontent.com/traefik/traefik/v${VERSION}/docs/content/reference/dynamic-configuration/kubernetes-crd-definition-v1.yml"

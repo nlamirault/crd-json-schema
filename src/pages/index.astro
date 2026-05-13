@@ -189,6 +189,14 @@ const filterData = groupedData.map(cat => ({
 ---
 
 <Layout title="Home">
+  <!-- RFC 8288 link relations for agent/API discovery (HTML equivalent of HTTP Link headers) -->
+  <Fragment slot="head">
+    <link rel="api-catalog" href="/.well-known/api-catalog.json" type="application/json" />
+    <link rel="describedby" href="/data/catalog.json" type="application/json" />
+    <link rel="service-desc" href="https://raw.githubusercontent.com/nlamirault/openspec-hub/main/schemas/" type="application/json" />
+    <link rel="alternate" href="/index.md" type="text/markdown" title="Markdown version" />
+    <link rel="alternate" href="/llms.txt" type="text/plain" title="LLM-readable overview" />
+  </Fragment>
   <!-- Hero -->
   <div class="relative overflow-hidden">
     <div class="hero-dots absolute inset-0 pointer-events-none"></div>
@@ -400,12 +408,16 @@ const filterData = groupedData.map(cat => ({
     return li;
   }
 
-  function renderResults(items) {
+  function renderResults(items, query) {
     if (!resultsList) return;
     while (resultsList.firstChild) resultsList.removeChild(resultsList.firstChild);
 
     if (!items.length) {
-      resultsList.classList.add('hidden');
+      const li = document.createElement('li');
+      li.className = 'px-4 py-4 text-sm text-gray-400 dark:text-slate-500 text-center';
+      li.textContent = `No schemas found for "${query}"`;
+      resultsList.appendChild(li);
+      resultsList.classList.remove('hidden');
       if (hints) hints.classList.add('hidden');
       return;
     }
@@ -429,7 +441,7 @@ const filterData = groupedData.map(cat => ({
     const matches = allResources.filter(r =>
       r.kind.toLowerCase().includes(q) || r.group.toLowerCase().includes(q)
     );
-    renderResults(matches);
+    renderResults(matches, q);
   });
 
   input?.addEventListener('keydown', (e) => {
@@ -437,11 +449,17 @@ const filterData = groupedData.map(cat => ({
     if (e.key === 'ArrowDown') {
       e.preventDefault();
       activeIndex = Math.min(activeIndex + 1, items.length - 1);
-      items.forEach((el, i) => el.classList.toggle('bg-blue-50', i === activeIndex));
+      items.forEach((el, i) => {
+        el.classList.toggle('bg-blue-50', i === activeIndex);
+        el.classList.toggle('dark:bg-blue-900/20', i === activeIndex);
+      });
     } else if (e.key === 'ArrowUp') {
       e.preventDefault();
       activeIndex = Math.max(activeIndex - 1, -1);
-      items.forEach((el, i) => el.classList.toggle('bg-blue-50', i === activeIndex));
+      items.forEach((el, i) => {
+        el.classList.toggle('bg-blue-50', i === activeIndex);
+        el.classList.toggle('dark:bg-blue-900/20', i === activeIndex);
+      });
     } else if (e.key === 'Enter' && activeIndex >= 0) {
       items[activeIndex]?.click();
     } else if (e.key === 'Escape') {

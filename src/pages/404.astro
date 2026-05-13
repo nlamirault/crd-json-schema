@@ -1,0 +1,27 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="404 – Not Found" description="This schema or page could not be found.">
+  <div class="max-w-2xl mx-auto px-6 py-32 text-center">
+    <div class="text-8xl font-black text-gray-100 dark:text-slate-800 mb-6 leading-none select-none">404</div>
+    <h1 class="text-2xl font-extrabold text-gray-900 dark:text-white mb-3 tracking-tight">Page not found</h1>
+    <p class="text-sm text-gray-500 dark:text-slate-400 mb-10 leading-relaxed">
+      The schema or page you're looking for doesn't exist, or may have been moved.
+    </p>
+    <div class="flex flex-col sm:flex-row justify-center gap-3">
+      <a
+        href="/"
+        class="px-5 py-2.5 bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold rounded-xl transition-colors shadow-sm"
+      >
+        Browse all schemas
+      </a>
+      <a
+        href="https://github.com/nlamirault/openspec-hub/issues"
+        class="px-5 py-2.5 border border-gray-200 dark:border-slate-700 text-gray-700 dark:text-slate-300 hover:border-blue-300 dark:hover:border-blue-600 text-sm font-semibold rounded-xl transition-colors"
+      >
+        Report a missing schema
+      </a>
+    </div>
+  </div>
+</Layout>

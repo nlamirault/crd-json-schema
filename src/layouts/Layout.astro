@@ -26,16 +26,20 @@ const currentPath = Astro.url.pathname;
 		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
 		<meta name="generator" content={Astro.generator} />
 		<title>{title} | OpenSpec HUB</title>
+		<link rel="canonical" href={Astro.url.href} />
 		<!-- Open Graph -->
 		<meta property="og:title" content={`${title} | OpenSpec HUB`} />
 		<meta property="og:description" content={description} />
 		<meta property="og:type" content="website" />
 		<meta property="og:site_name" content="OpenSpec HUB" />
+		<meta property="og:url" content={Astro.url.href} />
 		<meta property="og:image" content="/og.svg" />
 		<meta name="twitter:card" content="summary_large_image" />
 		<meta name="twitter:title" content={`${title} | OpenSpec HUB`} />
 		<meta name="twitter:description" content={description} />
 		<meta name="twitter:image" content="/og.svg" />
+		<!-- Page-specific head tags (e.g. discovery link relations) -->
+		<slot name="head" />
 		<!-- Dark mode: apply before paint to avoid flash -->
 		<script is:inline>
 			const t = localStorage.getItem('theme') || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');

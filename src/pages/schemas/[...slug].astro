@@ -49,8 +49,13 @@ export async function getStaticPaths() {
 
 const { pageType, group, resources, file, version, kind, siblingVersions } = Astro.props;
 
+const GITHUB_RAW_BASE = 'https://raw.githubusercontent.com/nlamirault/openspec-hub/main/schemas';
+
 let schema: any;
 let schemaDescription: string;
+let schemaUrl: string;
+let yamlSnippet: string;
+let kubeconformSnippet: string;
 
 if (pageType === 'resource') {
     const fullPath = path.resolve('schemas', file!);
@@ -61,6 +66,9 @@ if (pageType === 'resource') {
         schema = { title: kind, description: 'Could not parse JSON schema' };
     }
     schemaDescription = schema.description || `Kubernetes CRD schema for ${kind} (${version}) in ${group}`;
+    schemaUrl = `${GITHUB_RAW_BASE}/${file}`;
+    yamlSnippet = `# yaml-language-server: $schema=${schemaUrl}`;
+    kubeconformSnippet = `kubeconform -schema-location '${GITHUB_RAW_BASE}/{{ .Group }}/{{ .ResourceKind }}_{{ .ResourceAPIVersion }}.json' manifest.yaml`;
 }
 
 // For group page: group resources by version
@@ -151,9 +159,44 @@ const sortedVersions = Object.keys(resourcesByVersion).sort((a, b) => b.localeCo
             <h1 class="text-4xl font-extrabold text-gray-900 dark:text-white tracking-tight mb-4">
                 {kind}
             </h1>
-            <p class="text-lg text-gray-600 dark:text-slate-400 leading-relaxed font-medium">
+            <p class="text-lg text-gray-600 dark:text-slate-400 leading-relaxed font-medium mb-6">
                 {schema.description || 'No description provided.'}
             </p>
+
+            <!-- Schema URL + usage snippet -->
+            <div class="rounded-2xl border border-gray-100 dark:border-slate-800 bg-gray-50 dark:bg-slate-900/60 p-4 space-y-3">
+                <div class="flex items-center gap-2">
+                    <span class="text-[10px] font-black uppercase tracking-widest text-gray-400 dark:text-slate-500">Schema URL</span>
+                </div>
+                <div class="flex items-center gap-2">
+                    <code id="schema-url-text" class="flex-1 text-[11px] font-mono text-blue-600 dark:text-blue-400 bg-white dark:bg-slate-800 border border-gray-200 dark:border-slate-700 rounded-lg px-3 py-2 truncate select-all">
+                        {schemaUrl}
+                    </code>
+                    <button
+                        id="copy-url-btn"
+                        title="Copy schema URL"
+                        class="shrink-0 px-3 py-2 text-[11px] font-semibold bg-white dark:bg-slate-800 border border-gray-200 dark:border-slate-700 text-gray-600 dark:text-slate-300 rounded-lg hover:border-blue-300 dark:hover:border-blue-600 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                    >
+                        Copy
+                    </button>
+                </div>
+                <details class="group">
+                    <summary class="text-[10px] font-bold uppercase tracking-widest text-gray-400 dark:text-slate-500 cursor-pointer hover:text-blue-500 dark:hover:text-blue-400 transition-colors list-none flex items-center gap-1 select-none">
+                        <span class="group-open:rotate-90 transition-transform inline-block">▶</span>
+                        Usage examples
+                    </summary>
+                    <div class="mt-3 space-y-2">
+                        <div>
+                            <div class="text-[9px] font-black uppercase tracking-widest text-gray-400 dark:text-slate-500 mb-1">VS Code / yaml-language-server</div>
+                            <code class="block text-[11px] font-mono text-gray-600 dark:text-slate-400 bg-white dark:bg-slate-800 border border-gray-100 dark:border-slate-700 rounded-lg px-3 py-2 whitespace-pre-wrap break-all">{yamlSnippet}</code>
+                        </div>
+                        <div>
+                            <div class="text-[9px] font-black uppercase tracking-widest text-gray-400 dark:text-slate-500 mb-1">kubeconform</div>
+                            <code class="block text-[11px] font-mono text-gray-600 dark:text-slate-400 bg-white dark:bg-slate-800 border border-gray-100 dark:border-slate-700 rounded-lg px-3 py-2 whitespace-pre-wrap break-all">{kubeconformSnippet}</code>
+                        </div>
+                    </div>
+                </details>
+            </div>
         </header>
 
         <section>
@@ -178,10 +221,33 @@ const sortedVersions = Object.keys(resourcesByVersion).sort((a, b) => b.localeCo
             <div class="text-[10px] text-gray-400 dark:text-slate-500 font-bold uppercase tracking-widest">
                 OpenSpec HUB
             </div>
-            <div class="text-[10px] text-gray-300 dark:text-slate-600 font-mono">
-                Source: {file}
-            </div>
+            <a
+                href={`https://github.com/nlamirault/openspec-hub/blob/main/schemas/${file}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="text-[10px] text-gray-300 dark:text-slate-600 font-mono hover:text-blue-500 dark:hover:text-blue-400 transition-colors"
+                title="View source on GitHub"
+            >
+                View source ↗
+            </a>
         </footer>
     </div>
 </Layout>
 )}
+
+<script>
+    const btn = document.getElementById('copy-url-btn');
+    const urlText = document.getElementById('schema-url-text');
+    if (btn && urlText) {
+        btn.addEventListener('click', async () => {
+            const url = urlText.textContent?.trim() ?? '';
+            await navigator.clipboard.writeText(url);
+            btn.textContent = 'Copied!';
+            btn.classList.add('text-green-600', 'dark:text-green-400', 'border-green-300', 'dark:border-green-700');
+            setTimeout(() => {
+                btn.textContent = 'Copy';
+                btn.classList.remove('text-green-600', 'dark:text-green-400', 'border-green-300', 'dark:border-green-700');
+            }, 2000);
+        });
+    }
+</script>

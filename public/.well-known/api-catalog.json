@@ -1,0 +1,25 @@
+{
+  "apis": [
+    {
+      "title": "OpenSpec HUB Schema Catalog",
+      "description": "Machine-readable index of Kubernetes CRD JSON schemas across 294+ API groups and 70+ operators.",
+      "links": [
+        {
+          "href": "https://openspec-hub.portefaix.xyz/data/catalog.json",
+          "rel": "describedby",
+          "type": "application/json"
+        },
+        {
+          "href": "https://openspec-hub.portefaix.xyz/sitemap.xml",
+          "rel": "sitemap",
+          "type": "application/xml"
+        },
+        {
+          "href": "https://raw.githubusercontent.com/nlamirault/openspec-hub/main/schemas/",
+          "rel": "service-desc",
+          "type": "application/json"
+        }
+      ]
+    }
+  ]
+}

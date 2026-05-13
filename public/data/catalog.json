@@ -9519,6 +9519,12 @@
       },
       {
         "kind": "referencegrant",
+        "version": "v1",
+        "file": "gateway.networking.k8s.io/referencegrant_v1.json",
+        "slug": "gateway.networking.k8s.io/v1/referencegrant"
+      },
+      {
+        "kind": "referencegrant",
         "version": "v1beta1",
         "file": "gateway.networking.k8s.io/referencegrant_v1beta1.json",
         "slug": "gateway.networking.k8s.io/v1beta1/referencegrant"
@@ -9528,6 +9534,12 @@
         "version": "v1alpha2",
         "file": "gateway.networking.k8s.io/tcproute_v1alpha2.json",
         "slug": "gateway.networking.k8s.io/v1alpha2/tcproute"
+      },
+      {
+        "kind": "tlsroute",
+        "version": "v1",
+        "file": "gateway.networking.k8s.io/tlsroute_v1.json",
+        "slug": "gateway.networking.k8s.io/v1/tlsroute"
       },
       {
         "kind": "tlsroute",

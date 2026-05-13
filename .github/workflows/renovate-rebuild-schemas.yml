@@ -56,7 +56,7 @@ jobs:
         echo "${HOME}/go/bin" >> "${GITHUB_PATH}"
 
     - name: Install uv
-      uses: astral-sh/setup-uv@v6
+      uses: astral-sh/setup-uv@v8.1.0
 
     - name: Detect CRD scripts to rebuild
       id: changed

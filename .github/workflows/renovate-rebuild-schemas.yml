@@ -55,6 +55,9 @@ jobs:
         go install github.com/patrickdappollonio/kubectl-slice@latest
         echo "${HOME}/go/bin" >> "${GITHUB_PATH}"
 
+    - name: Install uv
+      uses: astral-sh/setup-uv@v6
+
     - name: Detect CRD scripts to rebuild
       id: changed
       env:
@@ -85,18 +88,22 @@ jobs:
           echo "::endgroup::"
         done
 
-    - name: Commit and push updated schemas
+    - name: Rebuild catalog
+      if: steps.changed.outputs.any_changed == 'true'
+      run: make catalog
+
+    - name: Commit and push updated schemas and catalog
       if: steps.changed.outputs.any_changed == 'true'
       env:
         TARGET_BRANCH: ${{ inputs.branch || github.head_ref }}
       run: |
         git config user.name "github-actions[bot]"
         git config user.email "github-actions[bot]@users.noreply.github.com"
-        git add schemas/
+        git add schemas/ public/data/
         if git diff --cached --quiet; then
-          echo "No schema changes to commit — schemas already up to date."
+          echo "No changes to commit — schemas and catalog already up to date."
         else
-          git commit -m "chore(schemas): rebuild schemas for Renovate CRD bump"
+          git commit -m "chore(schemas): rebuild schemas and catalog for Renovate CRD bump"
           git push origin "HEAD:${TARGET_BRANCH}"
         fi
 

@@ -17,5 +17,5 @@ keywords:
   - json-schema
   - cloud-native
 license: Apache-2.0
-repository-code: https://github.com/nlamirault/openspec-hub
-url: https://github.com/nlamirault/openspec-hub
+repository-code: https://github.com/nlamirault/schema-hub
+url: https://github.com/nlamirault/schema-hub

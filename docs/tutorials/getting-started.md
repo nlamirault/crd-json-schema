@@ -1,6 +1,6 @@
 # Tutorial: Your first schema validation
 
-In this tutorial you will set up OpenSpec Hub schema validation in your editor and validate a real Kubernetes manifest against a CRD schema. By the end you will have live validation and autocomplete for any supported resource in your YAML files.
+In this tutorial you will set up Schema Hub schema validation in your editor and validate a real Kubernetes manifest against a CRD schema. By the end you will have live validation and autocomplete for any supported resource in your YAML files.
 
 **What you will accomplish**: install the YAML extension in VSCode, point it at an ArgoCD `Application` schema, and see inline errors for a misconfigured manifest.
 
@@ -19,7 +19,7 @@ In this tutorial you will set up OpenSpec Hub schema validation in your editor a
 Before configuring your editor, confirm the schema you want to use is available.
 
 ```bash
-curl -s https://raw.githubusercontent.com/nlamirault/openspec-hub/main/schemas/argoproj.io/application_v1alpha1.json | head -5
+curl -s https://raw.githubusercontent.com/nlamirault/schema-hub/main/schemas/argoproj.io/application_v1alpha1.json | head -5
 ```
 
 You should see the beginning of a JSON Schema document. If you get a 404, check the [Supported schemas reference](../reference/schemas.md) for the correct path.
@@ -54,7 +54,7 @@ spec:
 Add this comment at the very top of `my-app.yaml`:
 
 ```yaml
-# yaml-language-server: $schema=https://raw.githubusercontent.com/nlamirault/openspec-hub/main/schemas/argoproj.io/application_v1alpha1.json
+# yaml-language-server: $schema=https://raw.githubusercontent.com/nlamirault/schema-hub/main/schemas/argoproj.io/application_v1alpha1.json
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 # ...
@@ -87,7 +87,7 @@ Place your cursor inside the `spec:` block and press `Ctrl+Space` (or `Cmd+Space
 
 ## What you learned
 
-- Schemas are served directly from GitHub raw content at `https://raw.githubusercontent.com/nlamirault/openspec-hub/main/schemas/{api-group}/{kind}_{version}.json`.
+- Schemas are served directly from GitHub raw content at `https://raw.githubusercontent.com/nlamirault/schema-hub/main/schemas/{api-group}/{kind}_{version}.json`.
 - The `yaml-language-server: $schema=` comment enables per-file validation without global editor configuration.
 - Schema validation catches typos and invalid fields before you apply a manifest.
 

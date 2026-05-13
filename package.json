@@ -1,5 +1,5 @@
 {
-  "name": "openspec-hub",
+  "name": "schema-hub",
   "version": "1.5.0",
   "scripts": {
     "dev": "astro dev",

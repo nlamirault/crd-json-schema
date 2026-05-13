@@ -1,7 +1,7 @@
 import type { APIRoute } from 'astro';
 import catalog from '../../public/data/catalog.json';
 
-const SITE = 'https://openspec-hub.portefaix.xyz';
+const SITE = 'https://schema-hub.portefaix.xyz';
 
 const CATEGORIES: Array<{ name: string; match: (g: string) => boolean; description: string }> = [
     { name: 'AWS Infrastructure',  match: g => g.includes('aws') || g.includes('amazon'),                         description: 'ACK controllers and AWS service operators' },
@@ -35,13 +35,13 @@ export const GET: APIRoute = () => {
     }).filter(Boolean).join('\n\n');
 
     const md = `\
-# OpenSpec HUB
+# Schema Hub
 
 > The central directory for Kubernetes Custom Resource Definitions. \
 ${totalResources.toLocaleString()} standardised JSON schemas across \
 ${groups.length} API groups and the cloud-native ecosystem.
 
-- **Source**: <https://github.com/nlamirault/openspec-hub>
+- **Source**: <https://github.com/nlamirault/schema-hub>
 - **Catalog (JSON)**: <${SITE}/data/catalog.json>
 - **Sitemap**: <${SITE}/sitemap.xml>
 - **API Catalog**: <${SITE}/.well-known/api-catalog.json>
@@ -55,14 +55,14 @@ ${sections}
 ### VS Code (yaml-language-server)
 
 \`\`\`yaml
-# yaml-language-server: $schema=https://raw.githubusercontent.com/nlamirault/openspec-hub/main/schemas/{group}/{kind}_{version}.json
+# yaml-language-server: $schema=https://raw.githubusercontent.com/nlamirault/schema-hub/main/schemas/{group}/{kind}_{version}.json
 \`\`\`
 
 ### kubeconform
 
 \`\`\`bash
 kubeconform \\
-  -schema-location 'https://raw.githubusercontent.com/nlamirault/openspec-hub/main/schemas/{{ .Group }}/{{ .ResourceKind }}_{{ .ResourceAPIVersion }}.json' \\
+  -schema-location 'https://raw.githubusercontent.com/nlamirault/schema-hub/main/schemas/{{ .Group }}/{{ .ResourceKind }}_{{ .ResourceAPIVersion }}.json' \\
   manifest.yaml
 \`\`\`
 `;

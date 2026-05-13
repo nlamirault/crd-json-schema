@@ -21,5 +21,5 @@
   <!-- Tag line -->
   <text x="80" y="510" font-family="Inter,system-ui,sans-serif" font-size="20" fill="#3b82f6" font-weight="600">cloud-native ecosystem · open source registry</text>
   <!-- URL -->
-  <text x="1120" y="590" text-anchor="end" font-family="Inter,system-ui,sans-serif" font-size="18" fill="#475569">github.com/nlamirault/openspec-hub</text>
+  <text x="1120" y="590" text-anchor="end" font-family="Inter,system-ui,sans-serif" font-size="18" fill="#475569">github.com/nlamirault/schema-hub</text>
 </svg>

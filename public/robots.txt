@@ -45,5 +45,5 @@ User-agent: CCBot
 Allow: /
 Content-Signal: ai-train=yes, search=yes, ai-input=yes
 
-Sitemap: https://openspec-hub.portefaix.xyz/sitemap.xml
-Sitemap: https://openspec-hub.portefaix.xyz/sitemap-index.xml
+Sitemap: https://schema-hub.portefaix.xyz/sitemap.xml
+Sitemap: https://schema-hub.portefaix.xyz/sitemap-index.xml

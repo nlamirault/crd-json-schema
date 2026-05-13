@@ -24,7 +24,7 @@ spec:
 
 This `openAPIV3Schema` block is a valid JSON Schema (draft 07 subset). It is what `kubectl apply --validate` and `kube-apiserver` use for server-side validation.
 
-OpenSpec Hub extracts this block and writes it as a standalone JSON file.
+Schema Hub extracts this block and writes it as a standalone JSON file.
 
 ---
 
@@ -107,7 +107,7 @@ Swagger-derived schemas use `{group}.api.k8s.io` as the API group directory.
 
 ### Schema is empty or `null`
 
-If `yq` returns `null` for `.spec.versions[].schema.openAPIV3Schema`, the CRD uses non-structural validation or does not embed a schema. OpenSpec Hub cannot extract a schema for such CRDs.
+If `yq` returns `null` for `.spec.versions[].schema.openAPIV3Schema`, the CRD uses non-structural validation or does not embed a schema. Schema Hub cannot extract a schema for such CRDs.
 
 ### Wrong kind or version in filename
 
@@ -121,6 +121,6 @@ The extraction reads `.spec.group`, `.spec.names.kind`, and `.spec.versions[0].n
 
 ## Further reading
 
-- [Architecture](architecture.md) — the goals and design decisions behind OpenSpec Hub
+- [Architecture](architecture.md) — the goals and design decisions behind Schema Hub
 - [CRD script format reference](../reference/crd-scripts.md) — the `choice`, `FILES`, and `generate_url` contract
 - [How to add a new CRD](../how-to/howto-add-crd.md) — step-by-step guide

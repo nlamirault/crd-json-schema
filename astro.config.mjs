@@ -4,7 +4,7 @@ import tailwindcss from '@tailwindcss/vite';
 import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
-  site: 'https://openspec-hub.portefaix.xyz',
+  site: 'https://schema-hub.portefaix.xyz',
   output: 'static',
   integrations: [react(), sitemap()],
   vite: {

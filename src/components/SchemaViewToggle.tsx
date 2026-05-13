@@ -47,7 +47,7 @@ export default function SchemaViewToggle({ initialSchema, titles, schemaJson = '
   };
 
   const copyYamlDirective = async () => {
-    const directive = `# yaml-language-server: $schema=https://raw.githubusercontent.com/nlamirault/openspec-hub/main/schemas/${schemaFile}`;
+    const directive = `# yaml-language-server: $schema=https://raw.githubusercontent.com/nlamirault/schema-hub/main/schemas/${schemaFile}`;
     try {
       await navigator.clipboard.writeText(directive);
       setYamlCopy('copied');

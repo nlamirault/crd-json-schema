@@ -15,15 +15,15 @@ Each entry maps a schema URL to one or more glob patterns:
 ```json
 {
   "yaml.schemas": {
-    "https://raw.githubusercontent.com/nlamirault/openspec-hub/main/schemas/argoproj.io/application_v1alpha1.json": [
+    "https://raw.githubusercontent.com/nlamirault/schema-hub/main/schemas/argoproj.io/application_v1alpha1.json": [
       "*/applications/*.yaml",
       "*/applications/*.yml"
     ],
-    "https://raw.githubusercontent.com/nlamirault/openspec-hub/main/schemas/monitoring.coreos.com/prometheus_v1.json": [
+    "https://raw.githubusercontent.com/nlamirault/schema-hub/main/schemas/monitoring.coreos.com/prometheus_v1.json": [
       "*/prometheus/*.yaml",
       "*/prometheus/*.yml"
     ],
-    "https://raw.githubusercontent.com/nlamirault/openspec-hub/main/schemas/external-secrets.io/externalsecret_v1beta1.json": [
+    "https://raw.githubusercontent.com/nlamirault/schema-hub/main/schemas/external-secrets.io/externalsecret_v1beta1.json": [
       "*/external-secrets/*.yaml"
     ]
   }
@@ -41,7 +41,7 @@ For project-specific settings, add the same block to `.vscode/settings.json` at 
 ```json
 {
   "yaml.schemas": {
-    "https://raw.githubusercontent.com/nlamirault/openspec-hub/main/schemas/kustomize.toolkit.fluxcd.io/kustomization_v1.json": [
+    "https://raw.githubusercontent.com/nlamirault/schema-hub/main/schemas/kustomize.toolkit.fluxcd.io/kustomization_v1.json": [
       "clusters/**/*.yaml"
     ]
   }
@@ -55,7 +55,7 @@ For project-specific settings, add the same block to `.vscode/settings.json` at 
 If a file does not match any glob pattern, add a comment at the top of the file:
 
 ```yaml
-# yaml-language-server: $schema=https://raw.githubusercontent.com/nlamirault/openspec-hub/main/schemas/argoproj.io/application_v1alpha1.json
+# yaml-language-server: $schema=https://raw.githubusercontent.com/nlamirault/schema-hub/main/schemas/argoproj.io/application_v1alpha1.json
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 ```
@@ -69,7 +69,7 @@ This takes precedence over any global or workspace setting for that file.
 Schema URLs follow the pattern:
 
 ```
-https://raw.githubusercontent.com/nlamirault/openspec-hub/main/schemas/{api-group}/{kind}_{version}.json
+https://raw.githubusercontent.com/nlamirault/schema-hub/main/schemas/{api-group}/{kind}_{version}.json
 ```
 
 All values are lowercase. For example:

@@ -1,7 +1,7 @@
 import type { APIRoute } from 'astro';
 import catalog from '../../public/data/catalog.json';
 
-const SITE = 'https://openspec-hub.portefaix.xyz';
+const SITE = 'https://schema-hub.portefaix.xyz';
 
 function buildUrls(): string[] {
     const urls: string[] = ['/'];

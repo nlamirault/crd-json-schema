@@ -1,5 +1,15 @@
 # Changelog
 
+## [1.4.0](https://github.com/nlamirault/openspec-hub/compare/openspec-hub-v1.3.0...openspec-hub-v1.4.0) (2026-05-13)
+
+
+### 🚀 Features
+
+* **schemas:** add group-level listing pages for CRD API groups ([#274](https://github.com/nlamirault/openspec-hub/issues/274)) ([0465763](https://github.com/nlamirault/openspec-hub/commit/0465763c9a6c29bc1be50160ed343af00dd9834e))
+* **schemas:** add group-level listing pages for CRD API groups ([#274](https://github.com/nlamirault/openspec-hub/issues/274)) ([#289](https://github.com/nlamirault/openspec-hub/issues/289)) ([e212911](https://github.com/nlamirault/openspec-hub/commit/e212911718ec184ab73b38c0b0d1307a16a61f8b)), closes [#228](https://github.com/nlamirault/openspec-hub/issues/228)
+* **schemas:** add openstack resource controller crd support ([#290](https://github.com/nlamirault/openspec-hub/issues/290)) ([2fccd8f](https://github.com/nlamirault/openspec-hub/commit/2fccd8ff8ac13e8ee356eb2b980cd9f293cbd72f)), closes [#288](https://github.com/nlamirault/openspec-hub/issues/288)
+* **website:** implement agent-ready website improvements ([#292](https://github.com/nlamirault/openspec-hub/issues/292)) ([f6a7183](https://github.com/nlamirault/openspec-hub/commit/f6a7183ba3f2b70c5b649d0db371a29bc5cc4ffc))
+
 ## [1.3.0](https://github.com/nlamirault/openspec-hub/compare/openspec-hub-v1.2.1...openspec-hub-v1.3.0) (2026-05-07)
 
 

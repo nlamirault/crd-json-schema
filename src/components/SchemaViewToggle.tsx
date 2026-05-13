@@ -3,7 +3,7 @@ import SchemaTree from './SchemaTree';
 import SchemaTable from './SchemaTable';
 
 type ViewMode = 'tree' | 'table';
-const STORAGE_KEY = 'openspec-schema-view';
+const STORAGE_KEY = 'schema-hub-schema-view';
 
 interface Schema {
   title?: string;

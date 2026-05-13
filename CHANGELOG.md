@@ -1,5 +1,41 @@
 # Changelog
 
+## [1.5.0](https://github.com/nlamirault/openspec-hub/compare/openspec-hub-v1.4.0...openspec-hub-v1.5.0) (2026-05-13)
+
+
+### 🚀 Features
+
+* **prometheus-operator:** update schemas to v0.91.0 ([#306](https://github.com/nlamirault/openspec-hub/issues/306)) ([5de6367](https://github.com/nlamirault/openspec-hub/commit/5de6367f9276737c215c9d7bf4ac0de9552cf49c))
+
+
+### 🐛 Bug Fixes
+
+* **deps:** update dependency astro to v6.1.10 [security] ([#293](https://github.com/nlamirault/openspec-hub/issues/293)) ([733bcc8](https://github.com/nlamirault/openspec-hub/commit/733bcc8aa0d82364c9bb0d82089f17fa5a892c09))
+
+
+### 🚨 Maintenance
+
+* **deps:** update astral-sh/setup-uv action to v8 ([#303](https://github.com/nlamirault/openspec-hub/issues/303)) ([dcc8587](https://github.com/nlamirault/openspec-hub/commit/dcc858729128f21ebad535c91bc2bb2ce903c2a1))
+* **deps:** update dependency akuity/kargo to v1.10.3 ([#278](https://github.com/nlamirault/openspec-hub/issues/278)) ([6042291](https://github.com/nlamirault/openspec-hub/commit/6042291b231a90d43a91130bf0f2d41f1d6b153d))
+* **deps:** update dependency argoproj/argo-cd to v3.4.2 ([#279](https://github.com/nlamirault/openspec-hub/issues/279)) ([cdfe436](https://github.com/nlamirault/openspec-hub/commit/cdfe4367aa0407bb2e0710b82c7c4be385b24252))
+* **deps:** update dependency argoproj/argo-rollouts to v1.9.0 ([#280](https://github.com/nlamirault/openspec-hub/issues/280)) ([058f187](https://github.com/nlamirault/openspec-hub/commit/058f187ec52a3d44303d6eab5515914c56ccbe2c))
+* **deps:** update dependency aws-controllers-k8s/acm-controller to v1.3.7 ([#296](https://github.com/nlamirault/openspec-hub/issues/296)) ([0ae988e](https://github.com/nlamirault/openspec-hub/commit/0ae988e46122a4333acc783212804aaa0d026f43))
+* **deps:** update dependency aws-controllers-k8s/emrcontainers-controller to v1.3.3 ([#276](https://github.com/nlamirault/openspec-hub/issues/276)) ([7f1ba27](https://github.com/nlamirault/openspec-hub/commit/7f1ba2747150fb05d26a6d339d8df11b7fe8eeb1))
+* **deps:** update dependency aws-controllers-k8s/eventbridge-controller to v1.2.3 ([#277](https://github.com/nlamirault/openspec-hub/issues/277)) ([409608a](https://github.com/nlamirault/openspec-hub/commit/409608a433a5f91bf79233962210762d858f77a7))
+* **deps:** update dependency aws-controllers-k8s/iam-controller to v1.6.4 ([#298](https://github.com/nlamirault/openspec-hub/issues/298)) ([3403901](https://github.com/nlamirault/openspec-hub/commit/34039013a38e668663bbeb172f7d446f00231ecb))
+* **deps:** update dependency aws-controllers-k8s/kinesis-controller to v1.2.4 ([#299](https://github.com/nlamirault/openspec-hub/issues/299)) ([35976f7](https://github.com/nlamirault/openspec-hub/commit/35976f7d2b7daa560ad54a60f624c349617154e5))
+* **deps:** update dependency envoyproxy/gateway to v1.8.0 ([#300](https://github.com/nlamirault/openspec-hub/issues/300)) ([e65eced](https://github.com/nlamirault/openspec-hub/commit/e65ecede2e442c0c8559a756832686e4c8696ad4))
+* **deps:** update dependency exoscale/karpenter-provider-exoscale to v1.36.0 ([#301](https://github.com/nlamirault/openspec-hub/issues/301)) ([7001f8a](https://github.com/nlamirault/openspec-hub/commit/7001f8af498784c8af5c23aa7bf835c43b1837e7))
+* **deps:** update dependency fluxcd/flux2 to v2.8.7 ([#281](https://github.com/nlamirault/openspec-hub/issues/281)) ([e2c01ee](https://github.com/nlamirault/openspec-hub/commit/e2c01ee5938db115bd2713f52faae4ba98a31b63))
+* **deps:** update dependency googlecloudplatform/k8s-config-connector to v1.151.0 ([#304](https://github.com/nlamirault/openspec-hub/issues/304)) ([a3b4b26](https://github.com/nlamirault/openspec-hub/commit/a3b4b26cf0151475f1044f13c9c5950b46bdd603))
+* **deps:** update dependency hashicorp/vault-secrets-operator to v1.4.0 ([#282](https://github.com/nlamirault/openspec-hub/issues/282)) ([9415c42](https://github.com/nlamirault/openspec-hub/commit/9415c4214cb02f9793e6434302caf70c89efbe8d))
+* **deps:** update dependency istio/istio to v1.29.2 ([#305](https://github.com/nlamirault/openspec-hub/issues/305)) ([d5c0406](https://github.com/nlamirault/openspec-hub/commit/d5c0406046a6ac0c28251ee1a865547bd29a03c7))
+* **deps:** update dependency kedacore/keda to v2.19.0 ([#283](https://github.com/nlamirault/openspec-hub/issues/283)) ([d1cd69f](https://github.com/nlamirault/openspec-hub/commit/d1cd69fc1ffae5974cd16f7f75c92d22bccd5c20))
+* **deps:** update dependency kubernetes-sigs/gateway-api to v1.5.1 ([#284](https://github.com/nlamirault/openspec-hub/issues/284)) ([2b80746](https://github.com/nlamirault/openspec-hub/commit/2b80746af2bebfb4ff7126a094478e05eb77a743))
+* **deps:** update dependency kubernetes-sigs/karpenter to v1.12.0 ([#285](https://github.com/nlamirault/openspec-hub/issues/285)) ([8e764b0](https://github.com/nlamirault/openspec-hub/commit/8e764b0f3ae0be71c95c0dac1530920a5711e43c))
+* **deps:** update dependency kubernetes-sigs/secrets-store-csi-driver to v1.6.0 ([#302](https://github.com/nlamirault/openspec-hub/issues/302)) ([9860b6c](https://github.com/nlamirault/openspec-hub/commit/9860b6c4c767953b33532b3cb76eec0e6fd411be))
+* **deps:** update dependency traefik/traefik to v3.7.1 ([#287](https://github.com/nlamirault/openspec-hub/issues/287)) ([95e6263](https://github.com/nlamirault/openspec-hub/commit/95e626324441f60f4dd041a77fdda92dfb326d2b))
+
 ## [1.4.0](https://github.com/nlamirault/openspec-hub/compare/openspec-hub-v1.3.0...openspec-hub-v1.4.0) (2026-05-13)
 
 

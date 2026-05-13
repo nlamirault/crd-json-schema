@@ -13094,6 +13094,152 @@
         "slug": "opensearchservice.services.k8s.aws/v1alpha1/domain"
       }
     ],
+    "openstack.k-orc.cloud": [
+      {
+        "kind": "addressscope",
+        "version": "v1alpha1",
+        "file": "openstack.k-orc.cloud/addressscope_v1alpha1.json",
+        "slug": "openstack.k-orc.cloud/v1alpha1/addressscope"
+      },
+      {
+        "kind": "applicationcredential",
+        "version": "v1alpha1",
+        "file": "openstack.k-orc.cloud/applicationcredential_v1alpha1.json",
+        "slug": "openstack.k-orc.cloud/v1alpha1/applicationcredential"
+      },
+      {
+        "kind": "domain",
+        "version": "v1alpha1",
+        "file": "openstack.k-orc.cloud/domain_v1alpha1.json",
+        "slug": "openstack.k-orc.cloud/v1alpha1/domain"
+      },
+      {
+        "kind": "endpoint",
+        "version": "v1alpha1",
+        "file": "openstack.k-orc.cloud/endpoint_v1alpha1.json",
+        "slug": "openstack.k-orc.cloud/v1alpha1/endpoint"
+      },
+      {
+        "kind": "flavor",
+        "version": "v1alpha1",
+        "file": "openstack.k-orc.cloud/flavor_v1alpha1.json",
+        "slug": "openstack.k-orc.cloud/v1alpha1/flavor"
+      },
+      {
+        "kind": "floatingip",
+        "version": "v1alpha1",
+        "file": "openstack.k-orc.cloud/floatingip_v1alpha1.json",
+        "slug": "openstack.k-orc.cloud/v1alpha1/floatingip"
+      },
+      {
+        "kind": "group",
+        "version": "v1alpha1",
+        "file": "openstack.k-orc.cloud/group_v1alpha1.json",
+        "slug": "openstack.k-orc.cloud/v1alpha1/group"
+      },
+      {
+        "kind": "image",
+        "version": "v1alpha1",
+        "file": "openstack.k-orc.cloud/image_v1alpha1.json",
+        "slug": "openstack.k-orc.cloud/v1alpha1/image"
+      },
+      {
+        "kind": "keypair",
+        "version": "v1alpha1",
+        "file": "openstack.k-orc.cloud/keypair_v1alpha1.json",
+        "slug": "openstack.k-orc.cloud/v1alpha1/keypair"
+      },
+      {
+        "kind": "network",
+        "version": "v1alpha1",
+        "file": "openstack.k-orc.cloud/network_v1alpha1.json",
+        "slug": "openstack.k-orc.cloud/v1alpha1/network"
+      },
+      {
+        "kind": "port",
+        "version": "v1alpha1",
+        "file": "openstack.k-orc.cloud/port_v1alpha1.json",
+        "slug": "openstack.k-orc.cloud/v1alpha1/port"
+      },
+      {
+        "kind": "project",
+        "version": "v1alpha1",
+        "file": "openstack.k-orc.cloud/project_v1alpha1.json",
+        "slug": "openstack.k-orc.cloud/v1alpha1/project"
+      },
+      {
+        "kind": "role",
+        "version": "v1alpha1",
+        "file": "openstack.k-orc.cloud/role_v1alpha1.json",
+        "slug": "openstack.k-orc.cloud/v1alpha1/role"
+      },
+      {
+        "kind": "router",
+        "version": "v1alpha1",
+        "file": "openstack.k-orc.cloud/router_v1alpha1.json",
+        "slug": "openstack.k-orc.cloud/v1alpha1/router"
+      },
+      {
+        "kind": "routerinterface",
+        "version": "v1alpha1",
+        "file": "openstack.k-orc.cloud/routerinterface_v1alpha1.json",
+        "slug": "openstack.k-orc.cloud/v1alpha1/routerinterface"
+      },
+      {
+        "kind": "securitygroup",
+        "version": "v1alpha1",
+        "file": "openstack.k-orc.cloud/securitygroup_v1alpha1.json",
+        "slug": "openstack.k-orc.cloud/v1alpha1/securitygroup"
+      },
+      {
+        "kind": "server",
+        "version": "v1alpha1",
+        "file": "openstack.k-orc.cloud/server_v1alpha1.json",
+        "slug": "openstack.k-orc.cloud/v1alpha1/server"
+      },
+      {
+        "kind": "servergroup",
+        "version": "v1alpha1",
+        "file": "openstack.k-orc.cloud/servergroup_v1alpha1.json",
+        "slug": "openstack.k-orc.cloud/v1alpha1/servergroup"
+      },
+      {
+        "kind": "service",
+        "version": "v1alpha1",
+        "file": "openstack.k-orc.cloud/service_v1alpha1.json",
+        "slug": "openstack.k-orc.cloud/v1alpha1/service"
+      },
+      {
+        "kind": "subnet",
+        "version": "v1alpha1",
+        "file": "openstack.k-orc.cloud/subnet_v1alpha1.json",
+        "slug": "openstack.k-orc.cloud/v1alpha1/subnet"
+      },
+      {
+        "kind": "trunk",
+        "version": "v1alpha1",
+        "file": "openstack.k-orc.cloud/trunk_v1alpha1.json",
+        "slug": "openstack.k-orc.cloud/v1alpha1/trunk"
+      },
+      {
+        "kind": "user",
+        "version": "v1alpha1",
+        "file": "openstack.k-orc.cloud/user_v1alpha1.json",
+        "slug": "openstack.k-orc.cloud/v1alpha1/user"
+      },
+      {
+        "kind": "volume",
+        "version": "v1alpha1",
+        "file": "openstack.k-orc.cloud/volume_v1alpha1.json",
+        "slug": "openstack.k-orc.cloud/v1alpha1/volume"
+      },
+      {
+        "kind": "volumetype",
+        "version": "v1alpha1",
+        "file": "openstack.k-orc.cloud/volumetype_v1alpha1.json",
+        "slug": "openstack.k-orc.cloud/v1alpha1/volumetype"
+      }
+    ],
     "opentelemetry.io": [
       {
         "kind": "instrumentation",

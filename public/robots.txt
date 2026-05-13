@@ -1,0 +1,49 @@
+User-agent: *
+Allow: /
+Content-Signal: ai-train=yes, search=yes, ai-input=yes
+
+# OpenAI
+User-agent: GPTBot
+Allow: /
+Content-Signal: ai-train=yes, search=yes, ai-input=yes
+
+User-agent: OAI-SearchBot
+Allow: /
+Content-Signal: ai-train=yes, search=yes, ai-input=yes
+
+# Anthropic
+User-agent: Claude-Web
+Allow: /
+Content-Signal: ai-train=yes, search=yes, ai-input=yes
+
+User-agent: anthropic-ai
+Allow: /
+Content-Signal: ai-train=yes, search=yes, ai-input=yes
+
+# Google
+User-agent: Google-Extended
+Allow: /
+Content-Signal: ai-train=yes, search=yes, ai-input=yes
+
+# Amazon
+User-agent: Amazonbot
+Allow: /
+Content-Signal: ai-train=yes, search=yes, ai-input=yes
+
+# Apple
+User-agent: Applebot-Extended
+Allow: /
+Content-Signal: ai-train=yes, search=yes, ai-input=yes
+
+# ByteDance / TikTok
+User-agent: Bytespider
+Allow: /
+Content-Signal: ai-train=yes, search=yes, ai-input=yes
+
+# Common Crawl
+User-agent: CCBot
+Allow: /
+Content-Signal: ai-train=yes, search=yes, ai-input=yes
+
+Sitemap: https://openspec-hub.portefaix.xyz/sitemap.xml
+Sitemap: https://openspec-hub.portefaix.xyz/sitemap-index.xml

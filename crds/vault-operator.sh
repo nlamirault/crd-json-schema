@@ -18,7 +18,7 @@ export FILES=(
 )
 
 # renovate: datasource=github-tags depName=hashicorp/vault-secrets-operator
-export VERSION=1.3.0
+export VERSION=1.4.0
 
 function generate_url {
   local crd_file=$1

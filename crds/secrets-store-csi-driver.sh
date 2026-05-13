@@ -10,7 +10,7 @@ export FILES=(
 )
 
 # renovate: datasource=github-tags depName=kubernetes-sigs/secrets-store-csi-driver
-export VERSION=1.5.6
+export VERSION=1.6.0
 
 function generate_url {
   local crd_file=$1

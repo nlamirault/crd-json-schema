@@ -53,6 +53,10 @@
           "minimum": 10,
           "type": "integer"
         },
+        "enableIPv6": {
+          "description": "EnableIPv6 indicates whether to enable IPv6 for instances created with this NodeClass",
+          "type": "boolean"
+        },
         "imageTemplateSelector": {
           "properties": {
             "variant": {

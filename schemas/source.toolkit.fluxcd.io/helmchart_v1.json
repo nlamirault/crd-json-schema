@@ -139,7 +139,13 @@
         "interval",
         "sourceRef"
       ],
-      "type": "object"
+      "type": "object",
+      "x-kubernetes-validations": [
+        {
+          "message": "spec.verify is only supported when spec.sourceRef.kind is 'HelmRepository'",
+          "rule": "!has(self.verify) || self.sourceRef.kind == 'HelmRepository'"
+        }
+      ]
     },
     "status": {
       "default": {

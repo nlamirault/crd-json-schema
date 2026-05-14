@@ -60,7 +60,7 @@ def generate_catalog(schemas_dir, output_dir):
         json.dump(sorted_catalog, f, indent=2)
 
     with open(os.path.join(output_dir, "titles.json"), "w") as f:
-        json.dump(dict(sorted(titles.items())), f, indent=2)
+        json.dump(titles, f, indent=2, sort_keys=True)
 
     print(f"Catalog generated in {output_dir}")
 

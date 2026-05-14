@@ -3,7 +3,7 @@ import * as fs from 'node:fs';
 import * as crypto from 'node:crypto';
 import * as path from 'node:path';
 
-const SITE = 'https://openspec-hub.portefaix.xyz';
+const SITE = 'https://schema-hub.portefaix.xyz';
 const SKILLS_DIR = path.resolve('public/.well-known/agent-skills');
 
 function sha256Digest(filePath: string): string {
@@ -15,7 +15,7 @@ const SKILLS = [
     {
         name: 'schema-lookup',
         type: 'skill-md' as const,
-        description: 'Look up a Kubernetes CRD JSON schema by kind, API group, and version from the OpenSpec HUB registry.',
+        description: 'Look up a Kubernetes CRD JSON schema by kind, API group, and version from the Schema Hub registry.',
         skillFile: path.join(SKILLS_DIR, 'schema-lookup', 'SKILL.md'),
         url: `${SITE}/.well-known/agent-skills/schema-lookup/SKILL.md`,
     },

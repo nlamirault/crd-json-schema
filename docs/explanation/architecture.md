@@ -1,6 +1,6 @@
-# Architecture of OpenSpec Hub
+# Architecture of Schema Hub
 
-This document explains _why_ OpenSpec Hub is structured the way it is — the goals, tradeoffs, and decisions behind the project. Read this when you want to understand the system, not when you need to perform a specific task.
+This document explains _why_ Schema Hub is structured the way it is — the goals, tradeoffs, and decisions behind the project. Read this when you want to understand the system, not when you need to perform a specific task.
 
 ---
 
@@ -12,7 +12,7 @@ However, IDEs and YAML editors cannot use CRD schemas directly. They need standa
 
 Several community schema stores (like `datreeio/CRDs-catalog` and `yannh/kubernetes-json-schema`) exist, but they are often incomplete, outdated, or do not cover the operators a given team uses.
 
-OpenSpec Hub fills this gap for a specific, curated set of cloud-native operators.
+Schema Hub fills this gap for a specific, curated set of cloud-native operators.
 
 ---
 
@@ -70,11 +70,11 @@ The catalog is a generated artifact (`public/data/catalog.json`) produced by `sc
 
 ---
 
-## What OpenSpec Hub does not do
+## What Schema Hub does not do
 
 - **Serve schemas from a custom domain**: schemas are accessed directly from GitHub raw content. No custom hosting is required.
-- **Validate clusters**: OpenSpec Hub produces schemas for editor and CI validation. It does not connect to a Kubernetes cluster.
-- **Generate CRDs**: schemas are extracted from existing upstream CRDs. OpenSpec Hub does not author or modify them.
+- **Validate clusters**: Schema Hub produces schemas for editor and CI validation. It does not connect to a Kubernetes cluster.
+- **Generate CRDs**: schemas are extracted from existing upstream CRDs. Schema Hub does not author or modify them.
 - **Cover all operators**: the project is curated. If an operator is not listed, it has not been added yet — see [How to add a new CRD](../how-to/howto-add-crd.md).
 
 ---

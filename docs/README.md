@@ -1,6 +1,6 @@
-# OpenSpec Hub Documentation
+# Schema Hub Documentation
 
-**OpenSpec Hub** is a collection of JSON schemas extracted from Kubernetes Custom Resource Definitions (CRDs) for popular cloud-native operators and controllers.
+**Schema Hub** is a collection of JSON schemas extracted from Kubernetes Custom Resource Definitions (CRDs) for popular cloud-native operators and controllers.
 
 This documentation follows the [Diátaxis](https://diataxis.fr/) framework, organized into four types based on what you need.
 
@@ -8,7 +8,7 @@ This documentation follows the [Diátaxis](https://diataxis.fr/) framework, orga
 
 ## Tutorials — learning by doing
 
-Start here if you are new to OpenSpec Hub.
+Start here if you are new to Schema Hub.
 
 | Document | Description |
 | -------- | ----------- |
@@ -42,7 +42,7 @@ Look these up when you need accurate, factual information.
 
 ## Explanation — understanding the design
 
-Read these to deepen your understanding of how and why OpenSpec Hub works the way it does.
+Read these to deepen your understanding of how and why Schema Hub works the way it does.
 
 | Document | Description |
 | -------- | ----------- |

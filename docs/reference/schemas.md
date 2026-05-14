@@ -3,7 +3,7 @@
 All schemas are served from:
 
 ```
-https://raw.githubusercontent.com/nlamirault/openspec-hub/main/schemas/{api-group}/{kind}_{version}.json
+https://raw.githubusercontent.com/nlamirault/schema-hub/main/schemas/{api-group}/{kind}_{version}.json
 ```
 
 All path components are lowercase.

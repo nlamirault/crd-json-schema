@@ -9,13 +9,13 @@ The `yaml-language-server` directive is a comment you add to the top of any YAML
 Place this comment on the first line of your YAML file:
 
 ```yaml
-# yaml-language-server: $schema=https://raw.githubusercontent.com/nlamirault/openspec-hub/main/schemas/{api-group}/{kind}_{version}.json
+# yaml-language-server: $schema=https://raw.githubusercontent.com/nlamirault/schema-hub/main/schemas/{api-group}/{kind}_{version}.json
 ```
 
 Example for an ArgoCD Application:
 
 ```yaml
-# yaml-language-server: $schema=https://raw.githubusercontent.com/nlamirault/openspec-hub/main/schemas/argoproj.io/application_v1alpha1.json
+# yaml-language-server: $schema=https://raw.githubusercontent.com/nlamirault/schema-hub/main/schemas/argoproj.io/application_v1alpha1.json
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
@@ -32,43 +32,43 @@ Copy the relevant comment into your YAML file:
 
 ```yaml
 # ArgoCD Application
-# yaml-language-server: $schema=https://raw.githubusercontent.com/nlamirault/openspec-hub/main/schemas/argoproj.io/application_v1alpha1.json
+# yaml-language-server: $schema=https://raw.githubusercontent.com/nlamirault/schema-hub/main/schemas/argoproj.io/application_v1alpha1.json
 
 # Flux Kustomization
-# yaml-language-server: $schema=https://raw.githubusercontent.com/nlamirault/openspec-hub/main/schemas/kustomize.toolkit.fluxcd.io/kustomization_v1.json
+# yaml-language-server: $schema=https://raw.githubusercontent.com/nlamirault/schema-hub/main/schemas/kustomize.toolkit.fluxcd.io/kustomization_v1.json
 
 # Flux HelmRelease
-# yaml-language-server: $schema=https://raw.githubusercontent.com/nlamirault/openspec-hub/main/schemas/helm.toolkit.fluxcd.io/helmrelease_v2.json
+# yaml-language-server: $schema=https://raw.githubusercontent.com/nlamirault/schema-hub/main/schemas/helm.toolkit.fluxcd.io/helmrelease_v2.json
 ```
 
 ### Observability
 
 ```yaml
 # Prometheus
-# yaml-language-server: $schema=https://raw.githubusercontent.com/nlamirault/openspec-hub/main/schemas/monitoring.coreos.com/prometheus_v1.json
+# yaml-language-server: $schema=https://raw.githubusercontent.com/nlamirault/schema-hub/main/schemas/monitoring.coreos.com/prometheus_v1.json
 
 # PrometheusRule
-# yaml-language-server: $schema=https://raw.githubusercontent.com/nlamirault/openspec-hub/main/schemas/monitoring.coreos.com/prometheusrule_v1.json
+# yaml-language-server: $schema=https://raw.githubusercontent.com/nlamirault/schema-hub/main/schemas/monitoring.coreos.com/prometheusrule_v1.json
 
 # OpenTelemetry Collector
-# yaml-language-server: $schema=https://raw.githubusercontent.com/nlamirault/openspec-hub/main/schemas/opentelemetry.io/opentelemetrycollector_v1beta1.json
+# yaml-language-server: $schema=https://raw.githubusercontent.com/nlamirault/schema-hub/main/schemas/opentelemetry.io/opentelemetrycollector_v1beta1.json
 ```
 
 ### Security
 
 ```yaml
 # ExternalSecret
-# yaml-language-server: $schema=https://raw.githubusercontent.com/nlamirault/openspec-hub/main/schemas/external-secrets.io/externalsecret_v1beta1.json
+# yaml-language-server: $schema=https://raw.githubusercontent.com/nlamirault/schema-hub/main/schemas/external-secrets.io/externalsecret_v1beta1.json
 
 # SecretStore
-# yaml-language-server: $schema=https://raw.githubusercontent.com/nlamirault/openspec-hub/main/schemas/external-secrets.io/secretstore_v1beta1.json
+# yaml-language-server: $schema=https://raw.githubusercontent.com/nlamirault/schema-hub/main/schemas/external-secrets.io/secretstore_v1beta1.json
 ```
 
 ### Databases
 
 ```yaml
 # CloudnativePG Cluster
-# yaml-language-server: $schema=https://raw.githubusercontent.com/nlamirault/openspec-hub/main/schemas/postgresql.cnpg.io/cluster_v1.json
+# yaml-language-server: $schema=https://raw.githubusercontent.com/nlamirault/schema-hub/main/schemas/postgresql.cnpg.io/cluster_v1.json
 ```
 
 ---
@@ -78,7 +78,7 @@ Copy the relevant comment into your YAML file:
 All schema URLs follow the same pattern:
 
 ```
-https://raw.githubusercontent.com/nlamirault/openspec-hub/main/schemas/{api-group}/{kind}_{version}.json
+https://raw.githubusercontent.com/nlamirault/schema-hub/main/schemas/{api-group}/{kind}_{version}.json
 ```
 
 - `{api-group}` — the Kubernetes API group, e.g. `argoproj.io`

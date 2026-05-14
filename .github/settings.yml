@@ -4,9 +4,9 @@
 ---
 # These settings are synced to GitHub by https://probot.github.io/apps/settings/
 repository:
-  name: openspec-hub
+  name: schema-hub
   description: JSON Schema for Kubernetes CRDs
-  homepage: https://openspec-hub.portefaix.xyz
+  homepage: https://schema-hub.portefaix.xyz
   topics: kubernetes, json-schema, crds
   private: false
   has_issues: true

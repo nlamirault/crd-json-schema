@@ -1,7 +1,7 @@
 import type { APIRoute } from 'astro';
 import catalog from '../../public/data/catalog.json';
 
-const SITE = 'https://openspec-hub.portefaix.xyz';
+const SITE = 'https://schema-hub.portefaix.xyz';
 
 export const GET: APIRoute = () => {
     const groups = Object.entries(catalog.groups);
@@ -16,7 +16,7 @@ export const GET: APIRoute = () => {
         .join('\n');
 
     const md = `\
-# OpenSpec HUB
+# Schema Hub
 
 > The central directory for Kubernetes Custom Resource Definitions. \
 ${totalResources.toLocaleString()} standardised JSON schemas across \
@@ -27,8 +27,8 @@ observability, networking, security, and core Kubernetes.
 
 - **Total schemas**: ${totalResources.toLocaleString()}
 - **API groups**: ${groups.length}
-- **Source**: <https://github.com/nlamirault/openspec-hub>
-- **Raw schema base**: <https://raw.githubusercontent.com/nlamirault/openspec-hub/main/schemas/>
+- **Source**: <https://github.com/nlamirault/schema-hub>
+- **Raw schema base**: <https://raw.githubusercontent.com/nlamirault/schema-hub/main/schemas/>
 - **Machine-readable catalog**: <${SITE}/data/catalog.json>
 - **Sitemap**: <${SITE}/sitemap.xml>
 
@@ -37,7 +37,7 @@ observability, networking, security, and core Kubernetes.
 Add a \`$schema\` reference to any Kubernetes manifest:
 
 \`\`\`yaml
-# yaml-language-server: $schema=https://raw.githubusercontent.com/nlamirault/openspec-hub/main/schemas/{api-group}/{kind}_{version}.json
+# yaml-language-server: $schema=https://raw.githubusercontent.com/nlamirault/schema-hub/main/schemas/{api-group}/{kind}_{version}.json
 apiVersion: example.io/v1
 kind: MyResource
 \`\`\`
@@ -46,7 +46,7 @@ With kubeconform:
 
 \`\`\`bash
 kubeconform \\
-  -schema-location 'https://raw.githubusercontent.com/nlamirault/openspec-hub/main/schemas/{{ .Group }}/{{ .ResourceKind }}_{{ .ResourceAPIVersion }}.json' \\
+  -schema-location 'https://raw.githubusercontent.com/nlamirault/schema-hub/main/schemas/{{ .Group }}/{{ .ResourceKind }}_{{ .ResourceAPIVersion }}.json' \\
   manifest.yaml
 \`\`\`
 

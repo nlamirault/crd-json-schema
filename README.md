@@ -1,4 +1,4 @@
-# OpenSpec Hub
+# Schema Hub
 
 [![License: Apache-2.0](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE)
 
@@ -6,12 +6,12 @@ A collection of JSON schemas extracted from Kubernetes Custom Resource Definitio
 
 ## Overview
 
-OpenSpec Hub provides ready-to-use JSON Schema files for Kubernetes CRDs. Use them in your IDE or CI pipeline to get validation and autocomplete for resources like ArgoCD Applications, Flux Kustomizations, Prometheus rules, External Secrets, and 70+ more.
+Schema Hub provides ready-to-use JSON Schema files for Kubernetes CRDs. Use them in your IDE or CI pipeline to get validation and autocomplete for resources like ArgoCD Applications, Flux Kustomizations, Prometheus rules, External Secrets, and 70+ more.
 
 Schemas are served directly from GitHub:
 
 ```
-https://raw.githubusercontent.com/nlamirault/openspec-hub/main/schemas/{api-group}/{kind}_{version}.json
+https://raw.githubusercontent.com/nlamirault/schema-hub/main/schemas/{api-group}/{kind}_{version}.json
 ```
 
 ## Documentation

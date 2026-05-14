@@ -17,7 +17,7 @@ Use these approaches when you want to validate Kubernetes manifests outside an I
 
 ```bash
 # Fetch schema and validate a manifest
-curl -s https://raw.githubusercontent.com/nlamirault/openspec-hub/main/schemas/argoproj.io/application_v1alpha1.json \
+curl -s https://raw.githubusercontent.com/nlamirault/schema-hub/main/schemas/argoproj.io/application_v1alpha1.json \
   | yq eval-all 'select(fileIndex == 0) as $schema | select(fileIndex == 1) | validate($schema)' - my-application.yaml
 ```
 
@@ -32,7 +32,7 @@ If the manifest is valid, the command exits with code 0 and no output. If it is 
 ```bash
 kubeconform \
   -schema-location default \
-  -schema-location 'https://raw.githubusercontent.com/nlamirault/openspec-hub/main/schemas/{{.Group}}/{{.ResourceKind}}_{{.ResourceAPIVersion}}.json' \
+  -schema-location 'https://raw.githubusercontent.com/nlamirault/schema-hub/main/schemas/{{.Group}}/{{.ResourceKind}}_{{.ResourceAPIVersion}}.json' \
   my-application.yaml
 ```
 
@@ -42,7 +42,7 @@ The `{{.Group}}`, `{{.ResourceKind}}`, and `{{.ResourceAPIVersion}}` placeholder
 
 ```bash
 kubeconform \
-  -schema-location 'https://raw.githubusercontent.com/nlamirault/openspec-hub/main/schemas/{{.Group}}/{{.ResourceKind}}_{{.ResourceAPIVersion}}.json' \
+  -schema-location 'https://raw.githubusercontent.com/nlamirault/schema-hub/main/schemas/{{.Group}}/{{.ResourceKind}}_{{.ResourceAPIVersion}}.json' \
   -recursive \
   manifests/
 ```
@@ -53,7 +53,7 @@ kubeconform \
 - name: Validate manifests
   run: |
     kubeconform \
-      -schema-location 'https://raw.githubusercontent.com/nlamirault/openspec-hub/main/schemas/{{.Group}}/{{.ResourceKind}}_{{.ResourceAPIVersion}}.json' \
+      -schema-location 'https://raw.githubusercontent.com/nlamirault/schema-hub/main/schemas/{{.Group}}/{{.ResourceKind}}_{{.ResourceAPIVersion}}.json' \
       -recursive \
       -summary \
       manifests/
@@ -70,7 +70,7 @@ If you are in a restricted network environment or want to avoid repeated remote 
 mkdir -p .schemas/argoproj.io
 
 # Download specific schema
-curl -s https://raw.githubusercontent.com/nlamirault/openspec-hub/main/schemas/argoproj.io/application_v1alpha1.json \
+curl -s https://raw.githubusercontent.com/nlamirault/schema-hub/main/schemas/argoproj.io/application_v1alpha1.json \
   -o .schemas/argoproj.io/application_v1alpha1.json
 ```
 
@@ -83,7 +83,7 @@ Then point your tools at the local path instead of the remote URL.
 Schema URLs follow this pattern:
 
 ```
-https://raw.githubusercontent.com/nlamirault/openspec-hub/main/schemas/{api-group}/{kind}_{version}.json
+https://raw.githubusercontent.com/nlamirault/schema-hub/main/schemas/{api-group}/{kind}_{version}.json
 ```
 
 All values are lowercase. See the [Supported schemas reference](../reference/schemas.md) for the full list.

@@ -49,7 +49,7 @@ export async function getStaticPaths() {
 
 const { pageType, group, resources, file, version, kind, siblingVersions } = Astro.props;
 
-const GITHUB_RAW_BASE = 'https://raw.githubusercontent.com/nlamirault/openspec-hub/main/schemas';
+const GITHUB_RAW_BASE = 'https://raw.githubusercontent.com/nlamirault/schema-hub/main/schemas';
 
 let schema: any;
 let schemaDescription: string;
@@ -135,7 +135,7 @@ const sortedVersions = Object.keys(resourcesByVersion).sort((a, b) => b.localeCo
 
         <footer class="mt-20 pt-8 border-t border-gray-100 dark:border-slate-800 flex justify-between items-center">
             <div class="text-[10px] text-gray-400 dark:text-slate-500 font-bold uppercase tracking-widest">
-                OpenSpec HUB
+                Schema Hub
             </div>
             <div class="text-[10px] text-gray-300 dark:text-slate-600 font-mono">
                 {group}
@@ -219,10 +219,10 @@ const sortedVersions = Object.keys(resourcesByVersion).sort((a, b) => b.localeCo
 
         <footer class="mt-20 pt-8 border-t border-gray-100 dark:border-slate-800 flex justify-between items-center">
             <div class="text-[10px] text-gray-400 dark:text-slate-500 font-bold uppercase tracking-widest">
-                OpenSpec HUB
+                Schema Hub
             </div>
             <a
-                href={`https://github.com/nlamirault/openspec-hub/blob/main/schemas/${file}`}
+                href={`https://github.com/nlamirault/schema-hub/blob/main/schemas/${file}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 class="text-[10px] text-gray-300 dark:text-slate-600 font-mono hover:text-blue-500 dark:hover:text-blue-400 transition-colors"

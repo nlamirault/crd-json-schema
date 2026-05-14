@@ -14,12 +14,12 @@
   <rect x="80" y="72" width="64" height="64" rx="14" fill="#2563eb"/>
   <text x="112" y="116" text-anchor="middle" font-family="Inter,system-ui,sans-serif" font-size="22" font-weight="900" fill="white">OS</text>
   <!-- Title -->
-  <text x="80" y="290" font-family="Inter,system-ui,sans-serif" font-size="86" font-weight="900" fill="white" letter-spacing="-3">OpenSpec</text>
-  <text x="80" y="385" font-family="Inter,system-ui,sans-serif" font-size="86" font-weight="400" font-style="italic" fill="#3b82f6" letter-spacing="-2">HUB</text>
+  <text x="80" y="290" font-family="Inter,system-ui,sans-serif" font-size="86" font-weight="900" fill="white" letter-spacing="-3">Schema</text>
+  <text x="80" y="385" font-family="Inter,system-ui,sans-serif" font-size="86" font-weight="400" font-style="italic" fill="#3b82f6" letter-spacing="-2">Hub</text>
   <!-- Subtitle -->
   <text x="80" y="455" font-family="Inter,system-ui,sans-serif" font-size="28" fill="#94a3b8">The central directory for Kubernetes CRD schemas</text>
   <!-- Tag line -->
   <text x="80" y="510" font-family="Inter,system-ui,sans-serif" font-size="20" fill="#3b82f6" font-weight="600">cloud-native ecosystem · open source registry</text>
   <!-- URL -->
-  <text x="1120" y="590" text-anchor="end" font-family="Inter,system-ui,sans-serif" font-size="18" fill="#475569">github.com/nlamirault/openspec-hub</text>
+  <text x="1120" y="590" text-anchor="end" font-family="Inter,system-ui,sans-serif" font-size="18" fill="#475569">github.com/nlamirault/schema-hub</text>
 </svg>

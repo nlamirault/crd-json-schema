@@ -16992,6 +16992,20 @@
         "slug": "traefik.io/v1alpha1/traefikservice"
       }
     ],
+    "tuppr.home-operations.com": [
+      {
+        "kind": "kubernetesupgrade",
+        "version": "v1alpha1",
+        "file": "tuppr.home-operations.com/kubernetesupgrade_v1alpha1.json",
+        "slug": "tuppr.home-operations.com/v1alpha1/kubernetesupgrade"
+      },
+      {
+        "kind": "talosupgrade",
+        "version": "v1alpha1",
+        "file": "tuppr.home-operations.com/talosupgrade_v1alpha1.json",
+        "slug": "tuppr.home-operations.com/v1alpha1/talosupgrade"
+      }
+    ],
     "vertexai.cnrm.cloud.google.com": [
       {
         "kind": "vertexaidataset",

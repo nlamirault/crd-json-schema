@@ -10324,6 +10324,68 @@
         "slug": "kafka.services.k8s.aws/v1alpha1/serverlesscluster"
       }
     ],
+    "kagent.dev": [
+      {
+        "kind": "agent",
+        "version": "v1alpha1",
+        "file": "kagent.dev/agent_v1alpha1.json",
+        "slug": "kagent.dev/v1alpha1/agent"
+      },
+      {
+        "kind": "agent",
+        "version": "v1alpha2",
+        "file": "kagent.dev/agent_v1alpha2.json",
+        "slug": "kagent.dev/v1alpha2/agent"
+      },
+      {
+        "kind": "agentharness",
+        "version": "v1alpha2",
+        "file": "kagent.dev/agentharness_v1alpha2.json",
+        "slug": "kagent.dev/v1alpha2/agentharness"
+      },
+      {
+        "kind": "memory",
+        "version": "v1alpha1",
+        "file": "kagent.dev/memory_v1alpha1.json",
+        "slug": "kagent.dev/v1alpha1/memory"
+      },
+      {
+        "kind": "modelconfig",
+        "version": "v1alpha1",
+        "file": "kagent.dev/modelconfig_v1alpha1.json",
+        "slug": "kagent.dev/v1alpha1/modelconfig"
+      },
+      {
+        "kind": "modelconfig",
+        "version": "v1alpha2",
+        "file": "kagent.dev/modelconfig_v1alpha2.json",
+        "slug": "kagent.dev/v1alpha2/modelconfig"
+      },
+      {
+        "kind": "modelproviderconfig",
+        "version": "v1alpha2",
+        "file": "kagent.dev/modelproviderconfig_v1alpha2.json",
+        "slug": "kagent.dev/v1alpha2/modelproviderconfig"
+      },
+      {
+        "kind": "remotemcpserver",
+        "version": "v1alpha2",
+        "file": "kagent.dev/remotemcpserver_v1alpha2.json",
+        "slug": "kagent.dev/v1alpha2/remotemcpserver"
+      },
+      {
+        "kind": "sandboxagent",
+        "version": "v1alpha2",
+        "file": "kagent.dev/sandboxagent_v1alpha2.json",
+        "slug": "kagent.dev/v1alpha2/sandboxagent"
+      },
+      {
+        "kind": "toolserver",
+        "version": "v1alpha1",
+        "file": "kagent.dev/toolserver_v1alpha1.json",
+        "slug": "kagent.dev/v1alpha1/toolserver"
+      }
+    ],
     "kargo.akuity.io": [
       {
         "kind": "clusterconfig",

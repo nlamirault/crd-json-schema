@@ -1,5 +1,20 @@
 # Changelog
 
+## [1.7.0](https://github.com/nlamirault/schema-hub/compare/schema-hub-v1.6.0...schema-hub-v1.7.0) (2026-05-25)
+
+
+### 🚀 Features
+
+* **crd:** add agent gateway CRD schemas ([#331](https://github.com/nlamirault/schema-hub/issues/331)) ([2c5eb44](https://github.com/nlamirault/schema-hub/commit/2c5eb4457785c4d9b301ea210e318a9a61522a7a)), closes [#321](https://github.com/nlamirault/schema-hub/issues/321)
+* **crd:** add kagent support ([#330](https://github.com/nlamirault/schema-hub/issues/330)) ([ecef0a6](https://github.com/nlamirault/schema-hub/commit/ecef0a695870dd72744ebdaf29a4a4fc6fb36a24)), closes [#327](https://github.com/nlamirault/schema-hub/issues/327)
+* **sympozium:** add sympozium CRD schemas for AI orchestration ([#329](https://github.com/nlamirault/schema-hub/issues/329)) ([f526613](https://github.com/nlamirault/schema-hub/commit/f526613118cc276576241bd5721957a75dd8aaba)), closes [#328](https://github.com/nlamirault/schema-hub/issues/328)
+* **tuppr:** add tuppr CRD schemas for kubernetes and talos upgrades ([#323](https://github.com/nlamirault/schema-hub/issues/323)) ([f3fc120](https://github.com/nlamirault/schema-hub/commit/f3fc120ecb426f3d0a6c950d948f984308bef918)), closes [#322](https://github.com/nlamirault/schema-hub/issues/322)
+
+
+### 🚨 Maintenance
+
+* changelog cleanup ([2edb390](https://github.com/nlamirault/schema-hub/commit/2edb3900368192570db65a9f25390d46909c7576))
+
 ## [1.6.0](https://github.com/nlamirault/schema-hub/compare/schema-hub-v1.5.0...schema-hub-v1.6.0) (2026-05-14)
 
 ### 🐛 Bug Fixes

@@ -16850,6 +16850,62 @@
         "slug": "subscription.azure.com/v1api20211001storage/alias"
       }
     ],
+    "sympozium.ai": [
+      {
+        "kind": "agent",
+        "version": "v1alpha1",
+        "file": "sympozium.ai/agent_v1alpha1.json",
+        "slug": "sympozium.ai/v1alpha1/agent"
+      },
+      {
+        "kind": "agentrun",
+        "version": "v1alpha1",
+        "file": "sympozium.ai/agentrun_v1alpha1.json",
+        "slug": "sympozium.ai/v1alpha1/agentrun"
+      },
+      {
+        "kind": "ensemble",
+        "version": "v1alpha1",
+        "file": "sympozium.ai/ensemble_v1alpha1.json",
+        "slug": "sympozium.ai/v1alpha1/ensemble"
+      },
+      {
+        "kind": "mcpserver",
+        "version": "v1alpha1",
+        "file": "sympozium.ai/mcpserver_v1alpha1.json",
+        "slug": "sympozium.ai/v1alpha1/mcpserver"
+      },
+      {
+        "kind": "model",
+        "version": "v1alpha1",
+        "file": "sympozium.ai/model_v1alpha1.json",
+        "slug": "sympozium.ai/v1alpha1/model"
+      },
+      {
+        "kind": "skillpack",
+        "version": "v1alpha1",
+        "file": "sympozium.ai/skillpack_v1alpha1.json",
+        "slug": "sympozium.ai/v1alpha1/skillpack"
+      },
+      {
+        "kind": "sympoziumconfig",
+        "version": "v1alpha1",
+        "file": "sympozium.ai/sympoziumconfig_v1alpha1.json",
+        "slug": "sympozium.ai/v1alpha1/sympoziumconfig"
+      },
+      {
+        "kind": "sympoziumpolicy",
+        "version": "v1alpha1",
+        "file": "sympozium.ai/sympoziumpolicy_v1alpha1.json",
+        "slug": "sympozium.ai/v1alpha1/sympoziumpolicy"
+      },
+      {
+        "kind": "sympoziumschedule",
+        "version": "v1alpha1",
+        "file": "sympozium.ai/sympoziumschedule_v1alpha1.json",
+        "slug": "sympozium.ai/v1alpha1/sympoziumschedule"
+      }
+    ],
     "synapse.azure.com": [
       {
         "kind": "workspace",

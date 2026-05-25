@@ -474,6 +474,26 @@
         "slug": "admissionregistration.api.k8s.io/v1/WebhookClientConfig"
       }
     ],
+    "agentgateway.dev": [
+      {
+        "kind": "agentgatewaybackend",
+        "version": "v1alpha1",
+        "file": "agentgateway.dev/agentgatewaybackend_v1alpha1.json",
+        "slug": "agentgateway.dev/v1alpha1/agentgatewaybackend"
+      },
+      {
+        "kind": "agentgatewayparameters",
+        "version": "v1alpha1",
+        "file": "agentgateway.dev/agentgatewayparameters_v1alpha1.json",
+        "slug": "agentgateway.dev/v1alpha1/agentgatewayparameters"
+      },
+      {
+        "kind": "agentgatewaypolicy",
+        "version": "v1alpha1",
+        "file": "agentgateway.dev/agentgatewaypolicy_v1alpha1.json",
+        "slug": "agentgateway.dev/v1alpha1/agentgatewaypolicy"
+      }
+    ],
     "aiplatform.cnrm.cloud.google.com": [
       {
         "kind": "aiplatformmodel",

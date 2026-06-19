@@ -494,6 +494,26 @@
         "slug": "agentgateway.dev/v1alpha1/agentgatewaypolicy"
       }
     ],
+    "agentic.networking.x-k8s.io": [
+      {
+        "kind": "xaccesspolicy",
+        "version": "v0alpha0",
+        "file": "agentic.networking.x-k8s.io/xaccesspolicy_v0alpha0.json",
+        "slug": "agentic.networking.x-k8s.io/v0alpha0/xaccesspolicy"
+      },
+      {
+        "kind": "xaccesspolicy",
+        "version": "v1alpha1",
+        "file": "agentic.networking.x-k8s.io/xaccesspolicy_v1alpha1.json",
+        "slug": "agentic.networking.x-k8s.io/v1alpha1/xaccesspolicy"
+      },
+      {
+        "kind": "xbackend",
+        "version": "v0alpha0",
+        "file": "agentic.networking.x-k8s.io/xbackend_v0alpha0.json",
+        "slug": "agentic.networking.x-k8s.io/v0alpha0/xbackend"
+      }
+    ],
     "aiplatform.cnrm.cloud.google.com": [
       {
         "kind": "aiplatformmodel",

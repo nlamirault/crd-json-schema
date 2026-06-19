@@ -3,13 +3,13 @@
 # SPDX-FileCopyrightText: Copyright (C) Nicolas Lamirault <nicolas.lamirault@gmail.com>
 # SPDX-License-Identifier: Apache-2.0
 
-color_reset="\\e[0m"
-color_blue="\\e[36m"
-color_green="\\e[32m"
-color_yellow="\\e[33m"
+color_reset="\033[0m"
+color_blue="\033[36m"    # Note : 36m est en réalité le Cyan, le Bleu est 34m
+color_green="\033[32m"
+color_yellow="\033[33m"
 # shellcheck disable=SC2034
-color_gray="\\e[90m"
-color_red="\\e[31m"
+color_gray="\033[90m"
+color_red="\033[31m"
 
 
 # Define log levels

@@ -12,6 +12,7 @@ import {
   GitBranch,
   Layers,
   Search,
+  BrainCircuit,
 } from "lucide-react";
 
 const groups = Object.entries(catalog.groups);
@@ -134,6 +135,20 @@ const categories = [
     topBorder: "border-t-2 border-t-blue-600 dark:border-t-blue-500",
     description: "Native Kubernetes API resources, extensions, and cluster management",
     match: (g: string) => g.includes("k8s.io"),
+  },
+  {
+    name: "AI Orchestration",
+    icon: BrainCircuit,
+    color: "text-fuchsia-600",
+    bg: "bg-fuchsia-50 dark:bg-fuchsia-900/20",
+    border: "border-fuchsia-100 dark:border-fuchsia-900/40",
+    topBorder: "border-t-2 border-t-fuchsia-400 dark:border-t-fuchsia-500",
+    description: "KAgent, Agent Gateway, and Kube Agentic Networking CRDs for running AI agents on Kubernetes",
+    match: (g: string) =>
+      g.includes("kagent") ||
+      g.includes("agentgateway") ||
+      g.includes("agentic") ||
+      g.includes("sympozium"),
   },
 ];
 

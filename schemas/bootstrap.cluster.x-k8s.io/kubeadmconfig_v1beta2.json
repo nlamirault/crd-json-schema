@@ -1215,8 +1215,43 @@
                     "minLength": 1,
                     "type": "string"
                   },
+                  "diskLayout": {
+                    "description": "diskLayout specifies an ordered list of partitions, where each item defines the\npercentage of disk space and optional partition type for that partition.\nThe sum of all partition percentages must not be greater than 100.\nMutually exclusive with layout.",
+                    "items": {
+                      "description": "PartitionSpec defines the size and optional type for a partition.",
+                      "properties": {
+                        "partitionType": {
+                          "description": "partitionType is the partition type (optional).\nSupported values are Linux, LinuxSwap, LinuxRAID, LVM, Fat32, NTFS,\nand LinuxExtended. These are translated to cloud-init partition type codes.\nA full GPT partition GUID is also supported as a passthrough value.",
+                          "maxLength": 36,
+                          "minLength": 1,
+                          "type": "string",
+                          "x-kubernetes-validations": [
+                            {
+                              "message": "partitionType must be one of Linux, LinuxSwap, LinuxRAID, LVM, Fat32, NTFS, LinuxExtended or a full GPT partition GUID",
+                              "rule": "self.matches('^(Linux|LinuxSwap|LinuxRAID|LVM|Fat32|NTFS|LinuxExtended|[0-9A-Fa-f]{8}(-[0-9A-Fa-f]{4}){3}-[0-9A-Fa-f]{12})$')"
+                            }
+                          ]
+                        },
+                        "percentage": {
+                          "description": "percentage of disk that partition will take (1-100)",
+                          "format": "int32",
+                          "maximum": 100,
+                          "minimum": 1,
+                          "type": "integer"
+                        }
+                      },
+                      "required": [
+                        "percentage"
+                      ],
+                      "type": "object"
+                    },
+                    "maxItems": 100,
+                    "minItems": 1,
+                    "type": "array",
+                    "x-kubernetes-list-type": "atomic"
+                  },
                   "layout": {
-                    "description": "layout specifies the device layout.\nIf it is true, a single partition will be created for the entire device.\nWhen layout is false, it means don't partition or ignore existing partitioning.",
+                    "description": "layout specifies the device layout.\nIf it is true, a single partition will be created for the entire device.\nWhen layout is false, it means don't partition or ignore existing partitioning.\nMutually exclusive with diskLayout.",
                     "type": "boolean"
                   },
                   "overwrite": {
@@ -1233,10 +1268,15 @@
                   }
                 },
                 "required": [
-                  "device",
-                  "layout"
+                  "device"
                 ],
-                "type": "object"
+                "type": "object",
+                "x-kubernetes-validations": [
+                  {
+                    "message": "exactly one of the fields in [layout diskLayout] must be set",
+                    "rule": "[has(self.layout),has(self.diskLayout)].filter(x,x==true).size() == 1"
+                  }
+                ]
               },
               "maxItems": 100,
               "type": "array",
@@ -2324,7 +2364,7 @@
                 "conditions": {
                   "description": "conditions defines current service state of the KubeadmConfig.\n\nDeprecated: This field is deprecated and is going to be removed when support for v1beta1 will be dropped. Please see https://github.com/kubernetes-sigs/cluster-api/blob/main/docs/proposals/20240916-improve-status-in-CAPI-resources.md for more details.",
                   "items": {
-                    "description": "Condition defines an observation of a Cluster API resource operational state.",
+                    "description": "Condition defines an observation of a Cluster API resource operational state.\n\nDeprecated: This type is deprecated and is going to be removed when support for v1beta1 will be dropped. Please see https://github.com/kubernetes-sigs/cluster-api/blob/main/docs/proposals/20240916-improve-status-in-CAPI-resources.md for more details.",
                     "properties": {
                       "lastTransitionTime": {
                         "description": "lastTransitionTime is the last time the condition transitioned from one status to another.\nThis should be when the underlying condition changed. If that is not known, then using the time when\nthe API field changed is acceptable.",

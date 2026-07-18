@@ -389,13 +389,7 @@
                         "maxLength": 317,
                         "minLength": 1,
                         "pattern": "^([a-z0-9]([-a-z0-9]*[a-z0-9])?(\\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*\\/)?([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9]$",
-                        "type": "string",
-                        "x-kubernetes-validations": [
-                          {
-                            "message": "key must be a valid qualified name of max size 63 characters with an optional subdomain prefix of max size 253 characters",
-                            "rule": "self.contains('/') ? ( self.split('/') [0].size() <= 253 && self.split('/') [1].size() <= 63 && self.split('/').size() == 2 ) : self.size() <= 63"
-                          }
-                        ]
+                        "type": "string"
                       },
                       "propagation": {
                         "description": "propagation defines how this taint should be propagated to nodes.\nValid values are 'Always' and 'OnInitialization'.\nAlways: The taint will be continuously reconciled. If it is not set for a node, it will be added during reconciliation.\nOnInitialization: The taint will be added during node initialization. If it gets removed from the node later on it will not get added again.",
@@ -540,7 +534,7 @@
                 "conditions": {
                   "description": "conditions defines current service state of the MachineDeployment.\n\nDeprecated: This field is deprecated and is going to be removed when support for v1beta1 will be dropped. Please see https://github.com/kubernetes-sigs/cluster-api/blob/main/docs/proposals/20240916-improve-status-in-CAPI-resources.md for more details.",
                   "items": {
-                    "description": "Condition defines an observation of a Cluster API resource operational state.",
+                    "description": "Condition defines an observation of a Cluster API resource operational state.\n\nDeprecated: This type is deprecated and is going to be removed when support for v1beta1 will be dropped. Please see https://github.com/kubernetes-sigs/cluster-api/blob/main/docs/proposals/20240916-improve-status-in-CAPI-resources.md for more details.",
                     "properties": {
                       "lastTransitionTime": {
                         "description": "lastTransitionTime is the last time the condition transitioned from one status to another.\nThis should be when the underlying condition changed. If that is not known, then using the time when\nthe API field changed is acceptable.",

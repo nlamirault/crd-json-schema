@@ -49,9 +49,23 @@
                 "entraID": {
                   "description": "EntraID: The Entra ID of the group.",
                   "properties": {
+                    "annotations": {
+                      "additionalProperties": {
+                        "type": "string"
+                      },
+                      "description": "Annotations is an optional set of annotations to apply to the ConfigMap.",
+                      "type": "object"
+                    },
                     "key": {
                       "description": "Key is the key in the ConfigMap being referenced",
                       "type": "string"
+                    },
+                    "labels": {
+                      "additionalProperties": {
+                        "type": "string"
+                      },
+                      "description": "Labels is an optional set of labels to apply to the ConfigMap.",
+                      "type": "object"
                     },
                     "name": {
                       "description": "Name is the name of the Kubernetes ConfigMap to write to.\nThe ConfigMap will be created in the same namespace as the resource.",

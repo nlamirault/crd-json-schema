@@ -1,5 +1,5 @@
 {
-  "description": "Storage version of v1api20201101.VirtualNetworkGateway\nGenerator information:\n- Generated from: /network/resource-manager/Microsoft.Network/stable/2020-11-01/virtualNetworkGateway.json\n- ARM URI: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways/{virtualNetworkGatewayName}",
+  "description": "Storage version of v1api20201101.VirtualNetworkGateway\nGenerator information:\n- Generated from: /network/resource-manager/Microsoft.Network/Network/stable/2020-11-01/virtualNetworkGateway.json\n- ARM URI: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways/{virtualNetworkGatewayName}",
   "properties": {
     "apiVersion": {
       "description": "APIVersion defines the versioned schema of this representation of an object.\nServers should convert recognized schemas to the latest internal value, and\nmay reject unrecognized values.\nMore info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
@@ -274,9 +274,23 @@
               "items": {
                 "description": "DestinationExpression is a CEL expression and a destination to store the result in. The destination may\nbe a secret or a configmap. The value of the expression is stored at the specified location in\nthe destination.",
                 "properties": {
+                  "annotations": {
+                    "additionalProperties": {
+                      "type": "string"
+                    },
+                    "description": "Annotations is an optional set of annotations to apply to the destination resource.",
+                    "type": "object"
+                  },
                   "key": {
                     "description": "Key is the key in the ConfigMap or Secret being written to. If the CEL expression in Value returns a string\nthis is required to identify what key to write to. If the CEL expression in Value returns a map[string]string\nKey must not be set, instead the keys written will be determined dynamically based on the keys of the resulting\nmap[string]string.",
                     "type": "string"
+                  },
+                  "labels": {
+                    "additionalProperties": {
+                      "type": "string"
+                    },
+                    "description": "Labels is an optional set of labels to apply to the destination resource.",
+                    "type": "object"
                   },
                   "name": {
                     "description": "Name is the name of the Kubernetes configmap or secret to write to.\nThe configmap or secret will be created in the same namespace as the resource.",
@@ -299,9 +313,23 @@
               "items": {
                 "description": "DestinationExpression is a CEL expression and a destination to store the result in. The destination may\nbe a secret or a configmap. The value of the expression is stored at the specified location in\nthe destination.",
                 "properties": {
+                  "annotations": {
+                    "additionalProperties": {
+                      "type": "string"
+                    },
+                    "description": "Annotations is an optional set of annotations to apply to the destination resource.",
+                    "type": "object"
+                  },
                   "key": {
                     "description": "Key is the key in the ConfigMap or Secret being written to. If the CEL expression in Value returns a string\nthis is required to identify what key to write to. If the CEL expression in Value returns a map[string]string\nKey must not be set, instead the keys written will be determined dynamically based on the keys of the resulting\nmap[string]string.",
                     "type": "string"
+                  },
+                  "labels": {
+                    "additionalProperties": {
+                      "type": "string"
+                    },
+                    "description": "Labels is an optional set of labels to apply to the destination resource.",
+                    "type": "object"
                   },
                   "name": {
                     "description": "Name is the name of the Kubernetes configmap or secret to write to.\nThe configmap or secret will be created in the same namespace as the resource.",
@@ -411,7 +439,22 @@
               "type": "string"
             },
             "radiusServerSecret": {
-              "type": "string"
+              "description": "SecretReference is a reference to a Kubernetes secret and key in the same namespace as\nthe resource it is on.",
+              "properties": {
+                "key": {
+                  "description": "Key is the key in the Kubernetes secret being referenced",
+                  "type": "string"
+                },
+                "name": {
+                  "description": "Name is the name of the Kubernetes secret being referenced.\nThe secret must be in the same namespace as the resource",
+                  "type": "string"
+                }
+              },
+              "required": [
+                "key",
+                "name"
+              ],
+              "type": "object"
             },
             "radiusServers": {
               "items": {
@@ -431,7 +474,22 @@
                     "type": "integer"
                   },
                   "radiusServerSecret": {
-                    "type": "string"
+                    "description": "SecretReference is a reference to a Kubernetes secret and key in the same namespace as\nthe resource it is on.",
+                    "properties": {
+                      "key": {
+                        "description": "Key is the key in the Kubernetes secret being referenced",
+                        "type": "string"
+                      },
+                      "name": {
+                        "description": "Name is the name of the Kubernetes secret being referenced.\nThe secret must be in the same namespace as the resource",
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "key",
+                      "name"
+                    ],
+                    "type": "object"
                   }
                 },
                 "type": "object"
@@ -895,9 +953,6 @@
             "radiusServerAddress": {
               "type": "string"
             },
-            "radiusServerSecret": {
-              "type": "string"
-            },
             "radiusServers": {
               "items": {
                 "description": "Storage version of v1api20201101.RadiusServer_STATUS\nRadius Server Settings.",
@@ -914,9 +969,6 @@
                   },
                   "radiusServerScore": {
                     "type": "integer"
-                  },
-                  "radiusServerSecret": {
-                    "type": "string"
                   }
                 },
                 "type": "object"

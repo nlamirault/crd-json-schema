@@ -60,6 +60,7 @@
             "customHeaders": {
               "description": "CustomHeaders: List of custom headers.",
               "items": {
+                "description": "Custom header name and value.",
                 "properties": {
                   "name": {
                     "description": "Name: Header name.",
@@ -77,6 +78,7 @@
             "expectedStatusCodeRanges": {
               "description": "ExpectedStatusCodeRanges: List of expected status code ranges.",
               "items": {
+                "description": "Min and max value of a status code range.",
                 "properties": {
                   "max": {
                     "description": "Max: Max status code.",
@@ -142,9 +144,23 @@
               "items": {
                 "description": "DestinationExpression is a CEL expression and a destination to store the result in. The destination may\nbe a secret or a configmap. The value of the expression is stored at the specified location in\nthe destination.",
                 "properties": {
+                  "annotations": {
+                    "additionalProperties": {
+                      "type": "string"
+                    },
+                    "description": "Annotations is an optional set of annotations to apply to the destination resource.",
+                    "type": "object"
+                  },
                   "key": {
                     "description": "Key is the key in the ConfigMap or Secret being written to. If the CEL expression in Value returns a string\nthis is required to identify what key to write to. If the CEL expression in Value returns a map[string]string\nKey must not be set, instead the keys written will be determined dynamically based on the keys of the resulting\nmap[string]string.",
                     "type": "string"
+                  },
+                  "labels": {
+                    "additionalProperties": {
+                      "type": "string"
+                    },
+                    "description": "Labels is an optional set of labels to apply to the destination resource.",
+                    "type": "object"
                   },
                   "name": {
                     "description": "Name is the name of the Kubernetes configmap or secret to write to.\nThe configmap or secret will be created in the same namespace as the resource.",
@@ -169,9 +185,23 @@
                 "dnsConfigFqdn": {
                   "description": "DnsConfigFqdn: indicates where the DnsConfigFqdn config map should be placed. If omitted, no config map will be created.",
                   "properties": {
+                    "annotations": {
+                      "additionalProperties": {
+                        "type": "string"
+                      },
+                      "description": "Annotations is an optional set of annotations to apply to the ConfigMap.",
+                      "type": "object"
+                    },
                     "key": {
                       "description": "Key is the key in the ConfigMap being referenced",
                       "type": "string"
+                    },
+                    "labels": {
+                      "additionalProperties": {
+                        "type": "string"
+                      },
+                      "description": "Labels is an optional set of labels to apply to the ConfigMap.",
+                      "type": "object"
                     },
                     "name": {
                       "description": "Name is the name of the Kubernetes ConfigMap to write to.\nThe ConfigMap will be created in the same namespace as the resource.",
@@ -192,9 +222,23 @@
               "items": {
                 "description": "DestinationExpression is a CEL expression and a destination to store the result in. The destination may\nbe a secret or a configmap. The value of the expression is stored at the specified location in\nthe destination.",
                 "properties": {
+                  "annotations": {
+                    "additionalProperties": {
+                      "type": "string"
+                    },
+                    "description": "Annotations is an optional set of annotations to apply to the destination resource.",
+                    "type": "object"
+                  },
                   "key": {
                     "description": "Key is the key in the ConfigMap or Secret being written to. If the CEL expression in Value returns a string\nthis is required to identify what key to write to. If the CEL expression in Value returns a map[string]string\nKey must not be set, instead the keys written will be determined dynamically based on the keys of the resulting\nmap[string]string.",
                     "type": "string"
+                  },
+                  "labels": {
+                    "additionalProperties": {
+                      "type": "string"
+                    },
+                    "description": "Labels is an optional set of labels to apply to the destination resource.",
+                    "type": "object"
                   },
                   "name": {
                     "description": "Name is the name of the Kubernetes configmap or secret to write to.\nThe configmap or secret will be created in the same namespace as the resource.",
@@ -354,9 +398,108 @@
           "items": {
             "description": "Class representing a Traffic Manager endpoint.",
             "properties": {
+              "alwaysServe": {
+                "description": "AlwaysServe: If Always Serve is enabled, probing for endpoint health will be disabled and endpoints will be included in\nthe traffic routing method.",
+                "type": "string"
+              },
+              "customHeaders": {
+                "description": "CustomHeaders: List of custom headers.",
+                "items": {
+                  "description": "Custom header name and value.",
+                  "properties": {
+                    "name": {
+                      "description": "Name: Header name.",
+                      "type": "string"
+                    },
+                    "value": {
+                      "description": "Value: Header value.",
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                },
+                "type": "array"
+              },
+              "endpointLocation": {
+                "description": "EndpointLocation: Specifies the location of the external or nested endpoints when using the 'Performance' traffic\nrouting method.",
+                "type": "string"
+              },
+              "endpointMonitorStatus": {
+                "description": "EndpointMonitorStatus: The monitoring status of the endpoint.",
+                "type": "string"
+              },
+              "endpointStatus": {
+                "description": "EndpointStatus: The status of the endpoint. If the endpoint is Enabled, it is probed for endpoint health and is included\nin the traffic routing method.",
+                "type": "string"
+              },
+              "geoMapping": {
+                "description": "GeoMapping: The list of countries/regions mapped to this endpoint when using the 'Geographic' traffic routing method.\nPlease consult Traffic Manager Geographic documentation for a full list of accepted values.",
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              },
               "id": {
                 "description": "Id: Fully qualified resource Id for the resource. Ex -\n/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/trafficManagerProfiles/{resourceName}",
                 "type": "string"
+              },
+              "minChildEndpoints": {
+                "description": "MinChildEndpoints: The minimum number of endpoints that must be available in the child profile in order for the parent\nprofile to be considered available. Only applicable to endpoint of type 'NestedEndpoints'.",
+                "type": "integer"
+              },
+              "minChildEndpointsIPv4": {
+                "description": "MinChildEndpointsIPv4: The minimum number of IPv4 (DNS record type A) endpoints that must be available in the child\nprofile in order for the parent profile to be considered available. Only applicable to endpoint of type\n'NestedEndpoints'.",
+                "type": "integer"
+              },
+              "minChildEndpointsIPv6": {
+                "description": "MinChildEndpointsIPv6: The minimum number of IPv6 (DNS record type AAAA) endpoints that must be available in the child\nprofile in order for the parent profile to be considered available. Only applicable to endpoint of type\n'NestedEndpoints'.",
+                "type": "integer"
+              },
+              "name": {
+                "description": "Name: The name of the resource",
+                "type": "string"
+              },
+              "priority": {
+                "description": "Priority: The priority of this endpoint when using the 'Priority' traffic routing method. Possible values are from 1 to\n1000, lower values represent higher priority. This is an optional parameter.  If specified, it must be specified on all\nendpoints, and no two endpoints can share the same priority value.",
+                "type": "integer"
+              },
+              "subnets": {
+                "description": "Subnets: The list of subnets, IP addresses, and/or address ranges mapped to this endpoint when using the 'Subnet'\ntraffic routing method. An empty list will match all ranges not covered by other endpoints.",
+                "items": {
+                  "description": "Subnet first address, scope, and/or last address.",
+                  "properties": {
+                    "first": {
+                      "description": "First: First address in the subnet.",
+                      "type": "string"
+                    },
+                    "last": {
+                      "description": "Last: Last address in the subnet.",
+                      "type": "string"
+                    },
+                    "scope": {
+                      "description": "Scope: Block size (number of leading bits in the subnet mask).",
+                      "type": "integer"
+                    }
+                  },
+                  "type": "object"
+                },
+                "type": "array"
+              },
+              "target": {
+                "description": "Target: The fully-qualified DNS name or IP address of the endpoint. Traffic Manager returns this value in DNS responses\nto direct traffic to this endpoint.",
+                "type": "string"
+              },
+              "targetResourceId": {
+                "description": "TargetResourceId: The Azure Resource URI of the of the endpoint. Not applicable to endpoints of type 'ExternalEndpoints'.",
+                "type": "string"
+              },
+              "type": {
+                "description": "Type: The type of the resource. Ex- Microsoft.Network/trafficManagerProfiles.",
+                "type": "string"
+              },
+              "weight": {
+                "description": "Weight: The weight of this endpoint when using the 'Weighted' traffic routing method. Possible values are from 1 to 1000.",
+                "type": "integer"
               }
             },
             "type": "object"
@@ -381,6 +524,7 @@
             "customHeaders": {
               "description": "CustomHeaders: List of custom headers.",
               "items": {
+                "description": "Custom header name and value.",
                 "properties": {
                   "name": {
                     "description": "Name: Header name.",
@@ -398,6 +542,7 @@
             "expectedStatusCodeRanges": {
               "description": "ExpectedStatusCodeRanges: List of expected status code ranges.",
               "items": {
+                "description": "Min and max value of a status code range.",
                 "properties": {
                   "max": {
                     "description": "Max: Max status code.",

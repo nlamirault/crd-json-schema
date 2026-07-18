@@ -139,9 +139,23 @@
               "items": {
                 "description": "DestinationExpression is a CEL expression and a destination to store the result in. The destination may\nbe a secret or a configmap. The value of the expression is stored at the specified location in\nthe destination.",
                 "properties": {
+                  "annotations": {
+                    "additionalProperties": {
+                      "type": "string"
+                    },
+                    "description": "Annotations is an optional set of annotations to apply to the destination resource.",
+                    "type": "object"
+                  },
                   "key": {
                     "description": "Key is the key in the ConfigMap or Secret being written to. If the CEL expression in Value returns a string\nthis is required to identify what key to write to. If the CEL expression in Value returns a map[string]string\nKey must not be set, instead the keys written will be determined dynamically based on the keys of the resulting\nmap[string]string.",
                     "type": "string"
+                  },
+                  "labels": {
+                    "additionalProperties": {
+                      "type": "string"
+                    },
+                    "description": "Labels is an optional set of labels to apply to the destination resource.",
+                    "type": "object"
                   },
                   "name": {
                     "description": "Name is the name of the Kubernetes configmap or secret to write to.\nThe configmap or secret will be created in the same namespace as the resource.",
@@ -164,9 +178,23 @@
               "items": {
                 "description": "DestinationExpression is a CEL expression and a destination to store the result in. The destination may\nbe a secret or a configmap. The value of the expression is stored at the specified location in\nthe destination.",
                 "properties": {
+                  "annotations": {
+                    "additionalProperties": {
+                      "type": "string"
+                    },
+                    "description": "Annotations is an optional set of annotations to apply to the destination resource.",
+                    "type": "object"
+                  },
                   "key": {
                     "description": "Key is the key in the ConfigMap or Secret being written to. If the CEL expression in Value returns a string\nthis is required to identify what key to write to. If the CEL expression in Value returns a map[string]string\nKey must not be set, instead the keys written will be determined dynamically based on the keys of the resulting\nmap[string]string.",
                     "type": "string"
+                  },
+                  "labels": {
+                    "additionalProperties": {
+                      "type": "string"
+                    },
+                    "description": "Labels is an optional set of labels to apply to the destination resource.",
+                    "type": "object"
                   },
                   "name": {
                     "description": "Name is the name of the Kubernetes configmap or secret to write to.\nThe configmap or secret will be created in the same namespace as the resource.",
@@ -198,9 +226,23 @@
                 "primaryConnectionString": {
                   "description": "SecretDestination describes the location to store a single secret value.\nNote: This is similar to: ConfigMapDestination in configmaps.go.\nChanges to one may need to be made to the others as well.",
                   "properties": {
+                    "annotations": {
+                      "additionalProperties": {
+                        "type": "string"
+                      },
+                      "description": "Annotations is an optional set of annotations to apply to the secret.",
+                      "type": "object"
+                    },
                     "key": {
                       "description": "Key is the key in the Kubernetes secret being referenced.",
                       "type": "string"
+                    },
+                    "labels": {
+                      "additionalProperties": {
+                        "type": "string"
+                      },
+                      "description": "Labels is an optional set of labels to apply to the secret.",
+                      "type": "object"
                     },
                     "name": {
                       "description": "Name is the name of the Kubernetes secret to write to.\nThe secret will be created in the same namespace as the resource.",
@@ -216,9 +258,23 @@
                 "primaryKey": {
                   "description": "SecretDestination describes the location to store a single secret value.\nNote: This is similar to: ConfigMapDestination in configmaps.go.\nChanges to one may need to be made to the others as well.",
                   "properties": {
+                    "annotations": {
+                      "additionalProperties": {
+                        "type": "string"
+                      },
+                      "description": "Annotations is an optional set of annotations to apply to the secret.",
+                      "type": "object"
+                    },
                     "key": {
                       "description": "Key is the key in the Kubernetes secret being referenced.",
                       "type": "string"
+                    },
+                    "labels": {
+                      "additionalProperties": {
+                        "type": "string"
+                      },
+                      "description": "Labels is an optional set of labels to apply to the secret.",
+                      "type": "object"
                     },
                     "name": {
                       "description": "Name is the name of the Kubernetes secret to write to.\nThe secret will be created in the same namespace as the resource.",
@@ -234,9 +290,23 @@
                 "primaryKeyID": {
                   "description": "SecretDestination describes the location to store a single secret value.\nNote: This is similar to: ConfigMapDestination in configmaps.go.\nChanges to one may need to be made to the others as well.",
                   "properties": {
+                    "annotations": {
+                      "additionalProperties": {
+                        "type": "string"
+                      },
+                      "description": "Annotations is an optional set of annotations to apply to the secret.",
+                      "type": "object"
+                    },
                     "key": {
                       "description": "Key is the key in the Kubernetes secret being referenced.",
                       "type": "string"
+                    },
+                    "labels": {
+                      "additionalProperties": {
+                        "type": "string"
+                      },
+                      "description": "Labels is an optional set of labels to apply to the secret.",
+                      "type": "object"
                     },
                     "name": {
                       "description": "Name is the name of the Kubernetes secret to write to.\nThe secret will be created in the same namespace as the resource.",
@@ -252,9 +322,23 @@
                 "primaryReadOnlyConnectionString": {
                   "description": "SecretDestination describes the location to store a single secret value.\nNote: This is similar to: ConfigMapDestination in configmaps.go.\nChanges to one may need to be made to the others as well.",
                   "properties": {
+                    "annotations": {
+                      "additionalProperties": {
+                        "type": "string"
+                      },
+                      "description": "Annotations is an optional set of annotations to apply to the secret.",
+                      "type": "object"
+                    },
                     "key": {
                       "description": "Key is the key in the Kubernetes secret being referenced.",
                       "type": "string"
+                    },
+                    "labels": {
+                      "additionalProperties": {
+                        "type": "string"
+                      },
+                      "description": "Labels is an optional set of labels to apply to the secret.",
+                      "type": "object"
                     },
                     "name": {
                       "description": "Name is the name of the Kubernetes secret to write to.\nThe secret will be created in the same namespace as the resource.",
@@ -270,9 +354,23 @@
                 "primaryReadOnlyKey": {
                   "description": "SecretDestination describes the location to store a single secret value.\nNote: This is similar to: ConfigMapDestination in configmaps.go.\nChanges to one may need to be made to the others as well.",
                   "properties": {
+                    "annotations": {
+                      "additionalProperties": {
+                        "type": "string"
+                      },
+                      "description": "Annotations is an optional set of annotations to apply to the secret.",
+                      "type": "object"
+                    },
                     "key": {
                       "description": "Key is the key in the Kubernetes secret being referenced.",
                       "type": "string"
+                    },
+                    "labels": {
+                      "additionalProperties": {
+                        "type": "string"
+                      },
+                      "description": "Labels is an optional set of labels to apply to the secret.",
+                      "type": "object"
                     },
                     "name": {
                       "description": "Name is the name of the Kubernetes secret to write to.\nThe secret will be created in the same namespace as the resource.",
@@ -288,9 +386,23 @@
                 "primaryReadOnlyKeyID": {
                   "description": "SecretDestination describes the location to store a single secret value.\nNote: This is similar to: ConfigMapDestination in configmaps.go.\nChanges to one may need to be made to the others as well.",
                   "properties": {
+                    "annotations": {
+                      "additionalProperties": {
+                        "type": "string"
+                      },
+                      "description": "Annotations is an optional set of annotations to apply to the secret.",
+                      "type": "object"
+                    },
                     "key": {
                       "description": "Key is the key in the Kubernetes secret being referenced.",
                       "type": "string"
+                    },
+                    "labels": {
+                      "additionalProperties": {
+                        "type": "string"
+                      },
+                      "description": "Labels is an optional set of labels to apply to the secret.",
+                      "type": "object"
                     },
                     "name": {
                       "description": "Name is the name of the Kubernetes secret to write to.\nThe secret will be created in the same namespace as the resource.",
@@ -306,9 +418,23 @@
                 "secondaryConnectionString": {
                   "description": "SecretDestination describes the location to store a single secret value.\nNote: This is similar to: ConfigMapDestination in configmaps.go.\nChanges to one may need to be made to the others as well.",
                   "properties": {
+                    "annotations": {
+                      "additionalProperties": {
+                        "type": "string"
+                      },
+                      "description": "Annotations is an optional set of annotations to apply to the secret.",
+                      "type": "object"
+                    },
                     "key": {
                       "description": "Key is the key in the Kubernetes secret being referenced.",
                       "type": "string"
+                    },
+                    "labels": {
+                      "additionalProperties": {
+                        "type": "string"
+                      },
+                      "description": "Labels is an optional set of labels to apply to the secret.",
+                      "type": "object"
                     },
                     "name": {
                       "description": "Name is the name of the Kubernetes secret to write to.\nThe secret will be created in the same namespace as the resource.",
@@ -324,9 +450,23 @@
                 "secondaryKey": {
                   "description": "SecretDestination describes the location to store a single secret value.\nNote: This is similar to: ConfigMapDestination in configmaps.go.\nChanges to one may need to be made to the others as well.",
                   "properties": {
+                    "annotations": {
+                      "additionalProperties": {
+                        "type": "string"
+                      },
+                      "description": "Annotations is an optional set of annotations to apply to the secret.",
+                      "type": "object"
+                    },
                     "key": {
                       "description": "Key is the key in the Kubernetes secret being referenced.",
                       "type": "string"
+                    },
+                    "labels": {
+                      "additionalProperties": {
+                        "type": "string"
+                      },
+                      "description": "Labels is an optional set of labels to apply to the secret.",
+                      "type": "object"
                     },
                     "name": {
                       "description": "Name is the name of the Kubernetes secret to write to.\nThe secret will be created in the same namespace as the resource.",
@@ -342,9 +482,23 @@
                 "secondaryKeyID": {
                   "description": "SecretDestination describes the location to store a single secret value.\nNote: This is similar to: ConfigMapDestination in configmaps.go.\nChanges to one may need to be made to the others as well.",
                   "properties": {
+                    "annotations": {
+                      "additionalProperties": {
+                        "type": "string"
+                      },
+                      "description": "Annotations is an optional set of annotations to apply to the secret.",
+                      "type": "object"
+                    },
                     "key": {
                       "description": "Key is the key in the Kubernetes secret being referenced.",
                       "type": "string"
+                    },
+                    "labels": {
+                      "additionalProperties": {
+                        "type": "string"
+                      },
+                      "description": "Labels is an optional set of labels to apply to the secret.",
+                      "type": "object"
                     },
                     "name": {
                       "description": "Name is the name of the Kubernetes secret to write to.\nThe secret will be created in the same namespace as the resource.",
@@ -360,9 +514,23 @@
                 "secondaryReadOnlyConnectionString": {
                   "description": "SecretDestination describes the location to store a single secret value.\nNote: This is similar to: ConfigMapDestination in configmaps.go.\nChanges to one may need to be made to the others as well.",
                   "properties": {
+                    "annotations": {
+                      "additionalProperties": {
+                        "type": "string"
+                      },
+                      "description": "Annotations is an optional set of annotations to apply to the secret.",
+                      "type": "object"
+                    },
                     "key": {
                       "description": "Key is the key in the Kubernetes secret being referenced.",
                       "type": "string"
+                    },
+                    "labels": {
+                      "additionalProperties": {
+                        "type": "string"
+                      },
+                      "description": "Labels is an optional set of labels to apply to the secret.",
+                      "type": "object"
                     },
                     "name": {
                       "description": "Name is the name of the Kubernetes secret to write to.\nThe secret will be created in the same namespace as the resource.",
@@ -378,9 +546,23 @@
                 "secondaryReadOnlyKey": {
                   "description": "SecretDestination describes the location to store a single secret value.\nNote: This is similar to: ConfigMapDestination in configmaps.go.\nChanges to one may need to be made to the others as well.",
                   "properties": {
+                    "annotations": {
+                      "additionalProperties": {
+                        "type": "string"
+                      },
+                      "description": "Annotations is an optional set of annotations to apply to the secret.",
+                      "type": "object"
+                    },
                     "key": {
                       "description": "Key is the key in the Kubernetes secret being referenced.",
                       "type": "string"
+                    },
+                    "labels": {
+                      "additionalProperties": {
+                        "type": "string"
+                      },
+                      "description": "Labels is an optional set of labels to apply to the secret.",
+                      "type": "object"
                     },
                     "name": {
                       "description": "Name is the name of the Kubernetes secret to write to.\nThe secret will be created in the same namespace as the resource.",
@@ -396,9 +578,23 @@
                 "secondaryReadOnlyKeyID": {
                   "description": "SecretDestination describes the location to store a single secret value.\nNote: This is similar to: ConfigMapDestination in configmaps.go.\nChanges to one may need to be made to the others as well.",
                   "properties": {
+                    "annotations": {
+                      "additionalProperties": {
+                        "type": "string"
+                      },
+                      "description": "Annotations is an optional set of annotations to apply to the secret.",
+                      "type": "object"
+                    },
                     "key": {
                       "description": "Key is the key in the Kubernetes secret being referenced.",
                       "type": "string"
+                    },
+                    "labels": {
+                      "additionalProperties": {
+                        "type": "string"
+                      },
+                      "description": "Labels is an optional set of labels to apply to the secret.",
+                      "type": "object"
                     },
                     "name": {
                       "description": "Name is the name of the Kubernetes secret to write to.\nThe secret will be created in the same namespace as the resource.",
@@ -455,37 +651,6 @@
         },
         "softDeleteRetentionInDays": {
           "type": "integer"
-        },
-        "systemData": {
-          "description": "Storage version of v1api20220501.SystemData\nMetadata pertaining to creation and last modification of the resource.",
-          "properties": {
-            "$propertyBag": {
-              "additionalProperties": {
-                "type": "string"
-              },
-              "description": "PropertyBag is an unordered set of stashed information that used for properties not directly supported by storage\nresources, allowing for full fidelity round trip conversions",
-              "type": "object"
-            },
-            "createdAt": {
-              "type": "string"
-            },
-            "createdBy": {
-              "type": "string"
-            },
-            "createdByType": {
-              "type": "string"
-            },
-            "lastModifiedAt": {
-              "type": "string"
-            },
-            "lastModifiedBy": {
-              "type": "string"
-            },
-            "lastModifiedByType": {
-              "type": "string"
-            }
-          },
-          "type": "object"
         },
         "tags": {
           "additionalProperties": {

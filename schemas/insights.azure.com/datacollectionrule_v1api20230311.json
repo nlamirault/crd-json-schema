@@ -96,13 +96,6 @@
               "streams": {
                 "description": "Streams: List of streams for this data flow.",
                 "items": {
-                  "enum": [
-                    "Microsoft-Event",
-                    "Microsoft-InsightsMetrics",
-                    "Microsoft-Perf",
-                    "Microsoft-Syslog",
-                    "Microsoft-WindowsEvent"
-                  ],
                   "type": "string"
                 },
                 "type": "array"
@@ -173,13 +166,6 @@
                   "streams": {
                     "description": "Streams: List of streams that this data source will be sent to.\nA stream indicates what schema will be used for this data and usually what table in Log Analytics the data will be sent\nto.",
                     "items": {
-                      "enum": [
-                        "Microsoft-Event",
-                        "Microsoft-InsightsMetrics",
-                        "Microsoft-Perf",
-                        "Microsoft-Syslog",
-                        "Microsoft-WindowsEvent"
-                      ],
                       "type": "string"
                     },
                     "type": "array"
@@ -325,10 +311,6 @@
                   "streams": {
                     "description": "Streams: List of streams that this data source will be sent to.\nA stream indicates what schema will be used for this data and usually what table in Log Analytics the data will be sent\nto.",
                     "items": {
-                      "enum": [
-                        "Microsoft-InsightsMetrics",
-                        "Microsoft-Perf"
-                      ],
                       "type": "string"
                     },
                     "type": "array"
@@ -385,9 +367,6 @@
                   "streams": {
                     "description": "Streams: List of streams that this data source will be sent to.",
                     "items": {
-                      "enum": [
-                        "Microsoft-PrometheusMetrics"
-                      ],
                       "type": "string"
                     },
                     "type": "array"
@@ -463,9 +442,6 @@
                   "streams": {
                     "description": "Streams: List of streams that this data source will be sent to.\nA stream indicates what schema will be used for this data and usually what table in Log Analytics the data will be sent\nto.",
                     "items": {
-                      "enum": [
-                        "Microsoft-Syslog"
-                      ],
                       "type": "string"
                     },
                     "type": "array"
@@ -491,10 +467,6 @@
                   "streams": {
                     "description": "Streams: List of streams that this data source will be sent to.\nA stream indicates what schema will be used for this data and usually what table in Log Analytics the data will be sent\nto.",
                     "items": {
-                      "enum": [
-                        "Microsoft-Event",
-                        "Microsoft-WindowsEvent"
-                      ],
                       "type": "string"
                     },
                     "type": "array"
@@ -982,9 +954,23 @@
               "items": {
                 "description": "DestinationExpression is a CEL expression and a destination to store the result in. The destination may\nbe a secret or a configmap. The value of the expression is stored at the specified location in\nthe destination.",
                 "properties": {
+                  "annotations": {
+                    "additionalProperties": {
+                      "type": "string"
+                    },
+                    "description": "Annotations is an optional set of annotations to apply to the destination resource.",
+                    "type": "object"
+                  },
                   "key": {
                     "description": "Key is the key in the ConfigMap or Secret being written to. If the CEL expression in Value returns a string\nthis is required to identify what key to write to. If the CEL expression in Value returns a map[string]string\nKey must not be set, instead the keys written will be determined dynamically based on the keys of the resulting\nmap[string]string.",
                     "type": "string"
+                  },
+                  "labels": {
+                    "additionalProperties": {
+                      "type": "string"
+                    },
+                    "description": "Labels is an optional set of labels to apply to the destination resource.",
+                    "type": "object"
                   },
                   "name": {
                     "description": "Name is the name of the Kubernetes configmap or secret to write to.\nThe configmap or secret will be created in the same namespace as the resource.",
@@ -1008,9 +994,23 @@
               "items": {
                 "description": "DestinationExpression is a CEL expression and a destination to store the result in. The destination may\nbe a secret or a configmap. The value of the expression is stored at the specified location in\nthe destination.",
                 "properties": {
+                  "annotations": {
+                    "additionalProperties": {
+                      "type": "string"
+                    },
+                    "description": "Annotations is an optional set of annotations to apply to the destination resource.",
+                    "type": "object"
+                  },
                   "key": {
                     "description": "Key is the key in the ConfigMap or Secret being written to. If the CEL expression in Value returns a string\nthis is required to identify what key to write to. If the CEL expression in Value returns a map[string]string\nKey must not be set, instead the keys written will be determined dynamically based on the keys of the resulting\nmap[string]string.",
                     "type": "string"
+                  },
+                  "labels": {
+                    "additionalProperties": {
+                      "type": "string"
+                    },
+                    "description": "Labels is an optional set of labels to apply to the destination resource.",
+                    "type": "object"
                   },
                   "name": {
                     "description": "Name is the name of the Kubernetes configmap or secret to write to.\nThe configmap or secret will be created in the same namespace as the resource.",

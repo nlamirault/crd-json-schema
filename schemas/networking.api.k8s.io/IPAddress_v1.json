@@ -20,5 +20,8 @@
       "$ref": "IPAddressSpec_v1.json",
       "description": "spec is the desired state of the IPAddress. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status"
     }
-  }
+  },
+  "required": [
+    "spec"
+  ]
 }

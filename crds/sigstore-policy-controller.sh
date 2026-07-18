@@ -10,7 +10,7 @@ export FILES=(
 )
 
 # renovate: datasource=github-tags depName=sigstore/policy-controller
-export VERSION=0.9.0
+export VERSION=0.15.1
 
 function generate_url {
   local crd_file=$1

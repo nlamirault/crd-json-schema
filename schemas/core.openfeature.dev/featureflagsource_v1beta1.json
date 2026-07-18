@@ -15,7 +15,22 @@
     "spec": {
       "description": "FeatureFlagSourceSpec defines the desired state of FeatureFlagSource",
       "properties": {
+        "contextValues": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "description": "ContextValues are static key-value pairs added to the flagd evaluation context",
+          "type": "object"
+        },
+        "cors": {
+          "description": "CORS defines the allowed CORS origins for the flagd OFREP endpoint",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
         "debugLogging": {
+          "default": false,
           "description": "DebugLogging defines whether to enable --debug flag of flagd sidecar. Default false (disabled).",
           "type": "boolean"
         },
@@ -155,6 +170,13 @@
           "description": "Evaluator sets an evaluator, defaults to 'json'",
           "type": "string"
         },
+        "headerToContextMappings": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "description": "HeaderToContextMappings map HTTP header names to evaluation context keys",
+          "type": "object"
+        },
         "logFormat": {
           "default": "json",
           "description": "LogFormat allows for the sidecar log format to be overridden, defaults to 'json'",
@@ -163,6 +185,12 @@
         "managementPort": {
           "default": 8014,
           "description": "ManagemetPort defines the port to serve management on, defaults to 8014",
+          "format": "int32",
+          "type": "integer"
+        },
+        "ofrepPort": {
+          "default": 8016,
+          "description": "OFREPPort defines the port for the OFREP service, defaults to 8016",
           "format": "int32",
           "type": "integer"
         },
@@ -177,6 +205,7 @@
           "type": "integer"
         },
         "probesEnabled": {
+          "default": true,
           "description": "ProbesEnabled defines whether to enable liveness and readiness probes of flagd sidecar. Default true (enabled).",
           "type": "boolean"
         },
@@ -244,6 +273,7 @@
           "type": "object"
         },
         "rolloutOnChange": {
+          "default": false,
           "description": "RolloutOnChange dictates whether annotated deployments will be restarted when configuration changes are\ndetected in this CR, defaults to false",
           "type": "boolean"
         },
@@ -269,7 +299,7 @@
                 "type": "integer"
               },
               "provider": {
-                "description": "Provider type - kubernetes, http(s), grpc(s) or file",
+                "description": "Provider type - kubernetes, file, http(s), grpc(s), gcs, azblob, s3 or flagd-proxy",
                 "type": "string"
               },
               "providerID": {

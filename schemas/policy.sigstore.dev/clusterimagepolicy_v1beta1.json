@@ -225,6 +225,10 @@
                   }
                 }
               },
+              "signatureFormat": {
+                "description": "SignatureFormat specifies the format the authority expects. Supported formats are \"legacy\" and \"bundle\". If not specified, the default is \"legacy\" (cosign's default).",
+                "type": "string"
+              },
               "source": {
                 "description": "Sources sets the configuration to specify the sources from where to consume the signatures.",
                 "type": "array",
@@ -242,7 +246,7 @@
                         "type": "object",
                         "properties": {
                           "name": {
-                            "description": "Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names",
+                            "description": "Name of the referent. This field is effectively required, but due to backwards compatibility is allowed to be empty. Instances of this type with an empty value here are almost certainly wrong. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names",
                             "type": "string"
                           }
                         }

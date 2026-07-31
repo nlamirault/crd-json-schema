@@ -123,6 +123,10 @@
               "description": "OwnerAccountID is the AWS Account ID of the account that owns the\nbackend AWS service API resource.",
               "type": "string"
             },
+            "partition": {
+              "description": "Partition is the AWS partition in which the resource exists or will exist",
+              "type": "string"
+            },
             "region": {
               "description": "Region is the AWS region in which the resource exists or will exist.",
               "type": "string"
@@ -186,6 +190,20 @@
           "properties": {
             "targetARN": {
               "type": "string"
+            }
+          },
+          "type": "object"
+        },
+        "durableConfig": {
+          "description": "The function's durable execution configuration settings, if the function\nis configured for durability.",
+          "properties": {
+            "executionTimeout": {
+              "format": "int64",
+              "type": "integer"
+            },
+            "retentionPeriodInDays": {
+              "format": "int64",
+              "type": "integer"
             }
           },
           "type": "object"

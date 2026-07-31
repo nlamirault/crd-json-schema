@@ -39,6 +39,13 @@
         "description": {
           "description": "Descriptive name for this code signing configuration.",
           "type": "string"
+        },
+        "tags": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "description": "A list of tags to add to the code signing configuration.",
+          "type": "object"
         }
       },
       "required": [
@@ -58,6 +65,10 @@
             },
             "ownerAccountID": {
               "description": "OwnerAccountID is the AWS Account ID of the account that owns the\nbackend AWS service API resource.",
+              "type": "string"
+            },
+            "partition": {
+              "description": "Partition is the AWS partition in which the resource exists or will exist",
               "type": "string"
             },
             "region": {

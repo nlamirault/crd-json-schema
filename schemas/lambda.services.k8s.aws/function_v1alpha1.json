@@ -69,6 +69,24 @@
           "description": "To enable code signing for this function, specify the ARN of a code-signing\nconfiguration. A code-signing configuration includes a set of signing profiles,\nwhich define the trusted publishers for this function.\n\nRegex Pattern: `^arn:(aws[a-zA-Z-]*)?:lambda:[a-z]{2}((-gov)|(-iso(b?)))?-[a-z]+-\\d{1}:\\d{12}:code-signing-config:csc-[a-z0-9]{17}$`",
           "type": "string"
         },
+        "codeSigningConfigRef": {
+          "description": "AWSResourceReferenceWrapper provides a wrapper around *AWSResourceReference\ntype to provide more user friendly syntax for references using 'from' field\nEx:\nAPIIDRef:\n\n\tfrom:\n\t  name: my-api",
+          "properties": {
+            "from": {
+              "description": "AWSResourceReference provides all the values necessary to reference another\nk8s resource for finding the identifier(Id/ARN/Name)",
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "namespace": {
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            }
+          },
+          "type": "object"
+        },
         "deadLetterConfig": {
           "description": "A dead-letter queue configuration that specifies the queue or topic where\nLambda sends asynchronous events when they fail processing. For more information,\nsee Dead-letter queues (https://docs.aws.amazon.com/lambda/latest/dg/invocation-async.html#invocation-dlq).",
           "properties": {
@@ -81,6 +99,20 @@
         "description": {
           "description": "A description of the function.",
           "type": "string"
+        },
+        "durableConfig": {
+          "description": "Configuration settings for durable functions. Enables creating functions\nwith durability that can remember their state and continue execution even\nafter interruptions.",
+          "properties": {
+            "executionTimeout": {
+              "format": "int64",
+              "type": "integer"
+            },
+            "retentionPeriodInDays": {
+              "format": "int64",
+              "type": "integer"
+            }
+          },
+          "type": "object"
         },
         "environment": {
           "description": "Environment variables that are accessible from function code during execution.",
@@ -410,6 +442,10 @@
             },
             "ownerAccountID": {
               "description": "OwnerAccountID is the AWS Account ID of the account that owns the\nbackend AWS service API resource.",
+              "type": "string"
+            },
+            "partition": {
+              "description": "Partition is the AWS partition in which the resource exists or will exist",
               "type": "string"
             },
             "region": {

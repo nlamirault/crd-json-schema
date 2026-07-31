@@ -1,5 +1,5 @@
 {
-  "description": "Storage version of v20240701.BatchAccount\nGenerator information:\n- Generated from: /batch/resource-manager/Microsoft.Batch/stable/2024-07-01/BatchManagement.json\n- ARM URI: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Batch/batchAccounts/{accountName}",
+  "description": "Storage version of v20240701.BatchAccount\nGenerator information:\n- Generated from: /batch/resource-manager/Microsoft.Batch/Batch/stable/2024-07-01/openapi.json\n- ARM URI: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Batch/batchAccounts/{accountName}",
   "properties": {
     "apiVersion": {
       "description": "APIVersion defines the versioned schema of this representation of an object.\nServers should convert recognized schemas to the latest internal value, and\nmay reject unrecognized values.\nMore info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
@@ -345,9 +345,23 @@
               "items": {
                 "description": "DestinationExpression is a CEL expression and a destination to store the result in. The destination may\nbe a secret or a configmap. The value of the expression is stored at the specified location in\nthe destination.",
                 "properties": {
+                  "annotations": {
+                    "additionalProperties": {
+                      "type": "string"
+                    },
+                    "description": "Annotations is an optional set of annotations to apply to the destination resource.",
+                    "type": "object"
+                  },
                   "key": {
                     "description": "Key is the key in the ConfigMap or Secret being written to. If the CEL expression in Value returns a string\nthis is required to identify what key to write to. If the CEL expression in Value returns a map[string]string\nKey must not be set, instead the keys written will be determined dynamically based on the keys of the resulting\nmap[string]string.",
                     "type": "string"
+                  },
+                  "labels": {
+                    "additionalProperties": {
+                      "type": "string"
+                    },
+                    "description": "Labels is an optional set of labels to apply to the destination resource.",
+                    "type": "object"
                   },
                   "name": {
                     "description": "Name is the name of the Kubernetes configmap or secret to write to.\nThe configmap or secret will be created in the same namespace as the resource.",
@@ -370,9 +384,23 @@
               "items": {
                 "description": "DestinationExpression is a CEL expression and a destination to store the result in. The destination may\nbe a secret or a configmap. The value of the expression is stored at the specified location in\nthe destination.",
                 "properties": {
+                  "annotations": {
+                    "additionalProperties": {
+                      "type": "string"
+                    },
+                    "description": "Annotations is an optional set of annotations to apply to the destination resource.",
+                    "type": "object"
+                  },
                   "key": {
                     "description": "Key is the key in the ConfigMap or Secret being written to. If the CEL expression in Value returns a string\nthis is required to identify what key to write to. If the CEL expression in Value returns a map[string]string\nKey must not be set, instead the keys written will be determined dynamically based on the keys of the resulting\nmap[string]string.",
                     "type": "string"
+                  },
+                  "labels": {
+                    "additionalProperties": {
+                      "type": "string"
+                    },
+                    "description": "Labels is an optional set of labels to apply to the destination resource.",
+                    "type": "object"
                   },
                   "name": {
                     "description": "Name is the name of the Kubernetes configmap or secret to write to.\nThe configmap or secret will be created in the same namespace as the resource.",
@@ -791,6 +819,37 @@
         },
         "publicNetworkAccess": {
           "type": "string"
+        },
+        "systemData": {
+          "description": "Storage version of v20240701.SystemData_STATUS\nMetadata pertaining to creation and last modification of the resource.",
+          "properties": {
+            "$propertyBag": {
+              "additionalProperties": {
+                "type": "string"
+              },
+              "description": "PropertyBag is an unordered set of stashed information that used for properties not directly supported by storage\nresources, allowing for full fidelity round trip conversions",
+              "type": "object"
+            },
+            "createdAt": {
+              "type": "string"
+            },
+            "createdBy": {
+              "type": "string"
+            },
+            "createdByType": {
+              "type": "string"
+            },
+            "lastModifiedAt": {
+              "type": "string"
+            },
+            "lastModifiedBy": {
+              "type": "string"
+            },
+            "lastModifiedByType": {
+              "type": "string"
+            }
+          },
+          "type": "object"
         },
         "tags": {
           "additionalProperties": {

@@ -536,6 +536,18 @@
         "slug": "alertsmanagement.azure.com/v1api20230301storage/prometheusrulegroup"
       },
       {
+        "kind": "prometheusrulegroup",
+        "version": "v20230301",
+        "file": "alertsmanagement.azure.com/prometheusrulegroup_v20230301.json",
+        "slug": "alertsmanagement.azure.com/v20230301/prometheusrulegroup"
+      },
+      {
+        "kind": "prometheusrulegroup",
+        "version": "v20230301storage",
+        "file": "alertsmanagement.azure.com/prometheusrulegroup_v20230301storage.json",
+        "slug": "alertsmanagement.azure.com/v20230301storage/prometheusrulegroup"
+      },
+      {
         "kind": "smartdetectoralertrule",
         "version": "v1api20210401",
         "file": "alertsmanagement.azure.com/smartdetectoralertrule_v1api20210401.json",
@@ -546,6 +558,18 @@
         "version": "v1api20210401storage",
         "file": "alertsmanagement.azure.com/smartdetectoralertrule_v1api20210401storage.json",
         "slug": "alertsmanagement.azure.com/v1api20210401storage/smartdetectoralertrule"
+      },
+      {
+        "kind": "smartdetectoralertrule",
+        "version": "v20210401",
+        "file": "alertsmanagement.azure.com/smartdetectoralertrule_v20210401.json",
+        "slug": "alertsmanagement.azure.com/v20210401/smartdetectoralertrule"
+      },
+      {
+        "kind": "smartdetectoralertrule",
+        "version": "v20210401storage",
+        "file": "alertsmanagement.azure.com/smartdetectoralertrule_v20210401storage.json",
+        "slug": "alertsmanagement.azure.com/v20210401storage/smartdetectoralertrule"
       }
     ],
     "alloydb.cnrm.cloud.google.com": [
@@ -1022,6 +1046,42 @@
         "slug": "apimanagement.azure.com/v1api20240501storage/api"
       },
       {
+        "kind": "api",
+        "version": "v20220801",
+        "file": "apimanagement.azure.com/api_v20220801.json",
+        "slug": "apimanagement.azure.com/v20220801/api"
+      },
+      {
+        "kind": "api",
+        "version": "v20220801storage",
+        "file": "apimanagement.azure.com/api_v20220801storage.json",
+        "slug": "apimanagement.azure.com/v20220801storage/api"
+      },
+      {
+        "kind": "api",
+        "version": "v20230501preview",
+        "file": "apimanagement.azure.com/api_v20230501preview.json",
+        "slug": "apimanagement.azure.com/v20230501preview/api"
+      },
+      {
+        "kind": "api",
+        "version": "v20230501previewstorage",
+        "file": "apimanagement.azure.com/api_v20230501previewstorage.json",
+        "slug": "apimanagement.azure.com/v20230501previewstorage/api"
+      },
+      {
+        "kind": "api",
+        "version": "v20240501",
+        "file": "apimanagement.azure.com/api_v20240501.json",
+        "slug": "apimanagement.azure.com/v20240501/api"
+      },
+      {
+        "kind": "api",
+        "version": "v20240501storage",
+        "file": "apimanagement.azure.com/api_v20240501storage.json",
+        "slug": "apimanagement.azure.com/v20240501storage/api"
+      },
+      {
         "kind": "apiversionset",
         "version": "v1api20220801",
         "file": "apimanagement.azure.com/apiversionset_v1api20220801.json",
@@ -1056,6 +1116,42 @@
         "version": "v1api20240501storage",
         "file": "apimanagement.azure.com/apiversionset_v1api20240501storage.json",
         "slug": "apimanagement.azure.com/v1api20240501storage/apiversionset"
+      },
+      {
+        "kind": "apiversionset",
+        "version": "v20220801",
+        "file": "apimanagement.azure.com/apiversionset_v20220801.json",
+        "slug": "apimanagement.azure.com/v20220801/apiversionset"
+      },
+      {
+        "kind": "apiversionset",
+        "version": "v20220801storage",
+        "file": "apimanagement.azure.com/apiversionset_v20220801storage.json",
+        "slug": "apimanagement.azure.com/v20220801storage/apiversionset"
+      },
+      {
+        "kind": "apiversionset",
+        "version": "v20230501preview",
+        "file": "apimanagement.azure.com/apiversionset_v20230501preview.json",
+        "slug": "apimanagement.azure.com/v20230501preview/apiversionset"
+      },
+      {
+        "kind": "apiversionset",
+        "version": "v20230501previewstorage",
+        "file": "apimanagement.azure.com/apiversionset_v20230501previewstorage.json",
+        "slug": "apimanagement.azure.com/v20230501previewstorage/apiversionset"
+      },
+      {
+        "kind": "apiversionset",
+        "version": "v20240501",
+        "file": "apimanagement.azure.com/apiversionset_v20240501.json",
+        "slug": "apimanagement.azure.com/v20240501/apiversionset"
+      },
+      {
+        "kind": "apiversionset",
+        "version": "v20240501storage",
+        "file": "apimanagement.azure.com/apiversionset_v20240501storage.json",
+        "slug": "apimanagement.azure.com/v20240501storage/apiversionset"
       },
       {
         "kind": "authorizationprovider",
@@ -1094,6 +1190,42 @@
         "slug": "apimanagement.azure.com/v1api20240501storage/authorizationprovider"
       },
       {
+        "kind": "authorizationprovider",
+        "version": "v20220801",
+        "file": "apimanagement.azure.com/authorizationprovider_v20220801.json",
+        "slug": "apimanagement.azure.com/v20220801/authorizationprovider"
+      },
+      {
+        "kind": "authorizationprovider",
+        "version": "v20220801storage",
+        "file": "apimanagement.azure.com/authorizationprovider_v20220801storage.json",
+        "slug": "apimanagement.azure.com/v20220801storage/authorizationprovider"
+      },
+      {
+        "kind": "authorizationprovider",
+        "version": "v20230501preview",
+        "file": "apimanagement.azure.com/authorizationprovider_v20230501preview.json",
+        "slug": "apimanagement.azure.com/v20230501preview/authorizationprovider"
+      },
+      {
+        "kind": "authorizationprovider",
+        "version": "v20230501previewstorage",
+        "file": "apimanagement.azure.com/authorizationprovider_v20230501previewstorage.json",
+        "slug": "apimanagement.azure.com/v20230501previewstorage/authorizationprovider"
+      },
+      {
+        "kind": "authorizationprovider",
+        "version": "v20240501",
+        "file": "apimanagement.azure.com/authorizationprovider_v20240501.json",
+        "slug": "apimanagement.azure.com/v20240501/authorizationprovider"
+      },
+      {
+        "kind": "authorizationprovider",
+        "version": "v20240501storage",
+        "file": "apimanagement.azure.com/authorizationprovider_v20240501storage.json",
+        "slug": "apimanagement.azure.com/v20240501storage/authorizationprovider"
+      },
+      {
         "kind": "authorizationprovidersauthorization",
         "version": "v1api20220801",
         "file": "apimanagement.azure.com/authorizationprovidersauthorization_v1api20220801.json",
@@ -1128,6 +1260,42 @@
         "version": "v1api20240501storage",
         "file": "apimanagement.azure.com/authorizationprovidersauthorization_v1api20240501storage.json",
         "slug": "apimanagement.azure.com/v1api20240501storage/authorizationprovidersauthorization"
+      },
+      {
+        "kind": "authorizationprovidersauthorization",
+        "version": "v20220801",
+        "file": "apimanagement.azure.com/authorizationprovidersauthorization_v20220801.json",
+        "slug": "apimanagement.azure.com/v20220801/authorizationprovidersauthorization"
+      },
+      {
+        "kind": "authorizationprovidersauthorization",
+        "version": "v20220801storage",
+        "file": "apimanagement.azure.com/authorizationprovidersauthorization_v20220801storage.json",
+        "slug": "apimanagement.azure.com/v20220801storage/authorizationprovidersauthorization"
+      },
+      {
+        "kind": "authorizationprovidersauthorization",
+        "version": "v20230501preview",
+        "file": "apimanagement.azure.com/authorizationprovidersauthorization_v20230501preview.json",
+        "slug": "apimanagement.azure.com/v20230501preview/authorizationprovidersauthorization"
+      },
+      {
+        "kind": "authorizationprovidersauthorization",
+        "version": "v20230501previewstorage",
+        "file": "apimanagement.azure.com/authorizationprovidersauthorization_v20230501previewstorage.json",
+        "slug": "apimanagement.azure.com/v20230501previewstorage/authorizationprovidersauthorization"
+      },
+      {
+        "kind": "authorizationprovidersauthorization",
+        "version": "v20240501",
+        "file": "apimanagement.azure.com/authorizationprovidersauthorization_v20240501.json",
+        "slug": "apimanagement.azure.com/v20240501/authorizationprovidersauthorization"
+      },
+      {
+        "kind": "authorizationprovidersauthorization",
+        "version": "v20240501storage",
+        "file": "apimanagement.azure.com/authorizationprovidersauthorization_v20240501storage.json",
+        "slug": "apimanagement.azure.com/v20240501storage/authorizationprovidersauthorization"
       },
       {
         "kind": "authorizationprovidersauthorizationsaccesspolicy",
@@ -1166,6 +1334,42 @@
         "slug": "apimanagement.azure.com/v1api20240501storage/authorizationprovidersauthorizationsaccesspolicy"
       },
       {
+        "kind": "authorizationprovidersauthorizationsaccesspolicy",
+        "version": "v20220801",
+        "file": "apimanagement.azure.com/authorizationprovidersauthorizationsaccesspolicy_v20220801.json",
+        "slug": "apimanagement.azure.com/v20220801/authorizationprovidersauthorizationsaccesspolicy"
+      },
+      {
+        "kind": "authorizationprovidersauthorizationsaccesspolicy",
+        "version": "v20220801storage",
+        "file": "apimanagement.azure.com/authorizationprovidersauthorizationsaccesspolicy_v20220801storage.json",
+        "slug": "apimanagement.azure.com/v20220801storage/authorizationprovidersauthorizationsaccesspolicy"
+      },
+      {
+        "kind": "authorizationprovidersauthorizationsaccesspolicy",
+        "version": "v20230501preview",
+        "file": "apimanagement.azure.com/authorizationprovidersauthorizationsaccesspolicy_v20230501preview.json",
+        "slug": "apimanagement.azure.com/v20230501preview/authorizationprovidersauthorizationsaccesspolicy"
+      },
+      {
+        "kind": "authorizationprovidersauthorizationsaccesspolicy",
+        "version": "v20230501previewstorage",
+        "file": "apimanagement.azure.com/authorizationprovidersauthorizationsaccesspolicy_v20230501previewstorage.json",
+        "slug": "apimanagement.azure.com/v20230501previewstorage/authorizationprovidersauthorizationsaccesspolicy"
+      },
+      {
+        "kind": "authorizationprovidersauthorizationsaccesspolicy",
+        "version": "v20240501",
+        "file": "apimanagement.azure.com/authorizationprovidersauthorizationsaccesspolicy_v20240501.json",
+        "slug": "apimanagement.azure.com/v20240501/authorizationprovidersauthorizationsaccesspolicy"
+      },
+      {
+        "kind": "authorizationprovidersauthorizationsaccesspolicy",
+        "version": "v20240501storage",
+        "file": "apimanagement.azure.com/authorizationprovidersauthorizationsaccesspolicy_v20240501storage.json",
+        "slug": "apimanagement.azure.com/v20240501storage/authorizationprovidersauthorizationsaccesspolicy"
+      },
+      {
         "kind": "backend",
         "version": "v1api20220801",
         "file": "apimanagement.azure.com/backend_v1api20220801.json",
@@ -1200,6 +1404,42 @@
         "version": "v1api20240501storage",
         "file": "apimanagement.azure.com/backend_v1api20240501storage.json",
         "slug": "apimanagement.azure.com/v1api20240501storage/backend"
+      },
+      {
+        "kind": "backend",
+        "version": "v20220801",
+        "file": "apimanagement.azure.com/backend_v20220801.json",
+        "slug": "apimanagement.azure.com/v20220801/backend"
+      },
+      {
+        "kind": "backend",
+        "version": "v20220801storage",
+        "file": "apimanagement.azure.com/backend_v20220801storage.json",
+        "slug": "apimanagement.azure.com/v20220801storage/backend"
+      },
+      {
+        "kind": "backend",
+        "version": "v20230501preview",
+        "file": "apimanagement.azure.com/backend_v20230501preview.json",
+        "slug": "apimanagement.azure.com/v20230501preview/backend"
+      },
+      {
+        "kind": "backend",
+        "version": "v20230501previewstorage",
+        "file": "apimanagement.azure.com/backend_v20230501previewstorage.json",
+        "slug": "apimanagement.azure.com/v20230501previewstorage/backend"
+      },
+      {
+        "kind": "backend",
+        "version": "v20240501",
+        "file": "apimanagement.azure.com/backend_v20240501.json",
+        "slug": "apimanagement.azure.com/v20240501/backend"
+      },
+      {
+        "kind": "backend",
+        "version": "v20240501storage",
+        "file": "apimanagement.azure.com/backend_v20240501storage.json",
+        "slug": "apimanagement.azure.com/v20240501storage/backend"
       },
       {
         "kind": "namedvalue",
@@ -1238,6 +1478,42 @@
         "slug": "apimanagement.azure.com/v1api20240501storage/namedvalue"
       },
       {
+        "kind": "namedvalue",
+        "version": "v20220801",
+        "file": "apimanagement.azure.com/namedvalue_v20220801.json",
+        "slug": "apimanagement.azure.com/v20220801/namedvalue"
+      },
+      {
+        "kind": "namedvalue",
+        "version": "v20220801storage",
+        "file": "apimanagement.azure.com/namedvalue_v20220801storage.json",
+        "slug": "apimanagement.azure.com/v20220801storage/namedvalue"
+      },
+      {
+        "kind": "namedvalue",
+        "version": "v20230501preview",
+        "file": "apimanagement.azure.com/namedvalue_v20230501preview.json",
+        "slug": "apimanagement.azure.com/v20230501preview/namedvalue"
+      },
+      {
+        "kind": "namedvalue",
+        "version": "v20230501previewstorage",
+        "file": "apimanagement.azure.com/namedvalue_v20230501previewstorage.json",
+        "slug": "apimanagement.azure.com/v20230501previewstorage/namedvalue"
+      },
+      {
+        "kind": "namedvalue",
+        "version": "v20240501",
+        "file": "apimanagement.azure.com/namedvalue_v20240501.json",
+        "slug": "apimanagement.azure.com/v20240501/namedvalue"
+      },
+      {
+        "kind": "namedvalue",
+        "version": "v20240501storage",
+        "file": "apimanagement.azure.com/namedvalue_v20240501storage.json",
+        "slug": "apimanagement.azure.com/v20240501storage/namedvalue"
+      },
+      {
         "kind": "policy",
         "version": "v1api20220801",
         "file": "apimanagement.azure.com/policy_v1api20220801.json",
@@ -1272,6 +1548,42 @@
         "version": "v1api20240501storage",
         "file": "apimanagement.azure.com/policy_v1api20240501storage.json",
         "slug": "apimanagement.azure.com/v1api20240501storage/policy"
+      },
+      {
+        "kind": "policy",
+        "version": "v20220801",
+        "file": "apimanagement.azure.com/policy_v20220801.json",
+        "slug": "apimanagement.azure.com/v20220801/policy"
+      },
+      {
+        "kind": "policy",
+        "version": "v20220801storage",
+        "file": "apimanagement.azure.com/policy_v20220801storage.json",
+        "slug": "apimanagement.azure.com/v20220801storage/policy"
+      },
+      {
+        "kind": "policy",
+        "version": "v20230501preview",
+        "file": "apimanagement.azure.com/policy_v20230501preview.json",
+        "slug": "apimanagement.azure.com/v20230501preview/policy"
+      },
+      {
+        "kind": "policy",
+        "version": "v20230501previewstorage",
+        "file": "apimanagement.azure.com/policy_v20230501previewstorage.json",
+        "slug": "apimanagement.azure.com/v20230501previewstorage/policy"
+      },
+      {
+        "kind": "policy",
+        "version": "v20240501",
+        "file": "apimanagement.azure.com/policy_v20240501.json",
+        "slug": "apimanagement.azure.com/v20240501/policy"
+      },
+      {
+        "kind": "policy",
+        "version": "v20240501storage",
+        "file": "apimanagement.azure.com/policy_v20240501storage.json",
+        "slug": "apimanagement.azure.com/v20240501storage/policy"
       },
       {
         "kind": "policyfragment",
@@ -1310,6 +1622,42 @@
         "slug": "apimanagement.azure.com/v1api20240501storage/policyfragment"
       },
       {
+        "kind": "policyfragment",
+        "version": "v20220801",
+        "file": "apimanagement.azure.com/policyfragment_v20220801.json",
+        "slug": "apimanagement.azure.com/v20220801/policyfragment"
+      },
+      {
+        "kind": "policyfragment",
+        "version": "v20220801storage",
+        "file": "apimanagement.azure.com/policyfragment_v20220801storage.json",
+        "slug": "apimanagement.azure.com/v20220801storage/policyfragment"
+      },
+      {
+        "kind": "policyfragment",
+        "version": "v20230501preview",
+        "file": "apimanagement.azure.com/policyfragment_v20230501preview.json",
+        "slug": "apimanagement.azure.com/v20230501preview/policyfragment"
+      },
+      {
+        "kind": "policyfragment",
+        "version": "v20230501previewstorage",
+        "file": "apimanagement.azure.com/policyfragment_v20230501previewstorage.json",
+        "slug": "apimanagement.azure.com/v20230501previewstorage/policyfragment"
+      },
+      {
+        "kind": "policyfragment",
+        "version": "v20240501",
+        "file": "apimanagement.azure.com/policyfragment_v20240501.json",
+        "slug": "apimanagement.azure.com/v20240501/policyfragment"
+      },
+      {
+        "kind": "policyfragment",
+        "version": "v20240501storage",
+        "file": "apimanagement.azure.com/policyfragment_v20240501storage.json",
+        "slug": "apimanagement.azure.com/v20240501storage/policyfragment"
+      },
+      {
         "kind": "product",
         "version": "v1api20220801",
         "file": "apimanagement.azure.com/product_v1api20220801.json",
@@ -1344,6 +1692,42 @@
         "version": "v1api20240501storage",
         "file": "apimanagement.azure.com/product_v1api20240501storage.json",
         "slug": "apimanagement.azure.com/v1api20240501storage/product"
+      },
+      {
+        "kind": "product",
+        "version": "v20220801",
+        "file": "apimanagement.azure.com/product_v20220801.json",
+        "slug": "apimanagement.azure.com/v20220801/product"
+      },
+      {
+        "kind": "product",
+        "version": "v20220801storage",
+        "file": "apimanagement.azure.com/product_v20220801storage.json",
+        "slug": "apimanagement.azure.com/v20220801storage/product"
+      },
+      {
+        "kind": "product",
+        "version": "v20230501preview",
+        "file": "apimanagement.azure.com/product_v20230501preview.json",
+        "slug": "apimanagement.azure.com/v20230501preview/product"
+      },
+      {
+        "kind": "product",
+        "version": "v20230501previewstorage",
+        "file": "apimanagement.azure.com/product_v20230501previewstorage.json",
+        "slug": "apimanagement.azure.com/v20230501previewstorage/product"
+      },
+      {
+        "kind": "product",
+        "version": "v20240501",
+        "file": "apimanagement.azure.com/product_v20240501.json",
+        "slug": "apimanagement.azure.com/v20240501/product"
+      },
+      {
+        "kind": "product",
+        "version": "v20240501storage",
+        "file": "apimanagement.azure.com/product_v20240501storage.json",
+        "slug": "apimanagement.azure.com/v20240501storage/product"
       },
       {
         "kind": "productapi",
@@ -1382,6 +1766,42 @@
         "slug": "apimanagement.azure.com/v1api20240501storage/productapi"
       },
       {
+        "kind": "productapi",
+        "version": "v20220801",
+        "file": "apimanagement.azure.com/productapi_v20220801.json",
+        "slug": "apimanagement.azure.com/v20220801/productapi"
+      },
+      {
+        "kind": "productapi",
+        "version": "v20220801storage",
+        "file": "apimanagement.azure.com/productapi_v20220801storage.json",
+        "slug": "apimanagement.azure.com/v20220801storage/productapi"
+      },
+      {
+        "kind": "productapi",
+        "version": "v20230501preview",
+        "file": "apimanagement.azure.com/productapi_v20230501preview.json",
+        "slug": "apimanagement.azure.com/v20230501preview/productapi"
+      },
+      {
+        "kind": "productapi",
+        "version": "v20230501previewstorage",
+        "file": "apimanagement.azure.com/productapi_v20230501previewstorage.json",
+        "slug": "apimanagement.azure.com/v20230501previewstorage/productapi"
+      },
+      {
+        "kind": "productapi",
+        "version": "v20240501",
+        "file": "apimanagement.azure.com/productapi_v20240501.json",
+        "slug": "apimanagement.azure.com/v20240501/productapi"
+      },
+      {
+        "kind": "productapi",
+        "version": "v20240501storage",
+        "file": "apimanagement.azure.com/productapi_v20240501storage.json",
+        "slug": "apimanagement.azure.com/v20240501storage/productapi"
+      },
+      {
         "kind": "productpolicy",
         "version": "v1api20220801",
         "file": "apimanagement.azure.com/productpolicy_v1api20220801.json",
@@ -1416,6 +1836,42 @@
         "version": "v1api20240501storage",
         "file": "apimanagement.azure.com/productpolicy_v1api20240501storage.json",
         "slug": "apimanagement.azure.com/v1api20240501storage/productpolicy"
+      },
+      {
+        "kind": "productpolicy",
+        "version": "v20220801",
+        "file": "apimanagement.azure.com/productpolicy_v20220801.json",
+        "slug": "apimanagement.azure.com/v20220801/productpolicy"
+      },
+      {
+        "kind": "productpolicy",
+        "version": "v20220801storage",
+        "file": "apimanagement.azure.com/productpolicy_v20220801storage.json",
+        "slug": "apimanagement.azure.com/v20220801storage/productpolicy"
+      },
+      {
+        "kind": "productpolicy",
+        "version": "v20230501preview",
+        "file": "apimanagement.azure.com/productpolicy_v20230501preview.json",
+        "slug": "apimanagement.azure.com/v20230501preview/productpolicy"
+      },
+      {
+        "kind": "productpolicy",
+        "version": "v20230501previewstorage",
+        "file": "apimanagement.azure.com/productpolicy_v20230501previewstorage.json",
+        "slug": "apimanagement.azure.com/v20230501previewstorage/productpolicy"
+      },
+      {
+        "kind": "productpolicy",
+        "version": "v20240501",
+        "file": "apimanagement.azure.com/productpolicy_v20240501.json",
+        "slug": "apimanagement.azure.com/v20240501/productpolicy"
+      },
+      {
+        "kind": "productpolicy",
+        "version": "v20240501storage",
+        "file": "apimanagement.azure.com/productpolicy_v20240501storage.json",
+        "slug": "apimanagement.azure.com/v20240501storage/productpolicy"
       },
       {
         "kind": "service",
@@ -1454,6 +1910,42 @@
         "slug": "apimanagement.azure.com/v1api20240501storage/service"
       },
       {
+        "kind": "service",
+        "version": "v20220801",
+        "file": "apimanagement.azure.com/service_v20220801.json",
+        "slug": "apimanagement.azure.com/v20220801/service"
+      },
+      {
+        "kind": "service",
+        "version": "v20220801storage",
+        "file": "apimanagement.azure.com/service_v20220801storage.json",
+        "slug": "apimanagement.azure.com/v20220801storage/service"
+      },
+      {
+        "kind": "service",
+        "version": "v20230501preview",
+        "file": "apimanagement.azure.com/service_v20230501preview.json",
+        "slug": "apimanagement.azure.com/v20230501preview/service"
+      },
+      {
+        "kind": "service",
+        "version": "v20230501previewstorage",
+        "file": "apimanagement.azure.com/service_v20230501previewstorage.json",
+        "slug": "apimanagement.azure.com/v20230501previewstorage/service"
+      },
+      {
+        "kind": "service",
+        "version": "v20240501",
+        "file": "apimanagement.azure.com/service_v20240501.json",
+        "slug": "apimanagement.azure.com/v20240501/service"
+      },
+      {
+        "kind": "service",
+        "version": "v20240501storage",
+        "file": "apimanagement.azure.com/service_v20240501storage.json",
+        "slug": "apimanagement.azure.com/v20240501storage/service"
+      },
+      {
         "kind": "subscription",
         "version": "v1api20220801",
         "file": "apimanagement.azure.com/subscription_v1api20220801.json",
@@ -1488,6 +1980,42 @@
         "version": "v1api20240501storage",
         "file": "apimanagement.azure.com/subscription_v1api20240501storage.json",
         "slug": "apimanagement.azure.com/v1api20240501storage/subscription"
+      },
+      {
+        "kind": "subscription",
+        "version": "v20220801",
+        "file": "apimanagement.azure.com/subscription_v20220801.json",
+        "slug": "apimanagement.azure.com/v20220801/subscription"
+      },
+      {
+        "kind": "subscription",
+        "version": "v20220801storage",
+        "file": "apimanagement.azure.com/subscription_v20220801storage.json",
+        "slug": "apimanagement.azure.com/v20220801storage/subscription"
+      },
+      {
+        "kind": "subscription",
+        "version": "v20230501preview",
+        "file": "apimanagement.azure.com/subscription_v20230501preview.json",
+        "slug": "apimanagement.azure.com/v20230501preview/subscription"
+      },
+      {
+        "kind": "subscription",
+        "version": "v20230501previewstorage",
+        "file": "apimanagement.azure.com/subscription_v20230501previewstorage.json",
+        "slug": "apimanagement.azure.com/v20230501previewstorage/subscription"
+      },
+      {
+        "kind": "subscription",
+        "version": "v20240501",
+        "file": "apimanagement.azure.com/subscription_v20240501.json",
+        "slug": "apimanagement.azure.com/v20240501/subscription"
+      },
+      {
+        "kind": "subscription",
+        "version": "v20240501storage",
+        "file": "apimanagement.azure.com/subscription_v20240501storage.json",
+        "slug": "apimanagement.azure.com/v20240501storage/subscription"
       }
     ],
     "apiregistration.api.k8s.io": [
@@ -1592,6 +2120,30 @@
         "slug": "app.azure.com/v1api20250101storage/authconfig"
       },
       {
+        "kind": "authconfig",
+        "version": "v20240301",
+        "file": "app.azure.com/authconfig_v20240301.json",
+        "slug": "app.azure.com/v20240301/authconfig"
+      },
+      {
+        "kind": "authconfig",
+        "version": "v20240301storage",
+        "file": "app.azure.com/authconfig_v20240301storage.json",
+        "slug": "app.azure.com/v20240301storage/authconfig"
+      },
+      {
+        "kind": "authconfig",
+        "version": "v20250101",
+        "file": "app.azure.com/authconfig_v20250101.json",
+        "slug": "app.azure.com/v20250101/authconfig"
+      },
+      {
+        "kind": "authconfig",
+        "version": "v20250101storage",
+        "file": "app.azure.com/authconfig_v20250101storage.json",
+        "slug": "app.azure.com/v20250101storage/authconfig"
+      },
+      {
         "kind": "containerapp",
         "version": "v1api20240301",
         "file": "app.azure.com/containerapp_v1api20240301.json",
@@ -1614,6 +2166,30 @@
         "version": "v1api20250101storage",
         "file": "app.azure.com/containerapp_v1api20250101storage.json",
         "slug": "app.azure.com/v1api20250101storage/containerapp"
+      },
+      {
+        "kind": "containerapp",
+        "version": "v20240301",
+        "file": "app.azure.com/containerapp_v20240301.json",
+        "slug": "app.azure.com/v20240301/containerapp"
+      },
+      {
+        "kind": "containerapp",
+        "version": "v20240301storage",
+        "file": "app.azure.com/containerapp_v20240301storage.json",
+        "slug": "app.azure.com/v20240301storage/containerapp"
+      },
+      {
+        "kind": "containerapp",
+        "version": "v20250101",
+        "file": "app.azure.com/containerapp_v20250101.json",
+        "slug": "app.azure.com/v20250101/containerapp"
+      },
+      {
+        "kind": "containerapp",
+        "version": "v20250101storage",
+        "file": "app.azure.com/containerapp_v20250101storage.json",
+        "slug": "app.azure.com/v20250101storage/containerapp"
       },
       {
         "kind": "job",
@@ -1640,6 +2216,30 @@
         "slug": "app.azure.com/v1api20250101storage/job"
       },
       {
+        "kind": "job",
+        "version": "v20240301",
+        "file": "app.azure.com/job_v20240301.json",
+        "slug": "app.azure.com/v20240301/job"
+      },
+      {
+        "kind": "job",
+        "version": "v20240301storage",
+        "file": "app.azure.com/job_v20240301storage.json",
+        "slug": "app.azure.com/v20240301storage/job"
+      },
+      {
+        "kind": "job",
+        "version": "v20250101",
+        "file": "app.azure.com/job_v20250101.json",
+        "slug": "app.azure.com/v20250101/job"
+      },
+      {
+        "kind": "job",
+        "version": "v20250101storage",
+        "file": "app.azure.com/job_v20250101storage.json",
+        "slug": "app.azure.com/v20250101storage/job"
+      },
+      {
         "kind": "managedenvironment",
         "version": "v1api20240301",
         "file": "app.azure.com/managedenvironment_v1api20240301.json",
@@ -1662,6 +2262,30 @@
         "version": "v1api20250101storage",
         "file": "app.azure.com/managedenvironment_v1api20250101storage.json",
         "slug": "app.azure.com/v1api20250101storage/managedenvironment"
+      },
+      {
+        "kind": "managedenvironment",
+        "version": "v20240301",
+        "file": "app.azure.com/managedenvironment_v20240301.json",
+        "slug": "app.azure.com/v20240301/managedenvironment"
+      },
+      {
+        "kind": "managedenvironment",
+        "version": "v20240301storage",
+        "file": "app.azure.com/managedenvironment_v20240301storage.json",
+        "slug": "app.azure.com/v20240301storage/managedenvironment"
+      },
+      {
+        "kind": "managedenvironment",
+        "version": "v20250101",
+        "file": "app.azure.com/managedenvironment_v20250101.json",
+        "slug": "app.azure.com/v20250101/managedenvironment"
+      },
+      {
+        "kind": "managedenvironment",
+        "version": "v20250101storage",
+        "file": "app.azure.com/managedenvironment_v20250101storage.json",
+        "slug": "app.azure.com/v20250101storage/managedenvironment"
       }
     ],
     "appconfiguration.azure.com": [
@@ -1676,6 +2300,30 @@
         "version": "v1api20220501storage",
         "file": "appconfiguration.azure.com/configurationstore_v1api20220501storage.json",
         "slug": "appconfiguration.azure.com/v1api20220501storage/configurationstore"
+      },
+      {
+        "kind": "configurationstore",
+        "version": "v20220501",
+        "file": "appconfiguration.azure.com/configurationstore_v20220501.json",
+        "slug": "appconfiguration.azure.com/v20220501/configurationstore"
+      },
+      {
+        "kind": "configurationstore",
+        "version": "v20220501storage",
+        "file": "appconfiguration.azure.com/configurationstore_v20220501storage.json",
+        "slug": "appconfiguration.azure.com/v20220501storage/configurationstore"
+      },
+      {
+        "kind": "configurationstore",
+        "version": "v20240601",
+        "file": "appconfiguration.azure.com/configurationstore_v20240601.json",
+        "slug": "appconfiguration.azure.com/v20240601/configurationstore"
+      },
+      {
+        "kind": "configurationstore",
+        "version": "v20240601storage",
+        "file": "appconfiguration.azure.com/configurationstore_v20240601storage.json",
+        "slug": "appconfiguration.azure.com/v20240601storage/configurationstore"
       }
     ],
     "appengine.cnrm.cloud.google.com": [
@@ -2662,6 +3310,18 @@
         "version": "v1api20210101storage",
         "file": "batch.azure.com/batchaccount_v1api20210101storage.json",
         "slug": "batch.azure.com/v1api20210101storage/batchaccount"
+      },
+      {
+        "kind": "batchaccount",
+        "version": "v20210101",
+        "file": "batch.azure.com/batchaccount_v20210101.json",
+        "slug": "batch.azure.com/v20210101/batchaccount"
+      },
+      {
+        "kind": "batchaccount",
+        "version": "v20210101storage",
+        "file": "batch.azure.com/batchaccount_v20210101storage.json",
+        "slug": "batch.azure.com/v20210101storage/batchaccount"
       },
       {
         "kind": "batchaccount",
@@ -4350,6 +5010,18 @@
         "slug": "compute.azure.com/v1api20241101storage/availabilityset"
       },
       {
+        "kind": "availabilityset",
+        "version": "v20241101",
+        "file": "compute.azure.com/availabilityset_v20241101.json",
+        "slug": "compute.azure.com/v20241101/availabilityset"
+      },
+      {
+        "kind": "availabilityset",
+        "version": "v20241101storage",
+        "file": "compute.azure.com/availabilityset_v20241101storage.json",
+        "slug": "compute.azure.com/v20241101storage/availabilityset"
+      },
+      {
         "kind": "capacityreservation",
         "version": "v1api20250401",
         "file": "compute.azure.com/capacityreservation_v1api20250401.json",
@@ -4362,6 +5034,18 @@
         "slug": "compute.azure.com/v1api20250401storage/capacityreservation"
       },
       {
+        "kind": "capacityreservation",
+        "version": "v20250401",
+        "file": "compute.azure.com/capacityreservation_v20250401.json",
+        "slug": "compute.azure.com/v20250401/capacityreservation"
+      },
+      {
+        "kind": "capacityreservation",
+        "version": "v20250401storage",
+        "file": "compute.azure.com/capacityreservation_v20250401storage.json",
+        "slug": "compute.azure.com/v20250401storage/capacityreservation"
+      },
+      {
         "kind": "capacityreservationgroup",
         "version": "v1api20250401",
         "file": "compute.azure.com/capacityreservationgroup_v1api20250401.json",
@@ -4372,6 +5056,18 @@
         "version": "v1api20250401storage",
         "file": "compute.azure.com/capacityreservationgroup_v1api20250401storage.json",
         "slug": "compute.azure.com/v1api20250401storage/capacityreservationgroup"
+      },
+      {
+        "kind": "capacityreservationgroup",
+        "version": "v20250401",
+        "file": "compute.azure.com/capacityreservationgroup_v20250401.json",
+        "slug": "compute.azure.com/v20250401/capacityreservationgroup"
+      },
+      {
+        "kind": "capacityreservationgroup",
+        "version": "v20250401storage",
+        "file": "compute.azure.com/capacityreservationgroup_v20250401storage.json",
+        "slug": "compute.azure.com/v20250401storage/capacityreservationgroup"
       },
       {
         "kind": "disk",
@@ -4398,6 +5094,30 @@
         "slug": "compute.azure.com/v1api20240302storage/disk"
       },
       {
+        "kind": "disk",
+        "version": "v20200930",
+        "file": "compute.azure.com/disk_v20200930.json",
+        "slug": "compute.azure.com/v20200930/disk"
+      },
+      {
+        "kind": "disk",
+        "version": "v20200930storage",
+        "file": "compute.azure.com/disk_v20200930storage.json",
+        "slug": "compute.azure.com/v20200930storage/disk"
+      },
+      {
+        "kind": "disk",
+        "version": "v20240302",
+        "file": "compute.azure.com/disk_v20240302.json",
+        "slug": "compute.azure.com/v20240302/disk"
+      },
+      {
+        "kind": "disk",
+        "version": "v20240302storage",
+        "file": "compute.azure.com/disk_v20240302storage.json",
+        "slug": "compute.azure.com/v20240302storage/disk"
+      },
+      {
         "kind": "diskaccess",
         "version": "v1api20240302",
         "file": "compute.azure.com/diskaccess_v1api20240302.json",
@@ -4408,6 +5128,18 @@
         "version": "v1api20240302storage",
         "file": "compute.azure.com/diskaccess_v1api20240302storage.json",
         "slug": "compute.azure.com/v1api20240302storage/diskaccess"
+      },
+      {
+        "kind": "diskaccess",
+        "version": "v20240302",
+        "file": "compute.azure.com/diskaccess_v20240302.json",
+        "slug": "compute.azure.com/v20240302/diskaccess"
+      },
+      {
+        "kind": "diskaccess",
+        "version": "v20240302storage",
+        "file": "compute.azure.com/diskaccess_v20240302storage.json",
+        "slug": "compute.azure.com/v20240302storage/diskaccess"
       },
       {
         "kind": "diskencryptionset",
@@ -4434,6 +5166,30 @@
         "slug": "compute.azure.com/v1api20240302storage/diskencryptionset"
       },
       {
+        "kind": "diskencryptionset",
+        "version": "v20220702",
+        "file": "compute.azure.com/diskencryptionset_v20220702.json",
+        "slug": "compute.azure.com/v20220702/diskencryptionset"
+      },
+      {
+        "kind": "diskencryptionset",
+        "version": "v20220702storage",
+        "file": "compute.azure.com/diskencryptionset_v20220702storage.json",
+        "slug": "compute.azure.com/v20220702storage/diskencryptionset"
+      },
+      {
+        "kind": "diskencryptionset",
+        "version": "v20240302",
+        "file": "compute.azure.com/diskencryptionset_v20240302.json",
+        "slug": "compute.azure.com/v20240302/diskencryptionset"
+      },
+      {
+        "kind": "diskencryptionset",
+        "version": "v20240302storage",
+        "file": "compute.azure.com/diskencryptionset_v20240302storage.json",
+        "slug": "compute.azure.com/v20240302storage/diskencryptionset"
+      },
+      {
         "kind": "image",
         "version": "v1api20210701",
         "file": "compute.azure.com/image_v1api20210701.json",
@@ -4456,6 +5212,30 @@
         "version": "v1api20220301storage",
         "file": "compute.azure.com/image_v1api20220301storage.json",
         "slug": "compute.azure.com/v1api20220301storage/image"
+      },
+      {
+        "kind": "image",
+        "version": "v20210701",
+        "file": "compute.azure.com/image_v20210701.json",
+        "slug": "compute.azure.com/v20210701/image"
+      },
+      {
+        "kind": "image",
+        "version": "v20210701storage",
+        "file": "compute.azure.com/image_v20210701storage.json",
+        "slug": "compute.azure.com/v20210701storage/image"
+      },
+      {
+        "kind": "image",
+        "version": "v20220301",
+        "file": "compute.azure.com/image_v20220301.json",
+        "slug": "compute.azure.com/v20220301/image"
+      },
+      {
+        "kind": "image",
+        "version": "v20220301storage",
+        "file": "compute.azure.com/image_v20220301storage.json",
+        "slug": "compute.azure.com/v20220301storage/image"
       },
       {
         "kind": "snapshot",
@@ -4482,6 +5262,30 @@
         "slug": "compute.azure.com/v1api20240302storage/snapshot"
       },
       {
+        "kind": "snapshot",
+        "version": "v20200930",
+        "file": "compute.azure.com/snapshot_v20200930.json",
+        "slug": "compute.azure.com/v20200930/snapshot"
+      },
+      {
+        "kind": "snapshot",
+        "version": "v20200930storage",
+        "file": "compute.azure.com/snapshot_v20200930storage.json",
+        "slug": "compute.azure.com/v20200930storage/snapshot"
+      },
+      {
+        "kind": "snapshot",
+        "version": "v20240302",
+        "file": "compute.azure.com/snapshot_v20240302.json",
+        "slug": "compute.azure.com/v20240302/snapshot"
+      },
+      {
+        "kind": "snapshot",
+        "version": "v20240302storage",
+        "file": "compute.azure.com/snapshot_v20240302storage.json",
+        "slug": "compute.azure.com/v20240302storage/snapshot"
+      },
+      {
         "kind": "virtualmachine",
         "version": "v1api20201201",
         "file": "compute.azure.com/virtualmachine_v1api20201201.json",
@@ -4504,6 +5308,30 @@
         "version": "v1api20220301storage",
         "file": "compute.azure.com/virtualmachine_v1api20220301storage.json",
         "slug": "compute.azure.com/v1api20220301storage/virtualmachine"
+      },
+      {
+        "kind": "virtualmachine",
+        "version": "v20201201",
+        "file": "compute.azure.com/virtualmachine_v20201201.json",
+        "slug": "compute.azure.com/v20201201/virtualmachine"
+      },
+      {
+        "kind": "virtualmachine",
+        "version": "v20201201storage",
+        "file": "compute.azure.com/virtualmachine_v20201201storage.json",
+        "slug": "compute.azure.com/v20201201storage/virtualmachine"
+      },
+      {
+        "kind": "virtualmachine",
+        "version": "v20220301",
+        "file": "compute.azure.com/virtualmachine_v20220301.json",
+        "slug": "compute.azure.com/v20220301/virtualmachine"
+      },
+      {
+        "kind": "virtualmachine",
+        "version": "v20220301storage",
+        "file": "compute.azure.com/virtualmachine_v20220301storage.json",
+        "slug": "compute.azure.com/v20220301storage/virtualmachine"
       },
       {
         "kind": "virtualmachinescaleset",
@@ -4530,6 +5358,30 @@
         "slug": "compute.azure.com/v1api20220301storage/virtualmachinescaleset"
       },
       {
+        "kind": "virtualmachinescaleset",
+        "version": "v20201201",
+        "file": "compute.azure.com/virtualmachinescaleset_v20201201.json",
+        "slug": "compute.azure.com/v20201201/virtualmachinescaleset"
+      },
+      {
+        "kind": "virtualmachinescaleset",
+        "version": "v20201201storage",
+        "file": "compute.azure.com/virtualmachinescaleset_v20201201storage.json",
+        "slug": "compute.azure.com/v20201201storage/virtualmachinescaleset"
+      },
+      {
+        "kind": "virtualmachinescaleset",
+        "version": "v20220301",
+        "file": "compute.azure.com/virtualmachinescaleset_v20220301.json",
+        "slug": "compute.azure.com/v20220301/virtualmachinescaleset"
+      },
+      {
+        "kind": "virtualmachinescaleset",
+        "version": "v20220301storage",
+        "file": "compute.azure.com/virtualmachinescaleset_v20220301storage.json",
+        "slug": "compute.azure.com/v20220301storage/virtualmachinescaleset"
+      },
+      {
         "kind": "virtualmachinescalesetsextension",
         "version": "v1api20201201",
         "file": "compute.azure.com/virtualmachinescalesetsextension_v1api20201201.json",
@@ -4554,6 +5406,30 @@
         "slug": "compute.azure.com/v1api20220301storage/virtualmachinescalesetsextension"
       },
       {
+        "kind": "virtualmachinescalesetsextension",
+        "version": "v20201201",
+        "file": "compute.azure.com/virtualmachinescalesetsextension_v20201201.json",
+        "slug": "compute.azure.com/v20201201/virtualmachinescalesetsextension"
+      },
+      {
+        "kind": "virtualmachinescalesetsextension",
+        "version": "v20201201storage",
+        "file": "compute.azure.com/virtualmachinescalesetsextension_v20201201storage.json",
+        "slug": "compute.azure.com/v20201201storage/virtualmachinescalesetsextension"
+      },
+      {
+        "kind": "virtualmachinescalesetsextension",
+        "version": "v20220301",
+        "file": "compute.azure.com/virtualmachinescalesetsextension_v20220301.json",
+        "slug": "compute.azure.com/v20220301/virtualmachinescalesetsextension"
+      },
+      {
+        "kind": "virtualmachinescalesetsextension",
+        "version": "v20220301storage",
+        "file": "compute.azure.com/virtualmachinescalesetsextension_v20220301storage.json",
+        "slug": "compute.azure.com/v20220301storage/virtualmachinescalesetsextension"
+      },
+      {
         "kind": "virtualmachinesextension",
         "version": "v1api20201201",
         "file": "compute.azure.com/virtualmachinesextension_v1api20201201.json",
@@ -4576,6 +5452,30 @@
         "version": "v1api20220301storage",
         "file": "compute.azure.com/virtualmachinesextension_v1api20220301storage.json",
         "slug": "compute.azure.com/v1api20220301storage/virtualmachinesextension"
+      },
+      {
+        "kind": "virtualmachinesextension",
+        "version": "v20201201",
+        "file": "compute.azure.com/virtualmachinesextension_v20201201.json",
+        "slug": "compute.azure.com/v20201201/virtualmachinesextension"
+      },
+      {
+        "kind": "virtualmachinesextension",
+        "version": "v20201201storage",
+        "file": "compute.azure.com/virtualmachinesextension_v20201201storage.json",
+        "slug": "compute.azure.com/v20201201storage/virtualmachinesextension"
+      },
+      {
+        "kind": "virtualmachinesextension",
+        "version": "v20220301",
+        "file": "compute.azure.com/virtualmachinesextension_v20220301.json",
+        "slug": "compute.azure.com/v20220301/virtualmachinesextension"
+      },
+      {
+        "kind": "virtualmachinesextension",
+        "version": "v20220301storage",
+        "file": "compute.azure.com/virtualmachinesextension_v20220301storage.json",
+        "slug": "compute.azure.com/v20220301storage/virtualmachinesextension"
       }
     ],
     "compute.cnrm.cloud.google.com": [
@@ -5262,6 +6162,18 @@
         "slug": "containerservice.azure.com/v1api20250801storage/maintenanceconfiguration"
       },
       {
+        "kind": "maintenanceconfiguration",
+        "version": "v20251002preview",
+        "file": "containerservice.azure.com/maintenanceconfiguration_v20251002preview.json",
+        "slug": "containerservice.azure.com/v20251002preview/maintenanceconfiguration"
+      },
+      {
+        "kind": "maintenanceconfiguration",
+        "version": "v20251002previewstorage",
+        "file": "containerservice.azure.com/maintenanceconfiguration_v20251002previewstorage.json",
+        "slug": "containerservice.azure.com/v20251002previewstorage/maintenanceconfiguration"
+      },
+      {
         "kind": "managedcluster",
         "version": "v1api20230201",
         "file": "containerservice.azure.com/managedcluster_v1api20230201.json",
@@ -5320,6 +6232,18 @@
         "version": "v1api20250801storage",
         "file": "containerservice.azure.com/managedcluster_v1api20250801storage.json",
         "slug": "containerservice.azure.com/v1api20250801storage/managedcluster"
+      },
+      {
+        "kind": "managedcluster",
+        "version": "v20251002preview",
+        "file": "containerservice.azure.com/managedcluster_v20251002preview.json",
+        "slug": "containerservice.azure.com/v20251002preview/managedcluster"
+      },
+      {
+        "kind": "managedcluster",
+        "version": "v20251002previewstorage",
+        "file": "containerservice.azure.com/managedcluster_v20251002previewstorage.json",
+        "slug": "containerservice.azure.com/v20251002previewstorage/managedcluster"
       },
       {
         "kind": "managedclustersagentpool",
@@ -5382,6 +6306,18 @@
         "slug": "containerservice.azure.com/v1api20250801storage/managedclustersagentpool"
       },
       {
+        "kind": "managedclustersagentpool",
+        "version": "v20251002preview",
+        "file": "containerservice.azure.com/managedclustersagentpool_v20251002preview.json",
+        "slug": "containerservice.azure.com/v20251002preview/managedclustersagentpool"
+      },
+      {
+        "kind": "managedclustersagentpool",
+        "version": "v20251002previewstorage",
+        "file": "containerservice.azure.com/managedclustersagentpool_v20251002previewstorage.json",
+        "slug": "containerservice.azure.com/v20251002previewstorage/managedclustersagentpool"
+      },
+      {
         "kind": "trustedaccessrolebinding",
         "version": "v1api20231001",
         "file": "containerservice.azure.com/trustedaccessrolebinding_v1api20231001.json",
@@ -5428,6 +6364,18 @@
         "version": "v1api20250801storage",
         "file": "containerservice.azure.com/trustedaccessrolebinding_v1api20250801storage.json",
         "slug": "containerservice.azure.com/v1api20250801storage/trustedaccessrolebinding"
+      },
+      {
+        "kind": "trustedaccessrolebinding",
+        "version": "v20251002preview",
+        "file": "containerservice.azure.com/trustedaccessrolebinding_v20251002preview.json",
+        "slug": "containerservice.azure.com/v20251002preview/trustedaccessrolebinding"
+      },
+      {
+        "kind": "trustedaccessrolebinding",
+        "version": "v20251002previewstorage",
+        "file": "containerservice.azure.com/trustedaccessrolebinding_v20251002previewstorage.json",
+        "slug": "containerservice.azure.com/v20251002previewstorage/trustedaccessrolebinding"
       }
     ],
     "controlplane.cluster.x-k8s.io": [
@@ -6922,6 +7870,18 @@
         "version": "v1api20180601storage",
         "file": "datafactory.azure.com/factory_v1api20180601storage.json",
         "slug": "datafactory.azure.com/v1api20180601storage/factory"
+      },
+      {
+        "kind": "factory",
+        "version": "v20180601",
+        "file": "datafactory.azure.com/factory_v20180601.json",
+        "slug": "datafactory.azure.com/v20180601/factory"
+      },
+      {
+        "kind": "factory",
+        "version": "v20180601storage",
+        "file": "datafactory.azure.com/factory_v20180601storage.json",
+        "slug": "datafactory.azure.com/v20180601storage/factory"
       }
     ],
     "dataflow.cnrm.cloud.google.com": [
@@ -7202,6 +8162,66 @@
         "slug": "dbformysql.azure.com/v1api20231230storage/flexibleserver"
       },
       {
+        "kind": "flexibleserver",
+        "version": "v20210501",
+        "file": "dbformysql.azure.com/flexibleserver_v20210501.json",
+        "slug": "dbformysql.azure.com/v20210501/flexibleserver"
+      },
+      {
+        "kind": "flexibleserver",
+        "version": "v20210501storage",
+        "file": "dbformysql.azure.com/flexibleserver_v20210501storage.json",
+        "slug": "dbformysql.azure.com/v20210501storage/flexibleserver"
+      },
+      {
+        "kind": "flexibleserver",
+        "version": "v20230630",
+        "file": "dbformysql.azure.com/flexibleserver_v20230630.json",
+        "slug": "dbformysql.azure.com/v20230630/flexibleserver"
+      },
+      {
+        "kind": "flexibleserver",
+        "version": "v20230630storage",
+        "file": "dbformysql.azure.com/flexibleserver_v20230630storage.json",
+        "slug": "dbformysql.azure.com/v20230630storage/flexibleserver"
+      },
+      {
+        "kind": "flexibleserver",
+        "version": "v20231230",
+        "file": "dbformysql.azure.com/flexibleserver_v20231230.json",
+        "slug": "dbformysql.azure.com/v20231230/flexibleserver"
+      },
+      {
+        "kind": "flexibleserver",
+        "version": "v20231230storage",
+        "file": "dbformysql.azure.com/flexibleserver_v20231230storage.json",
+        "slug": "dbformysql.azure.com/v20231230storage/flexibleserver"
+      },
+      {
+        "kind": "flexibleserver",
+        "version": "v20241230",
+        "file": "dbformysql.azure.com/flexibleserver_v20241230.json",
+        "slug": "dbformysql.azure.com/v20241230/flexibleserver"
+      },
+      {
+        "kind": "flexibleserver",
+        "version": "v20241230storage",
+        "file": "dbformysql.azure.com/flexibleserver_v20241230storage.json",
+        "slug": "dbformysql.azure.com/v20241230storage/flexibleserver"
+      },
+      {
+        "kind": "flexibleserver",
+        "version": "v20250601preview",
+        "file": "dbformysql.azure.com/flexibleserver_v20250601preview.json",
+        "slug": "dbformysql.azure.com/v20250601preview/flexibleserver"
+      },
+      {
+        "kind": "flexibleserver",
+        "version": "v20250601previewstorage",
+        "file": "dbformysql.azure.com/flexibleserver_v20250601previewstorage.json",
+        "slug": "dbformysql.azure.com/v20250601previewstorage/flexibleserver"
+      },
+      {
         "kind": "flexibleserversadministrator",
         "version": "v1api20220101",
         "file": "dbformysql.azure.com/flexibleserversadministrator_v1api20220101.json",
@@ -7236,6 +8256,66 @@
         "version": "v1api20231230storage",
         "file": "dbformysql.azure.com/flexibleserversadministrator_v1api20231230storage.json",
         "slug": "dbformysql.azure.com/v1api20231230storage/flexibleserversadministrator"
+      },
+      {
+        "kind": "flexibleserversadministrator",
+        "version": "v20220101",
+        "file": "dbformysql.azure.com/flexibleserversadministrator_v20220101.json",
+        "slug": "dbformysql.azure.com/v20220101/flexibleserversadministrator"
+      },
+      {
+        "kind": "flexibleserversadministrator",
+        "version": "v20220101storage",
+        "file": "dbformysql.azure.com/flexibleserversadministrator_v20220101storage.json",
+        "slug": "dbformysql.azure.com/v20220101storage/flexibleserversadministrator"
+      },
+      {
+        "kind": "flexibleserversadministrator",
+        "version": "v20230630",
+        "file": "dbformysql.azure.com/flexibleserversadministrator_v20230630.json",
+        "slug": "dbformysql.azure.com/v20230630/flexibleserversadministrator"
+      },
+      {
+        "kind": "flexibleserversadministrator",
+        "version": "v20230630storage",
+        "file": "dbformysql.azure.com/flexibleserversadministrator_v20230630storage.json",
+        "slug": "dbformysql.azure.com/v20230630storage/flexibleserversadministrator"
+      },
+      {
+        "kind": "flexibleserversadministrator",
+        "version": "v20231230",
+        "file": "dbformysql.azure.com/flexibleserversadministrator_v20231230.json",
+        "slug": "dbformysql.azure.com/v20231230/flexibleserversadministrator"
+      },
+      {
+        "kind": "flexibleserversadministrator",
+        "version": "v20231230storage",
+        "file": "dbformysql.azure.com/flexibleserversadministrator_v20231230storage.json",
+        "slug": "dbformysql.azure.com/v20231230storage/flexibleserversadministrator"
+      },
+      {
+        "kind": "flexibleserversadministrator",
+        "version": "v20241230",
+        "file": "dbformysql.azure.com/flexibleserversadministrator_v20241230.json",
+        "slug": "dbformysql.azure.com/v20241230/flexibleserversadministrator"
+      },
+      {
+        "kind": "flexibleserversadministrator",
+        "version": "v20241230storage",
+        "file": "dbformysql.azure.com/flexibleserversadministrator_v20241230storage.json",
+        "slug": "dbformysql.azure.com/v20241230storage/flexibleserversadministrator"
+      },
+      {
+        "kind": "flexibleserversadministrator",
+        "version": "v20250601preview",
+        "file": "dbformysql.azure.com/flexibleserversadministrator_v20250601preview.json",
+        "slug": "dbformysql.azure.com/v20250601preview/flexibleserversadministrator"
+      },
+      {
+        "kind": "flexibleserversadministrator",
+        "version": "v20250601previewstorage",
+        "file": "dbformysql.azure.com/flexibleserversadministrator_v20250601previewstorage.json",
+        "slug": "dbformysql.azure.com/v20250601previewstorage/flexibleserversadministrator"
       },
       {
         "kind": "flexibleserversconfiguration",
@@ -7274,6 +8354,66 @@
         "slug": "dbformysql.azure.com/v1api20231230storage/flexibleserversconfiguration"
       },
       {
+        "kind": "flexibleserversconfiguration",
+        "version": "v20220101",
+        "file": "dbformysql.azure.com/flexibleserversconfiguration_v20220101.json",
+        "slug": "dbformysql.azure.com/v20220101/flexibleserversconfiguration"
+      },
+      {
+        "kind": "flexibleserversconfiguration",
+        "version": "v20220101storage",
+        "file": "dbformysql.azure.com/flexibleserversconfiguration_v20220101storage.json",
+        "slug": "dbformysql.azure.com/v20220101storage/flexibleserversconfiguration"
+      },
+      {
+        "kind": "flexibleserversconfiguration",
+        "version": "v20230630",
+        "file": "dbformysql.azure.com/flexibleserversconfiguration_v20230630.json",
+        "slug": "dbformysql.azure.com/v20230630/flexibleserversconfiguration"
+      },
+      {
+        "kind": "flexibleserversconfiguration",
+        "version": "v20230630storage",
+        "file": "dbformysql.azure.com/flexibleserversconfiguration_v20230630storage.json",
+        "slug": "dbformysql.azure.com/v20230630storage/flexibleserversconfiguration"
+      },
+      {
+        "kind": "flexibleserversconfiguration",
+        "version": "v20231230",
+        "file": "dbformysql.azure.com/flexibleserversconfiguration_v20231230.json",
+        "slug": "dbformysql.azure.com/v20231230/flexibleserversconfiguration"
+      },
+      {
+        "kind": "flexibleserversconfiguration",
+        "version": "v20231230storage",
+        "file": "dbformysql.azure.com/flexibleserversconfiguration_v20231230storage.json",
+        "slug": "dbformysql.azure.com/v20231230storage/flexibleserversconfiguration"
+      },
+      {
+        "kind": "flexibleserversconfiguration",
+        "version": "v20241230",
+        "file": "dbformysql.azure.com/flexibleserversconfiguration_v20241230.json",
+        "slug": "dbformysql.azure.com/v20241230/flexibleserversconfiguration"
+      },
+      {
+        "kind": "flexibleserversconfiguration",
+        "version": "v20241230storage",
+        "file": "dbformysql.azure.com/flexibleserversconfiguration_v20241230storage.json",
+        "slug": "dbformysql.azure.com/v20241230storage/flexibleserversconfiguration"
+      },
+      {
+        "kind": "flexibleserversconfiguration",
+        "version": "v20250601preview",
+        "file": "dbformysql.azure.com/flexibleserversconfiguration_v20250601preview.json",
+        "slug": "dbformysql.azure.com/v20250601preview/flexibleserversconfiguration"
+      },
+      {
+        "kind": "flexibleserversconfiguration",
+        "version": "v20250601previewstorage",
+        "file": "dbformysql.azure.com/flexibleserversconfiguration_v20250601previewstorage.json",
+        "slug": "dbformysql.azure.com/v20250601previewstorage/flexibleserversconfiguration"
+      },
+      {
         "kind": "flexibleserversdatabase",
         "version": "v1api20210501",
         "file": "dbformysql.azure.com/flexibleserversdatabase_v1api20210501.json",
@@ -7310,6 +8450,66 @@
         "slug": "dbformysql.azure.com/v1api20231230storage/flexibleserversdatabase"
       },
       {
+        "kind": "flexibleserversdatabase",
+        "version": "v20210501",
+        "file": "dbformysql.azure.com/flexibleserversdatabase_v20210501.json",
+        "slug": "dbformysql.azure.com/v20210501/flexibleserversdatabase"
+      },
+      {
+        "kind": "flexibleserversdatabase",
+        "version": "v20210501storage",
+        "file": "dbformysql.azure.com/flexibleserversdatabase_v20210501storage.json",
+        "slug": "dbformysql.azure.com/v20210501storage/flexibleserversdatabase"
+      },
+      {
+        "kind": "flexibleserversdatabase",
+        "version": "v20230630",
+        "file": "dbformysql.azure.com/flexibleserversdatabase_v20230630.json",
+        "slug": "dbformysql.azure.com/v20230630/flexibleserversdatabase"
+      },
+      {
+        "kind": "flexibleserversdatabase",
+        "version": "v20230630storage",
+        "file": "dbformysql.azure.com/flexibleserversdatabase_v20230630storage.json",
+        "slug": "dbformysql.azure.com/v20230630storage/flexibleserversdatabase"
+      },
+      {
+        "kind": "flexibleserversdatabase",
+        "version": "v20231230",
+        "file": "dbformysql.azure.com/flexibleserversdatabase_v20231230.json",
+        "slug": "dbformysql.azure.com/v20231230/flexibleserversdatabase"
+      },
+      {
+        "kind": "flexibleserversdatabase",
+        "version": "v20231230storage",
+        "file": "dbformysql.azure.com/flexibleserversdatabase_v20231230storage.json",
+        "slug": "dbformysql.azure.com/v20231230storage/flexibleserversdatabase"
+      },
+      {
+        "kind": "flexibleserversdatabase",
+        "version": "v20241230",
+        "file": "dbformysql.azure.com/flexibleserversdatabase_v20241230.json",
+        "slug": "dbformysql.azure.com/v20241230/flexibleserversdatabase"
+      },
+      {
+        "kind": "flexibleserversdatabase",
+        "version": "v20241230storage",
+        "file": "dbformysql.azure.com/flexibleserversdatabase_v20241230storage.json",
+        "slug": "dbformysql.azure.com/v20241230storage/flexibleserversdatabase"
+      },
+      {
+        "kind": "flexibleserversdatabase",
+        "version": "v20250601preview",
+        "file": "dbformysql.azure.com/flexibleserversdatabase_v20250601preview.json",
+        "slug": "dbformysql.azure.com/v20250601preview/flexibleserversdatabase"
+      },
+      {
+        "kind": "flexibleserversdatabase",
+        "version": "v20250601previewstorage",
+        "file": "dbformysql.azure.com/flexibleserversdatabase_v20250601previewstorage.json",
+        "slug": "dbformysql.azure.com/v20250601previewstorage/flexibleserversdatabase"
+      },
+      {
         "kind": "flexibleserversfirewallrule",
         "version": "v1api20210501",
         "file": "dbformysql.azure.com/flexibleserversfirewallrule_v1api20210501.json",
@@ -7344,6 +8544,66 @@
         "version": "v1api20231230storage",
         "file": "dbformysql.azure.com/flexibleserversfirewallrule_v1api20231230storage.json",
         "slug": "dbformysql.azure.com/v1api20231230storage/flexibleserversfirewallrule"
+      },
+      {
+        "kind": "flexibleserversfirewallrule",
+        "version": "v20210501",
+        "file": "dbformysql.azure.com/flexibleserversfirewallrule_v20210501.json",
+        "slug": "dbformysql.azure.com/v20210501/flexibleserversfirewallrule"
+      },
+      {
+        "kind": "flexibleserversfirewallrule",
+        "version": "v20210501storage",
+        "file": "dbformysql.azure.com/flexibleserversfirewallrule_v20210501storage.json",
+        "slug": "dbformysql.azure.com/v20210501storage/flexibleserversfirewallrule"
+      },
+      {
+        "kind": "flexibleserversfirewallrule",
+        "version": "v20230630",
+        "file": "dbformysql.azure.com/flexibleserversfirewallrule_v20230630.json",
+        "slug": "dbformysql.azure.com/v20230630/flexibleserversfirewallrule"
+      },
+      {
+        "kind": "flexibleserversfirewallrule",
+        "version": "v20230630storage",
+        "file": "dbformysql.azure.com/flexibleserversfirewallrule_v20230630storage.json",
+        "slug": "dbformysql.azure.com/v20230630storage/flexibleserversfirewallrule"
+      },
+      {
+        "kind": "flexibleserversfirewallrule",
+        "version": "v20231230",
+        "file": "dbformysql.azure.com/flexibleserversfirewallrule_v20231230.json",
+        "slug": "dbformysql.azure.com/v20231230/flexibleserversfirewallrule"
+      },
+      {
+        "kind": "flexibleserversfirewallrule",
+        "version": "v20231230storage",
+        "file": "dbformysql.azure.com/flexibleserversfirewallrule_v20231230storage.json",
+        "slug": "dbformysql.azure.com/v20231230storage/flexibleserversfirewallrule"
+      },
+      {
+        "kind": "flexibleserversfirewallrule",
+        "version": "v20241230",
+        "file": "dbformysql.azure.com/flexibleserversfirewallrule_v20241230.json",
+        "slug": "dbformysql.azure.com/v20241230/flexibleserversfirewallrule"
+      },
+      {
+        "kind": "flexibleserversfirewallrule",
+        "version": "v20241230storage",
+        "file": "dbformysql.azure.com/flexibleserversfirewallrule_v20241230storage.json",
+        "slug": "dbformysql.azure.com/v20241230storage/flexibleserversfirewallrule"
+      },
+      {
+        "kind": "flexibleserversfirewallrule",
+        "version": "v20250601preview",
+        "file": "dbformysql.azure.com/flexibleserversfirewallrule_v20250601preview.json",
+        "slug": "dbformysql.azure.com/v20250601preview/flexibleserversfirewallrule"
+      },
+      {
+        "kind": "flexibleserversfirewallrule",
+        "version": "v20250601previewstorage",
+        "file": "dbformysql.azure.com/flexibleserversfirewallrule_v20250601previewstorage.json",
+        "slug": "dbformysql.azure.com/v20250601previewstorage/flexibleserversfirewallrule"
       },
       {
         "kind": "user",
@@ -8886,6 +10146,18 @@
         "slug": "eventgrid.azure.com/v1api20200601storage/domain"
       },
       {
+        "kind": "domain",
+        "version": "v20200601",
+        "file": "eventgrid.azure.com/domain_v20200601.json",
+        "slug": "eventgrid.azure.com/v20200601/domain"
+      },
+      {
+        "kind": "domain",
+        "version": "v20200601storage",
+        "file": "eventgrid.azure.com/domain_v20200601storage.json",
+        "slug": "eventgrid.azure.com/v20200601storage/domain"
+      },
+      {
         "kind": "domainstopic",
         "version": "v1api20200601",
         "file": "eventgrid.azure.com/domainstopic_v1api20200601.json",
@@ -8896,6 +10168,18 @@
         "version": "v1api20200601storage",
         "file": "eventgrid.azure.com/domainstopic_v1api20200601storage.json",
         "slug": "eventgrid.azure.com/v1api20200601storage/domainstopic"
+      },
+      {
+        "kind": "domainstopic",
+        "version": "v20200601",
+        "file": "eventgrid.azure.com/domainstopic_v20200601.json",
+        "slug": "eventgrid.azure.com/v20200601/domainstopic"
+      },
+      {
+        "kind": "domainstopic",
+        "version": "v20200601storage",
+        "file": "eventgrid.azure.com/domainstopic_v20200601storage.json",
+        "slug": "eventgrid.azure.com/v20200601storage/domainstopic"
       },
       {
         "kind": "eventsubscription",
@@ -8910,6 +10194,18 @@
         "slug": "eventgrid.azure.com/v1api20200601storage/eventsubscription"
       },
       {
+        "kind": "eventsubscription",
+        "version": "v20200601",
+        "file": "eventgrid.azure.com/eventsubscription_v20200601.json",
+        "slug": "eventgrid.azure.com/v20200601/eventsubscription"
+      },
+      {
+        "kind": "eventsubscription",
+        "version": "v20200601storage",
+        "file": "eventgrid.azure.com/eventsubscription_v20200601storage.json",
+        "slug": "eventgrid.azure.com/v20200601storage/eventsubscription"
+      },
+      {
         "kind": "topic",
         "version": "v1api20200601",
         "file": "eventgrid.azure.com/topic_v1api20200601.json",
@@ -8920,6 +10216,18 @@
         "version": "v1api20200601storage",
         "file": "eventgrid.azure.com/topic_v1api20200601storage.json",
         "slug": "eventgrid.azure.com/v1api20200601storage/topic"
+      },
+      {
+        "kind": "topic",
+        "version": "v20200601",
+        "file": "eventgrid.azure.com/topic_v20200601.json",
+        "slug": "eventgrid.azure.com/v20200601/topic"
+      },
+      {
+        "kind": "topic",
+        "version": "v20200601storage",
+        "file": "eventgrid.azure.com/topic_v20200601storage.json",
+        "slug": "eventgrid.azure.com/v20200601storage/topic"
       }
     ],
     "eventhub.azure.com": [
@@ -10118,6 +11426,18 @@
         "slug": "insights.azure.com/v1api20230311storage/datacollectionendpoint"
       },
       {
+        "kind": "datacollectionendpoint",
+        "version": "v1api20240311",
+        "file": "insights.azure.com/datacollectionendpoint_v1api20240311.json",
+        "slug": "insights.azure.com/v1api20240311/datacollectionendpoint"
+      },
+      {
+        "kind": "datacollectionendpoint",
+        "version": "v1api20240311storage",
+        "file": "insights.azure.com/datacollectionendpoint_v1api20240311storage.json",
+        "slug": "insights.azure.com/v1api20240311storage/datacollectionendpoint"
+      },
+      {
         "kind": "datacollectionrule",
         "version": "v1api20230311",
         "file": "insights.azure.com/datacollectionrule_v1api20230311.json",
@@ -10130,6 +11450,18 @@
         "slug": "insights.azure.com/v1api20230311storage/datacollectionrule"
       },
       {
+        "kind": "datacollectionrule",
+        "version": "v1api20240311",
+        "file": "insights.azure.com/datacollectionrule_v1api20240311.json",
+        "slug": "insights.azure.com/v1api20240311/datacollectionrule"
+      },
+      {
+        "kind": "datacollectionrule",
+        "version": "v1api20240311storage",
+        "file": "insights.azure.com/datacollectionrule_v1api20240311storage.json",
+        "slug": "insights.azure.com/v1api20240311storage/datacollectionrule"
+      },
+      {
         "kind": "datacollectionruleassociation",
         "version": "v1api20230311",
         "file": "insights.azure.com/datacollectionruleassociation_v1api20230311.json",
@@ -10140,6 +11472,18 @@
         "version": "v1api20230311storage",
         "file": "insights.azure.com/datacollectionruleassociation_v1api20230311storage.json",
         "slug": "insights.azure.com/v1api20230311storage/datacollectionruleassociation"
+      },
+      {
+        "kind": "datacollectionruleassociation",
+        "version": "v1api20240311",
+        "file": "insights.azure.com/datacollectionruleassociation_v1api20240311.json",
+        "slug": "insights.azure.com/v1api20240311/datacollectionruleassociation"
+      },
+      {
+        "kind": "datacollectionruleassociation",
+        "version": "v1api20240311storage",
+        "file": "insights.azure.com/datacollectionruleassociation_v1api20240311storage.json",
+        "slug": "insights.azure.com/v1api20240311storage/datacollectionruleassociation"
       },
       {
         "kind": "diagnosticsetting",
@@ -10200,6 +11544,18 @@
         "version": "v1api20240101previewstorage",
         "file": "insights.azure.com/scheduledqueryrule_v1api20240101previewstorage.json",
         "slug": "insights.azure.com/v1api20240101previewstorage/scheduledqueryrule"
+      },
+      {
+        "kind": "scheduledqueryrule",
+        "version": "v1api20250101preview",
+        "file": "insights.azure.com/scheduledqueryrule_v1api20250101preview.json",
+        "slug": "insights.azure.com/v1api20250101preview/scheduledqueryrule"
+      },
+      {
+        "kind": "scheduledqueryrule",
+        "version": "v1api20250101previewstorage",
+        "file": "insights.azure.com/scheduledqueryrule_v1api20250101previewstorage.json",
+        "slug": "insights.azure.com/v1api20250101previewstorage/scheduledqueryrule"
       },
       {
         "kind": "webtest",
@@ -11538,6 +12894,18 @@
         "slug": "network.azure.com/v1api20240301storage/azurefirewall"
       },
       {
+        "kind": "azurefirewall",
+        "version": "v20250301",
+        "file": "network.azure.com/azurefirewall_v20250301.json",
+        "slug": "network.azure.com/v20250301/azurefirewall"
+      },
+      {
+        "kind": "azurefirewall",
+        "version": "v20250301storage",
+        "file": "network.azure.com/azurefirewall_v20250301storage.json",
+        "slug": "network.azure.com/v20250301storage/azurefirewall"
+      },
+      {
         "kind": "bastionhost",
         "version": "v1api20220701",
         "file": "network.azure.com/bastionhost_v1api20220701.json",
@@ -11560,6 +12928,18 @@
         "version": "v1api20240301storage",
         "file": "network.azure.com/bastionhost_v1api20240301storage.json",
         "slug": "network.azure.com/v1api20240301storage/bastionhost"
+      },
+      {
+        "kind": "bastionhost",
+        "version": "v20250301",
+        "file": "network.azure.com/bastionhost_v20250301.json",
+        "slug": "network.azure.com/v20250301/bastionhost"
+      },
+      {
+        "kind": "bastionhost",
+        "version": "v20250301storage",
+        "file": "network.azure.com/bastionhost_v20250301storage.json",
+        "slug": "network.azure.com/v20250301storage/bastionhost"
       },
       {
         "kind": "dnsforwardingruleset",
@@ -11766,6 +13146,18 @@
         "slug": "network.azure.com/v1api20240301storage/firewallpoliciesrulecollectiongroup"
       },
       {
+        "kind": "firewallpoliciesrulecollectiongroup",
+        "version": "v20250301",
+        "file": "network.azure.com/firewallpoliciesrulecollectiongroup_v20250301.json",
+        "slug": "network.azure.com/v20250301/firewallpoliciesrulecollectiongroup"
+      },
+      {
+        "kind": "firewallpoliciesrulecollectiongroup",
+        "version": "v20250301storage",
+        "file": "network.azure.com/firewallpoliciesrulecollectiongroup_v20250301storage.json",
+        "slug": "network.azure.com/v20250301storage/firewallpoliciesrulecollectiongroup"
+      },
+      {
         "kind": "firewallpolicy",
         "version": "v1api20240301",
         "file": "network.azure.com/firewallpolicy_v1api20240301.json",
@@ -11776,6 +13168,18 @@
         "version": "v1api20240301storage",
         "file": "network.azure.com/firewallpolicy_v1api20240301storage.json",
         "slug": "network.azure.com/v1api20240301storage/firewallpolicy"
+      },
+      {
+        "kind": "firewallpolicy",
+        "version": "v20250301",
+        "file": "network.azure.com/firewallpolicy_v20250301.json",
+        "slug": "network.azure.com/v20250301/firewallpolicy"
+      },
+      {
+        "kind": "firewallpolicy",
+        "version": "v20250301storage",
+        "file": "network.azure.com/firewallpolicy_v20250301storage.json",
+        "slug": "network.azure.com/v20250301storage/firewallpolicy"
       },
       {
         "kind": "loadbalancer",
@@ -11802,6 +13206,18 @@
         "slug": "network.azure.com/v1api20240301storage/loadbalancer"
       },
       {
+        "kind": "loadbalancer",
+        "version": "v20250301",
+        "file": "network.azure.com/loadbalancer_v20250301.json",
+        "slug": "network.azure.com/v20250301/loadbalancer"
+      },
+      {
+        "kind": "loadbalancer",
+        "version": "v20250301storage",
+        "file": "network.azure.com/loadbalancer_v20250301storage.json",
+        "slug": "network.azure.com/v20250301storage/loadbalancer"
+      },
+      {
         "kind": "loadbalancersinboundnatrule",
         "version": "v1api20201101",
         "file": "network.azure.com/loadbalancersinboundnatrule_v1api20201101.json",
@@ -11824,6 +13240,18 @@
         "version": "v1api20240301storage",
         "file": "network.azure.com/loadbalancersinboundnatrule_v1api20240301storage.json",
         "slug": "network.azure.com/v1api20240301storage/loadbalancersinboundnatrule"
+      },
+      {
+        "kind": "loadbalancersinboundnatrule",
+        "version": "v20250301",
+        "file": "network.azure.com/loadbalancersinboundnatrule_v20250301.json",
+        "slug": "network.azure.com/v20250301/loadbalancersinboundnatrule"
+      },
+      {
+        "kind": "loadbalancersinboundnatrule",
+        "version": "v20250301storage",
+        "file": "network.azure.com/loadbalancersinboundnatrule_v20250301storage.json",
+        "slug": "network.azure.com/v20250301storage/loadbalancersinboundnatrule"
       },
       {
         "kind": "natgateway",
@@ -11850,6 +13278,18 @@
         "slug": "network.azure.com/v1api20240301storage/natgateway"
       },
       {
+        "kind": "natgateway",
+        "version": "v20250301",
+        "file": "network.azure.com/natgateway_v20250301.json",
+        "slug": "network.azure.com/v20250301/natgateway"
+      },
+      {
+        "kind": "natgateway",
+        "version": "v20250301storage",
+        "file": "network.azure.com/natgateway_v20250301storage.json",
+        "slug": "network.azure.com/v20250301storage/natgateway"
+      },
+      {
         "kind": "networkinterface",
         "version": "v1api20201101",
         "file": "network.azure.com/networkinterface_v1api20201101.json",
@@ -11872,6 +13312,18 @@
         "version": "v1api20240301storage",
         "file": "network.azure.com/networkinterface_v1api20240301storage.json",
         "slug": "network.azure.com/v1api20240301storage/networkinterface"
+      },
+      {
+        "kind": "networkinterface",
+        "version": "v20250301",
+        "file": "network.azure.com/networkinterface_v20250301.json",
+        "slug": "network.azure.com/v20250301/networkinterface"
+      },
+      {
+        "kind": "networkinterface",
+        "version": "v20250301storage",
+        "file": "network.azure.com/networkinterface_v20250301storage.json",
+        "slug": "network.azure.com/v20250301storage/networkinterface"
       },
       {
         "kind": "networksecuritygroup",
@@ -11898,6 +13350,18 @@
         "slug": "network.azure.com/v1api20240301storage/networksecuritygroup"
       },
       {
+        "kind": "networksecuritygroup",
+        "version": "v20250301",
+        "file": "network.azure.com/networksecuritygroup_v20250301.json",
+        "slug": "network.azure.com/v20250301/networksecuritygroup"
+      },
+      {
+        "kind": "networksecuritygroup",
+        "version": "v20250301storage",
+        "file": "network.azure.com/networksecuritygroup_v20250301storage.json",
+        "slug": "network.azure.com/v20250301storage/networksecuritygroup"
+      },
+      {
         "kind": "networksecuritygroupssecurityrule",
         "version": "v1api20201101",
         "file": "network.azure.com/networksecuritygroupssecurityrule_v1api20201101.json",
@@ -11920,6 +13384,18 @@
         "version": "v1api20240301storage",
         "file": "network.azure.com/networksecuritygroupssecurityrule_v1api20240301storage.json",
         "slug": "network.azure.com/v1api20240301storage/networksecuritygroupssecurityrule"
+      },
+      {
+        "kind": "networksecuritygroupssecurityrule",
+        "version": "v20250301",
+        "file": "network.azure.com/networksecuritygroupssecurityrule_v20250301.json",
+        "slug": "network.azure.com/v20250301/networksecuritygroupssecurityrule"
+      },
+      {
+        "kind": "networksecuritygroupssecurityrule",
+        "version": "v20250301storage",
+        "file": "network.azure.com/networksecuritygroupssecurityrule_v20250301storage.json",
+        "slug": "network.azure.com/v20250301storage/networksecuritygroupssecurityrule"
       },
       {
         "kind": "networkwatcher",
@@ -12186,6 +13662,18 @@
         "slug": "network.azure.com/v1api20240301storage/privateendpoint"
       },
       {
+        "kind": "privateendpoint",
+        "version": "v20250301",
+        "file": "network.azure.com/privateendpoint_v20250301.json",
+        "slug": "network.azure.com/v20250301/privateendpoint"
+      },
+      {
+        "kind": "privateendpoint",
+        "version": "v20250301storage",
+        "file": "network.azure.com/privateendpoint_v20250301storage.json",
+        "slug": "network.azure.com/v20250301storage/privateendpoint"
+      },
+      {
         "kind": "privateendpointsprivatednszonegroup",
         "version": "v1api20220701",
         "file": "network.azure.com/privateendpointsprivatednszonegroup_v1api20220701.json",
@@ -12208,6 +13696,18 @@
         "version": "v1api20240301storage",
         "file": "network.azure.com/privateendpointsprivatednszonegroup_v1api20240301storage.json",
         "slug": "network.azure.com/v1api20240301storage/privateendpointsprivatednszonegroup"
+      },
+      {
+        "kind": "privateendpointsprivatednszonegroup",
+        "version": "v20250301",
+        "file": "network.azure.com/privateendpointsprivatednszonegroup_v20250301.json",
+        "slug": "network.azure.com/v20250301/privateendpointsprivatednszonegroup"
+      },
+      {
+        "kind": "privateendpointsprivatednszonegroup",
+        "version": "v20250301storage",
+        "file": "network.azure.com/privateendpointsprivatednszonegroup_v20250301storage.json",
+        "slug": "network.azure.com/v20250301storage/privateendpointsprivatednszonegroup"
       },
       {
         "kind": "privatelinkservice",
@@ -12234,6 +13734,18 @@
         "slug": "network.azure.com/v1api20240301storage/privatelinkservice"
       },
       {
+        "kind": "privatelinkservice",
+        "version": "v20250301",
+        "file": "network.azure.com/privatelinkservice_v20250301.json",
+        "slug": "network.azure.com/v20250301/privatelinkservice"
+      },
+      {
+        "kind": "privatelinkservice",
+        "version": "v20250301storage",
+        "file": "network.azure.com/privatelinkservice_v20250301storage.json",
+        "slug": "network.azure.com/v20250301storage/privatelinkservice"
+      },
+      {
         "kind": "publicipaddress",
         "version": "v1api20201101",
         "file": "network.azure.com/publicipaddress_v1api20201101.json",
@@ -12256,6 +13768,18 @@
         "version": "v1api20240301storage",
         "file": "network.azure.com/publicipaddress_v1api20240301storage.json",
         "slug": "network.azure.com/v1api20240301storage/publicipaddress"
+      },
+      {
+        "kind": "publicipaddress",
+        "version": "v20250301",
+        "file": "network.azure.com/publicipaddress_v20250301.json",
+        "slug": "network.azure.com/v20250301/publicipaddress"
+      },
+      {
+        "kind": "publicipaddress",
+        "version": "v20250301storage",
+        "file": "network.azure.com/publicipaddress_v20250301storage.json",
+        "slug": "network.azure.com/v20250301storage/publicipaddress"
       },
       {
         "kind": "publicipprefix",
@@ -12282,6 +13806,18 @@
         "slug": "network.azure.com/v1api20240301storage/publicipprefix"
       },
       {
+        "kind": "publicipprefix",
+        "version": "v20250301",
+        "file": "network.azure.com/publicipprefix_v20250301.json",
+        "slug": "network.azure.com/v20250301/publicipprefix"
+      },
+      {
+        "kind": "publicipprefix",
+        "version": "v20250301storage",
+        "file": "network.azure.com/publicipprefix_v20250301storage.json",
+        "slug": "network.azure.com/v20250301storage/publicipprefix"
+      },
+      {
         "kind": "routetable",
         "version": "v1api20201101",
         "file": "network.azure.com/routetable_v1api20201101.json",
@@ -12306,6 +13842,18 @@
         "slug": "network.azure.com/v1api20240301storage/routetable"
       },
       {
+        "kind": "routetable",
+        "version": "v20250301",
+        "file": "network.azure.com/routetable_v20250301.json",
+        "slug": "network.azure.com/v20250301/routetable"
+      },
+      {
+        "kind": "routetable",
+        "version": "v20250301storage",
+        "file": "network.azure.com/routetable_v20250301storage.json",
+        "slug": "network.azure.com/v20250301storage/routetable"
+      },
+      {
         "kind": "routetablesroute",
         "version": "v1api20201101",
         "file": "network.azure.com/routetablesroute_v1api20201101.json",
@@ -12328,6 +13876,18 @@
         "version": "v1api20240301storage",
         "file": "network.azure.com/routetablesroute_v1api20240301storage.json",
         "slug": "network.azure.com/v1api20240301storage/routetablesroute"
+      },
+      {
+        "kind": "routetablesroute",
+        "version": "v20250301",
+        "file": "network.azure.com/routetablesroute_v20250301.json",
+        "slug": "network.azure.com/v20250301/routetablesroute"
+      },
+      {
+        "kind": "routetablesroute",
+        "version": "v20250301storage",
+        "file": "network.azure.com/routetablesroute_v20250301storage.json",
+        "slug": "network.azure.com/v20250301storage/routetablesroute"
       },
       {
         "kind": "trafficmanagerprofile",
@@ -12402,6 +13962,18 @@
         "slug": "network.azure.com/v1api20240301storage/virtualnetwork"
       },
       {
+        "kind": "virtualnetwork",
+        "version": "v20250301",
+        "file": "network.azure.com/virtualnetwork_v20250301.json",
+        "slug": "network.azure.com/v20250301/virtualnetwork"
+      },
+      {
+        "kind": "virtualnetwork",
+        "version": "v20250301storage",
+        "file": "network.azure.com/virtualnetwork_v20250301storage.json",
+        "slug": "network.azure.com/v20250301storage/virtualnetwork"
+      },
+      {
         "kind": "virtualnetworkgateway",
         "version": "v1api20201101",
         "file": "network.azure.com/virtualnetworkgateway_v1api20201101.json",
@@ -12424,6 +13996,18 @@
         "version": "v1api20240301storage",
         "file": "network.azure.com/virtualnetworkgateway_v1api20240301storage.json",
         "slug": "network.azure.com/v1api20240301storage/virtualnetworkgateway"
+      },
+      {
+        "kind": "virtualnetworkgateway",
+        "version": "v20250301",
+        "file": "network.azure.com/virtualnetworkgateway_v20250301.json",
+        "slug": "network.azure.com/v20250301/virtualnetworkgateway"
+      },
+      {
+        "kind": "virtualnetworkgateway",
+        "version": "v20250301storage",
+        "file": "network.azure.com/virtualnetworkgateway_v20250301storage.json",
+        "slug": "network.azure.com/v20250301storage/virtualnetworkgateway"
       },
       {
         "kind": "virtualnetworkssubnet",
@@ -12450,6 +14034,18 @@
         "slug": "network.azure.com/v1api20240301storage/virtualnetworkssubnet"
       },
       {
+        "kind": "virtualnetworkssubnet",
+        "version": "v20250301",
+        "file": "network.azure.com/virtualnetworkssubnet_v20250301.json",
+        "slug": "network.azure.com/v20250301/virtualnetworkssubnet"
+      },
+      {
+        "kind": "virtualnetworkssubnet",
+        "version": "v20250301storage",
+        "file": "network.azure.com/virtualnetworkssubnet_v20250301storage.json",
+        "slug": "network.azure.com/v20250301storage/virtualnetworkssubnet"
+      },
+      {
         "kind": "virtualnetworksvirtualnetworkpeering",
         "version": "v1api20201101",
         "file": "network.azure.com/virtualnetworksvirtualnetworkpeering_v1api20201101.json",
@@ -12472,6 +14068,18 @@
         "version": "v1api20240301storage",
         "file": "network.azure.com/virtualnetworksvirtualnetworkpeering_v1api20240301storage.json",
         "slug": "network.azure.com/v1api20240301storage/virtualnetworksvirtualnetworkpeering"
+      },
+      {
+        "kind": "virtualnetworksvirtualnetworkpeering",
+        "version": "v20250301",
+        "file": "network.azure.com/virtualnetworksvirtualnetworkpeering_v20250301.json",
+        "slug": "network.azure.com/v20250301/virtualnetworksvirtualnetworkpeering"
+      },
+      {
+        "kind": "virtualnetworksvirtualnetworkpeering",
+        "version": "v20250301storage",
+        "file": "network.azure.com/virtualnetworksvirtualnetworkpeering_v20250301storage.json",
+        "slug": "network.azure.com/v20250301storage/virtualnetworksvirtualnetworkpeering"
       },
       {
         "kind": "webapplicationfirewallpolicy",
@@ -16566,6 +18174,54 @@
         "slug": "storage.azure.com/v1api20230101storage/storageaccount"
       },
       {
+        "kind": "storageaccount",
+        "version": "v20210401",
+        "file": "storage.azure.com/storageaccount_v20210401.json",
+        "slug": "storage.azure.com/v20210401/storageaccount"
+      },
+      {
+        "kind": "storageaccount",
+        "version": "v20210401storage",
+        "file": "storage.azure.com/storageaccount_v20210401storage.json",
+        "slug": "storage.azure.com/v20210401storage/storageaccount"
+      },
+      {
+        "kind": "storageaccount",
+        "version": "v20220901",
+        "file": "storage.azure.com/storageaccount_v20220901.json",
+        "slug": "storage.azure.com/v20220901/storageaccount"
+      },
+      {
+        "kind": "storageaccount",
+        "version": "v20220901storage",
+        "file": "storage.azure.com/storageaccount_v20220901storage.json",
+        "slug": "storage.azure.com/v20220901storage/storageaccount"
+      },
+      {
+        "kind": "storageaccount",
+        "version": "v20230101",
+        "file": "storage.azure.com/storageaccount_v20230101.json",
+        "slug": "storage.azure.com/v20230101/storageaccount"
+      },
+      {
+        "kind": "storageaccount",
+        "version": "v20230101storage",
+        "file": "storage.azure.com/storageaccount_v20230101storage.json",
+        "slug": "storage.azure.com/v20230101storage/storageaccount"
+      },
+      {
+        "kind": "storageaccount",
+        "version": "v20250601",
+        "file": "storage.azure.com/storageaccount_v20250601.json",
+        "slug": "storage.azure.com/v20250601/storageaccount"
+      },
+      {
+        "kind": "storageaccount",
+        "version": "v20250601storage",
+        "file": "storage.azure.com/storageaccount_v20250601storage.json",
+        "slug": "storage.azure.com/v20250601storage/storageaccount"
+      },
+      {
         "kind": "storageaccountsblobservice",
         "version": "v1api20210401",
         "file": "storage.azure.com/storageaccountsblobservice_v1api20210401.json",
@@ -16600,6 +18256,54 @@
         "version": "v1api20230101storage",
         "file": "storage.azure.com/storageaccountsblobservice_v1api20230101storage.json",
         "slug": "storage.azure.com/v1api20230101storage/storageaccountsblobservice"
+      },
+      {
+        "kind": "storageaccountsblobservice",
+        "version": "v20210401",
+        "file": "storage.azure.com/storageaccountsblobservice_v20210401.json",
+        "slug": "storage.azure.com/v20210401/storageaccountsblobservice"
+      },
+      {
+        "kind": "storageaccountsblobservice",
+        "version": "v20210401storage",
+        "file": "storage.azure.com/storageaccountsblobservice_v20210401storage.json",
+        "slug": "storage.azure.com/v20210401storage/storageaccountsblobservice"
+      },
+      {
+        "kind": "storageaccountsblobservice",
+        "version": "v20220901",
+        "file": "storage.azure.com/storageaccountsblobservice_v20220901.json",
+        "slug": "storage.azure.com/v20220901/storageaccountsblobservice"
+      },
+      {
+        "kind": "storageaccountsblobservice",
+        "version": "v20220901storage",
+        "file": "storage.azure.com/storageaccountsblobservice_v20220901storage.json",
+        "slug": "storage.azure.com/v20220901storage/storageaccountsblobservice"
+      },
+      {
+        "kind": "storageaccountsblobservice",
+        "version": "v20230101",
+        "file": "storage.azure.com/storageaccountsblobservice_v20230101.json",
+        "slug": "storage.azure.com/v20230101/storageaccountsblobservice"
+      },
+      {
+        "kind": "storageaccountsblobservice",
+        "version": "v20230101storage",
+        "file": "storage.azure.com/storageaccountsblobservice_v20230101storage.json",
+        "slug": "storage.azure.com/v20230101storage/storageaccountsblobservice"
+      },
+      {
+        "kind": "storageaccountsblobservice",
+        "version": "v20250601",
+        "file": "storage.azure.com/storageaccountsblobservice_v20250601.json",
+        "slug": "storage.azure.com/v20250601/storageaccountsblobservice"
+      },
+      {
+        "kind": "storageaccountsblobservice",
+        "version": "v20250601storage",
+        "file": "storage.azure.com/storageaccountsblobservice_v20250601storage.json",
+        "slug": "storage.azure.com/v20250601storage/storageaccountsblobservice"
       },
       {
         "kind": "storageaccountsblobservicescontainer",
@@ -16638,6 +18342,54 @@
         "slug": "storage.azure.com/v1api20230101storage/storageaccountsblobservicescontainer"
       },
       {
+        "kind": "storageaccountsblobservicescontainer",
+        "version": "v20210401",
+        "file": "storage.azure.com/storageaccountsblobservicescontainer_v20210401.json",
+        "slug": "storage.azure.com/v20210401/storageaccountsblobservicescontainer"
+      },
+      {
+        "kind": "storageaccountsblobservicescontainer",
+        "version": "v20210401storage",
+        "file": "storage.azure.com/storageaccountsblobservicescontainer_v20210401storage.json",
+        "slug": "storage.azure.com/v20210401storage/storageaccountsblobservicescontainer"
+      },
+      {
+        "kind": "storageaccountsblobservicescontainer",
+        "version": "v20220901",
+        "file": "storage.azure.com/storageaccountsblobservicescontainer_v20220901.json",
+        "slug": "storage.azure.com/v20220901/storageaccountsblobservicescontainer"
+      },
+      {
+        "kind": "storageaccountsblobservicescontainer",
+        "version": "v20220901storage",
+        "file": "storage.azure.com/storageaccountsblobservicescontainer_v20220901storage.json",
+        "slug": "storage.azure.com/v20220901storage/storageaccountsblobservicescontainer"
+      },
+      {
+        "kind": "storageaccountsblobservicescontainer",
+        "version": "v20230101",
+        "file": "storage.azure.com/storageaccountsblobservicescontainer_v20230101.json",
+        "slug": "storage.azure.com/v20230101/storageaccountsblobservicescontainer"
+      },
+      {
+        "kind": "storageaccountsblobservicescontainer",
+        "version": "v20230101storage",
+        "file": "storage.azure.com/storageaccountsblobservicescontainer_v20230101storage.json",
+        "slug": "storage.azure.com/v20230101storage/storageaccountsblobservicescontainer"
+      },
+      {
+        "kind": "storageaccountsblobservicescontainer",
+        "version": "v20250601",
+        "file": "storage.azure.com/storageaccountsblobservicescontainer_v20250601.json",
+        "slug": "storage.azure.com/v20250601/storageaccountsblobservicescontainer"
+      },
+      {
+        "kind": "storageaccountsblobservicescontainer",
+        "version": "v20250601storage",
+        "file": "storage.azure.com/storageaccountsblobservicescontainer_v20250601storage.json",
+        "slug": "storage.azure.com/v20250601storage/storageaccountsblobservicescontainer"
+      },
+      {
         "kind": "storageaccountsfileservice",
         "version": "v1api20220901",
         "file": "storage.azure.com/storageaccountsfileservice_v1api20220901.json",
@@ -16662,6 +18414,42 @@
         "slug": "storage.azure.com/v1api20230101storage/storageaccountsfileservice"
       },
       {
+        "kind": "storageaccountsfileservice",
+        "version": "v20220901",
+        "file": "storage.azure.com/storageaccountsfileservice_v20220901.json",
+        "slug": "storage.azure.com/v20220901/storageaccountsfileservice"
+      },
+      {
+        "kind": "storageaccountsfileservice",
+        "version": "v20220901storage",
+        "file": "storage.azure.com/storageaccountsfileservice_v20220901storage.json",
+        "slug": "storage.azure.com/v20220901storage/storageaccountsfileservice"
+      },
+      {
+        "kind": "storageaccountsfileservice",
+        "version": "v20230101",
+        "file": "storage.azure.com/storageaccountsfileservice_v20230101.json",
+        "slug": "storage.azure.com/v20230101/storageaccountsfileservice"
+      },
+      {
+        "kind": "storageaccountsfileservice",
+        "version": "v20230101storage",
+        "file": "storage.azure.com/storageaccountsfileservice_v20230101storage.json",
+        "slug": "storage.azure.com/v20230101storage/storageaccountsfileservice"
+      },
+      {
+        "kind": "storageaccountsfileservice",
+        "version": "v20250601",
+        "file": "storage.azure.com/storageaccountsfileservice_v20250601.json",
+        "slug": "storage.azure.com/v20250601/storageaccountsfileservice"
+      },
+      {
+        "kind": "storageaccountsfileservice",
+        "version": "v20250601storage",
+        "file": "storage.azure.com/storageaccountsfileservice_v20250601storage.json",
+        "slug": "storage.azure.com/v20250601storage/storageaccountsfileservice"
+      },
+      {
         "kind": "storageaccountsfileservicesshare",
         "version": "v1api20220901",
         "file": "storage.azure.com/storageaccountsfileservicesshare_v1api20220901.json",
@@ -16684,6 +18472,42 @@
         "version": "v1api20230101storage",
         "file": "storage.azure.com/storageaccountsfileservicesshare_v1api20230101storage.json",
         "slug": "storage.azure.com/v1api20230101storage/storageaccountsfileservicesshare"
+      },
+      {
+        "kind": "storageaccountsfileservicesshare",
+        "version": "v20220901",
+        "file": "storage.azure.com/storageaccountsfileservicesshare_v20220901.json",
+        "slug": "storage.azure.com/v20220901/storageaccountsfileservicesshare"
+      },
+      {
+        "kind": "storageaccountsfileservicesshare",
+        "version": "v20220901storage",
+        "file": "storage.azure.com/storageaccountsfileservicesshare_v20220901storage.json",
+        "slug": "storage.azure.com/v20220901storage/storageaccountsfileservicesshare"
+      },
+      {
+        "kind": "storageaccountsfileservicesshare",
+        "version": "v20230101",
+        "file": "storage.azure.com/storageaccountsfileservicesshare_v20230101.json",
+        "slug": "storage.azure.com/v20230101/storageaccountsfileservicesshare"
+      },
+      {
+        "kind": "storageaccountsfileservicesshare",
+        "version": "v20230101storage",
+        "file": "storage.azure.com/storageaccountsfileservicesshare_v20230101storage.json",
+        "slug": "storage.azure.com/v20230101storage/storageaccountsfileservicesshare"
+      },
+      {
+        "kind": "storageaccountsfileservicesshare",
+        "version": "v20250601",
+        "file": "storage.azure.com/storageaccountsfileservicesshare_v20250601.json",
+        "slug": "storage.azure.com/v20250601/storageaccountsfileservicesshare"
+      },
+      {
+        "kind": "storageaccountsfileservicesshare",
+        "version": "v20250601storage",
+        "file": "storage.azure.com/storageaccountsfileservicesshare_v20250601storage.json",
+        "slug": "storage.azure.com/v20250601storage/storageaccountsfileservicesshare"
       },
       {
         "kind": "storageaccountsmanagementpolicy",
@@ -16722,6 +18546,54 @@
         "slug": "storage.azure.com/v1api20230101storage/storageaccountsmanagementpolicy"
       },
       {
+        "kind": "storageaccountsmanagementpolicy",
+        "version": "v20210401",
+        "file": "storage.azure.com/storageaccountsmanagementpolicy_v20210401.json",
+        "slug": "storage.azure.com/v20210401/storageaccountsmanagementpolicy"
+      },
+      {
+        "kind": "storageaccountsmanagementpolicy",
+        "version": "v20210401storage",
+        "file": "storage.azure.com/storageaccountsmanagementpolicy_v20210401storage.json",
+        "slug": "storage.azure.com/v20210401storage/storageaccountsmanagementpolicy"
+      },
+      {
+        "kind": "storageaccountsmanagementpolicy",
+        "version": "v20220901",
+        "file": "storage.azure.com/storageaccountsmanagementpolicy_v20220901.json",
+        "slug": "storage.azure.com/v20220901/storageaccountsmanagementpolicy"
+      },
+      {
+        "kind": "storageaccountsmanagementpolicy",
+        "version": "v20220901storage",
+        "file": "storage.azure.com/storageaccountsmanagementpolicy_v20220901storage.json",
+        "slug": "storage.azure.com/v20220901storage/storageaccountsmanagementpolicy"
+      },
+      {
+        "kind": "storageaccountsmanagementpolicy",
+        "version": "v20230101",
+        "file": "storage.azure.com/storageaccountsmanagementpolicy_v20230101.json",
+        "slug": "storage.azure.com/v20230101/storageaccountsmanagementpolicy"
+      },
+      {
+        "kind": "storageaccountsmanagementpolicy",
+        "version": "v20230101storage",
+        "file": "storage.azure.com/storageaccountsmanagementpolicy_v20230101storage.json",
+        "slug": "storage.azure.com/v20230101storage/storageaccountsmanagementpolicy"
+      },
+      {
+        "kind": "storageaccountsmanagementpolicy",
+        "version": "v20250601",
+        "file": "storage.azure.com/storageaccountsmanagementpolicy_v20250601.json",
+        "slug": "storage.azure.com/v20250601/storageaccountsmanagementpolicy"
+      },
+      {
+        "kind": "storageaccountsmanagementpolicy",
+        "version": "v20250601storage",
+        "file": "storage.azure.com/storageaccountsmanagementpolicy_v20250601storage.json",
+        "slug": "storage.azure.com/v20250601storage/storageaccountsmanagementpolicy"
+      },
+      {
         "kind": "storageaccountsqueueservice",
         "version": "v1api20210401",
         "file": "storage.azure.com/storageaccountsqueueservice_v1api20210401.json",
@@ -16756,6 +18628,54 @@
         "version": "v1api20230101storage",
         "file": "storage.azure.com/storageaccountsqueueservice_v1api20230101storage.json",
         "slug": "storage.azure.com/v1api20230101storage/storageaccountsqueueservice"
+      },
+      {
+        "kind": "storageaccountsqueueservice",
+        "version": "v20210401",
+        "file": "storage.azure.com/storageaccountsqueueservice_v20210401.json",
+        "slug": "storage.azure.com/v20210401/storageaccountsqueueservice"
+      },
+      {
+        "kind": "storageaccountsqueueservice",
+        "version": "v20210401storage",
+        "file": "storage.azure.com/storageaccountsqueueservice_v20210401storage.json",
+        "slug": "storage.azure.com/v20210401storage/storageaccountsqueueservice"
+      },
+      {
+        "kind": "storageaccountsqueueservice",
+        "version": "v20220901",
+        "file": "storage.azure.com/storageaccountsqueueservice_v20220901.json",
+        "slug": "storage.azure.com/v20220901/storageaccountsqueueservice"
+      },
+      {
+        "kind": "storageaccountsqueueservice",
+        "version": "v20220901storage",
+        "file": "storage.azure.com/storageaccountsqueueservice_v20220901storage.json",
+        "slug": "storage.azure.com/v20220901storage/storageaccountsqueueservice"
+      },
+      {
+        "kind": "storageaccountsqueueservice",
+        "version": "v20230101",
+        "file": "storage.azure.com/storageaccountsqueueservice_v20230101.json",
+        "slug": "storage.azure.com/v20230101/storageaccountsqueueservice"
+      },
+      {
+        "kind": "storageaccountsqueueservice",
+        "version": "v20230101storage",
+        "file": "storage.azure.com/storageaccountsqueueservice_v20230101storage.json",
+        "slug": "storage.azure.com/v20230101storage/storageaccountsqueueservice"
+      },
+      {
+        "kind": "storageaccountsqueueservice",
+        "version": "v20250601",
+        "file": "storage.azure.com/storageaccountsqueueservice_v20250601.json",
+        "slug": "storage.azure.com/v20250601/storageaccountsqueueservice"
+      },
+      {
+        "kind": "storageaccountsqueueservice",
+        "version": "v20250601storage",
+        "file": "storage.azure.com/storageaccountsqueueservice_v20250601storage.json",
+        "slug": "storage.azure.com/v20250601storage/storageaccountsqueueservice"
       },
       {
         "kind": "storageaccountsqueueservicesqueue",
@@ -16794,6 +18714,54 @@
         "slug": "storage.azure.com/v1api20230101storage/storageaccountsqueueservicesqueue"
       },
       {
+        "kind": "storageaccountsqueueservicesqueue",
+        "version": "v20210401",
+        "file": "storage.azure.com/storageaccountsqueueservicesqueue_v20210401.json",
+        "slug": "storage.azure.com/v20210401/storageaccountsqueueservicesqueue"
+      },
+      {
+        "kind": "storageaccountsqueueservicesqueue",
+        "version": "v20210401storage",
+        "file": "storage.azure.com/storageaccountsqueueservicesqueue_v20210401storage.json",
+        "slug": "storage.azure.com/v20210401storage/storageaccountsqueueservicesqueue"
+      },
+      {
+        "kind": "storageaccountsqueueservicesqueue",
+        "version": "v20220901",
+        "file": "storage.azure.com/storageaccountsqueueservicesqueue_v20220901.json",
+        "slug": "storage.azure.com/v20220901/storageaccountsqueueservicesqueue"
+      },
+      {
+        "kind": "storageaccountsqueueservicesqueue",
+        "version": "v20220901storage",
+        "file": "storage.azure.com/storageaccountsqueueservicesqueue_v20220901storage.json",
+        "slug": "storage.azure.com/v20220901storage/storageaccountsqueueservicesqueue"
+      },
+      {
+        "kind": "storageaccountsqueueservicesqueue",
+        "version": "v20230101",
+        "file": "storage.azure.com/storageaccountsqueueservicesqueue_v20230101.json",
+        "slug": "storage.azure.com/v20230101/storageaccountsqueueservicesqueue"
+      },
+      {
+        "kind": "storageaccountsqueueservicesqueue",
+        "version": "v20230101storage",
+        "file": "storage.azure.com/storageaccountsqueueservicesqueue_v20230101storage.json",
+        "slug": "storage.azure.com/v20230101storage/storageaccountsqueueservicesqueue"
+      },
+      {
+        "kind": "storageaccountsqueueservicesqueue",
+        "version": "v20250601",
+        "file": "storage.azure.com/storageaccountsqueueservicesqueue_v20250601.json",
+        "slug": "storage.azure.com/v20250601/storageaccountsqueueservicesqueue"
+      },
+      {
+        "kind": "storageaccountsqueueservicesqueue",
+        "version": "v20250601storage",
+        "file": "storage.azure.com/storageaccountsqueueservicesqueue_v20250601storage.json",
+        "slug": "storage.azure.com/v20250601storage/storageaccountsqueueservicesqueue"
+      },
+      {
         "kind": "storageaccountstableservice",
         "version": "v1api20220901",
         "file": "storage.azure.com/storageaccountstableservice_v1api20220901.json",
@@ -16818,6 +18786,42 @@
         "slug": "storage.azure.com/v1api20230101storage/storageaccountstableservice"
       },
       {
+        "kind": "storageaccountstableservice",
+        "version": "v20220901",
+        "file": "storage.azure.com/storageaccountstableservice_v20220901.json",
+        "slug": "storage.azure.com/v20220901/storageaccountstableservice"
+      },
+      {
+        "kind": "storageaccountstableservice",
+        "version": "v20220901storage",
+        "file": "storage.azure.com/storageaccountstableservice_v20220901storage.json",
+        "slug": "storage.azure.com/v20220901storage/storageaccountstableservice"
+      },
+      {
+        "kind": "storageaccountstableservice",
+        "version": "v20230101",
+        "file": "storage.azure.com/storageaccountstableservice_v20230101.json",
+        "slug": "storage.azure.com/v20230101/storageaccountstableservice"
+      },
+      {
+        "kind": "storageaccountstableservice",
+        "version": "v20230101storage",
+        "file": "storage.azure.com/storageaccountstableservice_v20230101storage.json",
+        "slug": "storage.azure.com/v20230101storage/storageaccountstableservice"
+      },
+      {
+        "kind": "storageaccountstableservice",
+        "version": "v20250601",
+        "file": "storage.azure.com/storageaccountstableservice_v20250601.json",
+        "slug": "storage.azure.com/v20250601/storageaccountstableservice"
+      },
+      {
+        "kind": "storageaccountstableservice",
+        "version": "v20250601storage",
+        "file": "storage.azure.com/storageaccountstableservice_v20250601storage.json",
+        "slug": "storage.azure.com/v20250601storage/storageaccountstableservice"
+      },
+      {
         "kind": "storageaccountstableservicestable",
         "version": "v1api20220901",
         "file": "storage.azure.com/storageaccountstableservicestable_v1api20220901.json",
@@ -16840,6 +18844,42 @@
         "version": "v1api20230101storage",
         "file": "storage.azure.com/storageaccountstableservicestable_v1api20230101storage.json",
         "slug": "storage.azure.com/v1api20230101storage/storageaccountstableservicestable"
+      },
+      {
+        "kind": "storageaccountstableservicestable",
+        "version": "v20220901",
+        "file": "storage.azure.com/storageaccountstableservicestable_v20220901.json",
+        "slug": "storage.azure.com/v20220901/storageaccountstableservicestable"
+      },
+      {
+        "kind": "storageaccountstableservicestable",
+        "version": "v20220901storage",
+        "file": "storage.azure.com/storageaccountstableservicestable_v20220901storage.json",
+        "slug": "storage.azure.com/v20220901storage/storageaccountstableservicestable"
+      },
+      {
+        "kind": "storageaccountstableservicestable",
+        "version": "v20230101",
+        "file": "storage.azure.com/storageaccountstableservicestable_v20230101.json",
+        "slug": "storage.azure.com/v20230101/storageaccountstableservicestable"
+      },
+      {
+        "kind": "storageaccountstableservicestable",
+        "version": "v20230101storage",
+        "file": "storage.azure.com/storageaccountstableservicestable_v20230101storage.json",
+        "slug": "storage.azure.com/v20230101storage/storageaccountstableservicestable"
+      },
+      {
+        "kind": "storageaccountstableservicestable",
+        "version": "v20250601",
+        "file": "storage.azure.com/storageaccountstableservicestable_v20250601.json",
+        "slug": "storage.azure.com/v20250601/storageaccountstableservicestable"
+      },
+      {
+        "kind": "storageaccountstableservicestable",
+        "version": "v20250601storage",
+        "file": "storage.azure.com/storageaccountstableservicestable_v20250601storage.json",
+        "slug": "storage.azure.com/v20250601storage/storageaccountstableservicestable"
       }
     ],
     "storage.cnrm.cloud.google.com": [
@@ -17022,6 +19062,18 @@
         "slug": "synapse.azure.com/v1api20210601storage/workspace"
       },
       {
+        "kind": "workspace",
+        "version": "v20210601",
+        "file": "synapse.azure.com/workspace_v20210601.json",
+        "slug": "synapse.azure.com/v20210601/workspace"
+      },
+      {
+        "kind": "workspace",
+        "version": "v20210601storage",
+        "file": "synapse.azure.com/workspace_v20210601storage.json",
+        "slug": "synapse.azure.com/v20210601storage/workspace"
+      },
+      {
         "kind": "workspacesbigdatapool",
         "version": "v1api20210601",
         "file": "synapse.azure.com/workspacesbigdatapool_v1api20210601.json",
@@ -17032,6 +19084,18 @@
         "version": "v1api20210601storage",
         "file": "synapse.azure.com/workspacesbigdatapool_v1api20210601storage.json",
         "slug": "synapse.azure.com/v1api20210601storage/workspacesbigdatapool"
+      },
+      {
+        "kind": "workspacesbigdatapool",
+        "version": "v20210601",
+        "file": "synapse.azure.com/workspacesbigdatapool_v20210601.json",
+        "slug": "synapse.azure.com/v20210601/workspacesbigdatapool"
+      },
+      {
+        "kind": "workspacesbigdatapool",
+        "version": "v20210601storage",
+        "file": "synapse.azure.com/workspacesbigdatapool_v20210601storage.json",
+        "slug": "synapse.azure.com/v20210601storage/workspacesbigdatapool"
       }
     ],
     "tags.cnrm.cloud.google.com": [
@@ -17310,6 +19374,18 @@
         "slug": "web.azure.com/v1api20220301storage/serverfarm"
       },
       {
+        "kind": "serverfarm",
+        "version": "v20220301",
+        "file": "web.azure.com/serverfarm_v20220301.json",
+        "slug": "web.azure.com/v20220301/serverfarm"
+      },
+      {
+        "kind": "serverfarm",
+        "version": "v20220301storage",
+        "file": "web.azure.com/serverfarm_v20220301storage.json",
+        "slug": "web.azure.com/v20220301storage/serverfarm"
+      },
+      {
         "kind": "site",
         "version": "v1api20220301",
         "file": "web.azure.com/site_v1api20220301.json",
@@ -17322,6 +19398,18 @@
         "slug": "web.azure.com/v1api20220301storage/site"
       },
       {
+        "kind": "site",
+        "version": "v20220301",
+        "file": "web.azure.com/site_v20220301.json",
+        "slug": "web.azure.com/v20220301/site"
+      },
+      {
+        "kind": "site",
+        "version": "v20220301storage",
+        "file": "web.azure.com/site_v20220301storage.json",
+        "slug": "web.azure.com/v20220301storage/site"
+      },
+      {
         "kind": "sitessourcecontrol",
         "version": "v1api20220301",
         "file": "web.azure.com/sitessourcecontrol_v1api20220301.json",
@@ -17332,6 +19420,18 @@
         "version": "v1api20220301storage",
         "file": "web.azure.com/sitessourcecontrol_v1api20220301storage.json",
         "slug": "web.azure.com/v1api20220301storage/sitessourcecontrol"
+      },
+      {
+        "kind": "sitessourcecontrol",
+        "version": "v20220301",
+        "file": "web.azure.com/sitessourcecontrol_v20220301.json",
+        "slug": "web.azure.com/v20220301/sitessourcecontrol"
+      },
+      {
+        "kind": "sitessourcecontrol",
+        "version": "v20220301storage",
+        "file": "web.azure.com/sitessourcecontrol_v20220301storage.json",
+        "slug": "web.azure.com/v20220301storage/sitessourcecontrol"
       }
     ],
     "workflowexecutions.cnrm.cloud.google.com": [

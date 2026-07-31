@@ -29,6 +29,7 @@
         "customHeaders": {
           "description": "CustomHeaders: List of custom headers.",
           "items": {
+            "description": "Custom header name and value.",
             "properties": {
               "name": {
                 "description": "Name: Header name.",
@@ -95,9 +96,23 @@
               "items": {
                 "description": "DestinationExpression is a CEL expression and a destination to store the result in. The destination may\nbe a secret or a configmap. The value of the expression is stored at the specified location in\nthe destination.",
                 "properties": {
+                  "annotations": {
+                    "additionalProperties": {
+                      "type": "string"
+                    },
+                    "description": "Annotations is an optional set of annotations to apply to the destination resource.",
+                    "type": "object"
+                  },
                   "key": {
                     "description": "Key is the key in the ConfigMap or Secret being written to. If the CEL expression in Value returns a string\nthis is required to identify what key to write to. If the CEL expression in Value returns a map[string]string\nKey must not be set, instead the keys written will be determined dynamically based on the keys of the resulting\nmap[string]string.",
                     "type": "string"
+                  },
+                  "labels": {
+                    "additionalProperties": {
+                      "type": "string"
+                    },
+                    "description": "Labels is an optional set of labels to apply to the destination resource.",
+                    "type": "object"
                   },
                   "name": {
                     "description": "Name is the name of the Kubernetes configmap or secret to write to.\nThe configmap or secret will be created in the same namespace as the resource.",
@@ -121,9 +136,23 @@
               "items": {
                 "description": "DestinationExpression is a CEL expression and a destination to store the result in. The destination may\nbe a secret or a configmap. The value of the expression is stored at the specified location in\nthe destination.",
                 "properties": {
+                  "annotations": {
+                    "additionalProperties": {
+                      "type": "string"
+                    },
+                    "description": "Annotations is an optional set of annotations to apply to the destination resource.",
+                    "type": "object"
+                  },
                   "key": {
                     "description": "Key is the key in the ConfigMap or Secret being written to. If the CEL expression in Value returns a string\nthis is required to identify what key to write to. If the CEL expression in Value returns a map[string]string\nKey must not be set, instead the keys written will be determined dynamically based on the keys of the resulting\nmap[string]string.",
                     "type": "string"
+                  },
+                  "labels": {
+                    "additionalProperties": {
+                      "type": "string"
+                    },
+                    "description": "Labels is an optional set of labels to apply to the destination resource.",
+                    "type": "object"
                   },
                   "name": {
                     "description": "Name is the name of the Kubernetes configmap or secret to write to.\nThe configmap or secret will be created in the same namespace as the resource.",
@@ -166,6 +195,7 @@
         "subnets": {
           "description": "Subnets: The list of subnets, IP addresses, and/or address ranges mapped to this endpoint when using the 'Subnet'\ntraffic routing method. An empty list will match all ranges not covered by other endpoints.",
           "items": {
+            "description": "Subnet first address, scope, and/or last address.",
             "properties": {
               "first": {
                 "description": "First: First address in the subnet.",
@@ -280,6 +310,7 @@
         "customHeaders": {
           "description": "CustomHeaders: List of custom headers.",
           "items": {
+            "description": "Custom header name and value.",
             "properties": {
               "name": {
                 "description": "Name: Header name.",
@@ -340,6 +371,7 @@
         "subnets": {
           "description": "Subnets: The list of subnets, IP addresses, and/or address ranges mapped to this endpoint when using the 'Subnet'\ntraffic routing method. An empty list will match all ranges not covered by other endpoints.",
           "items": {
+            "description": "Subnet first address, scope, and/or last address.",
             "properties": {
               "first": {
                 "description": "First: First address in the subnet.",

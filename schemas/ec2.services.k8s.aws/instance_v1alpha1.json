@@ -98,6 +98,9 @@
               "format": "int64",
               "type": "integer"
             },
+            "nestedVirtualization": {
+              "type": "string"
+            },
             "threadsPerCore": {
               "format": "int64",
               "type": "integer"
@@ -529,6 +532,9 @@
           },
           "type": "array"
         },
+        "sourceDestCheckEnabled": {
+          "type": "boolean"
+        },
         "subnetID": {
           "description": "The ID of the subnet to launch the instance into.\n\nIf you specify a network interface, you must specify any subnets as part\nof the network interface instead of using this parameter.",
           "type": "string"
@@ -586,6 +592,10 @@
             },
             "ownerAccountID": {
               "description": "OwnerAccountID is the AWS Account ID of the account that owns the\nbackend AWS service API resource.",
+              "type": "string"
+            },
+            "partition": {
+              "description": "Partition is the AWS partition in which the resource exists or will exist",
               "type": "string"
             },
             "region": {

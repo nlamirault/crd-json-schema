@@ -100,6 +100,9 @@
                   "format": "int64",
                   "type": "integer"
                 },
+                "nestedVirtualization": {
+                  "type": "string"
+                },
                 "threadsPerCore": {
                   "format": "int64",
                   "type": "integer"
@@ -685,6 +688,33 @@
               },
               "type": "array"
             },
+            "tagSpecifications": {
+              "items": {
+                "description": "The tags specification for the resources that are created during instance\nlaunch.",
+                "properties": {
+                  "resourceType": {
+                    "type": "string"
+                  },
+                  "tags": {
+                    "items": {
+                      "description": "Describes a tag.",
+                      "properties": {
+                        "key": {
+                          "type": "string"
+                        },
+                        "value": {
+                          "type": "string"
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "type": "array"
+                  }
+                },
+                "type": "object"
+              },
+              "type": "array"
+            },
             "userData": {
               "type": "string"
             }
@@ -739,6 +769,10 @@
             },
             "ownerAccountID": {
               "description": "OwnerAccountID is the AWS Account ID of the account that owns the\nbackend AWS service API resource.",
+              "type": "string"
+            },
+            "partition": {
+              "description": "Partition is the AWS partition in which the resource exists or will exist",
               "type": "string"
             },
             "region": {

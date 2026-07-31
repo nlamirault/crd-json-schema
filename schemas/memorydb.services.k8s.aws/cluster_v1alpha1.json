@@ -53,6 +53,24 @@
           "description": "The ID of the KMS key used to encrypt the cluster.",
           "type": "string"
         },
+        "kmsKeyRef": {
+          "description": "AWSResourceReferenceWrapper provides a wrapper around *AWSResourceReference\ntype to provide more user friendly syntax for references using 'from' field\nEx:\nAPIIDRef:\n\n\tfrom:\n\t  name: my-api",
+          "properties": {
+            "from": {
+              "description": "AWSResourceReference provides all the values necessary to reference another\nk8s resource for finding the identifier(Id/ARN/Name)",
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "namespace": {
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            }
+          },
+          "type": "object"
+        },
         "maintenanceWindow": {
           "description": "Specifies the weekly time range during which maintenance on the cluster is\nperformed. It is specified as a range in the format ddd:hh24:mi-ddd:hh24:mi\n(24H Clock UTC). The minimum maintenance window is a 60 minute period.\n\nValid values for ddd are:\n\n  - sun\n\n  - mon\n\n  - tue\n\n  - wed\n\n  - thu\n\n  - fri\n\n  - sat\n\nExample: sun:23:00-mon:01:30",
           "type": "string"
@@ -251,6 +269,10 @@
             },
             "ownerAccountID": {
               "description": "OwnerAccountID is the AWS Account ID of the account that owns the\nbackend AWS service API resource.",
+              "type": "string"
+            },
+            "partition": {
+              "description": "Partition is the AWS partition in which the resource exists or will exist",
               "type": "string"
             },
             "region": {

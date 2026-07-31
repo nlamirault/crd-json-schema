@@ -9,7 +9,7 @@ export FILES=(
 )
 
 # renovate: datasource=github-tags depName=dragonflydb/dragonfly-operator
-export VERSION=1.3.1
+export VERSION=1.6.1
 
 function generate_url {
   echo "https://raw.githubusercontent.com/dragonflydb/dragonfly-operator/refs/tags/v${VERSION}/manifests/crd.yaml"

@@ -11,7 +11,7 @@ export FILES=(
 )
 
 # renovate: datasource=github-tags depName=aws-controllers-k8s/opensearchservice-controller
-export VERSION=1.2.4
+export VERSION=1.4.2
 
 function generate_url {
   local crd_file=$1

@@ -14,7 +14,7 @@ export FILES=(
 )
 
 # renovate: datasource=github-tags depName=cert-manager/cert-manager
-export VERSION=1.21.0
+export VERSION=1.21.1
 
 function generate_url {
   local crd_file=$1

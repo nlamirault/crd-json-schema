@@ -75,6 +75,13 @@
                   "description": "BaseURL overrides the provider's default API endpoint.\nUse for OpenAI-compatible providers (GitHub Copilot, Azure OpenAI, Ollama, etc.).",
                   "type": "string"
                 },
+                "env": {
+                  "additionalProperties": {
+                    "type": "string"
+                  },
+                  "description": "Env defines additional environment variables injected into the\nagent-runner container of every AgentRun created for this agent\n(channel-driven, scheduled, stimulus, web-endpoint, sequential\nhandoff). Useful for tuning runtime knobs such as\nMAX_TOOL_ITERATIONS without forking the agent-runner image.\nThe controller copies these values onto AgentRunSpec.Env when it\ncreates a run on behalf of the agent; manually-applied AgentRun CRs\nare not modified, so any AgentRunSpec.Env set there is preserved\nas-is.",
+                  "type": "object"
+                },
                 "lifecycle": {
                   "description": "Lifecycle defines pre and post run hooks for agent runs.\nPropagated to AgentRunSpec.Lifecycle when runs are created.",
                   "properties": {
@@ -107,20 +114,48 @@
                             "type": "array"
                           },
                           "env": {
-                            "description": "Env is a list of environment variables for this hook container.",
+                            "description": "Env is a list of environment variables for this hook container.\nEach entry may carry a literal value or source it from a Secret key via\nvalueFrom.secretKeyRef, allowing hooks to authenticate to private\nsources (e.g. a GitHub PAT) without embedding plaintext credentials.",
                             "items": {
-                              "description": "EnvVar is a simplified environment variable (name + value).",
+                              "description": "EnvVar is a simplified environment variable. The value is either supplied\nliterally via Value or sourced from a Secret via ValueFrom. The two are\nmutually exclusive.",
                               "properties": {
                                 "name": {
                                   "type": "string"
                                 },
                                 "value": {
+                                  "description": "Value is a literal environment variable value.",
                                   "type": "string"
+                                },
+                                "valueFrom": {
+                                  "description": "ValueFrom sources the value from outside the spec, e.g. a Secret key.\nWhen set, Value must be empty.",
+                                  "properties": {
+                                    "secretKeyRef": {
+                                      "description": "SecretKeyRef selects a single key of a Secret in the AgentRun namespace.",
+                                      "properties": {
+                                        "key": {
+                                          "description": "Key is the key within the Secret's data to expose.",
+                                          "type": "string"
+                                        },
+                                        "name": {
+                                          "description": "Name is the name of the Secret in the AgentRun namespace.",
+                                          "type": "string"
+                                        },
+                                        "optional": {
+                                          "description": "Optional, when true, allows the Secret or key to be absent without\nfailing pod startup.",
+                                          "type": "boolean"
+                                        }
+                                      },
+                                      "required": [
+                                        "key",
+                                        "name"
+                                      ],
+                                      "type": "object"
+                                    }
+                                  },
+                                  "type": "object"
                                 }
                               },
                               "required": [
-                                "name",
-                                "value"
+                                "name"
                               ],
                               "type": "object"
                             },
@@ -180,20 +215,48 @@
                             "type": "array"
                           },
                           "env": {
-                            "description": "Env is a list of environment variables for this hook container.",
+                            "description": "Env is a list of environment variables for this hook container.\nEach entry may carry a literal value or source it from a Secret key via\nvalueFrom.secretKeyRef, allowing hooks to authenticate to private\nsources (e.g. a GitHub PAT) without embedding plaintext credentials.",
                             "items": {
-                              "description": "EnvVar is a simplified environment variable (name + value).",
+                              "description": "EnvVar is a simplified environment variable. The value is either supplied\nliterally via Value or sourced from a Secret via ValueFrom. The two are\nmutually exclusive.",
                               "properties": {
                                 "name": {
                                   "type": "string"
                                 },
                                 "value": {
+                                  "description": "Value is a literal environment variable value.",
                                   "type": "string"
+                                },
+                                "valueFrom": {
+                                  "description": "ValueFrom sources the value from outside the spec, e.g. a Secret key.\nWhen set, Value must be empty.",
+                                  "properties": {
+                                    "secretKeyRef": {
+                                      "description": "SecretKeyRef selects a single key of a Secret in the AgentRun namespace.",
+                                      "properties": {
+                                        "key": {
+                                          "description": "Key is the key within the Secret's data to expose.",
+                                          "type": "string"
+                                        },
+                                        "name": {
+                                          "description": "Name is the name of the Secret in the AgentRun namespace.",
+                                          "type": "string"
+                                        },
+                                        "optional": {
+                                          "description": "Optional, when true, allows the Secret or key to be absent without\nfailing pod startup.",
+                                          "type": "boolean"
+                                        }
+                                      },
+                                      "required": [
+                                        "key",
+                                        "name"
+                                      ],
+                                      "type": "object"
+                                    }
+                                  },
+                                  "type": "object"
                                 }
                               },
                               "required": [
-                                "name",
-                                "value"
+                                "name"
                               ],
                               "type": "object"
                             },
@@ -283,8 +346,19 @@
                   "description": "NodeSelector constrains agent pods to nodes with matching labels.\nUsed for node-pinned inference (e.g., Ollama installed on specific GPU nodes).",
                   "type": "object"
                 },
+                "providerHeaders": {
+                  "additionalProperties": {
+                    "type": "string"
+                  },
+                  "description": "ProviderHeaders are additional HTTP headers sent with every LLM provider request.\nUseful for OpenAI-compatible gateways (e.g. Portkey) that use headers for routing.",
+                  "type": "object"
+                },
+                "providerHeadersSecretRef": {
+                  "description": "ProviderHeadersSecretRef references a Kubernetes Secret whose data keys are\ninjected as provider request headers. Values from the secret override inline\nProviderHeaders on key collision.",
+                  "type": "string"
+                },
                 "runTimeout": {
-                  "description": "RunTimeout is the maximum duration for each agent run (e.g. \"30m\", \"1h\").\nDefaults to 10 minutes for cloud providers and 30 minutes for local\nproviders (ollama, lm-studio, vllm). Local models are significantly\nslower per request, so the longer default prevents premature timeouts.",
+                  "description": "RunTimeout is the maximum duration for each agent run (e.g. \"30m\", \"1h\").\nWhen empty, the controller watchdog enforces a flat 10-minute cap\nregardless of provider, so this must be set explicitly to allow longer\nruns. Local models (ollama, lm-studio, vllm) are significantly slower per\nrequest, so a longer value (e.g. \"30m\") is recommended for them.",
                   "type": "string"
                 },
                 "sandbox": {
@@ -490,6 +564,13 @@
               "slack": {
                 "description": "Slack holds Slack-specific options. Ignored for other channel types.",
                 "properties": {
+                  "allowedTriggers": {
+                    "description": "AllowedTriggers gates which inbound message kinds may start an\nAgentRun. Values: \"mention\" (the bot is @-mentioned),\n\"dm\" (direct message to the bot), \"channel\" (any other channel\nor group message). When empty, all kinds trigger the agent.\nComposes (AND) with ChannelAccessControl.",
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
                   "emojiOnStart": {
                     "description": "EmojiOnStart is the reaction added when a start keyword\nresumes the chat. Default: \"loud_sound\".",
                     "type": "string"
@@ -501,6 +582,14 @@
                   "emojiOnTrigger": {
                     "description": "EmojiOnTrigger is the reaction added to inbound messages that\nsuccessfully start an AgentRun. Default: \"eyes\".",
                     "type": "string"
+                  },
+                  "threadStickiness": {
+                    "description": "ThreadStickiness, when true together with Threading, lets the\nuser who originally opened a thread keep talking to the bot\nwithout re-mentioning. The first sender to address the bot in\na thread becomes the thread's \"owner\". Any message from anyone\nother than the owner — even an @-mention from a denied user —\npermanently marks the thread \"interrupted\". Once interrupted,\nevery subsequent message (including from the owner) must\nsatisfy AllowedTriggers (e.g. @-mention) to be processed; the\nlax free-flow mode never resumes for that thread. Has no\neffect when Threading is false.",
+                    "type": "boolean"
+                  },
+                  "threading": {
+                    "description": "Threading controls reply placement. When true, replies are sent\nin a thread: messages already inside a thread reply in that\nthread, and top-level messages get a new thread anchored to the\ninbound message. When false (default) replies are posted at the\ntop level of the channel.",
+                    "type": "boolean"
                   }
                 },
                 "type": "object"
@@ -2048,6 +2137,10 @@
             "type": "object"
           },
           "type": "array"
+        },
+        "displayName": {
+          "description": "DisplayName is the human-readable name for this agent. When set, it is\nused for per-message sender attribution in channels (e.g. the Slack\nusername a shared bot posts under) so a multi-agent Ensemble shows which\nagent is replying. Falls back to the Agent's metadata.name when empty.",
+          "type": "string"
         },
         "imagePullSecrets": {
           "description": "ImagePullSecrets are secrets to use when pulling container images.",

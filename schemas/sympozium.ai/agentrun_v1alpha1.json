@@ -134,20 +134,48 @@
                     "type": "array"
                   },
                   "env": {
-                    "description": "Env is a list of environment variables for this hook container.",
+                    "description": "Env is a list of environment variables for this hook container.\nEach entry may carry a literal value or source it from a Secret key via\nvalueFrom.secretKeyRef, allowing hooks to authenticate to private\nsources (e.g. a GitHub PAT) without embedding plaintext credentials.",
                     "items": {
-                      "description": "EnvVar is a simplified environment variable (name + value).",
+                      "description": "EnvVar is a simplified environment variable. The value is either supplied\nliterally via Value or sourced from a Secret via ValueFrom. The two are\nmutually exclusive.",
                       "properties": {
                         "name": {
                           "type": "string"
                         },
                         "value": {
+                          "description": "Value is a literal environment variable value.",
                           "type": "string"
+                        },
+                        "valueFrom": {
+                          "description": "ValueFrom sources the value from outside the spec, e.g. a Secret key.\nWhen set, Value must be empty.",
+                          "properties": {
+                            "secretKeyRef": {
+                              "description": "SecretKeyRef selects a single key of a Secret in the AgentRun namespace.",
+                              "properties": {
+                                "key": {
+                                  "description": "Key is the key within the Secret's data to expose.",
+                                  "type": "string"
+                                },
+                                "name": {
+                                  "description": "Name is the name of the Secret in the AgentRun namespace.",
+                                  "type": "string"
+                                },
+                                "optional": {
+                                  "description": "Optional, when true, allows the Secret or key to be absent without\nfailing pod startup.",
+                                  "type": "boolean"
+                                }
+                              },
+                              "required": [
+                                "key",
+                                "name"
+                              ],
+                              "type": "object"
+                            }
+                          },
+                          "type": "object"
                         }
                       },
                       "required": [
-                        "name",
-                        "value"
+                        "name"
                       ],
                       "type": "object"
                     },
@@ -207,20 +235,48 @@
                     "type": "array"
                   },
                   "env": {
-                    "description": "Env is a list of environment variables for this hook container.",
+                    "description": "Env is a list of environment variables for this hook container.\nEach entry may carry a literal value or source it from a Secret key via\nvalueFrom.secretKeyRef, allowing hooks to authenticate to private\nsources (e.g. a GitHub PAT) without embedding plaintext credentials.",
                     "items": {
-                      "description": "EnvVar is a simplified environment variable (name + value).",
+                      "description": "EnvVar is a simplified environment variable. The value is either supplied\nliterally via Value or sourced from a Secret via ValueFrom. The two are\nmutually exclusive.",
                       "properties": {
                         "name": {
                           "type": "string"
                         },
                         "value": {
+                          "description": "Value is a literal environment variable value.",
                           "type": "string"
+                        },
+                        "valueFrom": {
+                          "description": "ValueFrom sources the value from outside the spec, e.g. a Secret key.\nWhen set, Value must be empty.",
+                          "properties": {
+                            "secretKeyRef": {
+                              "description": "SecretKeyRef selects a single key of a Secret in the AgentRun namespace.",
+                              "properties": {
+                                "key": {
+                                  "description": "Key is the key within the Secret's data to expose.",
+                                  "type": "string"
+                                },
+                                "name": {
+                                  "description": "Name is the name of the Secret in the AgentRun namespace.",
+                                  "type": "string"
+                                },
+                                "optional": {
+                                  "description": "Optional, when true, allows the Secret or key to be absent without\nfailing pod startup.",
+                                  "type": "boolean"
+                                }
+                              },
+                              "required": [
+                                "key",
+                                "name"
+                              ],
+                              "type": "object"
+                            }
+                          },
+                          "type": "object"
                         }
                       },
                       "required": [
-                        "name",
-                        "value"
+                        "name"
                       ],
                       "type": "object"
                     },
@@ -336,6 +392,17 @@
             },
             "provider": {
               "description": "Provider is the AI provider (openai, anthropic, azure-openai, github-copilot, ollama, etc.).",
+              "type": "string"
+            },
+            "providerHeaders": {
+              "additionalProperties": {
+                "type": "string"
+              },
+              "description": "ProviderHeaders are additional HTTP headers sent with every LLM provider request.",
+              "type": "object"
+            },
+            "providerHeadersSecretRef": {
+              "description": "ProviderHeadersSecretRef references a Kubernetes Secret whose data keys are\ninjected as provider request headers. Values from the secret override inline\nProviderHeaders on key collision.",
               "type": "string"
             },
             "thinking": {
@@ -2103,6 +2170,53 @@
           },
           "type": "array"
         },
+        "costEstimate": {
+          "description": "CostEstimate is the estimated dollar cost of this run, derived from\ntokenUsage and the cluster price table at completion time. It is an\nESTIMATE, not billing data: retried runs count only the final attempt\nand failed runs report no usage. Absent (never zero) when the provider\nis local/self-hosted, the run uses modelRef, or no price-table entry\nmatches.",
+          "properties": {
+            "amountMicro": {
+              "description": "AmountMicro is the total estimated cost in micro-USD.",
+              "format": "int64",
+              "type": "integer"
+            },
+            "currency": {
+              "description": "Currency is always \"USD\" in v1.",
+              "type": "string"
+            },
+            "estimatedAt": {
+              "description": "EstimatedAt records when the estimate was frozen. Estimates are never\nrecomputed when the price table changes.",
+              "format": "date-time",
+              "type": "string"
+            },
+            "inputAmountMicro": {
+              "description": "InputAmountMicro is the input-token share of the total.",
+              "format": "int64",
+              "type": "integer"
+            },
+            "outputAmountMicro": {
+              "description": "OutputAmountMicro is the output-token share of the total.",
+              "format": "int64",
+              "type": "integer"
+            },
+            "priceKey": {
+              "description": "PriceKey is the matched table entry (\"provider/matchPrefix\") for audit.",
+              "type": "string"
+            },
+            "source": {
+              "description": "Source identifies the price table used. Persisted estimates are always\n\"defaultTable\"; \"simulated\" appears only in apiserver responses and is\nnever written to status.",
+              "enum": [
+                "defaultTable",
+                "simulated"
+              ],
+              "type": "string"
+            }
+          },
+          "required": [
+            "amountMicro",
+            "currency",
+            "source"
+          ],
+          "type": "object"
+        },
         "delegates": {
           "description": "Delegates tracks in-flight persona delegations for this run.\nPopulated when the run enters AwaitingDelegate phase.",
           "items": {
@@ -2166,7 +2280,7 @@
           "type": "string"
         },
         "phase": {
-          "description": "Phase is the current phase (Pending, Running, Succeeded, Failed).",
+          "description": "Phase is the current phase (Pending, Running, Succeeded, Failed, Skipped).",
           "type": "string"
         },
         "podName": {

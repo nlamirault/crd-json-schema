@@ -100,6 +100,66 @@
             "enabled"
           ],
           "type": "object"
+        },
+        "pricing": {
+          "description": "Pricing configures simulated model pricing. Simulated prices are a\ndisplay-only overlay applied by the apiserver at read time; they are\nnever persisted into AgentRun status, never exported as metrics, and\nnever feed budget enforcement.",
+          "properties": {
+            "simulatedEnabled": {
+              "description": "SimulatedEnabled toggles the read-time simulated-cost overlay.",
+              "type": "boolean"
+            },
+            "simulatedPrices": {
+              "description": "SimulatedPrices are user-defined rates, including for local/self-hosted\nproviders that are exempt from real cost estimation (e.g. internal\nchargeback rates).",
+              "items": {
+                "description": "SimulatedPrice prices one provider/model-prefix pair in micro-USD per one\nmillion tokens.",
+                "properties": {
+                  "inputPerMTokMicro": {
+                    "description": "InputPerMTokMicro is micro-USD per one million input tokens.",
+                    "format": "int64",
+                    "maximum": 1000000000,
+                    "minimum": 1,
+                    "type": "integer"
+                  },
+                  "match": {
+                    "description": "Match is a literal prefix of the model identifier.",
+                    "pattern": "^[a-zA-Z0-9][a-zA-Z0-9._:/ -]{0,127}$",
+                    "type": "string"
+                  },
+                  "outputPerMTokMicro": {
+                    "description": "OutputPerMTokMicro is micro-USD per one million output tokens.",
+                    "format": "int64",
+                    "maximum": 1000000000,
+                    "minimum": 1,
+                    "type": "integer"
+                  },
+                  "provider": {
+                    "description": "Provider is the model provider id; may name a local provider.",
+                    "pattern": "^[a-zA-Z0-9][a-zA-Z0-9._:/-]{0,127}$",
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "inputPerMTokMicro",
+                  "match",
+                  "outputPerMTokMicro",
+                  "provider"
+                ],
+                "type": "object"
+              },
+              "maxItems": 500,
+              "type": "array"
+            },
+            "updatedAt": {
+              "description": "UpdatedAt records the last modification of this block.",
+              "format": "date-time",
+              "type": "string"
+            },
+            "updatedBy": {
+              "description": "UpdatedBy records the caller identity when apiserver auth is enabled.",
+              "type": "string"
+            }
+          },
+          "type": "object"
         }
       },
       "type": "object"

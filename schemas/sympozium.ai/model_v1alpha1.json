@@ -227,12 +227,25 @@
         "placement": {
           "description": "Placement configures how the controller selects a node for the model.",
           "properties": {
+            "minComputeTFLOPS": {
+              "description": "MinComputeTFLOPS is the opt-in compute floor (effective dense FP16\nTFLOPS) for prefill/TTFT-bound models, passed to the ModelClaim in\nclaim-based placement.",
+              "format": "int64",
+              "minimum": 1,
+              "type": "integer"
+            },
+            "minTps": {
+              "description": "MinTps is the decode-throughput floor (tokens/second) passed to the\nModelClaim in claim-based placement. Unset keeps the claim's default.",
+              "format": "int32",
+              "minimum": 1,
+              "type": "integer"
+            },
             "mode": {
               "default": "manual",
-              "description": "Mode is \"auto\" or \"manual\". In auto mode the controller uses llmfit\nprobes to select the best-fit node. Defaults to \"manual\".",
+              "description": "Mode is \"manual\", \"auto\", or \"dra\". In auto mode the controller\nprefers claim-based placement (as in \"dra\") when Kubernetes DRA and\nthe llmfit.ai ModelClaim CRD are available, and falls back to llmfit\nprobe-based node selection otherwise. Defaults to \"manual\".",
               "enum": [
                 "auto",
-                "manual"
+                "manual",
+                "dra"
               ],
               "type": "string"
             }

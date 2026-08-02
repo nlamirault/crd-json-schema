@@ -16,7 +16,7 @@
       "description": "AgentSpec defines the desired state of Agent.",
       "properties": {
         "allowedNamespaces": {
-          "description": "AllowedNamespaces defines which namespaces are allowed to reference this Agent as a tool.\nThis follows the Gateway API pattern for cross-namespace route attachments.\nIf not specified, only Agents in the same namespace can reference this Agent as a tool.\nThis field only applies when this Agent is used as a tool by another Agent.\nSee: https://gateway-api.sigs.k8s.io/guides/multiple-ns/#cross-namespace-routing",
+          "description": "AllowedNamespaces defines which namespaces are allowed to reference this Agent as a tool.\nThis follows the Gateway API pattern for cross-namespace route attachments.\nIf not specified, only Agents in the same namespace can reference this Agent as a tool.\nThis field only applies when this Agent is used as a tool by another Agent.\nSee: https://gateway-api.sigs.k8s.io/guides/multiple-ns/#cross-namespace-route-attachment",
           "properties": {
             "from": {
               "default": "Same",
@@ -83,9 +83,10 @@
           ]
         },
         "byo": {
+          "description": "BYO configures a \"bring your own\" agent backed by a user-provided\ncontainer image. Kagent deploys the image and expects it to serve the\nagent over the A2A protocol on port 8080.\nRequired if type is BYO.",
           "properties": {
             "deployment": {
-              "description": "Trust relationship to the agent.",
+              "description": "Deployment configures the Kubernetes Deployment created for the BYO agent container.",
               "properties": {
                 "affinity": {
                   "description": "Affinity is a group of affinity scheduling rules.",
@@ -846,18 +847,22 @@
                   "additionalProperties": {
                     "type": "string"
                   },
+                  "description": "Annotations are additional annotations added to the agent pods.",
                   "type": "object"
                 },
                 "args": {
+                  "description": "Args are the arguments passed to the container entrypoint.",
                   "items": {
                     "type": "string"
                   },
                   "type": "array"
                 },
                 "cmd": {
+                  "description": "Cmd overrides the container entrypoint (the container's command).",
                   "type": "string"
                 },
                 "env": {
+                  "description": "Env are additional environment variables set on the agent container.",
                   "items": {
                     "description": "EnvVar represents an environment variable present in a Container.",
                     "properties": {
@@ -2346,6 +2351,7 @@
                   "type": "array"
                 },
                 "image": {
+                  "description": "Image is the container image of the BYO agent.\nThe image is expected to serve the agent over the A2A protocol on port 8080.",
                   "minLength": 1,
                   "type": "string"
                 },
@@ -2354,6 +2360,7 @@
                   "type": "string"
                 },
                 "imagePullSecrets": {
+                  "description": "ImagePullSecrets are references to secrets in the agent's namespace\nused for pulling the agent container image.",
                   "items": {
                     "description": "LocalObjectReference contains enough information to let you locate the\nreferenced object inside the same namespace.",
                     "properties": {
@@ -2372,12 +2379,14 @@
                   "additionalProperties": {
                     "type": "string"
                   },
+                  "description": "Labels are additional labels added to the agent pods.",
                   "type": "object"
                 },
                 "nodeSelector": {
                   "additionalProperties": {
                     "type": "string"
                   },
+                  "description": "NodeSelector restricts the nodes the agent pods can be scheduled on.",
                   "type": "object"
                 },
                 "podSecurityContext": {
@@ -2528,6 +2537,7 @@
                   "type": "object"
                 },
                 "replicas": {
+                  "description": "Replicas is the number of desired agent pods. Defaults to 1.",
                   "format": "int32",
                   "type": "integer"
                 },
@@ -2739,12 +2749,14 @@
                       "additionalProperties": {
                         "type": "string"
                       },
+                      "description": "Annotations are additional annotations added to the created ServiceAccount.",
                       "type": "object"
                     },
                     "labels": {
                       "additionalProperties": {
                         "type": "string"
                       },
+                      "description": "Labels are additional labels added to the created ServiceAccount.",
                       "type": "object"
                     }
                   },
@@ -2755,6 +2767,7 @@
                   "type": "string"
                 },
                 "tolerations": {
+                  "description": "Tolerations applied to the agent pods.",
                   "items": {
                     "description": "The pod this Toleration is attached to tolerates any taint that matches\nthe triple <key,value,effect> using the matching operator <operator>.",
                     "properties": {
@@ -2785,6 +2798,7 @@
                   "type": "array"
                 },
                 "volumeMounts": {
+                  "description": "VolumeMounts are additional volume mounts added to the agent container.",
                   "items": {
                     "description": "VolumeMount describes a mounting of a Volume within a container.",
                     "properties": {
@@ -2826,6 +2840,7 @@
                   "type": "array"
                 },
                 "volumes": {
+                  "description": "Volumes are additional volumes added to the agent pod.",
                   "items": {
                     "description": "Volume represents a named volume in a pod that may be accessed by any container in the pod.",
                     "properties": {
@@ -4293,6 +4308,10 @@
                     "type": "object"
                   },
                   "type": "array"
+                },
+                "workingDir": {
+                  "description": "workingDir sets the container working directory. Defaults to the image WORKDIR when omitted.",
+                  "type": "string"
                 }
               },
               "type": "object",
@@ -4307,9 +4326,10 @@
           "type": "object"
         },
         "declarative": {
+          "description": "Declarative configures an agent that is fully described by this resource\n(model, instructions, tools) and runs on one of kagent's built-in runtimes.\nRequired if type is Declarative.",
           "properties": {
             "a2aConfig": {
-              "description": "A2AConfig instantiates an A2A server for this agent,\nserved on the HTTP port of the kagent kubernetes\ncontroller (default 8083).\nThe A2A server URL will be served at\n<kagent-controller-ip>:8083/api/a2a/<agent-namespace>/<agent-name>\nRead more about the A2A protocol here: https://github.com/google/A2A",
+              "description": "A2AConfig instantiates an A2A server for this agent,\nserved on the HTTP port of the kagent kubernetes\ncontroller (default 8083).\nThe A2A server URL will be served at\n<kagent-controller-ip>:8083/api/a2a/<agent-namespace>/<agent-name>\nRead more about the A2A protocol here: https://github.com/a2aproject/A2A",
               "properties": {
                 "skills": {
                   "items": {
@@ -4324,6 +4344,7 @@
                         "items": {
                           "type": "string"
                         },
+                        "maxItems": 20,
                         "type": "array"
                       },
                       "id": {
@@ -4331,7 +4352,7 @@
                         "type": "string"
                       },
                       "inputModes": {
-                        "description": "InputModes are the supported input data modes/types.",
+                        "description": "InputModes are the supported input MIME types for this skill, overriding the agent's defaults.",
                         "items": {
                           "type": "string"
                         },
@@ -4339,10 +4360,11 @@
                       },
                       "name": {
                         "description": "Name is the human-readable name of the skill.",
+                        "minLength": 1,
                         "type": "string"
                       },
                       "outputModes": {
-                        "description": "OutputModes are the supported output data modes/types.",
+                        "description": "OutputModes are the supported output MIME types for this skill, overriding the agent's defaults.",
                         "items": {
                           "type": "string"
                         },
@@ -4353,13 +4375,12 @@
                         "items": {
                           "type": "string"
                         },
+                        "maxItems": 20,
                         "type": "array"
                       }
                     },
                     "required": [
-                      "id",
-                      "name",
-                      "tags"
+                      "name"
                     ],
                     "type": "object"
                   },
@@ -5176,9 +5197,11 @@
                   "additionalProperties": {
                     "type": "string"
                   },
+                  "description": "Annotations are additional annotations added to the agent pods.",
                   "type": "object"
                 },
                 "env": {
+                  "description": "Env are additional environment variables set on the agent container.",
                   "items": {
                     "description": "EnvVar represents an environment variable present in a Container.",
                     "properties": {
@@ -6671,6 +6694,7 @@
                   "type": "string"
                 },
                 "imagePullSecrets": {
+                  "description": "ImagePullSecrets are references to secrets in the agent's namespace\nused for pulling the agent container image.",
                   "items": {
                     "description": "LocalObjectReference contains enough information to let you locate the\nreferenced object inside the same namespace.",
                     "properties": {
@@ -6692,12 +6716,14 @@
                   "additionalProperties": {
                     "type": "string"
                   },
+                  "description": "Labels are additional labels added to the agent pods.",
                   "type": "object"
                 },
                 "nodeSelector": {
                   "additionalProperties": {
                     "type": "string"
                   },
+                  "description": "NodeSelector restricts the nodes the agent pods can be scheduled on.",
                   "type": "object"
                 },
                 "podSecurityContext": {
@@ -6848,6 +6874,7 @@
                   "type": "object"
                 },
                 "replicas": {
+                  "description": "Replicas is the number of desired agent pods. Defaults to 1.",
                   "format": "int32",
                   "type": "integer"
                 },
@@ -7059,12 +7086,14 @@
                       "additionalProperties": {
                         "type": "string"
                       },
+                      "description": "Annotations are additional annotations added to the created ServiceAccount.",
                       "type": "object"
                     },
                     "labels": {
                       "additionalProperties": {
                         "type": "string"
                       },
+                      "description": "Labels are additional labels added to the created ServiceAccount.",
                       "type": "object"
                     }
                   },
@@ -7075,6 +7104,7 @@
                   "type": "string"
                 },
                 "tolerations": {
+                  "description": "Tolerations applied to the agent pods.",
                   "items": {
                     "description": "The pod this Toleration is attached to tolerates any taint that matches\nthe triple <key,value,effect> using the matching operator <operator>.",
                     "properties": {
@@ -7105,6 +7135,7 @@
                   "type": "array"
                 },
                 "volumeMounts": {
+                  "description": "VolumeMounts are additional volume mounts added to the agent container.",
                   "items": {
                     "description": "VolumeMount describes a mounting of a Volume within a container.",
                     "properties": {
@@ -7146,6 +7177,7 @@
                   "type": "array"
                 },
                 "volumes": {
+                  "description": "Volumes are additional volumes added to the agent pod.",
                   "items": {
                     "description": "Volume represents a named volume in a pod that may be accessed by any container in the pod.",
                     "properties": {
@@ -8624,7 +8656,7 @@
               ]
             },
             "executeCodeBlocks": {
-              "description": "Allow code execution for python code blocks with this agent.\nIf true, the agent will automatically execute python code blocks in the LLM responses.\nCode will be executed in a sandboxed environment.\ndue to a bug in adk (https://github.com/google/adk-python/issues/3921), this field is ignored for now.",
+              "description": "Allow code execution for python code blocks with this agent.\nIf true, the agent will automatically execute python code blocks in the LLM responses.\nCode will be executed in a sandboxed environment.\ndue to a bug in adk (https://github.com/google/adk-python/issues/3921 ), this field is ignored for now.",
               "type": "boolean"
             },
             "memory": {
@@ -8940,7 +8972,7 @@
                     "type": "string"
                   },
                   "path": {
-                    "description": "Subdirectory within the repo to use as the skill root.",
+                    "description": "Subdirectory within the repo to use as the skill root. The API validates\nthis input path, but treats repository contents as trusted: symlinks under\nthis path are dereferenced when materializing the skill.",
                     "type": "string"
                   },
                   "ref": {

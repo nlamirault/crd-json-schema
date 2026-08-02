@@ -139,6 +139,20 @@
               "description": "AdditionalModelRequestFields passes model-specific parameters to Bedrock's\nadditionalModelRequestFields in the Converse API. Use this for provider-specific\noptions that are not part of the standard InferenceConfiguration block, such as\nClaude extended thinking or top_k. Values are forwarded as-is to the API.\nExample: {\"top_k\": 5, \"thinking\": {\"type\": \"enabled\", \"budget_tokens\": 16000}}",
               "x-kubernetes-preserve-unknown-fields": true
             },
+            "cacheTTL": {
+              "default": "5m",
+              "description": "CacheTTL controls how long Bedrock retains a cached prefix when\nPromptCaching is enabled. Only meaningful when PromptCaching is true.\n\n  - \"5m\" (default): Bedrock's standard 5-minute sliding cache. Each cache\n    hit refreshes the window. Supported by all prompt-caching models.\n  - \"1h\": extended-TTL caching, useful for tasks whose Converse calls are\n    spaced more than 5 minutes apart.\n\nNOTE: \"1h\" is NOT strictly better than \"5m\". Extended-TTL cache writes are\nbilled at a higher per-token rate than 5-minute writes, and 1h is supported\non a narrower set of models. Only choose \"1h\" when calls are spaced far\nenough apart that a 5-minute cache would expire between them; otherwise the\nhigher write cost is wasted. See the AWS prompt-caching docs above.",
+              "enum": [
+                "5m",
+                "1h"
+              ],
+              "type": "string"
+            },
+            "promptCaching": {
+              "default": false,
+              "description": "PromptCaching enables Bedrock prompt caching by appending a CachePoint\nblock at the end of the Converse request's `system` content array and\nthe end of the `toolConfig.tools` array. Bedrock will cache the prefix up to and\nincluding those cache points across requests in the same region for\nroughly 5 minutes after first use, billing the cached portion at a\nreduced rate on cache hits.\n\nRecommended for tool-using agents that make many Converse calls per\ntask with a stable system prompt and tool set — the per-call input\ntoken count can drop by 70-90% on hit. Has no effect on models that\ndon't support caching; the marker is ignored by Bedrock for those.\n\nSee https://docs.aws.amazon.com/bedrock/latest/userguide/prompt-caching.html\nfor the current list of supported models and minimum prefix sizes.",
+              "type": "boolean"
+            },
             "region": {
               "description": "AWS region where the Bedrock model is available (e.g., us-east-1, us-west-2)",
               "type": "string"
@@ -355,11 +369,11 @@
           "description": "TLS configuration for provider connections.\nEnables agents to connect to internal LiteLLM gateways or other providers\nthat use self-signed certificates or custom certificate authorities.",
           "properties": {
             "caCertSecretKey": {
-              "description": "CACertSecretKey is the key within the Secret that contains the CA certificate data.\nThis field follows the same pattern as APIKeySecretKey.\nRequired when CACertSecretRef is set (unless DisableVerify is true).",
+              "description": "CACertSecretKey is the key within the Secret that contains the\nCA certificate data (PEM-encoded). Required when CACertSecretRef\nis set — admission rejects ref-without-key regardless of\nDisableVerify (see the TLSConfig-level XValidation rules).",
               "type": "string"
             },
             "caCertSecretRef": {
-              "description": "CACertSecretRef is a reference to a Kubernetes Secret containing\nCA certificate(s) in PEM format. The Secret must be in the same\nnamespace as the ModelConfig.\nWhen set, the certificate will be used to verify the provider's SSL certificate.\nThis field follows the same pattern as APIKeySecret.",
+              "description": "CACertSecretRef is a reference to a Kubernetes Secret containing\nCA certificate(s) in PEM format. The Secret must be in the same\nnamespace as the resource referencing it (ModelConfig,\nRemoteMCPServer, or any future consumer of TLSConfig).\nWhen set, the certificate will be used to verify the upstream's\nSSL certificate.",
               "type": "string"
             },
             "disableSystemCAs": {
@@ -373,7 +387,21 @@
               "type": "boolean"
             }
           },
-          "type": "object"
+          "type": "object",
+          "x-kubernetes-validations": [
+            {
+              "message": "caCertSecretKey requires caCertSecretRef",
+              "rule": "!(has(self.caCertSecretKey) && size(self.caCertSecretKey) > 0 && (!has(self.caCertSecretRef) || size(self.caCertSecretRef) == 0))"
+            },
+            {
+              "message": "caCertSecretRef requires caCertSecretKey",
+              "rule": "!(has(self.caCertSecretRef) && size(self.caCertSecretRef) > 0 && (!has(self.caCertSecretKey) || size(self.caCertSecretKey) == 0))"
+            },
+            {
+              "message": "disableSystemCAs requires caCertSecretRef or disableVerify (trust-nothing config rejects every upstream)",
+              "rule": "!(has(self.disableSystemCAs) && self.disableSystemCAs && (!has(self.disableVerify) || !self.disableVerify) && (!has(self.caCertSecretRef) || size(self.caCertSecretRef) == 0))"
+            }
+          ]
         }
       },
       "required": [
@@ -432,18 +460,6 @@
         {
           "message": "apiKeyPassthrough must be false if provider is Gemini;GeminiVertexAI;AnthropicVertexAI",
           "rule": "!(has(self.apiKeyPassthrough) && self.apiKeyPassthrough && (self.provider == 'Gemini' || self.provider == 'GeminiVertexAI' || self.provider == 'AnthropicVertexAI'))"
-        },
-        {
-          "message": "caCertSecretKey requires caCertSecretRef",
-          "rule": "!(has(self.tls) && has(self.tls.caCertSecretKey) && size(self.tls.caCertSecretKey) > 0 && (!has(self.tls.caCertSecretRef) || size(self.tls.caCertSecretRef) == 0))"
-        },
-        {
-          "message": "caCertSecretKey requires caCertSecretRef (unless disableVerify is true)",
-          "rule": "!(has(self.tls) && (!has(self.tls.disableVerify) || !self.tls.disableVerify) && has(self.tls.caCertSecretKey) && size(self.tls.caCertSecretKey) > 0 && (!has(self.tls.caCertSecretRef) || size(self.tls.caCertSecretRef) == 0))"
-        },
-        {
-          "message": "caCertSecretRef requires caCertSecretKey (unless disableVerify is true)",
-          "rule": "!(has(self.tls) && (!has(self.tls.disableVerify) || !self.tls.disableVerify) && has(self.tls.caCertSecretRef) && size(self.tls.caCertSecretRef) > 0 && (!has(self.tls.caCertSecretKey) || size(self.tls.caCertSecretKey) == 0))"
         },
         {
           "message": "openAI.tokenExchange requires apiKeySecret (the service account secret)",

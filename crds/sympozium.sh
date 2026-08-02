@@ -17,7 +17,7 @@ export FILES=(
 )
 
 # renovate: datasource=github-tags depName=sympozium-ai/sympozium
-export VERSION=v0.10.34
+export VERSION=v0.10.43
 
 function generate_url {
   local crd_file=$1

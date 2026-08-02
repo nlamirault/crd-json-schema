@@ -16,7 +16,7 @@ export FILES=(
 )
 
 # renovate: datasource=github-tags depName=kagent-dev/kagent
-export VERSION=0.9.4
+export VERSION=0.9.12
 
 function generate_url {
   local crd_file=$1

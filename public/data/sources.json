@@ -1,0 +1,1487 @@
+{
+  "accesscontextmanager.cnrm.cloud.google.com": {
+    "category": "Google Cloud",
+    "upstream": "GoogleCloudPlatform/k8s-config-connector",
+    "cncf_maturity": null
+  },
+  "acm.services.k8s.aws": {
+    "category": "AWS Infrastructure",
+    "upstream": "aws-controllers-k8s/acm-controller",
+    "cncf_maturity": "sandbox"
+  },
+  "acme.cert-manager.io": {
+    "category": "Security",
+    "upstream": "cert-manager/cert-manager",
+    "cncf_maturity": "graduated"
+  },
+  "acmpca.services.k8s.aws": {
+    "category": "AWS Infrastructure",
+    "upstream": "aws-controllers-k8s/acmpca-controller",
+    "cncf_maturity": "sandbox"
+  },
+  "addons.cluster.x-k8s.io": {
+    "category": "Core Kubernetes",
+    "upstream": "kubernetes-sigs/cluster-api",
+    "cncf_maturity": "incubating"
+  },
+  "admissionregistration.api.k8s.io": {
+    "category": "Core Kubernetes",
+    "upstream": "kubernetes/kubernetes",
+    "cncf_maturity": "graduated"
+  },
+  "agentgateway.dev": {
+    "category": "AI Orchestration",
+    "upstream": "agentgateway/agentgateway",
+    "cncf_maturity": null
+  },
+  "agentic.networking.x-k8s.io": {
+    "category": "AI Orchestration",
+    "upstream": "kubernetes-sigs/kube-agentic-networking",
+    "cncf_maturity": null
+  },
+  "aiplatform.cnrm.cloud.google.com": {
+    "category": "Google Cloud",
+    "upstream": "GoogleCloudPlatform/k8s-config-connector",
+    "cncf_maturity": null
+  },
+  "alertsmanagement.azure.com": {
+    "category": "Azure Ecosystem",
+    "upstream": "Azure/azure-service-operator",
+    "cncf_maturity": null
+  },
+  "alloydb.cnrm.cloud.google.com": {
+    "category": "Google Cloud",
+    "upstream": "GoogleCloudPlatform/k8s-config-connector",
+    "cncf_maturity": null
+  },
+  "analytics.cnrm.cloud.google.com": {
+    "category": "Google Cloud",
+    "upstream": "GoogleCloudPlatform/k8s-config-connector",
+    "cncf_maturity": null
+  },
+  "apiextensions.api.k8s.io": {
+    "category": "Core Kubernetes",
+    "upstream": "kubernetes/kubernetes",
+    "cncf_maturity": "graduated"
+  },
+  "apiextensions.crossplane.io": {
+    "category": "Core Kubernetes",
+    "upstream": "crossplane/crossplane",
+    "cncf_maturity": "graduated"
+  },
+  "apigateway.cnrm.cloud.google.com": {
+    "category": "Google Cloud",
+    "upstream": "GoogleCloudPlatform/k8s-config-connector",
+    "cncf_maturity": null
+  },
+  "apigatewayv2.services.k8s.aws": {
+    "category": "AWS Infrastructure",
+    "upstream": "aws-controllers-k8s/apigatewayv2-controller",
+    "cncf_maturity": "sandbox"
+  },
+  "apigee.cnrm.cloud.google.com": {
+    "category": "Google Cloud",
+    "upstream": "GoogleCloudPlatform/k8s-config-connector",
+    "cncf_maturity": null
+  },
+  "apikeys.cnrm.cloud.google.com": {
+    "category": "Google Cloud",
+    "upstream": "GoogleCloudPlatform/k8s-config-connector",
+    "cncf_maturity": null
+  },
+  "apimanagement.azure.com": {
+    "category": "Azure Ecosystem",
+    "upstream": "Azure/azure-service-operator",
+    "cncf_maturity": null
+  },
+  "apiregistration.api.k8s.io": {
+    "category": "Core Kubernetes",
+    "upstream": "kubernetes/kubernetes",
+    "cncf_maturity": "graduated"
+  },
+  "apiserverinternal.api.k8s.io": {
+    "category": "Core Kubernetes",
+    "upstream": "kubernetes/kubernetes",
+    "cncf_maturity": "graduated"
+  },
+  "app.azure.com": {
+    "category": "Azure Ecosystem",
+    "upstream": "Azure/azure-service-operator",
+    "cncf_maturity": null
+  },
+  "appconfiguration.azure.com": {
+    "category": "Azure Ecosystem",
+    "upstream": "Azure/azure-service-operator",
+    "cncf_maturity": null
+  },
+  "appengine.cnrm.cloud.google.com": {
+    "category": "Google Cloud",
+    "upstream": "GoogleCloudPlatform/k8s-config-connector",
+    "cncf_maturity": null
+  },
+  "apphub.cnrm.cloud.google.com": {
+    "category": "Google Cloud",
+    "upstream": "GoogleCloudPlatform/k8s-config-connector",
+    "cncf_maturity": null
+  },
+  "applicationautoscaling.services.k8s.aws": {
+    "category": "AWS Infrastructure",
+    "upstream": "aws-controllers-k8s/applicationautoscaling-controller",
+    "cncf_maturity": "sandbox"
+  },
+  "apps.api.k8s.io": {
+    "category": "Core Kubernetes",
+    "upstream": "kubernetes/kubernetes",
+    "cncf_maturity": "graduated"
+  },
+  "argoproj.io": {
+    "category": "GitOps & Deployment",
+    "upstream": "argoproj/argo-cd",
+    "cncf_maturity": "graduated"
+  },
+  "artifactregistry.cnrm.cloud.google.com": {
+    "category": "Google Cloud",
+    "upstream": "GoogleCloudPlatform/k8s-config-connector",
+    "cncf_maturity": null
+  },
+  "asset.cnrm.cloud.google.com": {
+    "category": "Google Cloud",
+    "upstream": "GoogleCloudPlatform/k8s-config-connector",
+    "cncf_maturity": null
+  },
+  "assuredworkloads.cnrm.cloud.google.com": {
+    "category": "Google Cloud",
+    "upstream": "GoogleCloudPlatform/k8s-config-connector",
+    "cncf_maturity": null
+  },
+  "authentication.api.k8s.io": {
+    "category": "Core Kubernetes",
+    "upstream": "kubernetes/kubernetes",
+    "cncf_maturity": "graduated"
+  },
+  "authorization.api.k8s.io": {
+    "category": "Core Kubernetes",
+    "upstream": "kubernetes/kubernetes",
+    "cncf_maturity": "graduated"
+  },
+  "authorization.azure.com": {
+    "category": "Azure Ecosystem",
+    "upstream": "Azure/azure-service-operator",
+    "cncf_maturity": null
+  },
+  "autoscaling.api.k8s.io": {
+    "category": "Core Kubernetes",
+    "upstream": "kubernetes/kubernetes",
+    "cncf_maturity": "graduated"
+  },
+  "autoscaling.k8s.io": {
+    "category": "Core Kubernetes",
+    "upstream": "kubernetes/autoscaler",
+    "cncf_maturity": null
+  },
+  "backupdr.cnrm.cloud.google.com": {
+    "category": "Google Cloud",
+    "upstream": "GoogleCloudPlatform/k8s-config-connector",
+    "cncf_maturity": null
+  },
+  "batch.api.k8s.io": {
+    "category": "Core Kubernetes",
+    "upstream": "kubernetes/kubernetes",
+    "cncf_maturity": "graduated"
+  },
+  "batch.azure.com": {
+    "category": "Azure Ecosystem",
+    "upstream": "Azure/azure-service-operator",
+    "cncf_maturity": null
+  },
+  "batch.cnrm.cloud.google.com": {
+    "category": "Google Cloud",
+    "upstream": "GoogleCloudPlatform/k8s-config-connector",
+    "cncf_maturity": null
+  },
+  "bedrockagent.services.k8s.aws": {
+    "category": "AWS Infrastructure",
+    "upstream": "aws-controllers-k8s/bedrockagent-controller",
+    "cncf_maturity": "sandbox"
+  },
+  "beyondcorp.cnrm.cloud.google.com": {
+    "category": "Google Cloud",
+    "upstream": "GoogleCloudPlatform/k8s-config-connector",
+    "cncf_maturity": null
+  },
+  "bigquery.cnrm.cloud.google.com": {
+    "category": "Google Cloud",
+    "upstream": "GoogleCloudPlatform/k8s-config-connector",
+    "cncf_maturity": null
+  },
+  "bigqueryanalyticshub.cnrm.cloud.google.com": {
+    "category": "Google Cloud",
+    "upstream": "GoogleCloudPlatform/k8s-config-connector",
+    "cncf_maturity": null
+  },
+  "bigquerybiglake.cnrm.cloud.google.com": {
+    "category": "Google Cloud",
+    "upstream": "GoogleCloudPlatform/k8s-config-connector",
+    "cncf_maturity": null
+  },
+  "bigqueryconnection.cnrm.cloud.google.com": {
+    "category": "Google Cloud",
+    "upstream": "GoogleCloudPlatform/k8s-config-connector",
+    "cncf_maturity": null
+  },
+  "bigquerydatapolicy.cnrm.cloud.google.com": {
+    "category": "Google Cloud",
+    "upstream": "GoogleCloudPlatform/k8s-config-connector",
+    "cncf_maturity": null
+  },
+  "bigquerydatatransfer.cnrm.cloud.google.com": {
+    "category": "Google Cloud",
+    "upstream": "GoogleCloudPlatform/k8s-config-connector",
+    "cncf_maturity": null
+  },
+  "bigqueryreservation.cnrm.cloud.google.com": {
+    "category": "Google Cloud",
+    "upstream": "GoogleCloudPlatform/k8s-config-connector",
+    "cncf_maturity": null
+  },
+  "bigtable.cnrm.cloud.google.com": {
+    "category": "Google Cloud",
+    "upstream": "GoogleCloudPlatform/k8s-config-connector",
+    "cncf_maturity": null
+  },
+  "billing.cnrm.cloud.google.com": {
+    "category": "Google Cloud",
+    "upstream": "GoogleCloudPlatform/k8s-config-connector",
+    "cncf_maturity": null
+  },
+  "billingbudgets.cnrm.cloud.google.com": {
+    "category": "Google Cloud",
+    "upstream": "GoogleCloudPlatform/k8s-config-connector",
+    "cncf_maturity": null
+  },
+  "binaryauthorization.cnrm.cloud.google.com": {
+    "category": "Google Cloud",
+    "upstream": "GoogleCloudPlatform/k8s-config-connector",
+    "cncf_maturity": null
+  },
+  "bootstrap.cluster.x-k8s.io": {
+    "category": "Core Kubernetes",
+    "upstream": "kubernetes-sigs/cluster-api",
+    "cncf_maturity": "incubating"
+  },
+  "cache.azure.com": {
+    "category": "Azure Ecosystem",
+    "upstream": "Azure/azure-service-operator",
+    "cncf_maturity": null
+  },
+  "cdn.azure.com": {
+    "category": "Azure Ecosystem",
+    "upstream": "Azure/azure-service-operator",
+    "cncf_maturity": null
+  },
+  "cert-manager.io": {
+    "category": "Security",
+    "upstream": "cert-manager/cert-manager",
+    "cncf_maturity": "graduated"
+  },
+  "certificatemanager.cnrm.cloud.google.com": {
+    "category": "Google Cloud",
+    "upstream": "GoogleCloudPlatform/k8s-config-connector",
+    "cncf_maturity": null
+  },
+  "certificates.api.k8s.io": {
+    "category": "Core Kubernetes",
+    "upstream": "kubernetes/kubernetes",
+    "cncf_maturity": "graduated"
+  },
+  "cilium.io": {
+    "category": "Networking & Mesh",
+    "upstream": "cilium/cilium",
+    "cncf_maturity": "graduated"
+  },
+  "clickhouse-keeper.altinity.com": {
+    "category": "Databases & Storage",
+    "upstream": "Altinity/clickhouse-operator",
+    "cncf_maturity": null
+  },
+  "clickhouse.altinity.com": {
+    "category": "Databases & Storage",
+    "upstream": "Altinity/clickhouse-operator",
+    "cncf_maturity": null
+  },
+  "cloudasset.cnrm.cloud.google.com": {
+    "category": "Google Cloud",
+    "upstream": "GoogleCloudPlatform/k8s-config-connector",
+    "cncf_maturity": null
+  },
+  "cloudbuild.cnrm.cloud.google.com": {
+    "category": "Google Cloud",
+    "upstream": "GoogleCloudPlatform/k8s-config-connector",
+    "cncf_maturity": null
+  },
+  "clouddeploy.cnrm.cloud.google.com": {
+    "category": "Google Cloud",
+    "upstream": "GoogleCloudPlatform/k8s-config-connector",
+    "cncf_maturity": null
+  },
+  "clouddms.cnrm.cloud.google.com": {
+    "category": "Google Cloud",
+    "upstream": "GoogleCloudPlatform/k8s-config-connector",
+    "cncf_maturity": null
+  },
+  "cloudfront.services.k8s.aws": {
+    "category": "AWS Infrastructure",
+    "upstream": "aws-controllers-k8s/cloudfront-controller",
+    "cncf_maturity": "sandbox"
+  },
+  "cloudfunctions.cnrm.cloud.google.com": {
+    "category": "Google Cloud",
+    "upstream": "GoogleCloudPlatform/k8s-config-connector",
+    "cncf_maturity": null
+  },
+  "cloudfunctions2.cnrm.cloud.google.com": {
+    "category": "Google Cloud",
+    "upstream": "GoogleCloudPlatform/k8s-config-connector",
+    "cncf_maturity": null
+  },
+  "cloudidentity.cnrm.cloud.google.com": {
+    "category": "Google Cloud",
+    "upstream": "GoogleCloudPlatform/k8s-config-connector",
+    "cncf_maturity": null
+  },
+  "cloudids.cnrm.cloud.google.com": {
+    "category": "Google Cloud",
+    "upstream": "GoogleCloudPlatform/k8s-config-connector",
+    "cncf_maturity": null
+  },
+  "cloudiot.cnrm.cloud.google.com": {
+    "category": "Google Cloud",
+    "upstream": "GoogleCloudPlatform/k8s-config-connector",
+    "cncf_maturity": null
+  },
+  "cloudquota.cnrm.cloud.google.com": {
+    "category": "Google Cloud",
+    "upstream": "GoogleCloudPlatform/k8s-config-connector",
+    "cncf_maturity": null
+  },
+  "cloudscheduler.cnrm.cloud.google.com": {
+    "category": "Google Cloud",
+    "upstream": "GoogleCloudPlatform/k8s-config-connector",
+    "cncf_maturity": null
+  },
+  "cloudtasks.cnrm.cloud.google.com": {
+    "category": "Google Cloud",
+    "upstream": "GoogleCloudPlatform/k8s-config-connector",
+    "cncf_maturity": null
+  },
+  "cloudtrail.services.k8s.aws": {
+    "category": "AWS Infrastructure",
+    "upstream": "aws-controllers-k8s/cloudtrail-controller",
+    "cncf_maturity": "sandbox"
+  },
+  "cloudwatch.services.k8s.aws": {
+    "category": "AWS Infrastructure",
+    "upstream": "aws-controllers-k8s/cloudwatch-controller",
+    "cncf_maturity": "sandbox"
+  },
+  "cloudwatchlogs.services.k8s.aws": {
+    "category": "AWS Infrastructure",
+    "upstream": "aws-controllers-k8s/cloudwatchlogs-controller",
+    "cncf_maturity": "sandbox"
+  },
+  "cluster.x-k8s.io": {
+    "category": "Core Kubernetes",
+    "upstream": "kubernetes-sigs/cluster-api",
+    "cncf_maturity": "incubating"
+  },
+  "clusterctl.cluster.x-k8s.io": {
+    "category": "Core Kubernetes",
+    "upstream": "kubernetes-sigs/cluster-api",
+    "cncf_maturity": "incubating"
+  },
+  "cognitiveservices.azure.com": {
+    "category": "Azure Ecosystem",
+    "upstream": "Azure/azure-service-operator",
+    "cncf_maturity": null
+  },
+  "colab.cnrm.cloud.google.com": {
+    "category": "Google Cloud",
+    "upstream": "GoogleCloudPlatform/k8s-config-connector",
+    "cncf_maturity": null
+  },
+  "composer.cnrm.cloud.google.com": {
+    "category": "Google Cloud",
+    "upstream": "GoogleCloudPlatform/k8s-config-connector",
+    "cncf_maturity": null
+  },
+  "compute.azure.com": {
+    "category": "Azure Ecosystem",
+    "upstream": "Azure/azure-service-operator",
+    "cncf_maturity": null
+  },
+  "compute.cnrm.cloud.google.com": {
+    "category": "Google Cloud",
+    "upstream": "GoogleCloudPlatform/k8s-config-connector",
+    "cncf_maturity": null
+  },
+  "configcontroller.cnrm.cloud.google.com": {
+    "category": "Google Cloud",
+    "upstream": "GoogleCloudPlatform/k8s-config-connector",
+    "cncf_maturity": null
+  },
+  "configdelivery.cnrm.cloud.google.com": {
+    "category": "Google Cloud",
+    "upstream": "GoogleCloudPlatform/k8s-config-connector",
+    "cncf_maturity": null
+  },
+  "container.cnrm.cloud.google.com": {
+    "category": "Google Cloud",
+    "upstream": "GoogleCloudPlatform/k8s-config-connector",
+    "cncf_maturity": null
+  },
+  "containeranalysis.cnrm.cloud.google.com": {
+    "category": "Google Cloud",
+    "upstream": "GoogleCloudPlatform/k8s-config-connector",
+    "cncf_maturity": null
+  },
+  "containerattached.cnrm.cloud.google.com": {
+    "category": "Google Cloud",
+    "upstream": "GoogleCloudPlatform/k8s-config-connector",
+    "cncf_maturity": null
+  },
+  "containerinstance.azure.com": {
+    "category": "Azure Ecosystem",
+    "upstream": "Azure/azure-service-operator",
+    "cncf_maturity": null
+  },
+  "containerregistry.azure.com": {
+    "category": "Azure Ecosystem",
+    "upstream": "Azure/azure-service-operator",
+    "cncf_maturity": null
+  },
+  "containerservice.azure.com": {
+    "category": "Azure Ecosystem",
+    "upstream": "Azure/azure-service-operator",
+    "cncf_maturity": null
+  },
+  "controlplane.cluster.x-k8s.io": {
+    "category": "Core Kubernetes",
+    "upstream": "kubernetes-sigs/cluster-api",
+    "cncf_maturity": "incubating"
+  },
+  "coordination.api.k8s.io": {
+    "category": "Core Kubernetes",
+    "upstream": "kubernetes/kubernetes",
+    "cncf_maturity": "graduated"
+  },
+  "core.api.k8s.io": {
+    "category": "Core Kubernetes",
+    "upstream": "kubernetes/kubernetes",
+    "cncf_maturity": "graduated"
+  },
+  "core.openfeature.dev": {
+    "category": "Other Extensions",
+    "upstream": "open-feature/open-feature-operator",
+    "cncf_maturity": "incubating"
+  },
+  "datacatalog.cnrm.cloud.google.com": {
+    "category": "Google Cloud",
+    "upstream": "GoogleCloudPlatform/k8s-config-connector",
+    "cncf_maturity": null
+  },
+  "datafactory.azure.com": {
+    "category": "Azure Ecosystem",
+    "upstream": "Azure/azure-service-operator",
+    "cncf_maturity": null
+  },
+  "dataflow.cnrm.cloud.google.com": {
+    "category": "Google Cloud",
+    "upstream": "GoogleCloudPlatform/k8s-config-connector",
+    "cncf_maturity": null
+  },
+  "dataform.cnrm.cloud.google.com": {
+    "category": "Google Cloud",
+    "upstream": "GoogleCloudPlatform/k8s-config-connector",
+    "cncf_maturity": null
+  },
+  "datafusion.cnrm.cloud.google.com": {
+    "category": "Google Cloud",
+    "upstream": "GoogleCloudPlatform/k8s-config-connector",
+    "cncf_maturity": null
+  },
+  "dataplex.cnrm.cloud.google.com": {
+    "category": "Google Cloud",
+    "upstream": "GoogleCloudPlatform/k8s-config-connector",
+    "cncf_maturity": null
+  },
+  "dataproc.cnrm.cloud.google.com": {
+    "category": "Google Cloud",
+    "upstream": "GoogleCloudPlatform/k8s-config-connector",
+    "cncf_maturity": null
+  },
+  "dataprotection.azure.com": {
+    "category": "Azure Ecosystem",
+    "upstream": "Azure/azure-service-operator",
+    "cncf_maturity": null
+  },
+  "datastore.cnrm.cloud.google.com": {
+    "category": "Google Cloud",
+    "upstream": "GoogleCloudPlatform/k8s-config-connector",
+    "cncf_maturity": null
+  },
+  "datastream.cnrm.cloud.google.com": {
+    "category": "Google Cloud",
+    "upstream": "GoogleCloudPlatform/k8s-config-connector",
+    "cncf_maturity": null
+  },
+  "dbformariadb.azure.com": {
+    "category": "Azure Ecosystem",
+    "upstream": "Azure/azure-service-operator",
+    "cncf_maturity": null
+  },
+  "dbformysql.azure.com": {
+    "category": "Azure Ecosystem",
+    "upstream": "Azure/azure-service-operator",
+    "cncf_maturity": null
+  },
+  "dbforpostgresql.azure.com": {
+    "category": "Azure Ecosystem",
+    "upstream": "Azure/azure-service-operator",
+    "cncf_maturity": null
+  },
+  "deploymentmanager.cnrm.cloud.google.com": {
+    "category": "Google Cloud",
+    "upstream": "GoogleCloudPlatform/k8s-config-connector",
+    "cncf_maturity": null
+  },
+  "devices.azure.com": {
+    "category": "Azure Ecosystem",
+    "upstream": "Azure/azure-service-operator",
+    "cncf_maturity": null
+  },
+  "dialogflow.cnrm.cloud.google.com": {
+    "category": "Google Cloud",
+    "upstream": "GoogleCloudPlatform/k8s-config-connector",
+    "cncf_maturity": null
+  },
+  "dialogflowcx.cnrm.cloud.google.com": {
+    "category": "Google Cloud",
+    "upstream": "GoogleCloudPlatform/k8s-config-connector",
+    "cncf_maturity": null
+  },
+  "discovery.api.k8s.io": {
+    "category": "Core Kubernetes",
+    "upstream": "kubernetes/kubernetes",
+    "cncf_maturity": "graduated"
+  },
+  "discoveryengine.cnrm.cloud.google.com": {
+    "category": "Google Cloud",
+    "upstream": "GoogleCloudPlatform/k8s-config-connector",
+    "cncf_maturity": null
+  },
+  "dlp.cnrm.cloud.google.com": {
+    "category": "Google Cloud",
+    "upstream": "GoogleCloudPlatform/k8s-config-connector",
+    "cncf_maturity": null
+  },
+  "dns.cnrm.cloud.google.com": {
+    "category": "Google Cloud",
+    "upstream": "GoogleCloudPlatform/k8s-config-connector",
+    "cncf_maturity": null
+  },
+  "documentai.cnrm.cloud.google.com": {
+    "category": "Google Cloud",
+    "upstream": "GoogleCloudPlatform/k8s-config-connector",
+    "cncf_maturity": null
+  },
+  "documentdb.azure.com": {
+    "category": "Azure Ecosystem",
+    "upstream": "Azure/azure-service-operator",
+    "cncf_maturity": null
+  },
+  "dragonflydb.io": {
+    "category": "Databases & Storage",
+    "upstream": "dragonflydb/dragonfly-operator",
+    "cncf_maturity": null
+  },
+  "dynamodb.services.k8s.aws": {
+    "category": "AWS Infrastructure",
+    "upstream": "aws-controllers-k8s/dynamodb-controller",
+    "cncf_maturity": "sandbox"
+  },
+  "ec2.services.k8s.aws": {
+    "category": "AWS Infrastructure",
+    "upstream": "aws-controllers-k8s/ec2-controller",
+    "cncf_maturity": "sandbox"
+  },
+  "ecr.services.k8s.aws": {
+    "category": "AWS Infrastructure",
+    "upstream": "aws-controllers-k8s/ecr-controller",
+    "cncf_maturity": "sandbox"
+  },
+  "ecs.services.k8s.aws": {
+    "category": "AWS Infrastructure",
+    "upstream": "aws-controllers-k8s/ecs-controller",
+    "cncf_maturity": "sandbox"
+  },
+  "edgecontainer.cnrm.cloud.google.com": {
+    "category": "Google Cloud",
+    "upstream": "GoogleCloudPlatform/k8s-config-connector",
+    "cncf_maturity": null
+  },
+  "edgenetwork.cnrm.cloud.google.com": {
+    "category": "Google Cloud",
+    "upstream": "GoogleCloudPlatform/k8s-config-connector",
+    "cncf_maturity": null
+  },
+  "eks.services.k8s.aws": {
+    "category": "AWS Infrastructure",
+    "upstream": "aws-controllers-k8s/eks-controller",
+    "cncf_maturity": "sandbox"
+  },
+  "elasticache.services.k8s.aws": {
+    "category": "AWS Infrastructure",
+    "upstream": "aws-controllers-k8s/elasticache-controller",
+    "cncf_maturity": "sandbox"
+  },
+  "emrcontainers.services.k8s.aws": {
+    "category": "AWS Infrastructure",
+    "upstream": "aws-controllers-k8s/emrcontainers-controller",
+    "cncf_maturity": "sandbox"
+  },
+  "entra.azure.com": {
+    "category": "Azure Ecosystem",
+    "upstream": "Azure/azure-service-operator",
+    "cncf_maturity": null
+  },
+  "essentialcontacts.cnrm.cloud.google.com": {
+    "category": "Google Cloud",
+    "upstream": "GoogleCloudPlatform/k8s-config-connector",
+    "cncf_maturity": null
+  },
+  "eventarc.cnrm.cloud.google.com": {
+    "category": "Google Cloud",
+    "upstream": "GoogleCloudPlatform/k8s-config-connector",
+    "cncf_maturity": null
+  },
+  "eventbridge.services.k8s.aws": {
+    "category": "AWS Infrastructure",
+    "upstream": "aws-controllers-k8s/eventbridge-controller",
+    "cncf_maturity": "sandbox"
+  },
+  "eventgrid.azure.com": {
+    "category": "Azure Ecosystem",
+    "upstream": "Azure/azure-service-operator",
+    "cncf_maturity": null
+  },
+  "eventhub.azure.com": {
+    "category": "Azure Ecosystem",
+    "upstream": "Azure/azure-service-operator",
+    "cncf_maturity": null
+  },
+  "eventing.keda.sh": {
+    "category": "Core Kubernetes",
+    "upstream": "kedacore/keda",
+    "cncf_maturity": "graduated"
+  },
+  "events.api.k8s.io": {
+    "category": "Core Kubernetes",
+    "upstream": "kubernetes/kubernetes",
+    "cncf_maturity": "graduated"
+  },
+  "extensions.istio.io": {
+    "category": "Networking & Mesh",
+    "upstream": "istio/istio",
+    "cncf_maturity": "graduated"
+  },
+  "external-secrets.io": {
+    "category": "Security",
+    "upstream": "external-secrets/external-secrets",
+    "cncf_maturity": "incubating"
+  },
+  "filestore.cnrm.cloud.google.com": {
+    "category": "Google Cloud",
+    "upstream": "GoogleCloudPlatform/k8s-config-connector",
+    "cncf_maturity": null
+  },
+  "firebase.cnrm.cloud.google.com": {
+    "category": "Google Cloud",
+    "upstream": "GoogleCloudPlatform/k8s-config-connector",
+    "cncf_maturity": null
+  },
+  "firebasedatabase.cnrm.cloud.google.com": {
+    "category": "Google Cloud",
+    "upstream": "GoogleCloudPlatform/k8s-config-connector",
+    "cncf_maturity": null
+  },
+  "firebasehosting.cnrm.cloud.google.com": {
+    "category": "Google Cloud",
+    "upstream": "GoogleCloudPlatform/k8s-config-connector",
+    "cncf_maturity": null
+  },
+  "firebasestorage.cnrm.cloud.google.com": {
+    "category": "Google Cloud",
+    "upstream": "GoogleCloudPlatform/k8s-config-connector",
+    "cncf_maturity": null
+  },
+  "firestore.cnrm.cloud.google.com": {
+    "category": "Google Cloud",
+    "upstream": "GoogleCloudPlatform/k8s-config-connector",
+    "cncf_maturity": null
+  },
+  "flowcontrol.api.k8s.io": {
+    "category": "Core Kubernetes",
+    "upstream": "kubernetes/kubernetes",
+    "cncf_maturity": "graduated"
+  },
+  "gateway.envoyproxy.io": {
+    "category": "Networking & Mesh",
+    "upstream": "envoyproxy/gateway",
+    "cncf_maturity": "incubating"
+  },
+  "gateway.kgateway.dev": {
+    "category": "Networking & Mesh",
+    "upstream": "kgateway-dev/kgateway",
+    "cncf_maturity": null
+  },
+  "gateway.networking.k8s.io": {
+    "category": "Networking & Mesh",
+    "upstream": "kubernetes-sigs/gateway-api",
+    "cncf_maturity": null
+  },
+  "gateway.networking.x-k8s.io": {
+    "category": "Networking & Mesh",
+    "upstream": "kubernetes-sigs/gateway-api",
+    "cncf_maturity": null
+  },
+  "generators.external-secrets.io": {
+    "category": "Security",
+    "upstream": "external-secrets/external-secrets",
+    "cncf_maturity": "incubating"
+  },
+  "gkebackup.cnrm.cloud.google.com": {
+    "category": "Google Cloud",
+    "upstream": "GoogleCloudPlatform/k8s-config-connector",
+    "cncf_maturity": null
+  },
+  "gkehub.cnrm.cloud.google.com": {
+    "category": "Google Cloud",
+    "upstream": "GoogleCloudPlatform/k8s-config-connector",
+    "cncf_maturity": null
+  },
+  "grafana.integreatly.org": {
+    "category": "Observability",
+    "upstream": "grafana/grafana-operator",
+    "cncf_maturity": null
+  },
+  "healthcare.cnrm.cloud.google.com": {
+    "category": "Google Cloud",
+    "upstream": "GoogleCloudPlatform/k8s-config-connector",
+    "cncf_maturity": null
+  },
+  "helm.toolkit.fluxcd.io": {
+    "category": "GitOps & Deployment",
+    "upstream": "fluxcd/flux2",
+    "cncf_maturity": "graduated"
+  },
+  "iam.cnrm.cloud.google.com": {
+    "category": "Google Cloud",
+    "upstream": "GoogleCloudPlatform/k8s-config-connector",
+    "cncf_maturity": null
+  },
+  "iam.services.k8s.aws": {
+    "category": "AWS Infrastructure",
+    "upstream": "aws-controllers-k8s/iam-controller",
+    "cncf_maturity": "sandbox"
+  },
+  "iap.cnrm.cloud.google.com": {
+    "category": "Google Cloud",
+    "upstream": "GoogleCloudPlatform/k8s-config-connector",
+    "cncf_maturity": null
+  },
+  "identityplatform.cnrm.cloud.google.com": {
+    "category": "Google Cloud",
+    "upstream": "GoogleCloudPlatform/k8s-config-connector",
+    "cncf_maturity": null
+  },
+  "image.toolkit.fluxcd.io": {
+    "category": "GitOps & Deployment",
+    "upstream": "fluxcd/flux2",
+    "cncf_maturity": "graduated"
+  },
+  "insights.azure.com": {
+    "category": "Azure Ecosystem",
+    "upstream": "Azure/azure-service-operator",
+    "cncf_maturity": null
+  },
+  "ipam.cluster.x-k8s.io": {
+    "category": "Core Kubernetes",
+    "upstream": "kubernetes-sigs/cluster-api",
+    "cncf_maturity": "incubating"
+  },
+  "k8s.mariadb.com": {
+    "category": "Databases & Storage",
+    "upstream": "mariadb-operator/mariadb-operator",
+    "cncf_maturity": null
+  },
+  "kafka.services.k8s.aws": {
+    "category": "AWS Infrastructure",
+    "upstream": "aws-controllers-k8s/kafka-controller",
+    "cncf_maturity": "sandbox"
+  },
+  "kagent.dev": {
+    "category": "AI Orchestration",
+    "upstream": "kagent-dev/kagent",
+    "cncf_maturity": null
+  },
+  "kargo.akuity.io": {
+    "category": "GitOps & Deployment",
+    "upstream": "akuity/kargo",
+    "cncf_maturity": "sandbox"
+  },
+  "karpenter.azure.com": {
+    "category": "Azure Ecosystem",
+    "upstream": "Azure/karpenter-provider-azure",
+    "cncf_maturity": null
+  },
+  "karpenter.exoscale.com": {
+    "category": "Other Extensions",
+    "upstream": "exoscale/karpenter-provider-exoscale",
+    "cncf_maturity": null
+  },
+  "karpenter.k8s.aws": {
+    "category": "AWS Infrastructure",
+    "upstream": "aws/karpenter-provider-aws",
+    "cncf_maturity": null
+  },
+  "karpenter.sh": {
+    "category": "Core Kubernetes",
+    "upstream": "kubernetes-sigs/karpenter",
+    "cncf_maturity": null
+  },
+  "keda.sh": {
+    "category": "Core Kubernetes",
+    "upstream": "kedacore/keda",
+    "cncf_maturity": "graduated"
+  },
+  "keyvault.azure.com": {
+    "category": "Azure Ecosystem",
+    "upstream": "Azure/azure-service-operator",
+    "cncf_maturity": null
+  },
+  "kinesis.services.k8s.aws": {
+    "category": "AWS Infrastructure",
+    "upstream": "aws-controllers-k8s/kinesis-controller",
+    "cncf_maturity": "sandbox"
+  },
+  "kms.cnrm.cloud.google.com": {
+    "category": "Google Cloud",
+    "upstream": "GoogleCloudPlatform/k8s-config-connector",
+    "cncf_maturity": null
+  },
+  "kms.services.k8s.aws": {
+    "category": "AWS Infrastructure",
+    "upstream": "aws-controllers-k8s/kms-controller",
+    "cncf_maturity": "sandbox"
+  },
+  "kubernetesconfiguration.azure.com": {
+    "category": "Azure Ecosystem",
+    "upstream": "Azure/azure-service-operator",
+    "cncf_maturity": null
+  },
+  "kusto.azure.com": {
+    "category": "Azure Ecosystem",
+    "upstream": "Azure/azure-service-operator",
+    "cncf_maturity": null
+  },
+  "kustomize.toolkit.fluxcd.io": {
+    "category": "GitOps & Deployment",
+    "upstream": "fluxcd/flux2",
+    "cncf_maturity": "graduated"
+  },
+  "lambda.services.k8s.aws": {
+    "category": "AWS Infrastructure",
+    "upstream": "aws-controllers-k8s/lambda-controller",
+    "cncf_maturity": "sandbox"
+  },
+  "logging.cnrm.cloud.google.com": {
+    "category": "Google Cloud",
+    "upstream": "GoogleCloudPlatform/k8s-config-connector",
+    "cncf_maturity": null
+  },
+  "machinelearningservices.azure.com": {
+    "category": "Azure Ecosystem",
+    "upstream": "Azure/azure-service-operator",
+    "cncf_maturity": null
+  },
+  "managedidentity.azure.com": {
+    "category": "Azure Ecosystem",
+    "upstream": "Azure/azure-service-operator",
+    "cncf_maturity": null
+  },
+  "managedkafka.cnrm.cloud.google.com": {
+    "category": "Google Cloud",
+    "upstream": "GoogleCloudPlatform/k8s-config-connector",
+    "cncf_maturity": null
+  },
+  "memcache.cnrm.cloud.google.com": {
+    "category": "Google Cloud",
+    "upstream": "GoogleCloudPlatform/k8s-config-connector",
+    "cncf_maturity": null
+  },
+  "memorydb.services.k8s.aws": {
+    "category": "AWS Infrastructure",
+    "upstream": "aws-controllers-k8s/memorydb-controller",
+    "cncf_maturity": "sandbox"
+  },
+  "memorystore.cnrm.cloud.google.com": {
+    "category": "Google Cloud",
+    "upstream": "GoogleCloudPlatform/k8s-config-connector",
+    "cncf_maturity": null
+  },
+  "meta.api.k8s.io": {
+    "category": "Core Kubernetes",
+    "upstream": "kubernetes/kubernetes",
+    "cncf_maturity": "graduated"
+  },
+  "metastore.cnrm.cloud.google.com": {
+    "category": "Google Cloud",
+    "upstream": "GoogleCloudPlatform/k8s-config-connector",
+    "cncf_maturity": null
+  },
+  "mlengine.cnrm.cloud.google.com": {
+    "category": "Google Cloud",
+    "upstream": "GoogleCloudPlatform/k8s-config-connector",
+    "cncf_maturity": null
+  },
+  "moco.cybozu.com": {
+    "category": "Databases & Storage",
+    "upstream": "cybozu-go/moco",
+    "cncf_maturity": null
+  },
+  "monitor.azure.com": {
+    "category": "Azure Ecosystem",
+    "upstream": "Azure/azure-service-operator",
+    "cncf_maturity": null
+  },
+  "monitoring.cnrm.cloud.google.com": {
+    "category": "Google Cloud",
+    "upstream": "GoogleCloudPlatform/k8s-config-connector",
+    "cncf_maturity": null
+  },
+  "monitoring.coreos.com": {
+    "category": "Observability",
+    "upstream": "prometheus-operator/prometheus-operator",
+    "cncf_maturity": "graduated"
+  },
+  "mq.services.k8s.aws": {
+    "category": "AWS Infrastructure",
+    "upstream": "aws-controllers-k8s/mq-controller",
+    "cncf_maturity": "sandbox"
+  },
+  "netapp.cnrm.cloud.google.com": {
+    "category": "Google Cloud",
+    "upstream": "GoogleCloudPlatform/k8s-config-connector",
+    "cncf_maturity": null
+  },
+  "network.azure.com": {
+    "category": "Azure Ecosystem",
+    "upstream": "Azure/azure-service-operator",
+    "cncf_maturity": null
+  },
+  "network.frontdoor.azure.com": {
+    "category": "Azure Ecosystem",
+    "upstream": "Azure/azure-service-operator",
+    "cncf_maturity": null
+  },
+  "networkconnectivity.cnrm.cloud.google.com": {
+    "category": "Google Cloud",
+    "upstream": "GoogleCloudPlatform/k8s-config-connector",
+    "cncf_maturity": null
+  },
+  "networkfirewall.services.k8s.aws": {
+    "category": "AWS Infrastructure",
+    "upstream": "aws-controllers-k8s/networkfirewall-controller",
+    "cncf_maturity": "sandbox"
+  },
+  "networking.api.k8s.io": {
+    "category": "Core Kubernetes",
+    "upstream": "kubernetes/kubernetes",
+    "cncf_maturity": "graduated"
+  },
+  "networking.istio.io": {
+    "category": "Networking & Mesh",
+    "upstream": "istio/istio",
+    "cncf_maturity": "graduated"
+  },
+  "networkmanagement.cnrm.cloud.google.com": {
+    "category": "Google Cloud",
+    "upstream": "GoogleCloudPlatform/k8s-config-connector",
+    "cncf_maturity": null
+  },
+  "networksecurity.cnrm.cloud.google.com": {
+    "category": "Google Cloud",
+    "upstream": "GoogleCloudPlatform/k8s-config-connector",
+    "cncf_maturity": null
+  },
+  "networkservices.cnrm.cloud.google.com": {
+    "category": "Google Cloud",
+    "upstream": "GoogleCloudPlatform/k8s-config-connector",
+    "cncf_maturity": null
+  },
+  "node.api.k8s.io": {
+    "category": "Core Kubernetes",
+    "upstream": "kubernetes/kubernetes",
+    "cncf_maturity": "graduated"
+  },
+  "notebooks.cnrm.cloud.google.com": {
+    "category": "Google Cloud",
+    "upstream": "GoogleCloudPlatform/k8s-config-connector",
+    "cncf_maturity": null
+  },
+  "notification.toolkit.fluxcd.io": {
+    "category": "GitOps & Deployment",
+    "upstream": "fluxcd/flux2",
+    "cncf_maturity": "graduated"
+  },
+  "notificationhubs.azure.com": {
+    "category": "Azure Ecosystem",
+    "upstream": "Azure/azure-service-operator",
+    "cncf_maturity": null
+  },
+  "oci.oraclecloud.com": {
+    "category": "Other Extensions",
+    "upstream": "oracle/karpenter-provider-oci",
+    "cncf_maturity": null
+  },
+  "onepassword.com": {
+    "category": "Security",
+    "upstream": "1Password/onepassword-operator",
+    "cncf_maturity": null
+  },
+  "openreports.io": {
+    "category": "Other Extensions",
+    "upstream": "openreports/reports-api",
+    "cncf_maturity": null
+  },
+  "opensearchservice.services.k8s.aws": {
+    "category": "AWS Infrastructure",
+    "upstream": "aws-controllers-k8s/opensearchservice-controller",
+    "cncf_maturity": "sandbox"
+  },
+  "openstack.k-orc.cloud": {
+    "category": "Other Extensions",
+    "upstream": "k-orc/openstack-resource-controller",
+    "cncf_maturity": null
+  },
+  "opentelemetry.io": {
+    "category": "Observability",
+    "upstream": "open-telemetry/opentelemetry-operator",
+    "cncf_maturity": "incubating"
+  },
+  "operationalinsights.azure.com": {
+    "category": "Azure Ecosystem",
+    "upstream": "Azure/azure-service-operator",
+    "cncf_maturity": null
+  },
+  "operator.cluster.x-k8s.io": {
+    "category": "Core Kubernetes",
+    "upstream": "kubernetes-sigs/cluster-api-operator",
+    "cncf_maturity": "incubating"
+  },
+  "ops.crossplane.io": {
+    "category": "Core Kubernetes",
+    "upstream": "crossplane/crossplane",
+    "cncf_maturity": "graduated"
+  },
+  "organizations.services.k8s.aws": {
+    "category": "AWS Infrastructure",
+    "upstream": "aws-controllers-k8s/organizations-controller",
+    "cncf_maturity": "sandbox"
+  },
+  "orgpolicy.cnrm.cloud.google.com": {
+    "category": "Google Cloud",
+    "upstream": "GoogleCloudPlatform/k8s-config-connector",
+    "cncf_maturity": null
+  },
+  "osconfig.cnrm.cloud.google.com": {
+    "category": "Google Cloud",
+    "upstream": "GoogleCloudPlatform/k8s-config-connector",
+    "cncf_maturity": null
+  },
+  "oslogin.cnrm.cloud.google.com": {
+    "category": "Google Cloud",
+    "upstream": "GoogleCloudPlatform/k8s-config-connector",
+    "cncf_maturity": null
+  },
+  "pipes.services.k8s.aws": {
+    "category": "AWS Infrastructure",
+    "upstream": "aws-controllers-k8s/pipes-controller",
+    "cncf_maturity": "sandbox"
+  },
+  "pkg.api.k8s.io": {
+    "category": "Core Kubernetes",
+    "upstream": "kubernetes/kubernetes",
+    "cncf_maturity": "graduated"
+  },
+  "pkg.crossplane.io": {
+    "category": "Core Kubernetes",
+    "upstream": "crossplane/crossplane",
+    "cncf_maturity": "graduated"
+  },
+  "policy.api.k8s.io": {
+    "category": "Core Kubernetes",
+    "upstream": "kubernetes/kubernetes",
+    "cncf_maturity": "graduated"
+  },
+  "policy.sigstore.dev": {
+    "category": "Security",
+    "upstream": "sigstore/policy-controller",
+    "cncf_maturity": null
+  },
+  "postgresql.cnpg.io": {
+    "category": "Databases & Storage",
+    "upstream": "cloudnative-pg/cloudnative-pg",
+    "cncf_maturity": null
+  },
+  "privateca.cnrm.cloud.google.com": {
+    "category": "Google Cloud",
+    "upstream": "GoogleCloudPlatform/k8s-config-connector",
+    "cncf_maturity": null
+  },
+  "privilegedaccessmanager.cnrm.cloud.google.com": {
+    "category": "Google Cloud",
+    "upstream": "GoogleCloudPlatform/k8s-config-connector",
+    "cncf_maturity": null
+  },
+  "prometheusservice.services.k8s.aws": {
+    "category": "AWS Infrastructure",
+    "upstream": "aws-controllers-k8s/prometheusservice-controller",
+    "cncf_maturity": "sandbox"
+  },
+  "protection.crossplane.io": {
+    "category": "Core Kubernetes",
+    "upstream": "crossplane/crossplane",
+    "cncf_maturity": "graduated"
+  },
+  "pubsub.cnrm.cloud.google.com": {
+    "category": "Google Cloud",
+    "upstream": "GoogleCloudPlatform/k8s-config-connector",
+    "cncf_maturity": null
+  },
+  "pubsublite.cnrm.cloud.google.com": {
+    "category": "Google Cloud",
+    "upstream": "GoogleCloudPlatform/k8s-config-connector",
+    "cncf_maturity": null
+  },
+  "quota.azure.com": {
+    "category": "Azure Ecosystem",
+    "upstream": "Azure/azure-service-operator",
+    "cncf_maturity": null
+  },
+  "ram.services.k8s.aws": {
+    "category": "AWS Infrastructure",
+    "upstream": "aws-controllers-k8s/ram-controller",
+    "cncf_maturity": "sandbox"
+  },
+  "rbac.api.k8s.io": {
+    "category": "Core Kubernetes",
+    "upstream": "kubernetes/kubernetes",
+    "cncf_maturity": "graduated"
+  },
+  "rds.services.k8s.aws": {
+    "category": "AWS Infrastructure",
+    "upstream": "aws-controllers-k8s/rds-controller",
+    "cncf_maturity": "sandbox"
+  },
+  "recaptchaenterprise.cnrm.cloud.google.com": {
+    "category": "Google Cloud",
+    "upstream": "GoogleCloudPlatform/k8s-config-connector",
+    "cncf_maturity": null
+  },
+  "redhatopenshift.azure.com": {
+    "category": "Azure Ecosystem",
+    "upstream": "Azure/azure-service-operator",
+    "cncf_maturity": null
+  },
+  "redis.cnrm.cloud.google.com": {
+    "category": "Google Cloud",
+    "upstream": "GoogleCloudPlatform/k8s-config-connector",
+    "cncf_maturity": null
+  },
+  "resource.api.k8s.io": {
+    "category": "Core Kubernetes",
+    "upstream": "kubernetes/kubernetes",
+    "cncf_maturity": "graduated"
+  },
+  "resourcemanager.cnrm.cloud.google.com": {
+    "category": "Google Cloud",
+    "upstream": "GoogleCloudPlatform/k8s-config-connector",
+    "cncf_maturity": null
+  },
+  "resources.azure.com": {
+    "category": "Azure Ecosystem",
+    "upstream": "Azure/azure-service-operator",
+    "cncf_maturity": null
+  },
+  "route53.services.k8s.aws": {
+    "category": "AWS Infrastructure",
+    "upstream": "aws-controllers-k8s/route53-controller",
+    "cncf_maturity": "sandbox"
+  },
+  "run.cnrm.cloud.google.com": {
+    "category": "Google Cloud",
+    "upstream": "GoogleCloudPlatform/k8s-config-connector",
+    "cncf_maturity": null
+  },
+  "runtime.cluster.x-k8s.io": {
+    "category": "Core Kubernetes",
+    "upstream": "kubernetes-sigs/cluster-api",
+    "cncf_maturity": "incubating"
+  },
+  "s3.services.k8s.aws": {
+    "category": "AWS Infrastructure",
+    "upstream": "aws-controllers-k8s/s3-controller",
+    "cncf_maturity": "sandbox"
+  },
+  "sagemaker.services.k8s.aws": {
+    "category": "AWS Infrastructure",
+    "upstream": "aws-controllers-k8s/sagemaker-controller",
+    "cncf_maturity": "sandbox"
+  },
+  "scheduling.api.k8s.io": {
+    "category": "Core Kubernetes",
+    "upstream": "kubernetes/kubernetes",
+    "cncf_maturity": "graduated"
+  },
+  "search.azure.com": {
+    "category": "Azure Ecosystem",
+    "upstream": "Azure/azure-service-operator",
+    "cncf_maturity": null
+  },
+  "secretmanager.cnrm.cloud.google.com": {
+    "category": "Google Cloud",
+    "upstream": "GoogleCloudPlatform/k8s-config-connector",
+    "cncf_maturity": null
+  },
+  "secrets-store.csi.x-k8s.io": {
+    "category": "Security",
+    "upstream": "kubernetes-sigs/secrets-store-csi-driver",
+    "cncf_maturity": "graduated"
+  },
+  "secrets.doppler.com": {
+    "category": "Security",
+    "upstream": "DopplerHQ/kubernetes-operator",
+    "cncf_maturity": null
+  },
+  "secrets.hashicorp.com": {
+    "category": "Security",
+    "upstream": "hashicorp/vault-secrets-operator",
+    "cncf_maturity": null
+  },
+  "secrets.infisical.com": {
+    "category": "Security",
+    "upstream": "Infisical/kubernetes-operator",
+    "cncf_maturity": null
+  },
+  "secretsmanager.services.k8s.aws": {
+    "category": "AWS Infrastructure",
+    "upstream": "aws-controllers-k8s/secretsmanager-controller",
+    "cncf_maturity": "sandbox"
+  },
+  "securesourcemanager.cnrm.cloud.google.com": {
+    "category": "Google Cloud",
+    "upstream": "GoogleCloudPlatform/k8s-config-connector",
+    "cncf_maturity": null
+  },
+  "security.istio.io": {
+    "category": "Networking & Mesh",
+    "upstream": "istio/istio",
+    "cncf_maturity": "graduated"
+  },
+  "securitycenter.cnrm.cloud.google.com": {
+    "category": "Google Cloud",
+    "upstream": "GoogleCloudPlatform/k8s-config-connector",
+    "cncf_maturity": null
+  },
+  "servicebus.azure.com": {
+    "category": "Azure Ecosystem",
+    "upstream": "Azure/azure-service-operator",
+    "cncf_maturity": null
+  },
+  "servicedirectory.cnrm.cloud.google.com": {
+    "category": "Google Cloud",
+    "upstream": "GoogleCloudPlatform/k8s-config-connector",
+    "cncf_maturity": null
+  },
+  "servicenetworking.cnrm.cloud.google.com": {
+    "category": "Google Cloud",
+    "upstream": "GoogleCloudPlatform/k8s-config-connector",
+    "cncf_maturity": null
+  },
+  "services.k8s.aws": {
+    "category": "AWS Infrastructure",
+    "upstream": "aws-controllers-k8s/runtime",
+    "cncf_maturity": "sandbox"
+  },
+  "serviceusage.cnrm.cloud.google.com": {
+    "category": "Google Cloud",
+    "upstream": "GoogleCloudPlatform/k8s-config-connector",
+    "cncf_maturity": null
+  },
+  "sfn.services.k8s.aws": {
+    "category": "AWS Infrastructure",
+    "upstream": "aws-controllers-k8s/sfn-controller",
+    "cncf_maturity": "sandbox"
+  },
+  "signalrservice.azure.com": {
+    "category": "Azure Ecosystem",
+    "upstream": "Azure/azure-service-operator",
+    "cncf_maturity": null
+  },
+  "sns.services.k8s.aws": {
+    "category": "AWS Infrastructure",
+    "upstream": "aws-controllers-k8s/sns-controller",
+    "cncf_maturity": "sandbox"
+  },
+  "source.extensions.fluxcd.io": {
+    "category": "GitOps & Deployment",
+    "upstream": "fluxcd/flux2",
+    "cncf_maturity": "graduated"
+  },
+  "source.toolkit.fluxcd.io": {
+    "category": "GitOps & Deployment",
+    "upstream": "fluxcd/flux2",
+    "cncf_maturity": "graduated"
+  },
+  "sourcerepo.cnrm.cloud.google.com": {
+    "category": "Google Cloud",
+    "upstream": "GoogleCloudPlatform/k8s-config-connector",
+    "cncf_maturity": null
+  },
+  "spanner.cnrm.cloud.google.com": {
+    "category": "Google Cloud",
+    "upstream": "GoogleCloudPlatform/k8s-config-connector",
+    "cncf_maturity": null
+  },
+  "speech.cnrm.cloud.google.com": {
+    "category": "Google Cloud",
+    "upstream": "GoogleCloudPlatform/k8s-config-connector",
+    "cncf_maturity": null
+  },
+  "sql.azure.com": {
+    "category": "Azure Ecosystem",
+    "upstream": "Azure/azure-service-operator",
+    "cncf_maturity": null
+  },
+  "sql.cnrm.cloud.google.com": {
+    "category": "Google Cloud",
+    "upstream": "GoogleCloudPlatform/k8s-config-connector",
+    "cncf_maturity": null
+  },
+  "sqs.services.k8s.aws": {
+    "category": "AWS Infrastructure",
+    "upstream": "aws-controllers-k8s/sqs-controller",
+    "cncf_maturity": "sandbox"
+  },
+  "storage.api.k8s.io": {
+    "category": "Core Kubernetes",
+    "upstream": "kubernetes/kubernetes",
+    "cncf_maturity": "graduated"
+  },
+  "storage.azure.com": {
+    "category": "Azure Ecosystem",
+    "upstream": "Azure/azure-service-operator",
+    "cncf_maturity": null
+  },
+  "storage.cnrm.cloud.google.com": {
+    "category": "Google Cloud",
+    "upstream": "GoogleCloudPlatform/k8s-config-connector",
+    "cncf_maturity": null
+  },
+  "storagemigration.api.k8s.io": {
+    "category": "Core Kubernetes",
+    "upstream": "kubernetes/kubernetes",
+    "cncf_maturity": "graduated"
+  },
+  "storagetransfer.cnrm.cloud.google.com": {
+    "category": "Google Cloud",
+    "upstream": "GoogleCloudPlatform/k8s-config-connector",
+    "cncf_maturity": null
+  },
+  "subscription.azure.com": {
+    "category": "Azure Ecosystem",
+    "upstream": "Azure/azure-service-operator",
+    "cncf_maturity": null
+  },
+  "sympozium.ai": {
+    "category": "AI Orchestration",
+    "upstream": "sympozium-ai/sympozium",
+    "cncf_maturity": null
+  },
+  "synapse.azure.com": {
+    "category": "Azure Ecosystem",
+    "upstream": "Azure/azure-service-operator",
+    "cncf_maturity": null
+  },
+  "tags.cnrm.cloud.google.com": {
+    "category": "Google Cloud",
+    "upstream": "GoogleCloudPlatform/k8s-config-connector",
+    "cncf_maturity": null
+  },
+  "telemetry.istio.io": {
+    "category": "Networking & Mesh",
+    "upstream": "istio/istio",
+    "cncf_maturity": "graduated"
+  },
+  "tpu.cnrm.cloud.google.com": {
+    "category": "Google Cloud",
+    "upstream": "GoogleCloudPlatform/k8s-config-connector",
+    "cncf_maturity": null
+  },
+  "traefik.io": {
+    "category": "Networking & Mesh",
+    "upstream": "traefik/traefik",
+    "cncf_maturity": null
+  },
+  "tuppr.home-operations.com": {
+    "category": "Other Extensions",
+    "upstream": "home-operations/tuppr",
+    "cncf_maturity": null
+  },
+  "vertexai.cnrm.cloud.google.com": {
+    "category": "Google Cloud",
+    "upstream": "GoogleCloudPlatform/k8s-config-connector",
+    "cncf_maturity": null
+  },
+  "vmwareengine.cnrm.cloud.google.com": {
+    "category": "Google Cloud",
+    "upstream": "GoogleCloudPlatform/k8s-config-connector",
+    "cncf_maturity": null
+  },
+  "vpcaccess.cnrm.cloud.google.com": {
+    "category": "Google Cloud",
+    "upstream": "GoogleCloudPlatform/k8s-config-connector",
+    "cncf_maturity": null
+  },
+  "web.azure.com": {
+    "category": "Azure Ecosystem",
+    "upstream": "Azure/azure-service-operator",
+    "cncf_maturity": null
+  },
+  "workflowexecutions.cnrm.cloud.google.com": {
+    "category": "Google Cloud",
+    "upstream": "GoogleCloudPlatform/k8s-config-connector",
+    "cncf_maturity": null
+  },
+  "workflows.cnrm.cloud.google.com": {
+    "category": "Google Cloud",
+    "upstream": "GoogleCloudPlatform/k8s-config-connector",
+    "cncf_maturity": null
+  },
+  "workstations.cnrm.cloud.google.com": {
+    "category": "Google Cloud",
+    "upstream": "GoogleCloudPlatform/k8s-config-connector",
+    "cncf_maturity": null
+  }
+}

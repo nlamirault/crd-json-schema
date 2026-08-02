@@ -1,0 +1,1052 @@
+# SPDX-FileCopyrightText: Copyright (C) Nicolas Lamirault <nicolas.lamirault@gmail.com>
+# SPDX-License-Identifier: Apache-2.0
+
+# Canonical operator metadata — single source of truth for per-operator
+# category, upstream repository, CNCF maturity, and API groups.
+# The crds/ shell scripts remain authoritative for version pins and download URLs.
+
+sources:
+
+  # ── AWS Infrastructure (ACK Controllers) ─────────────────────────────────
+
+  - id: ack-acm
+    name: ACK ACM
+    category: AWS Infrastructure
+    cncf: sandbox
+    upstream: aws-controllers-k8s/acm-controller
+    groups:
+      - acm.services.k8s.aws
+
+  - id: ack-acmpca
+    name: ACK ACM PCA
+    category: AWS Infrastructure
+    cncf: sandbox
+    upstream: aws-controllers-k8s/acmpca-controller
+    groups:
+      - acmpca.services.k8s.aws
+
+  - id: ack-apigatewayv2
+    name: ACK API Gateway v2
+    category: AWS Infrastructure
+    cncf: sandbox
+    upstream: aws-controllers-k8s/apigatewayv2-controller
+    groups:
+      - apigatewayv2.services.k8s.aws
+
+  - id: ack-applicationautoscaling
+    name: ACK Application AutoScaling
+    category: AWS Infrastructure
+    cncf: sandbox
+    upstream: aws-controllers-k8s/applicationautoscaling-controller
+    groups:
+      - applicationautoscaling.services.k8s.aws
+
+  - id: ack-bedrockagent
+    name: ACK Bedrock Agent
+    category: AWS Infrastructure
+    cncf: sandbox
+    upstream: aws-controllers-k8s/bedrockagent-controller
+    groups:
+      - bedrockagent.services.k8s.aws
+
+  - id: ack-cloudfront
+    name: ACK CloudFront
+    category: AWS Infrastructure
+    cncf: sandbox
+    upstream: aws-controllers-k8s/cloudfront-controller
+    groups:
+      - cloudfront.services.k8s.aws
+
+  - id: ack-cloudtrail
+    name: ACK CloudTrail
+    category: AWS Infrastructure
+    cncf: sandbox
+    upstream: aws-controllers-k8s/cloudtrail-controller
+    groups:
+      - cloudtrail.services.k8s.aws
+
+  - id: ack-cloudwatch
+    name: ACK CloudWatch
+    category: AWS Infrastructure
+    cncf: sandbox
+    upstream: aws-controllers-k8s/cloudwatch-controller
+    groups:
+      - cloudwatch.services.k8s.aws
+
+  - id: ack-cloudwatchlogs
+    name: ACK CloudWatch Logs
+    category: AWS Infrastructure
+    cncf: sandbox
+    upstream: aws-controllers-k8s/cloudwatchlogs-controller
+    groups:
+      - cloudwatchlogs.services.k8s.aws
+
+  - id: ack-dynamodb
+    name: ACK DynamoDB
+    category: AWS Infrastructure
+    cncf: sandbox
+    upstream: aws-controllers-k8s/dynamodb-controller
+    groups:
+      - dynamodb.services.k8s.aws
+
+  - id: ack-ec2
+    name: ACK EC2
+    category: AWS Infrastructure
+    cncf: sandbox
+    upstream: aws-controllers-k8s/ec2-controller
+    groups:
+      - ec2.services.k8s.aws
+
+  - id: ack-ecr
+    name: ACK ECR
+    category: AWS Infrastructure
+    cncf: sandbox
+    upstream: aws-controllers-k8s/ecr-controller
+    groups:
+      - ecr.services.k8s.aws
+
+  - id: ack-ecs
+    name: ACK ECS
+    category: AWS Infrastructure
+    cncf: sandbox
+    upstream: aws-controllers-k8s/ecs-controller
+    groups:
+      - ecs.services.k8s.aws
+
+  - id: ack-eks
+    name: ACK EKS
+    category: AWS Infrastructure
+    cncf: sandbox
+    upstream: aws-controllers-k8s/eks-controller
+    groups:
+      - eks.services.k8s.aws
+
+  - id: ack-elasticache
+    name: ACK ElastiCache
+    category: AWS Infrastructure
+    cncf: sandbox
+    upstream: aws-controllers-k8s/elasticache-controller
+    groups:
+      - elasticache.services.k8s.aws
+
+  - id: ack-emrcontainers
+    name: ACK EMR Containers
+    category: AWS Infrastructure
+    cncf: sandbox
+    upstream: aws-controllers-k8s/emrcontainers-controller
+    groups:
+      - emrcontainers.services.k8s.aws
+
+  - id: ack-eventbridge
+    name: ACK EventBridge
+    category: AWS Infrastructure
+    cncf: sandbox
+    upstream: aws-controllers-k8s/eventbridge-controller
+    groups:
+      - eventbridge.services.k8s.aws
+
+  - id: ack-iam
+    name: ACK IAM
+    category: AWS Infrastructure
+    cncf: sandbox
+    upstream: aws-controllers-k8s/iam-controller
+    groups:
+      - iam.services.k8s.aws
+
+  - id: ack-kafka
+    name: ACK Kafka
+    category: AWS Infrastructure
+    cncf: sandbox
+    upstream: aws-controllers-k8s/kafka-controller
+    groups:
+      - kafka.services.k8s.aws
+
+  - id: ack-kinesis
+    name: ACK Kinesis
+    category: AWS Infrastructure
+    cncf: sandbox
+    upstream: aws-controllers-k8s/kinesis-controller
+    groups:
+      - kinesis.services.k8s.aws
+
+  - id: ack-kms
+    name: ACK KMS
+    category: AWS Infrastructure
+    cncf: sandbox
+    upstream: aws-controllers-k8s/kms-controller
+    groups:
+      - kms.services.k8s.aws
+
+  - id: ack-lambda
+    name: ACK Lambda
+    category: AWS Infrastructure
+    cncf: sandbox
+    upstream: aws-controllers-k8s/lambda-controller
+    groups:
+      - lambda.services.k8s.aws
+
+  - id: ack-memorydb
+    name: ACK MemoryDB
+    category: AWS Infrastructure
+    cncf: sandbox
+    upstream: aws-controllers-k8s/memorydb-controller
+    groups:
+      - memorydb.services.k8s.aws
+
+  - id: ack-mq
+    name: ACK MQ
+    category: AWS Infrastructure
+    cncf: sandbox
+    upstream: aws-controllers-k8s/mq-controller
+    groups:
+      - mq.services.k8s.aws
+
+  - id: ack-networkfirewall
+    name: ACK Network Firewall
+    category: AWS Infrastructure
+    cncf: sandbox
+    upstream: aws-controllers-k8s/networkfirewall-controller
+    groups:
+      - networkfirewall.services.k8s.aws
+
+  - id: ack-opensearchservice
+    name: ACK OpenSearch Service
+    category: AWS Infrastructure
+    cncf: sandbox
+    upstream: aws-controllers-k8s/opensearchservice-controller
+    groups:
+      - opensearchservice.services.k8s.aws
+
+  - id: ack-organizations
+    name: ACK Organizations
+    category: AWS Infrastructure
+    cncf: sandbox
+    upstream: aws-controllers-k8s/organizations-controller
+    groups:
+      - organizations.services.k8s.aws
+
+  - id: ack-pipes
+    name: ACK Pipes
+    category: AWS Infrastructure
+    cncf: sandbox
+    upstream: aws-controllers-k8s/pipes-controller
+    groups:
+      - pipes.services.k8s.aws
+
+  - id: ack-prometheusservice
+    name: ACK Prometheus Service
+    category: AWS Infrastructure
+    cncf: sandbox
+    upstream: aws-controllers-k8s/prometheusservice-controller
+    groups:
+      - prometheusservice.services.k8s.aws
+
+  - id: ack-ram
+    name: ACK RAM
+    category: AWS Infrastructure
+    cncf: sandbox
+    upstream: aws-controllers-k8s/ram-controller
+    groups:
+      - ram.services.k8s.aws
+
+  - id: ack-rds
+    name: ACK RDS
+    category: AWS Infrastructure
+    cncf: sandbox
+    upstream: aws-controllers-k8s/rds-controller
+    groups:
+      - rds.services.k8s.aws
+
+  - id: ack-route53
+    name: ACK Route53
+    category: AWS Infrastructure
+    cncf: sandbox
+    upstream: aws-controllers-k8s/route53-controller
+    groups:
+      - route53.services.k8s.aws
+
+  - id: ack-s3
+    name: ACK S3
+    category: AWS Infrastructure
+    cncf: sandbox
+    upstream: aws-controllers-k8s/s3-controller
+    groups:
+      - s3.services.k8s.aws
+
+  - id: ack-sagemaker
+    name: ACK SageMaker
+    category: AWS Infrastructure
+    cncf: sandbox
+    upstream: aws-controllers-k8s/sagemaker-controller
+    groups:
+      - sagemaker.services.k8s.aws
+
+  - id: ack-secretsmanager
+    name: ACK Secrets Manager
+    category: AWS Infrastructure
+    cncf: sandbox
+    upstream: aws-controllers-k8s/secretsmanager-controller
+    groups:
+      - secretsmanager.services.k8s.aws
+
+  - id: ack-sfn
+    name: ACK Step Functions
+    category: AWS Infrastructure
+    cncf: sandbox
+    upstream: aws-controllers-k8s/sfn-controller
+    groups:
+      - sfn.services.k8s.aws
+
+  - id: ack-sns
+    name: ACK SNS
+    category: AWS Infrastructure
+    cncf: sandbox
+    upstream: aws-controllers-k8s/sns-controller
+    groups:
+      - sns.services.k8s.aws
+
+  - id: ack-sqs
+    name: ACK SQS
+    category: AWS Infrastructure
+    cncf: sandbox
+    upstream: aws-controllers-k8s/sqs-controller
+    groups:
+      - sqs.services.k8s.aws
+
+  - id: karpenter-aws
+    name: Karpenter (AWS)
+    category: AWS Infrastructure
+    cncf: null
+    upstream: aws/karpenter-provider-aws
+    groups:
+      - karpenter.k8s.aws
+
+  # ── Google Cloud ──────────────────────────────────────────────────────────
+
+  - id: k8s-config-connector
+    name: Config Connector
+    category: Google Cloud
+    cncf: null
+    upstream: GoogleCloudPlatform/k8s-config-connector
+    groups:
+      - accesscontextmanager.cnrm.cloud.google.com
+      - aiplatform.cnrm.cloud.google.com
+      - alloydb.cnrm.cloud.google.com
+      - analytics.cnrm.cloud.google.com
+      - apigateway.cnrm.cloud.google.com
+      - apigee.cnrm.cloud.google.com
+      - apikeys.cnrm.cloud.google.com
+      - appengine.cnrm.cloud.google.com
+      - apphub.cnrm.cloud.google.com
+      - artifactregistry.cnrm.cloud.google.com
+      - backupdr.cnrm.cloud.google.com
+      - bigquery.cnrm.cloud.google.com
+      - bigquerydatatransfer.cnrm.cloud.google.com
+      - bigtable.cnrm.cloud.google.com
+      - certificatemanager.cnrm.cloud.google.com
+      - cloudbuild.cnrm.cloud.google.com
+      - clouddeploy.cnrm.cloud.google.com
+      - cloudfunctions.cnrm.cloud.google.com
+      - cloudidentity.cnrm.cloud.google.com
+      - cloudids.cnrm.cloud.google.com
+      - cloudkms.cnrm.cloud.google.com
+      - cloudrun.cnrm.cloud.google.com
+      - cloudscheduler.cnrm.cloud.google.com
+      - cloudsql.cnrm.cloud.google.com
+      - cloudtasks.cnrm.cloud.google.com
+      - colab.cnrm.cloud.google.com
+      - compute.cnrm.cloud.google.com
+      - configcontroller.cnrm.cloud.google.com
+      - container.cnrm.cloud.google.com
+      - containeranalysis.cnrm.cloud.google.com
+      - datacatalog.cnrm.cloud.google.com
+      - dataflow.cnrm.cloud.google.com
+      - datafusion.cnrm.cloud.google.com
+      - dataplex.cnrm.cloud.google.com
+      - dataproc.cnrm.cloud.google.com
+      - datastore.cnrm.cloud.google.com
+      - datastream.cnrm.cloud.google.com
+      - discoveryengine.cnrm.cloud.google.com
+      - dns.cnrm.cloud.google.com
+      - edgecontainer.cnrm.cloud.google.com
+      - edgenetwork.cnrm.cloud.google.com
+      - essentialcontacts.cnrm.cloud.google.com
+      - eventarc.cnrm.cloud.google.com
+      - filestore.cnrm.cloud.google.com
+      - firestore.cnrm.cloud.google.com
+      - gkehub.cnrm.cloud.google.com
+      - gkebackup.cnrm.cloud.google.com
+      - gkemulticloud.cnrm.cloud.google.com
+      - iam.cnrm.cloud.google.com
+      - iap.cnrm.cloud.google.com
+      - identityplatform.cnrm.cloud.google.com
+      - kms.cnrm.cloud.google.com
+      - logging.cnrm.cloud.google.com
+      - managedkafka.cnrm.cloud.google.com
+      - memcache.cnrm.cloud.google.com
+      - memorystore.cnrm.cloud.google.com
+      - metastore.cnrm.cloud.google.com
+      - mlflow.cnrm.cloud.google.com
+      - monitoring.cnrm.cloud.google.com
+      - networkconnectivity.cnrm.cloud.google.com
+      - networkmanagement.cnrm.cloud.google.com
+      - networksecurity.cnrm.cloud.google.com
+      - networkservices.cnrm.cloud.google.com
+      - notebooks.cnrm.cloud.google.com
+      - orgpolicy.cnrm.cloud.google.com
+      - privateca.cnrm.cloud.google.com
+      - privilegedaccessmanager.cnrm.cloud.google.com
+      - pubsub.cnrm.cloud.google.com
+      - pubsublite.cnrm.cloud.google.com
+      - recaptchaenterprise.cnrm.cloud.google.com
+      - redis.cnrm.cloud.google.com
+      - resourcemanager.cnrm.cloud.google.com
+      - run.cnrm.cloud.google.com
+      - secretmanager.cnrm.cloud.google.com
+      - securesourcemanager.cnrm.cloud.google.com
+      - securitycenter.cnrm.cloud.google.com
+      - servicedirectory.cnrm.cloud.google.com
+      - serviceusage.cnrm.cloud.google.com
+      - sourcerepo.cnrm.cloud.google.com
+      - spanner.cnrm.cloud.google.com
+      - speech.cnrm.cloud.google.com
+      - sql.cnrm.cloud.google.com
+      - storage.cnrm.cloud.google.com
+      - storagetransfer.cnrm.cloud.google.com
+      - tags.cnrm.cloud.google.com
+      - tpu.cnrm.cloud.google.com
+      - vertexai.cnrm.cloud.google.com
+      - vmwareengine.cnrm.cloud.google.com
+      - vpcaccess.cnrm.cloud.google.com
+      - workflowexecutions.cnrm.cloud.google.com
+      - workflows.cnrm.cloud.google.com
+      - workstations.cnrm.cloud.google.com
+
+  # ── Azure Ecosystem ───────────────────────────────────────────────────────
+
+  - id: azure-service-operator
+    name: Azure Service Operator
+    category: Azure Ecosystem
+    cncf: null
+    upstream: Azure/azure-service-operator
+    groups:
+      - alertsmanagement.azure.com
+      - analysisservices.azure.com
+      - apimanagement.azure.com
+      - app.azure.com
+      - appconfiguration.azure.com
+      - authorization.azure.com
+      - batch.azure.com
+      - cache.azure.com
+      - cdn.azure.com
+      - cognitiveservices.azure.com
+      - compute.azure.com
+      - containerinstance.azure.com
+      - containerregistry.azure.com
+      - containerservice.azure.com
+      - databricks.azure.com
+      - dbformysql.azure.com
+      - dbforpostgresql.azure.com
+      - documentdb.azure.com
+      - eventhub.azure.com
+      - eventgrid.azure.com
+      - insights.azure.com
+      - keyvault.azure.com
+      - managedidentity.azure.com
+      - network.azure.com
+      - operationalinsights.azure.com
+      - resources.azure.com
+      - search.azure.com
+      - servicebus.azure.com
+      - signalrservice.azure.com
+      - sql.azure.com
+      - storage.azure.com
+      - subscription.azure.com
+      - synapse.azure.com
+      - web.azure.com
+
+  - id: karpenter-azure
+    name: Karpenter (Azure)
+    category: Azure Ecosystem
+    cncf: null
+    upstream: Azure/karpenter-provider-azure
+    groups:
+      - karpenter.azure.com
+
+  # ── GitOps & Deployment ───────────────────────────────────────────────────
+
+  - id: argo-cd
+    name: Argo CD
+    category: "GitOps & Deployment"
+    cncf: graduated
+    upstream: argoproj/argo-cd
+    groups:
+      - argoproj.io
+
+  - id: argo-events
+    name: Argo Events
+    category: "GitOps & Deployment"
+    cncf: graduated
+    upstream: argoproj/argo-events
+    groups:
+      - argoproj.io
+
+  - id: argo-rollouts
+    name: Argo Rollouts
+    category: "GitOps & Deployment"
+    cncf: graduated
+    upstream: argoproj/argo-rollouts
+    groups:
+      - argoproj.io
+
+  - id: argo-workflows
+    name: Argo Workflows
+    category: "GitOps & Deployment"
+    cncf: graduated
+    upstream: argoproj/argo-workflows
+    groups:
+      - argoproj.io
+
+  - id: flux
+    name: Flux
+    category: "GitOps & Deployment"
+    cncf: graduated
+    upstream: fluxcd/flux2
+    groups:
+      - helm.toolkit.fluxcd.io
+      - image.toolkit.fluxcd.io
+      - kustomize.toolkit.fluxcd.io
+      - notification.toolkit.fluxcd.io
+      - source.extensions.fluxcd.io
+      - source.toolkit.fluxcd.io
+
+  - id: kargo
+    name: Kargo
+    category: "GitOps & Deployment"
+    cncf: sandbox
+    upstream: akuity/kargo
+    groups:
+      - kargo.akuity.io
+
+  # ── Databases & Storage ───────────────────────────────────────────────────
+
+  - id: clickhouse-operator
+    name: ClickHouse Operator
+    category: "Databases & Storage"
+    cncf: null
+    upstream: Altinity/clickhouse-operator
+    groups:
+      - clickhouse.altinity.com
+
+  - id: cloudnative-pg
+    name: CloudNativePG
+    category: "Databases & Storage"
+    cncf: null
+    upstream: cloudnative-pg/cloudnative-pg
+    groups:
+      - postgresql.cnpg.io
+
+  - id: dragonfly-operator
+    name: Dragonfly Operator
+    category: "Databases & Storage"
+    cncf: null
+    upstream: dragonflydb/dragonfly-operator
+    groups:
+      - dragonflydb.io
+
+  - id: mariadb-operator
+    name: MariaDB Operator
+    category: "Databases & Storage"
+    cncf: null
+    upstream: mariadb-operator/mariadb-operator
+    groups:
+      - k8s.mariadb.com
+
+  - id: moco
+    name: MOCO (MySQL Operator)
+    category: "Databases & Storage"
+    cncf: null
+    upstream: cybozu-go/moco
+    groups:
+      - moco.cybozu.com
+
+  # ── Observability ─────────────────────────────────────────────────────────
+
+  - id: grafana-operator
+    name: Grafana Operator
+    category: Observability
+    cncf: null
+    upstream: grafana/grafana-operator
+    groups:
+      - grafana.integreatly.org
+
+  - id: opentelemetry-operator
+    name: OpenTelemetry Operator
+    category: Observability
+    cncf: incubating
+    upstream: open-telemetry/opentelemetry-operator
+    groups:
+      - opentelemetry.io
+
+  - id: prometheus-operator
+    name: Prometheus Operator
+    category: Observability
+    cncf: graduated
+    upstream: prometheus-operator/prometheus-operator
+    groups:
+      - monitoring.coreos.com
+
+  # ── Networking & Mesh ─────────────────────────────────────────────────────
+
+  - id: cilium
+    name: Cilium
+    category: "Networking & Mesh"
+    cncf: graduated
+    upstream: cilium/cilium
+    groups:
+      - cilium.io
+
+  - id: envoy-gateway
+    name: Envoy Gateway
+    category: "Networking & Mesh"
+    cncf: incubating
+    upstream: envoyproxy/gateway
+    groups:
+      - gateway.envoyproxy.io
+
+  - id: gateway-api
+    name: Gateway API
+    category: "Networking & Mesh"
+    cncf: null
+    upstream: kubernetes-sigs/gateway-api
+    groups:
+      - gateway.networking.k8s.io
+
+  - id: gateway-api-experimental
+    name: Gateway API (Experimental)
+    category: "Networking & Mesh"
+    cncf: null
+    upstream: kubernetes-sigs/gateway-api
+    groups:
+      - gateway.networking.k8s.io
+
+  - id: istio
+    name: Istio
+    category: "Networking & Mesh"
+    cncf: graduated
+    upstream: istio/istio
+    groups:
+      - extensions.istio.io
+      - networking.istio.io
+      - security.istio.io
+      - telemetry.istio.io
+
+  - id: kgateway
+    name: kGateway
+    category: "Networking & Mesh"
+    cncf: null
+    upstream: kgateway-dev/kgateway
+    groups:
+      - gateway.kgateway.dev
+
+  - id: traefik
+    name: Traefik
+    category: "Networking & Mesh"
+    cncf: null
+    upstream: traefik/traefik
+    groups:
+      - traefik.io
+
+  # ── Security ──────────────────────────────────────────────────────────────
+
+  - id: cert-manager
+    name: Cert Manager
+    category: Security
+    cncf: graduated
+    upstream: cert-manager/cert-manager
+    groups:
+      - acme.cert-manager.io
+      - cert-manager.io
+
+  - id: doppler-operator
+    name: Doppler Operator
+    category: Security
+    cncf: null
+    upstream: DopplerHQ/kubernetes-operator
+    groups:
+      - secrets.doppler.com
+
+  - id: external-secrets
+    name: External Secrets Operator
+    category: Security
+    cncf: incubating
+    upstream: external-secrets/external-secrets
+    groups:
+      - external-secrets.io
+      - generators.external-secrets.io
+
+  - id: infisical-operator
+    name: Infisical Operator
+    category: Security
+    cncf: null
+    upstream: Infisical/kubernetes-operator
+    groups:
+      - secrets.infisical.com
+
+  - id: onepassword-operator
+    name: 1Password Operator
+    category: Security
+    cncf: null
+    upstream: 1Password/onepassword-operator
+    groups:
+      - onepassword.com
+
+  - id: secrets-store-csi-driver
+    name: Secrets Store CSI Driver
+    category: Security
+    cncf: graduated
+    upstream: kubernetes-sigs/secrets-store-csi-driver
+    groups:
+      - secrets-store.csi.x-k8s.io
+
+  - id: sigstore-policy-controller
+    name: Sigstore Policy Controller
+    category: Security
+    cncf: null
+    upstream: sigstore/policy-controller
+    groups:
+      - policy.sigstore.dev
+
+  - id: vault-operator
+    name: Vault Secrets Operator
+    category: Security
+    cncf: null
+    upstream: hashicorp/vault-secrets-operator
+    groups:
+      - secrets.hashicorp.com
+
+  # ── Core Kubernetes ───────────────────────────────────────────────────────
+
+  - id: kubernetes
+    name: Kubernetes
+    category: Core Kubernetes
+    cncf: graduated
+    upstream: kubernetes/kubernetes
+    groups:
+      - admissionregistration.api.k8s.io
+      - api.api.k8s.io
+      - apiextensions.api.k8s.io
+      - apiregistration.api.k8s.io
+      - apiserverinternal.api.k8s.io
+      - apps.api.k8s.io
+      - authentication.api.k8s.io
+      - authorization.api.k8s.io
+      - autoscaling.api.k8s.io
+      - batch.api.k8s.io
+      - certificates.api.k8s.io
+      - coordination.api.k8s.io
+      - core.api.k8s.io
+      - discovery.api.k8s.io
+      - events.api.k8s.io
+      - extensions.api.k8s.io
+      - flowcontrol.api.k8s.io
+      - imagepolicy.api.k8s.io
+      - networking.api.k8s.io
+      - node.api.k8s.io
+      - policy.api.k8s.io
+      - rbac.api.k8s.io
+      - resource.api.k8s.io
+      - scheduling.api.k8s.io
+      - storage.api.k8s.io
+      - storagemigration.api.k8s.io
+      - util.api.k8s.io
+
+  - id: cluster-api
+    name: Cluster API
+    category: Core Kubernetes
+    cncf: incubating
+    upstream: kubernetes-sigs/cluster-api
+    groups:
+      - addons.cluster.x-k8s.io
+      - bootstrap.cluster.x-k8s.io
+      - cluster.x-k8s.io
+      - controlplane.cluster.x-k8s.io
+      - infrastructure.cluster.x-k8s.io
+      - ipam.cluster.x-k8s.io
+      - runtime.cluster.x-k8s.io
+
+  - id: cluster-api-operator
+    name: Cluster API Operator
+    category: Core Kubernetes
+    cncf: incubating
+    upstream: kubernetes-sigs/cluster-api-operator
+    groups:
+      - operator.cluster.x-k8s.io
+
+  - id: crossplane
+    name: Crossplane
+    category: Core Kubernetes
+    cncf: graduated
+    upstream: crossplane/crossplane
+    groups:
+      - apiextensions.crossplane.io
+      - ops.crossplane.io
+      - pkg.crossplane.io
+      - protection.crossplane.io
+
+  - id: karpenter
+    name: Karpenter
+    category: Core Kubernetes
+    cncf: null
+    upstream: kubernetes-sigs/karpenter
+    groups:
+      - karpenter.sh
+
+  - id: keda
+    name: KEDA
+    category: Core Kubernetes
+    cncf: graduated
+    upstream: kedacore/keda
+    groups:
+      - keda.sh
+
+  - id: vpa
+    name: Vertical Pod Autoscaler
+    category: Core Kubernetes
+    cncf: null
+    upstream: kubernetes/autoscaler
+    groups:
+      - autoscaling.k8s.io
+
+  # ── AI Orchestration ──────────────────────────────────────────────────────
+
+  - id: agent-gateway
+    name: Agent Gateway
+    category: AI Orchestration
+    cncf: null
+    upstream: agentgateway/agentgateway
+    groups:
+      - agentgateway.dev
+
+  - id: kagent
+    name: KAgent
+    category: AI Orchestration
+    cncf: null
+    upstream: kagent-dev/kagent
+    groups:
+      - kagent.dev
+
+  - id: kube-agentic-networking
+    name: Kube Agentic Networking
+    category: AI Orchestration
+    cncf: null
+    upstream: kubernetes-sigs/kube-agentic-networking
+    groups:
+      - agentic.networking.x-k8s.io
+
+  - id: sympozium
+    name: Sympozium
+    category: AI Orchestration
+    cncf: null
+    upstream: sympozium-ai/sympozium
+    groups:
+      - sympozium.ai
+
+  # ── Other Extensions ──────────────────────────────────────────────────────
+
+  - id: k-orc
+    name: OpenStack Resource Controller
+    category: Other Extensions
+    cncf: null
+    upstream: k-orc/openstack-resource-controller
+    groups:
+      - keystone.k-orc.cloud
+      - networking.k-orc.cloud
+      - nova.k-orc.cloud
+      - placement.k-orc.cloud
+
+  - id: karpenter-exoscale
+    name: Karpenter (Exoscale)
+    category: Other Extensions
+    cncf: null
+    upstream: exoscale/karpenter-provider-exoscale
+    groups:
+      - karpenter.exoscale.com
+
+  - id: karpenter-oci
+    name: Karpenter (OCI)
+    category: Other Extensions
+    cncf: null
+    upstream: oracle/karpenter-provider-oci
+    groups:
+      - karpenter.oci.oracle.com
+
+  - id: open-feature-operator
+    name: OpenFeature Operator
+    category: Other Extensions
+    cncf: incubating
+    upstream: open-feature/open-feature-operator
+    groups:
+      - core.openfeature.dev
+
+  - id: open-reports
+    name: Open Reports
+    category: Other Extensions
+    cncf: null
+    upstream: openreports/reports-api
+    groups:
+      - wgpolicyk8s.io
+
+  - id: tuppr
+    name: Tuppr
+    category: Other Extensions
+    cncf: null
+    upstream: home-operations/tuppr
+    groups:
+      - tuppr.home-operations.com
+
+  # ── Additional Config Connector groups (GCP) ─────────────────────────────
+
+  - id: k8s-config-connector-extra
+    name: Config Connector (Extended)
+    category: Google Cloud
+    cncf: null
+    upstream: GoogleCloudPlatform/k8s-config-connector
+    groups:
+      - asset.cnrm.cloud.google.com
+      - assuredworkloads.cnrm.cloud.google.com
+      - batch.cnrm.cloud.google.com
+      - beyondcorp.cnrm.cloud.google.com
+      - bigqueryanalyticshub.cnrm.cloud.google.com
+      - bigquerybiglake.cnrm.cloud.google.com
+      - bigqueryconnection.cnrm.cloud.google.com
+      - bigquerydatapolicy.cnrm.cloud.google.com
+      - bigqueryreservation.cnrm.cloud.google.com
+      - billing.cnrm.cloud.google.com
+      - billingbudgets.cnrm.cloud.google.com
+      - binaryauthorization.cnrm.cloud.google.com
+      - cloudasset.cnrm.cloud.google.com
+      - clouddms.cnrm.cloud.google.com
+      - cloudfunctions2.cnrm.cloud.google.com
+      - cloudiot.cnrm.cloud.google.com
+      - cloudquota.cnrm.cloud.google.com
+      - composer.cnrm.cloud.google.com
+      - configdelivery.cnrm.cloud.google.com
+      - containerattached.cnrm.cloud.google.com
+      - dataform.cnrm.cloud.google.com
+      - deploymentmanager.cnrm.cloud.google.com
+      - dialogflow.cnrm.cloud.google.com
+      - dialogflowcx.cnrm.cloud.google.com
+      - dlp.cnrm.cloud.google.com
+      - documentai.cnrm.cloud.google.com
+      - firebase.cnrm.cloud.google.com
+      - firebasedatabase.cnrm.cloud.google.com
+      - firebasehosting.cnrm.cloud.google.com
+      - firebasestorage.cnrm.cloud.google.com
+      - healthcare.cnrm.cloud.google.com
+      - mlengine.cnrm.cloud.google.com
+      - netapp.cnrm.cloud.google.com
+      - osconfig.cnrm.cloud.google.com
+      - oslogin.cnrm.cloud.google.com
+      - servicenetworking.cnrm.cloud.google.com
+
+  # ── Additional Azure Service Operator groups ──────────────────────────────
+
+  - id: azure-service-operator-extra
+    name: Azure Service Operator (Extended)
+    category: Azure Ecosystem
+    cncf: null
+    upstream: Azure/azure-service-operator
+    groups:
+      - datafactory.azure.com
+      - dataprotection.azure.com
+      - dbformariadb.azure.com
+      - devices.azure.com
+      - entra.azure.com
+      - kubernetesconfiguration.azure.com
+      - kusto.azure.com
+      - machinelearningservices.azure.com
+      - monitor.azure.com
+      - network.frontdoor.azure.com
+      - notificationhubs.azure.com
+      - quota.azure.com
+      - redhatopenshift.azure.com
+
+  # ── Additional Core Kubernetes groups ────────────────────────────────────
+
+  - id: cluster-api-extra
+    name: Cluster API (Extended)
+    category: Core Kubernetes
+    cncf: incubating
+    upstream: kubernetes-sigs/cluster-api
+    groups:
+      - clusterctl.cluster.x-k8s.io
+
+  - id: keda-extra
+    name: KEDA (Extended)
+    category: Core Kubernetes
+    cncf: graduated
+    upstream: kedacore/keda
+    groups:
+      - eventing.keda.sh
+
+  - id: kubernetes-extra
+    name: Kubernetes (Extended)
+    category: Core Kubernetes
+    cncf: graduated
+    upstream: kubernetes/kubernetes
+    groups:
+      - meta.api.k8s.io
+      - pkg.api.k8s.io
+
+  - id: gateway-api-experimental-x
+    name: Gateway API (Experimental x-k8s.io)
+    category: "Networking & Mesh"
+    cncf: null
+    upstream: kubernetes-sigs/gateway-api
+    groups:
+      - gateway.networking.x-k8s.io
+
+  # ── Additional AWS groups ─────────────────────────────────────────────────
+
+  - id: ack-core
+    name: ACK Core
+    category: AWS Infrastructure
+    cncf: sandbox
+    upstream: aws-controllers-k8s/runtime
+    groups:
+      - services.k8s.aws
+
+  # ── Additional Other Extensions groups ───────────────────────────────────
+
+  - id: clickhouse-keeper
+    name: ClickHouse Keeper (Altinity)
+    category: "Databases & Storage"
+    cncf: null
+    upstream: Altinity/clickhouse-operator
+    groups:
+      - clickhouse-keeper.altinity.com
+
+  - id: karpenter-oci-core
+    name: Karpenter (OCI Core)
+    category: Other Extensions
+    cncf: null
+    upstream: oracle/karpenter-provider-oci
+    groups:
+      - oci.oraclecloud.com
+
+  - id: open-reports-io
+    name: Open Reports (io)
+    category: Other Extensions
+    cncf: null
+    upstream: openreports/reports-api
+    groups:
+      - openreports.io
+
+  - id: k-orc-openstack
+    name: OpenStack Resource Controller (openstack)
+    category: Other Extensions
+    cncf: null
+    upstream: k-orc/openstack-resource-controller
+    groups:
+      - openstack.k-orc.cloud

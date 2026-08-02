@@ -21,173 +21,166 @@ const uniqueProviders = new Set(
   Object.keys(catalog.groups).map(g => g.split('.').slice(-2).join('.'))
 ).size;
 
-// Categorization Logic
-const categories = [
-  {
-    name: "AWS Infrastructure",
+// ── Category style definitions ────────────────────────────────────────────
+// The category each group belongs to is read from the `category` field
+// injected by generate-catalog.py (via sources.yaml). This map only
+// defines the visual styling for each category name.
+const CATEGORY_STYLES: Record<string, {
+  icon: any;
+  color: string;
+  bg: string;
+  border: string;
+  topBorder: string;
+  description: string;
+}> = {
+  "AWS Infrastructure": {
     icon: Cloud,
     color: "text-orange-500",
     bg: "bg-orange-50 dark:bg-orange-900/20",
     border: "border-orange-100 dark:border-orange-900/40",
     topBorder: "border-t-2 border-t-orange-300 dark:border-t-orange-500",
     description: "ACK controllers and AWS service operators for managing cloud infrastructure",
-    match: (g: string) => g.includes("aws") || g.includes("amazon"),
   },
-  {
-    name: "Google Cloud",
+  "Google Cloud": {
     icon: Cloud,
     color: "text-blue-500",
     bg: "bg-blue-50 dark:bg-blue-900/20",
     border: "border-blue-100 dark:border-blue-900/40",
     topBorder: "border-t-2 border-t-blue-400 dark:border-t-blue-500",
     description: "Config Connector CRDs for provisioning and managing GCP services",
-    match: (g: string) => g.includes("google") || g.includes("cnrm"),
   },
-  {
-    name: "Azure Ecosystem",
+  "Azure Ecosystem": {
     icon: Cloud,
     color: "text-sky-600",
     bg: "bg-sky-50 dark:bg-sky-900/20",
     border: "border-sky-100 dark:border-sky-900/40",
     topBorder: "border-t-2 border-t-sky-400 dark:border-t-sky-500",
     description: "Azure Service Operator resources for declarative Azure resource management",
-    match: (g: string) => g.includes("azure") || g.includes("microsoft"),
   },
-  {
-    name: "GitOps & Deployment",
+  "GitOps & Deployment": {
     icon: GitBranch,
     color: "text-emerald-600",
     bg: "bg-emerald-50 dark:bg-emerald-900/20",
     border: "border-emerald-100 dark:border-emerald-900/40",
     topBorder: "border-t-2 border-t-emerald-400 dark:border-t-emerald-500",
     description: "Argo CD, Argo Events, Flux CD, and Kargo continuous delivery resources",
-    match: (g: string) =>
-      g.includes("argoproj") || g.includes("fluxcd") || g.includes("kargo"),
   },
-  {
-    name: "Databases & Storage",
+  "Databases & Storage": {
     icon: Database,
     color: "text-indigo-600",
     bg: "bg-indigo-50 dark:bg-indigo-900/20",
     border: "border-indigo-100 dark:border-indigo-900/40",
     topBorder: "border-t-2 border-t-indigo-400 dark:border-t-indigo-500",
     description: "Database operators for PostgreSQL, MySQL, Redis, and ClickHouse",
-    match: (g: string) =>
-      g.includes("dbfor") ||
-      g.includes("redis") ||
-      g.includes("mariadb") ||
-      g.includes("mysql") ||
-      g.includes("postgresql") ||
-      g.includes("clickhouse"),
   },
-  {
-    name: "Observability",
+  "Observability": {
     icon: Activity,
     color: "text-rose-500",
     bg: "bg-rose-50 dark:bg-rose-900/20",
     border: "border-rose-100 dark:border-rose-900/40",
     topBorder: "border-t-2 border-t-rose-400 dark:border-t-rose-500",
     description: "Monitoring, tracing, and alerting with Prometheus, Grafana, and OpenTelemetry",
-    match: (g: string) =>
-      g.includes("monitoring") ||
-      g.includes("grafana") ||
-      g.includes("opentelemetry") ||
-      g.includes("prometheus"),
   },
-  {
-    name: "Networking & Mesh",
+  "Networking & Mesh": {
     icon: Network,
     color: "text-violet-600",
     bg: "bg-violet-50 dark:bg-violet-900/20",
     border: "border-violet-100 dark:border-violet-900/40",
     topBorder: "border-t-2 border-t-violet-400 dark:border-t-violet-500",
     description: "Istio, Gateway API, and Envoy service mesh and ingress resources",
-    match: (g: string) =>
-      g.includes("networking") ||
-      g.includes("istio") ||
-      g.includes("gateway") ||
-      g.includes("envoy"),
   },
-  {
-    name: "Security",
+  "Security": {
     icon: ShieldCheck,
     color: "text-red-600",
     bg: "bg-red-50 dark:bg-red-900/20",
     border: "border-red-100 dark:border-red-900/40",
     topBorder: "border-t-2 border-t-red-400 dark:border-t-red-500",
     description: "cert-manager, external-secrets, Doppler, Vault, Sigstore, and IAM CRDs for secrets and certificates",
-    match: (g: string) =>
-      g.includes("security") ||
-      g.includes("cert-manager") ||
-      g.includes("external-secrets") ||
-      g.includes("doppler") ||
-      g.includes("hashicorp") ||
-      g.includes("sigstore") ||
-      g.includes("iam") ||
-      g.includes("kms"),
   },
-  {
-    name: "Core Kubernetes",
+  "Core Kubernetes": {
     icon: Cpu,
     color: "text-blue-700",
     bg: "bg-blue-50 dark:bg-blue-900/20",
     border: "border-blue-100 dark:border-blue-900/40",
     topBorder: "border-t-2 border-t-blue-600 dark:border-t-blue-500",
     description: "Native Kubernetes API resources, extensions, and cluster management",
-    match: (g: string) => g.includes("k8s.io"),
   },
-  {
-    name: "AI Orchestration",
+  "AI Orchestration": {
     icon: BrainCircuit,
     color: "text-fuchsia-600",
     bg: "bg-fuchsia-50 dark:bg-fuchsia-900/20",
     border: "border-fuchsia-100 dark:border-fuchsia-900/40",
     topBorder: "border-t-2 border-t-fuchsia-400 dark:border-t-fuchsia-500",
     description: "KAgent, Agent Gateway, and Kube Agentic Networking CRDs for running AI agents on Kubernetes",
-    match: (g: string) =>
-      g.includes("kagent") ||
-      g.includes("agentgateway") ||
-      g.includes("agentic") ||
-      g.includes("sympozium"),
   },
-];
-
-// Group the actual data into categories
-const groupedData = categories
-  .map((cat) => {
-    const matchedGroups = groups.filter(([name]) => cat.match(name));
-    return {
-      ...cat,
-      groups: matchedGroups,
-      count: matchedGroups.reduce((acc, [_, res]) => acc + res.length, 0),
-    };
-  })
-  .filter((cat) => cat.groups.length > 0);
-
-// Anything left over goes into "Other"
-const matchedGroupNames = new Set(
-  groupedData.flatMap((cat) => cat.groups.map(([name]) => name)),
-);
-const otherGroups = groups.filter(([name]) => !matchedGroupNames.has(name));
-
-if (otherGroups.length > 0) {
-  groupedData.push({
-    name: "Other Extensions",
+  "Other Extensions": {
     icon: Layers,
     color: "text-gray-500",
     bg: "bg-gray-50 dark:bg-slate-800/50",
     border: "border-gray-200 dark:border-slate-700",
     topBorder: "border-t-2 border-t-gray-300 dark:border-t-slate-600",
     description: "Additional community and vendor CRD extensions",
-    groups: otherGroups,
-    count: otherGroups.reduce((acc, [_, res]) => acc + res.length, 0),
-    match: () => true,
+  },
+};
+
+// ── Data-driven grouping (derived from catalog category metadata) ─────────
+// Build a map: category name → list of [groupName, resources[]] pairs.
+const categoryMap = new Map<string, [string, any[]][]>();
+
+for (const [groupName, resources] of groups) {
+  // The category field is set per-resource by generate-catalog.py; all
+  // resources in a group share the same category so we just read the first.
+  const firstRes = (resources as any[])[0];
+  const catName: string = firstRes?.category ?? "Other Extensions";
+
+  if (!categoryMap.has(catName)) categoryMap.set(catName, []);
+  categoryMap.get(catName)!.push([groupName, resources as any[]]);
+}
+
+// Preserve the visual ordering defined in CATEGORY_STYLES
+const ORDERED_CATEGORIES = [
+  "AWS Infrastructure",
+  "Google Cloud",
+  "Azure Ecosystem",
+  "GitOps & Deployment",
+  "Databases & Storage",
+  "Observability",
+  "Networking & Mesh",
+  "Security",
+  "Core Kubernetes",
+  "AI Orchestration",
+  "Other Extensions",
+];
+
+const groupedData = ORDERED_CATEGORIES
+  .filter(catName => categoryMap.has(catName))
+  .map(catName => {
+    const style = CATEGORY_STYLES[catName] ?? CATEGORY_STYLES["Other Extensions"];
+    const catGroups = categoryMap.get(catName)!;
+    return {
+      name: catName,
+      ...style,
+      groups: catGroups,
+      count: catGroups.reduce((acc, [_, res]) => acc + (res as any[]).length, 0),
+    };
   });
+
+// Any category found in data but not in the ordered list (shouldn't happen normally)
+for (const [catName, catGroups] of categoryMap) {
+  if (!ORDERED_CATEGORIES.includes(catName)) {
+    const style = CATEGORY_STYLES["Other Extensions"];
+    groupedData.push({
+      name: catName,
+      ...style,
+      groups: catGroups,
+      count: catGroups.reduce((acc, [_, res]) => acc + (res as any[]).length, 0),
+    });
+  }
 }
 
 // Build flat resource list for hero search
 const allResources = groups.flatMap(([group, resources]) =>
-  resources.map((res) => ({ kind: res.kind, group, version: res.version, slug: res.slug }))
+  (resources as any[]).map((res) => ({ kind: res.kind, group, version: res.version, slug: res.slug }))
 );
 
 // Serializable filter data for client-side filtering (no functions/icons)

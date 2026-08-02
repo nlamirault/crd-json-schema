@@ -91,6 +91,7 @@ def _annotate_from_sources(catalog, output_dir):
             "category": source.get("category"),
             "upstream": source.get("upstream"),
             "cncf_maturity": source.get("cncf"),
+            "project": source.get("project", source.get("id")),
         }
         for group in source.get("groups", []):
             # Don't overwrite — first declaration wins (important for argoproj.io etc.)
@@ -116,6 +117,24 @@ def _annotate_from_sources(catalog, output_dir):
 
     with open(os.path.join(output_dir, "sources.json"), "w") as f:
         json.dump(group_metadata, f, indent=2)
+
+    # Also write a projects file
+    project_map = {}
+    for source in data.get("sources", []):
+        project_id = source.get("project", source.get("id"))
+        if project_id not in project_map:
+            project_map[project_id] = {
+                "id": project_id,
+                "name": source.get("name") if project_id == source.get("id") else project_id.replace('-', ' ').title(),
+                "category": source.get("category"),
+                "cncf": source.get("cncf"),
+                "upstream": source.get("upstream"),
+                "groups": []
+            }
+        project_map[project_id]["groups"].extend(source.get("groups", []))
+    
+    with open(os.path.join(output_dir, "projects.json"), "w") as f:
+        json.dump(list(project_map.values()), f, indent=2)
 
 
 if __name__ == "__main__":

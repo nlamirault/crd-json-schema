@@ -1,0 +1,70 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import projects from '../../../public/data/projects.json';
+import catalog from '../../../public/data/catalog.json';
+
+export async function getStaticPaths() {
+    return projects.map(project => ({
+        params: { id: project.id },
+        props: { project }
+    }));
+}
+
+const { project } = Astro.props;
+
+// Filter groups belonging to this project
+const projectGroups = Object.entries(catalog.groups).filter(([groupName, _]) => 
+    project.groups.includes(groupName)
+);
+
+// Group resources by kind for easier display
+const resources = projectGroups.flatMap(([groupName, resources]) => 
+    resources.map(r => ({ ...r, group: groupName }))
+);
+---
+
+<Layout title={project.name}>
+    <div class="max-w-4xl mx-auto px-6 py-12">
+        <header class="mb-10 border-b border-gray-100 dark:border-slate-800 pb-8">
+            <nav class="flex text-[11px] font-bold text-gray-400 dark:text-slate-500 mb-4 gap-2 uppercase tracking-widest flex-wrap">
+                <a href="/" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Home</a>
+                <span>/</span>
+                <a href="/projects" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Projects</a>
+                <span>/</span>
+                <span class="text-blue-500 dark:text-blue-400">{project.name}</span>
+            </nav>
+            <h1 class="text-4xl font-extrabold text-gray-900 dark:text-white tracking-tight mb-3">
+                {project.name}
+            </h1>
+            <p class="text-base text-gray-500 dark:text-slate-400 font-medium">
+                {project.groups.length} API groups · {resources.length} resources
+            </p>
+        </header>
+
+        <div class="space-y-10">
+            {projectGroups.map(([groupName, resources]) => (
+                <section>
+                    <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-4">{groupName}</h3>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                        {resources.map((res: any) => (
+                            <a
+                                href={`/schemas/${res.slug}`}
+                                class="group flex items-center justify-between px-5 py-4 bg-white dark:bg-slate-900 border border-gray-200 dark:border-slate-700 rounded-2xl hover:border-blue-300 dark:hover:border-blue-600 hover:shadow-md transition-all"
+                            >
+                                <div class="flex items-center gap-3 min-w-0">
+                                    <div class="w-8 h-8 rounded-lg bg-blue-50 dark:bg-blue-900/30 flex items-center justify-center shrink-0">
+                                        <span class="text-[9px] font-black text-blue-500 dark:text-blue-400 uppercase">CRD</span>
+                                    </div>
+                                    <span class="text-sm font-semibold text-gray-900 dark:text-white group-hover:text-blue-700 dark:group-hover:text-blue-300 truncate transition-colors">
+                                        {res.kind}
+                                    </span>
+                                </div>
+                                <div class="text-xs text-gray-400 dark:text-slate-500">{res.version}</div>
+                            </a>
+                        ))}
+                    </div>
+                </section>
+            ))}
+        </div>
+    </div>
+</Layout>

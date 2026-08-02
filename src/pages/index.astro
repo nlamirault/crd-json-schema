@@ -97,7 +97,7 @@ const CATEGORY_STYLES: Record<string, {
     topBorder: "border-t-2 border-t-red-400 dark:border-t-red-500",
     description: "cert-manager, external-secrets, Doppler, Vault, Sigstore, and IAM CRDs for secrets and certificates",
   },
-  "Core Kubernetes": {
+  "Kubernetes": {
     icon: Cpu,
     color: "text-blue-700",
     bg: "bg-blue-50 dark:bg-blue-900/20",
@@ -147,7 +147,7 @@ const ORDERED_CATEGORIES = [
   "Observability",
   "Networking & Mesh",
   "Security",
-  "Core Kubernetes",
+  "Kubernetes",
   "AI Orchestration",
   "Other Extensions",
 ];
@@ -228,6 +228,8 @@ const filterData = groupedData.map(cat => ({
           The central directory for Kubernetes Custom Resource Definitions.
           Explore <strong class="text-gray-900 dark:text-white">{totalResources}</strong> standardized
           schemas across the cloud-native ecosystem.
+          <br/>
+          <a href="/projects" class="text-blue-600 font-bold hover:underline">View all projects →</a>
         </p>
 
         <!-- Hero search -->

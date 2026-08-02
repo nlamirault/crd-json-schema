@@ -1,0 +1,51 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import projects from "../../../public/data/projects.json";
+import { Layers } from "lucide-react";
+
+// Group projects by category
+const projectsByCategory = projects.reduce((acc, project) => {
+  if (!acc[project.category]) acc[project.category] = [];
+  acc[project.category].push(project);
+  return acc;
+}, {} as Record<string, any[]>);
+
+const categories = Object.keys(projectsByCategory).sort();
+---
+
+<Layout title="Projects">
+  <div class="relative max-w-6xl mx-auto px-6 pt-20 pb-16">
+    <header class="mb-16">
+      <h1 class="text-5xl font-black text-gray-900 dark:text-white mb-6 tracking-tighter">Projects</h1>
+      <p class="text-xl text-gray-500 dark:text-slate-400">
+        Browse schemas by project.
+      </p>
+    </header>
+
+    <div class="space-y-12">
+      {categories.map((category) => (
+        <section>
+          <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6 flex items-center gap-3">
+            <Layers className="text-blue-600" />
+            {category}
+          </h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {projectsByCategory[category].map((project) => (
+              <a
+                href={`/projects/${project.id}`}
+                class="p-6 border border-gray-200 dark:border-slate-700 rounded-2xl hover:shadow-lg transition-shadow bg-white dark:bg-slate-900 group"
+              >
+                <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-2 group-hover:text-blue-600 dark:group-hover:text-blue-400">
+                  {project.name}
+                </h3>
+                <p class="text-sm text-gray-500 dark:text-slate-400">
+                  {project.groups.length} API groups
+                </p>
+              </a>
+            ))}
+          </div>
+        </section>
+      ))}
+    </div>
+  </div>
+</Layout>

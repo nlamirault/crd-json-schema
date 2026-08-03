@@ -1,0 +1,20 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "io.k8s.api.scheduling.v1alpha2.WorkloadPodGroupTemplateReference",
+  "description": "WorkloadPodGroupTemplateReference references the PodGroupTemplate within the Workload object.",
+  "type": "object",
+  "properties": {
+    "podGroupTemplateName": {
+      "description": "PodGroupTemplateName defines the PodGroupTemplate name within the Workload object.",
+      "type": "string"
+    },
+    "workloadName": {
+      "description": "WorkloadName defines the name of the Workload object.",
+      "type": "string"
+    }
+  },
+  "required": [
+    "workloadName",
+    "podGroupTemplateName"
+  ]
+}

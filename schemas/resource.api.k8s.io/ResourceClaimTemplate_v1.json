@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "title": "io.k8s.api.resource.v1.ResourceClaimTemplate",
-  "description": "ResourceClaimTemplate is used to produce ResourceClaim objects.\n\nThis is an alpha type and requires enabling the DynamicResourceAllocation feature gate.",
+  "description": "ResourceClaimTemplate is used to produce ResourceClaim objects.",
   "type": "object",
   "properties": {
     "apiVersion": {

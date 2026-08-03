@@ -235,6 +235,12 @@
       },
       {
         "kind": "MutatingAdmissionPolicyBindingList",
+        "version": "v1",
+        "file": "admissionregistration.api.k8s.io/MutatingAdmissionPolicyBindingList_v1.json",
+        "slug": "admissionregistration.api.k8s.io/v1/MutatingAdmissionPolicyBindingList"
+      },
+      {
+        "kind": "MutatingAdmissionPolicyBindingList",
         "version": "v1alpha1",
         "file": "admissionregistration.api.k8s.io/MutatingAdmissionPolicyBindingList_v1alpha1.json",
         "slug": "admissionregistration.api.k8s.io/v1alpha1/MutatingAdmissionPolicyBindingList"
@@ -256,6 +262,12 @@
         "version": "v1beta1",
         "file": "admissionregistration.api.k8s.io/MutatingAdmissionPolicyBindingSpec_v1beta1.json",
         "slug": "admissionregistration.api.k8s.io/v1beta1/MutatingAdmissionPolicyBindingSpec"
+      },
+      {
+        "kind": "MutatingAdmissionPolicyList",
+        "version": "v1",
+        "file": "admissionregistration.api.k8s.io/MutatingAdmissionPolicyList_v1.json",
+        "slug": "admissionregistration.api.k8s.io/v1/MutatingAdmissionPolicyList"
       },
       {
         "kind": "MutatingAdmissionPolicyList",
@@ -298,6 +310,12 @@
         "version": "v1",
         "file": "admissionregistration.api.k8s.io/MutatingWebhookConfigurationList_v1.json",
         "slug": "admissionregistration.api.k8s.io/v1/MutatingWebhookConfigurationList"
+      },
+      {
+        "kind": "Mutation",
+        "version": "v1",
+        "file": "admissionregistration.api.k8s.io/Mutation_v1.json",
+        "slug": "admissionregistration.api.k8s.io/v1/Mutation"
       },
       {
         "kind": "Mutation",
@@ -6000,6 +6018,12 @@
         "slug": "core.api.k8s.io/v1/ImageVolumeSource"
       },
       {
+        "kind": "ImageVolumeStatus",
+        "version": "v1",
+        "file": "core.api.k8s.io/ImageVolumeStatus_v1.json",
+        "slug": "core.api.k8s.io/v1/ImageVolumeStatus"
+      },
+      {
         "kind": "KeyToPath",
         "version": "v1",
         "file": "core.api.k8s.io/KeyToPath_v1.json",
@@ -6130,6 +6154,12 @@
         "version": "v1",
         "file": "core.api.k8s.io/NodeAffinity_v1.json",
         "slug": "core.api.k8s.io/v1/NodeAffinity"
+      },
+      {
+        "kind": "NodeAllocatableResourceClaimStatus",
+        "version": "v1",
+        "file": "core.api.k8s.io/NodeAllocatableResourceClaimStatus_v1.json",
+        "slug": "core.api.k8s.io/v1/NodeAllocatableResourceClaimStatus"
       },
       {
         "kind": "NodeCondition",
@@ -11268,6 +11298,12 @@
         "slug": "meta.api.k8s.io/v1/ServerAddressByClientCIDR"
       },
       {
+        "kind": "ShardInfo",
+        "version": "v1",
+        "file": "meta.api.k8s.io/ShardInfo_v1.json",
+        "slug": "meta.api.k8s.io/v1/ShardInfo"
+      },
+      {
         "kind": "Status",
         "version": "v1",
         "file": "meta.api.k8s.io/Status_v1.json",
@@ -14568,16 +14604,34 @@
         "slug": "resource.api.k8s.io/v1alpha3/DeviceTaintRule"
       },
       {
+        "kind": "DeviceTaintRule",
+        "version": "v1beta2",
+        "file": "resource.api.k8s.io/DeviceTaintRule_v1beta2.json",
+        "slug": "resource.api.k8s.io/v1beta2/DeviceTaintRule"
+      },
+      {
         "kind": "DeviceTaintRuleList",
         "version": "v1alpha3",
         "file": "resource.api.k8s.io/DeviceTaintRuleList_v1alpha3.json",
         "slug": "resource.api.k8s.io/v1alpha3/DeviceTaintRuleList"
       },
       {
+        "kind": "DeviceTaintRuleList",
+        "version": "v1beta2",
+        "file": "resource.api.k8s.io/DeviceTaintRuleList_v1beta2.json",
+        "slug": "resource.api.k8s.io/v1beta2/DeviceTaintRuleList"
+      },
+      {
         "kind": "DeviceTaintRuleSpec",
         "version": "v1alpha3",
         "file": "resource.api.k8s.io/DeviceTaintRuleSpec_v1alpha3.json",
         "slug": "resource.api.k8s.io/v1alpha3/DeviceTaintRuleSpec"
+      },
+      {
+        "kind": "DeviceTaintRuleSpec",
+        "version": "v1beta2",
+        "file": "resource.api.k8s.io/DeviceTaintRuleSpec_v1beta2.json",
+        "slug": "resource.api.k8s.io/v1beta2/DeviceTaintRuleSpec"
       },
       {
         "kind": "DeviceTaintRuleStatus",
@@ -14656,6 +14710,12 @@
         "version": "v1beta2",
         "file": "resource.api.k8s.io/OpaqueDeviceConfiguration_v1beta2.json",
         "slug": "resource.api.k8s.io/v1beta2/OpaqueDeviceConfiguration"
+      },
+      {
+        "kind": "PoolStatus",
+        "version": "v1alpha3",
+        "file": "resource.api.k8s.io/PoolStatus_v1alpha3.json",
+        "slug": "resource.api.k8s.io/v1alpha3/PoolStatus"
       },
       {
         "kind": "ResourceClaim",
@@ -14818,6 +14878,30 @@
         "version": "v1beta2",
         "file": "resource.api.k8s.io/ResourcePool_v1beta2.json",
         "slug": "resource.api.k8s.io/v1beta2/ResourcePool"
+      },
+      {
+        "kind": "ResourcePoolStatusRequest",
+        "version": "v1alpha3",
+        "file": "resource.api.k8s.io/ResourcePoolStatusRequest_v1alpha3.json",
+        "slug": "resource.api.k8s.io/v1alpha3/ResourcePoolStatusRequest"
+      },
+      {
+        "kind": "ResourcePoolStatusRequestList",
+        "version": "v1alpha3",
+        "file": "resource.api.k8s.io/ResourcePoolStatusRequestList_v1alpha3.json",
+        "slug": "resource.api.k8s.io/v1alpha3/ResourcePoolStatusRequestList"
+      },
+      {
+        "kind": "ResourcePoolStatusRequestSpec",
+        "version": "v1alpha3",
+        "file": "resource.api.k8s.io/ResourcePoolStatusRequestSpec_v1alpha3.json",
+        "slug": "resource.api.k8s.io/v1alpha3/ResourcePoolStatusRequestSpec"
+      },
+      {
+        "kind": "ResourcePoolStatusRequestStatus",
+        "version": "v1alpha3",
+        "file": "resource.api.k8s.io/ResourcePoolStatusRequestStatus_v1alpha3.json",
+        "slug": "resource.api.k8s.io/v1alpha3/ResourcePoolStatusRequestStatus"
       },
       {
         "kind": "ResourceSlice",
@@ -15142,16 +15226,58 @@
         "slug": "scheduling.api.k8s.io/v1alpha1/GangSchedulingPolicy"
       },
       {
+        "kind": "GangSchedulingPolicy",
+        "version": "v1alpha2",
+        "file": "scheduling.api.k8s.io/GangSchedulingPolicy_v1alpha2.json",
+        "slug": "scheduling.api.k8s.io/v1alpha2/GangSchedulingPolicy"
+      },
+      {
         "kind": "PodGroup",
         "version": "v1alpha1",
         "file": "scheduling.api.k8s.io/PodGroup_v1alpha1.json",
         "slug": "scheduling.api.k8s.io/v1alpha1/PodGroup"
       },
       {
+        "kind": "PodGroup",
+        "version": "v1alpha2",
+        "file": "scheduling.api.k8s.io/PodGroup_v1alpha2.json",
+        "slug": "scheduling.api.k8s.io/v1alpha2/PodGroup"
+      },
+      {
+        "kind": "PodGroupList",
+        "version": "v1alpha2",
+        "file": "scheduling.api.k8s.io/PodGroupList_v1alpha2.json",
+        "slug": "scheduling.api.k8s.io/v1alpha2/PodGroupList"
+      },
+      {
         "kind": "PodGroupPolicy",
         "version": "v1alpha1",
         "file": "scheduling.api.k8s.io/PodGroupPolicy_v1alpha1.json",
         "slug": "scheduling.api.k8s.io/v1alpha1/PodGroupPolicy"
+      },
+      {
+        "kind": "PodGroupResourceClaim",
+        "version": "v1alpha2",
+        "file": "scheduling.api.k8s.io/PodGroupResourceClaim_v1alpha2.json",
+        "slug": "scheduling.api.k8s.io/v1alpha2/PodGroupResourceClaim"
+      },
+      {
+        "kind": "PodGroupResourceClaimStatus",
+        "version": "v1alpha2",
+        "file": "scheduling.api.k8s.io/PodGroupResourceClaimStatus_v1alpha2.json",
+        "slug": "scheduling.api.k8s.io/v1alpha2/PodGroupResourceClaimStatus"
+      },
+      {
+        "kind": "PodGroupSpec",
+        "version": "v1alpha2",
+        "file": "scheduling.api.k8s.io/PodGroupSpec_v1alpha2.json",
+        "slug": "scheduling.api.k8s.io/v1alpha2/PodGroupSpec"
+      },
+      {
+        "kind": "PodGroupTemplate",
+        "version": "v1alpha2",
+        "file": "scheduling.api.k8s.io/PodGroupTemplate_v1alpha2.json",
+        "slug": "scheduling.api.k8s.io/v1alpha2/PodGroupTemplate"
       },
       {
         "kind": "PriorityClass",
@@ -15166,10 +15292,22 @@
         "slug": "scheduling.api.k8s.io/v1/PriorityClassList"
       },
       {
+        "kind": "TopologyConstraint",
+        "version": "v1alpha2",
+        "file": "scheduling.api.k8s.io/TopologyConstraint_v1alpha2.json",
+        "slug": "scheduling.api.k8s.io/v1alpha2/TopologyConstraint"
+      },
+      {
         "kind": "TypedLocalObjectReference",
         "version": "v1alpha1",
         "file": "scheduling.api.k8s.io/TypedLocalObjectReference_v1alpha1.json",
         "slug": "scheduling.api.k8s.io/v1alpha1/TypedLocalObjectReference"
+      },
+      {
+        "kind": "TypedLocalObjectReference",
+        "version": "v1alpha2",
+        "file": "scheduling.api.k8s.io/TypedLocalObjectReference_v1alpha2.json",
+        "slug": "scheduling.api.k8s.io/v1alpha2/TypedLocalObjectReference"
       },
       {
         "kind": "Workload",
@@ -15178,16 +15316,40 @@
         "slug": "scheduling.api.k8s.io/v1alpha1/Workload"
       },
       {
+        "kind": "Workload",
+        "version": "v1alpha2",
+        "file": "scheduling.api.k8s.io/Workload_v1alpha2.json",
+        "slug": "scheduling.api.k8s.io/v1alpha2/Workload"
+      },
+      {
         "kind": "WorkloadList",
         "version": "v1alpha1",
         "file": "scheduling.api.k8s.io/WorkloadList_v1alpha1.json",
         "slug": "scheduling.api.k8s.io/v1alpha1/WorkloadList"
       },
       {
+        "kind": "WorkloadList",
+        "version": "v1alpha2",
+        "file": "scheduling.api.k8s.io/WorkloadList_v1alpha2.json",
+        "slug": "scheduling.api.k8s.io/v1alpha2/WorkloadList"
+      },
+      {
+        "kind": "WorkloadPodGroupTemplateReference",
+        "version": "v1alpha2",
+        "file": "scheduling.api.k8s.io/WorkloadPodGroupTemplateReference_v1alpha2.json",
+        "slug": "scheduling.api.k8s.io/v1alpha2/WorkloadPodGroupTemplateReference"
+      },
+      {
         "kind": "WorkloadSpec",
         "version": "v1alpha1",
         "file": "scheduling.api.k8s.io/WorkloadSpec_v1alpha1.json",
         "slug": "scheduling.api.k8s.io/v1alpha1/WorkloadSpec"
+      },
+      {
+        "kind": "WorkloadSpec",
+        "version": "v1alpha2",
+        "file": "scheduling.api.k8s.io/WorkloadSpec_v1alpha2.json",
+        "slug": "scheduling.api.k8s.io/v1alpha2/WorkloadSpec"
       }
     ],
     "search.azure.com": [

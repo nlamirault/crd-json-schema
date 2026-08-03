@@ -5,11 +5,11 @@
   "type": "object",
   "properties": {
     "apiServerID": {
-      "description": "The ID of the reporting API server.",
+      "description": "apiServerID is the ID of the reporting API server.",
       "type": "string"
     },
     "decodableVersions": {
-      "description": "The API server can decode objects encoded in these versions. The encodingVersion must be included in the decodableVersions.",
+      "description": "decodableVersions are the encoding versions the API server can handle to decode. The API server can decode objects encoded in these versions. The encodingVersion must be included in the decodableVersions.",
       "items": {
         "type": "string"
       },
@@ -17,16 +17,21 @@
       "x-kubernetes-list-type": "set"
     },
     "encodingVersion": {
-      "description": "The API server encodes the object to this version when persisting it in the backend (e.g., etcd).",
+      "description": "encodingVersion the API server encodes the object to when persisting it in the backend (e.g., etcd).",
       "type": "string"
     },
     "servedVersions": {
-      "description": "The API server can serve these versions. DecodableVersions must include all ServedVersions.",
+      "description": "servedVersions lists all versions the API server can serve. DecodableVersions must include all ServedVersions.",
       "items": {
         "type": "string"
       },
       "type": "array",
       "x-kubernetes-list-type": "set"
     }
-  }
+  },
+  "required": [
+    "apiServerID",
+    "encodingVersion",
+    "decodableVersions"
+  ]
 }

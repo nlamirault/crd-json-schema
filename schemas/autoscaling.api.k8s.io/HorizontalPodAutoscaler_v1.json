@@ -24,5 +24,8 @@
       "$ref": "HorizontalPodAutoscalerStatus_v1.json",
       "description": "status is the current information about the autoscaler."
     }
-  }
+  },
+  "required": [
+    "spec"
+  ]
 }

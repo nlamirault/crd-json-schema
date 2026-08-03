@@ -5,15 +5,15 @@
   "type": "object",
   "properties": {
     "evaluationError": {
-      "description": "EvaluationError can appear in combination with Rules. It indicates an error occurred during rule evaluation, such as an authorizer that doesn't support rule evaluation, and that ResourceRules and/or NonResourceRules may be incomplete.",
+      "description": "evaluationError can appear in combination with Rules. It indicates an error occurred during rule evaluation, such as an authorizer that doesn't support rule evaluation, and that ResourceRules and/or NonResourceRules may be incomplete.",
       "type": "string"
     },
     "incomplete": {
-      "description": "Incomplete is true when the rules returned by this call are incomplete. This is most commonly encountered when an authorizer, such as an external authorizer, doesn't support rules evaluation.",
+      "description": "incomplete is true when the rules returned by this call are incomplete. This is most commonly encountered when an authorizer, such as an external authorizer, doesn't support rules evaluation.",
       "type": "boolean"
     },
     "nonResourceRules": {
-      "description": "NonResourceRules is the list of actions the subject is allowed to perform on non-resources. The list ordering isn't significant, may contain duplicates, and possibly be incomplete.",
+      "description": "nonResourceRules is the list of actions the subject is allowed to perform on non-resources. The list ordering isn't significant, may contain duplicates, and possibly be incomplete.",
       "items": {
         "$ref": "NonResourceRule_v1.json"
       },
@@ -21,7 +21,7 @@
       "x-kubernetes-list-type": "atomic"
     },
     "resourceRules": {
-      "description": "ResourceRules is the list of actions the subject is allowed to perform on resources. The list ordering isn't significant, may contain duplicates, and possibly be incomplete.",
+      "description": "resourceRules is the list of actions the subject is allowed to perform on resources. The list ordering isn't significant, may contain duplicates, and possibly be incomplete.",
       "items": {
         "$ref": "ResourceRule_v1.json"
       },

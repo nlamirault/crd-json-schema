@@ -14,15 +14,15 @@
     },
     "metadata": {
       "$ref": "../meta.api.k8s.io/ObjectMeta_v1.json",
-      "description": "Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata"
+      "description": "metadata is the standard list metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata"
     },
     "spec": {
       "$ref": "SelfSubjectRulesReviewSpec_v1.json",
-      "description": "Spec holds information about the request being evaluated."
+      "description": "spec holds information about the request being evaluated."
     },
     "status": {
       "$ref": "SubjectRulesReviewStatus_v1.json",
-      "description": "Status is filled in by the server and indicates the set of actions a user can perform."
+      "description": "status is filled in by the server and indicates the set of actions a user can perform."
     }
   },
   "required": [

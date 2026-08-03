@@ -12,7 +12,7 @@ export FILES=(
 )
 
 # renovate: datasource=github-tags depName=aws-controllers-k8s/cloudtrail-controller
-export VERSION=1.2.3
+export VERSION=1.3.2
 
 function generate_url {
   local crd_file=$1

@@ -59,6 +59,13 @@
                 "description": "ChannelAccessControl maps channel types to per-agent-configuration access control\noverrides. When set, these take priority over ensemble-level\nChannelAccessControl for this agent configuration. Use AllowedChats with Discord\nchannel IDs to route specific Discord channels to this persona.",
                 "type": "object"
               },
+              "channelConfigs": {
+                "additionalProperties": {
+                  "type": "string"
+                },
+                "description": "ChannelConfigs maps a channel type to the Secret holding its credentials,\nfor this agent config only. An entry replaces the ensemble-level\nspec.channelConfigs value for that channel type, so one agent config can\nuse a different bot token from the rest of the ensemble.",
+                "type": "object"
+              },
               "channelTriggers": {
                 "additionalProperties": {
                   "description": "ChannelTriggerSpec controls when an inbound channel message becomes\nan AgentRun. All fields are optional; when omitted the agent triggers\non every accepted message.",
@@ -419,10 +426,19 @@
               "memory": {
                 "description": "Memory defines initial memory seeds for this agent configuration.",
                 "properties": {
+                  "autoStore": {
+                    "description": "AutoStore overrides the ensemble-level AutoStoreMemory setting for this\nagent configuration. When set, it controls whether the generated agent\nautomatically writes a summary of each successful run to its memory\nserver. Nil inherits the ensemble-level default (which itself defaults to\ntrue). See MemorySpec.AutoStore.",
+                    "type": "boolean"
+                  },
                   "enabled": {
                     "default": true,
                     "description": "Enabled indicates whether persistent memory is active.",
                     "type": "boolean"
+                  },
+                  "maxSizeKB": {
+                    "default": 256,
+                    "description": "MaxSizeKB caps the size of the agent's MEMORY.md.\nMirrors AgentSpec.memory.maxSizeKB so the setting is expressible on the\nensemble rather than only by editing a generated Agent.",
+                    "type": "integer"
                   },
                   "seeds": {
                     "description": "Seeds is a list of initial memory entries injected into MEMORY.md.",
@@ -471,6 +487,15 @@
                     "description": "Cron is a raw cron expression. Takes precedence over Interval.",
                     "type": "string"
                   },
+                  "firstTick": {
+                    "default": "immediate",
+                    "description": "FirstTick controls whether a newly created schedule runs straight away.\n\"immediate\" (default): the first tick is treated as already due, so the\nagent runs as soon as the ensemble is enabled.\n\"afterInterval\": wait a full interval before the first run. Use this when\nthe agent has nothing to do until something else has happened — a\nheartbeat that fires at t=0 wakes up to an empty inbox, and when a\nstimulus targets the same agent the two collide and do the work twice.",
+                    "enum": [
+                      "immediate",
+                      "afterInterval"
+                    ],
+                    "type": "string"
+                  },
                   "interval": {
                     "description": "Interval is a human-readable interval (e.g. \"30m\", \"1h\", \"6h\").\nConverted to a cron expression by the controller.",
                     "type": "string"
@@ -494,6 +519,16 @@
                   "task",
                   "type"
                 ],
+                "type": "object"
+              },
+              "skillParams": {
+                "additionalProperties": {
+                  "additionalProperties": {
+                    "type": "string"
+                  },
+                  "type": "object"
+                },
+                "description": "SkillParams provides per-skill parameters for this agent config only.\nAn entry replaces the ensemble-level spec.skillParams map for that skill\noutright rather than merging key by key, so a config that needs different\nparameters restates them in full.",
                 "type": "object"
               },
               "skills": {
@@ -591,6 +626,22 @@
                   "hostname": {
                     "description": "Hostname overrides the auto-derived hostname.",
                     "type": "string"
+                  },
+                  "rateLimit": {
+                    "description": "RateLimit bounds requests to the endpoint. Mirrors the rate limit the\nagents API accepts when patching a standalone Agent, so the setting is\nexpressible on the ensemble rather than only by editing a generated Agent.",
+                    "properties": {
+                      "burstSize": {
+                        "default": 10,
+                        "description": "BurstSize allows short bursts above the rate limit.",
+                        "type": "integer"
+                      },
+                      "requestsPerMinute": {
+                        "default": 60,
+                        "description": "RequestsPerMinute is the maximum requests per minute per API key.",
+                        "type": "integer"
+                      }
+                    },
+                    "type": "object"
                   }
                 },
                 "required": [
@@ -677,6 +728,10 @@
             "type": "object"
           },
           "type": "array"
+        },
+        "autoStoreMemory": {
+          "description": "AutoStoreMemory sets the default for whether agents generated by this\nensemble automatically write a summary of each successful run to their\nprivate memory server. Nil defaults to true (existing behaviour). Set to\nfalse to disable automatic memory writes across the whole ensemble while\nkeeping the memory skill's /store endpoint for curated memory.\nPer-agent-config overrides via AgentConfigMemory.AutoStore take precedence.",
+          "type": "boolean"
         },
         "baseURL": {
           "description": "BaseURL overrides the provider's default API endpoint for all generated instances.\nSet during onboarding for local providers (e.g. Ollama, LM Studio) that do not\nrequire authentication.",
@@ -2603,6 +2658,15 @@
             },
             "prompt": {
               "description": "Prompt is the task text injected into the target agent's AgentRun.",
+              "type": "string"
+            },
+            "trigger": {
+              "default": "onReady",
+              "description": "Trigger controls when the stimulus fires.\n\"onReady\" (default): fire automatically as soon as every agent in the\nensemble reports ready. Enabling the ensemble is then the only consent\nstep — the first run starts on its own.\n\"manual\": never fire automatically. The ensemble reaches Ready and waits;\nthe run is created only by POST /api/v1/ensembles/{name}/stimulus/trigger.\nUse this when a cycle costs real money or reaches the network, and a human\nshould choose the moment it starts.",
+              "enum": [
+                "onReady",
+                "manual"
+              ],
               "type": "string"
             }
           },

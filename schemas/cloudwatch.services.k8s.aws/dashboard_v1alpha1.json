@@ -16,7 +16,7 @@
       "description": "DashboardSpec defines the desired state of Dashboard.",
       "properties": {
         "dashboardBody": {
-          "description": "The detailed information about the dashboard in JSON format, including the\nwidgets to include and their location on the dashboard. This parameter is\nrequired.\n\nFor more information about the syntax, see Dashboard Body Structure and Syntax\n(https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/CloudWatch-Dashboard-Body-Structure.html).",
+          "description": "The detailed information about the dashboard in JSON format, including the\nwidgets to include and their location on the dashboard. This parameter is\nrequired.\n\nFor more information about the syntax, see Dashboard Body Structure and Syntax\n(https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Dashboard-Body-Structure.html).",
           "type": "string"
         },
         "dashboardName": {
@@ -42,6 +42,10 @@
             },
             "ownerAccountID": {
               "description": "OwnerAccountID is the AWS Account ID of the account that owns the\nbackend AWS service API resource.",
+              "type": "string"
+            },
+            "partition": {
+              "description": "Partition is the AWS partition in which the resource exists or will exist",
               "type": "string"
             },
             "region": {

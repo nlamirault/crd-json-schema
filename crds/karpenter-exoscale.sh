@@ -9,7 +9,7 @@ export FILES=(
 )
 
 # renovate: datasource=github-tags depName=exoscale/karpenter-provider-exoscale
-export VERSION=1.36.2
+export VERSION=1.36.4
 
 function generate_url {
   local crd_file=$1

@@ -330,7 +330,7 @@
             },
             "cpuManagerReconcilePeriod": {
               "default": "10s",
-              "description": "CPUManagerReconcilePeriod is how often the kubelet reconciles CPU assignments.",
+              "description": "CPUManagerReconcilePeriod is how often the kubelet reconciles CPU assignments.\nThe default value above must stay in sync with DefaultCPUManagerReconcilePeriod.",
               "pattern": "^[0-9]+(ns|us|ms|s|m|h)$",
               "type": "string"
             },
@@ -386,6 +386,13 @@
                 }
               },
               "type": "object"
+            },
+            "maxPods": {
+              "description": "MaxPods sets the kubelet --max-pods top-level configuration field.\nWhen unset (nil), the kubelet built-in default is used.",
+              "format": "int32",
+              "maximum": 65535,
+              "minimum": 1,
+              "type": "integer"
             },
             "systemReserved": {
               "description": "SystemReserved is resources reserved for OS system components",
@@ -511,7 +518,7 @@
         },
         {
           "message": "cpuManagerPolicy 'static' requires a non-zero cpu reservation in kube-reserved or system-reserved",
-          "rule": "!has(self.kubelet) || self.kubelet.cpuManagerPolicy != 'static' || ((has(self.kubelet.kubeReserved) && has(self.kubelet.kubeReserved.cpu) && self.kubelet.kubeReserved.cpu != '0') || (has(self.kubelet.systemReserved) && has(self.kubelet.systemReserved.cpu) && self.kubelet.systemReserved.cpu != '0'))"
+          "rule": "!has(self.kubelet) || !has(self.kubelet.cpuManagerPolicy) || self.kubelet.cpuManagerPolicy != 'static' || ((has(self.kubelet.kubeReserved) && has(self.kubelet.kubeReserved.cpu) && self.kubelet.kubeReserved.cpu != '0') || (has(self.kubelet.systemReserved) && has(self.kubelet.systemReserved.cpu) && self.kubelet.systemReserved.cpu != '0'))"
         }
       ]
     },
@@ -580,12 +587,8 @@
           },
           "type": "array"
         },
-        "containerRegistryHash": {
-          "description": "ContainerRegistryHash is a SHA256 of the resolved container registry\nconfiguration (including referenced Secret contents). It is used for\ndrift detection when a referenced Secret is rotated.",
-          "type": "string"
-        },
-        "cpuManagerHash": {
-          "description": "CPUManagerHash is a SHA256 of the kubelet CPU manager configuration.\nEmpty when all CPU manager fields are at their defaults.",
+        "configurationHash": {
+          "description": "ConfigurationHash is a SHA256 over every bootstrap-affecting field\n(container registry Secrets, kubelet CPU manager, kubelet maxPods).\nThe cloudprovider uses it to detect drift against the\nkarpenter.exoscale.com/configuration-hash annotation stored on each\nNodeClaim. Empty when no drift-sensitive configuration is set.",
           "type": "string"
         },
         "elasticIPs": {

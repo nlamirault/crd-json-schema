@@ -10,7 +10,7 @@
     },
     "describedObject": {
       "$ref": "CrossVersionObjectReference_v2.json",
-      "description": "DescribedObject specifies the descriptions of a object,such as kind,name apiVersion"
+      "description": "describedObject specifies the descriptions of a object,such as kind,name apiVersion"
     },
     "metric": {
       "$ref": "MetricIdentifier_v2.json",

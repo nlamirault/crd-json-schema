@@ -6,7 +6,7 @@
   "properties": {
     "parentRef": {
       "$ref": "ParentReference_v1.json",
-      "description": "ParentRef references the resource that an IPAddress is attached to. An IPAddress must reference a parent object."
+      "description": "parentRef references the resource that an IPAddress is attached to. An IPAddress must reference a parent object."
     }
   },
   "required": [

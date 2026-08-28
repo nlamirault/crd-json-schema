@@ -1,0 +1,49 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "io.k8s.api.core.v1.NodeAllocatableResourceClaimStatus",
+  "description": "NodeAllocatableResourceClaimStatus describes the status of node allocatable resources allocated via DRA.",
+  "type": "object",
+  "properties": {
+    "containers": {
+      "description": "Containers lists the names of all containers in this pod that reference the claim.",
+      "items": {
+        "type": "string"
+      },
+      "type": "array",
+      "x-kubernetes-list-type": "set"
+    },
+    "mapping": {
+      "description": "Mapping contains allocations through devices mapped in the device spec's `nodeAllocatableResources[...].mapping` field. This is used by kubelet for pod level and container-level cgroup enforcement.",
+      "items": {
+        "$ref": "NodeAllocatableMappedResources_v1.json"
+      },
+      "type": "array",
+      "x-kubernetes-list-map-keys": [
+        "name"
+      ],
+      "x-kubernetes-list-type": "map",
+      "x-kubernetes-patch-merge-key": "name",
+      "x-kubernetes-patch-strategy": "merge"
+    },
+    "overhead": {
+      "description": "Overhead contains allocations through devices mapped in the device spec's `nodeAllocatableResources[...].overhead` field. This is used by kubelet for pod level and container-level cgroup enforcement.",
+      "items": {
+        "$ref": "NodeAllocatableOverheadResources_v1.json"
+      },
+      "type": "array",
+      "x-kubernetes-list-map-keys": [
+        "name"
+      ],
+      "x-kubernetes-list-type": "map",
+      "x-kubernetes-patch-merge-key": "name",
+      "x-kubernetes-patch-strategy": "merge"
+    },
+    "resourceClaimName": {
+      "description": "ResourceClaimName is the resource claim referenced by the pod that resulted in this node allocatable resource allocation.",
+      "type": "string"
+    }
+  },
+  "required": [
+    "resourceClaimName"
+  ]
+}

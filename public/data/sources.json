@@ -1085,6 +1085,7 @@
     "cncf_maturity": "sandbox",
     "project": "ack"
   },
+  "lifecycle.api.k8s.io": {},
   "logging.cnrm.cloud.google.com": {
     "category": "Google Cloud",
     "upstream": "GoogleCloudPlatform/k8s-config-connector",

@@ -21,7 +21,7 @@
     },
     "metadata": {
       "$ref": "../meta.api.k8s.io/ListMeta_v1.json",
-      "description": "Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata"
+      "description": "metadata is the standard list metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata"
     }
   },
   "required": [

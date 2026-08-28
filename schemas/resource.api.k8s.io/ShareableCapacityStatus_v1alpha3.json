@@ -1,0 +1,30 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "io.k8s.api.resource.v1alpha3.ShareableCapacityStatus",
+  "description": "ShareableCapacityStatus reports aggregate amounts for a single shareable capacity key.",
+  "type": "object",
+  "properties": {
+    "available": {
+      "$ref": "../api.api.k8s.io/Quantity_resource.json",
+      "description": "Available is Total minus Consumed, never negative."
+    },
+    "consumed": {
+      "$ref": "../api.api.k8s.io/Quantity_resource.json",
+      "description": "Consumed is the amount drawn by current allocations."
+    },
+    "name": {
+      "description": "Name is the capacity name.",
+      "type": "string"
+    },
+    "total": {
+      "$ref": "../api.api.k8s.io/Quantity_resource.json",
+      "description": "Total is the sum of this capacity across shareable devices in the pool."
+    }
+  },
+  "required": [
+    "name",
+    "total",
+    "consumed",
+    "available"
+  ]
+}

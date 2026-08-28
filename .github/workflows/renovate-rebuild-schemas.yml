@@ -42,7 +42,7 @@ jobs:
         config: ${{ vars.PERMISSIONS_CONFIG }}
 
     - name: Install yq
-      uses: mikefarah/yq@1b9b4ac5187171d2e5e3129be0cfa827c7f9d53d # v4.53.3
+      uses: mikefarah/yq@c14f446382944492701b16c1ddb48bb9dbe683e3 # v4.53.6
 
     - name: Install kustomize
       uses: imranismail/setup-kustomize@53f941b41dca13ed61874bbc6b4b6e1562877530 # v3.0.0

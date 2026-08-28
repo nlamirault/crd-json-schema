@@ -59,6 +59,7 @@
       "karpenter.sh",
       "karpenter.exoscale.com",
       "karpenter.oci.oracle.com",
+      "karpenter.clever-cloud.com",
       "oci.oraclecloud.com"
     ]
   },

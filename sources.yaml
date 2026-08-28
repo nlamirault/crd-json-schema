@@ -811,6 +811,14 @@ sources:
   groups:
   - karpenter.oci.oracle.com
   project: karpenter
+- id: karpenter-clevercloud
+  name: Karpenter (Clever Cloud)
+  category: Kubernetes
+  cncf: null
+  upstream: CleverCloud/karpenter-provider-clever-cloud
+  groups:
+  - karpenter.clever-cloud.com
+  project: karpenter
 - id: open-feature-operator
   name: OpenFeature Operator
   category: Other Extensions

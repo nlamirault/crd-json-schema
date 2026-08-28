@@ -1013,6 +1013,12 @@
     "cncf_maturity": null,
     "project": "karpenter"
   },
+  "karpenter.clever-cloud.com": {
+    "category": "Kubernetes",
+    "upstream": "CleverCloud/karpenter-provider-clever-cloud",
+    "cncf_maturity": null,
+    "project": "karpenter"
+  },
   "karpenter.exoscale.com": {
     "category": "Kubernetes",
     "upstream": "exoscale/karpenter-provider-exoscale",

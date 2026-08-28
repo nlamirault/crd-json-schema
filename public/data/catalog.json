@@ -16426,6 +16426,16 @@
         "upstream": "Azure/karpenter-provider-azure"
       }
     ],
+    "karpenter.clever-cloud.com": [
+      {
+        "kind": "clevernodeclass",
+        "version": "v1alpha1",
+        "file": "karpenter.clever-cloud.com/clevernodeclass_v1alpha1.json",
+        "slug": "karpenter.clever-cloud.com/v1alpha1/clevernodeclass",
+        "category": "Kubernetes",
+        "upstream": "CleverCloud/karpenter-provider-clever-cloud"
+      }
+    ],
     "karpenter.exoscale.com": [
       {
         "kind": "exoscalenodeclass",

@@ -15,7 +15,7 @@
       "description": "Desired policy configuration.",
       "properties": {
         "backend": {
-          "description": "Settings for how to connect to destination backends.\n\nA backend policy can target a `Gateway` (optionally, with a\n`sectionName` indicating the listener), `ListenerSet`, `Route`\n(optionally, with a `sectionName` indicating the route rule), or a\n`Service` or `Backend` (optionally, with a `sectionName` indicating the\nport for `Service`, or sub-backend for `Backend`).\n\nNote that a backend policy applies when connecting to a specific destination backend. Targeting a higher level\nresource, like `Gateway`, is just a way to easily apply a policy to a\ngroup of backends.\n\nWhen multiple policies are selected for a given request, they are merged on a field-level basis, but not a deep\nmerge. Precedence is given to more precise policies: `Gateway` <\n`Listener` < `Route` < `Route Rule` < `Backend` or `Service`. For\nexample, if a `Gateway` policy sets `tcp` and `tls`, and a `Backend`\npolicy sets `tls`, the effective policy would be `tcp` from the\n`Gateway`, and `tls` from the `Backend`.",
+          "description": "Settings for how to connect to destination backends.\n\nA backend policy can target a `Gateway` (optionally, with a\n`sectionName` indicating the listener), `ListenerSet`, `Route`\n(optionally, with a `sectionName` indicating the route rule), or a\n`Service` or `Backend` (optionally, with a `sectionName` indicating the\nnumeric port for `Service`, or sub-backend for `Backend`).\n\nNote that a backend policy applies when connecting to a specific destination backend. Targeting a higher level\nresource, like `Gateway`, is just a way to easily apply a policy to a\ngroup of backends.\n\nWhen multiple policies are selected for a given request, they are merged on a field-level basis, but not a deep\nmerge. Precedence is given to more precise policies: `Gateway` <\n`Listener` < `Route` < `Route Rule` < `Backend` or `Service`. For\nexample, if a `Gateway` policy sets `tcp` and `tls`, and a `Backend`\npolicy sets `tls`, the effective policy would be `tcp` from the\n`Gateway`, and `tls` from the `Backend`.",
           "properties": {
             "ai": {
               "description": "Settings for AI workloads. This is only applicable when\nconnecting to a `Backend` of type `ai`.",
@@ -39,6 +39,34 @@
                     "required": [
                       "field",
                       "value"
+                    ],
+                    "type": "object"
+                  },
+                  "maxItems": 64,
+                  "minItems": 1,
+                  "type": "array"
+                },
+                "finalTransformations": {
+                  "description": "CEL transformations to compute and set fields in the request body.\nThe expression result overwrites any existing value for that field.\nThis has a higher priority than `overrides` if both are set for the same\nkey.\nThose transformations are applied after the request is converted to the provider's format, so they can be used to set provider-specific fields.",
+                  "items": {
+                    "description": "Maps a request JSON field to a CEL expression.\nThe expression is evaluated against the current request body and its result\nis assigned to the configured field.",
+                    "properties": {
+                      "expression": {
+                        "description": "CEL expression used to compute the field value.",
+                        "maxLength": 16384,
+                        "minLength": 1,
+                        "type": "string"
+                      },
+                      "field": {
+                        "description": "Name of the field to set.",
+                        "maxLength": 256,
+                        "minLength": 1,
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "expression",
+                      "field"
                     ],
                     "type": "object"
                   },
@@ -174,6 +202,15 @@
                           "bedrockGuardrails": {
                             "description": "AWS Bedrock Guardrails settings for prompt\nguarding.",
                             "properties": {
+                              "action": {
+                                "default": "Reject",
+                                "description": "Action controls whether the guardrail's verdict is enforced or only\nobserved. `Reject` (the default) enforces the guardrail: a blocked\nassessment rejects the request/response and an anonymized assessment masks\nthe matched content. `Audit` runs the guardrail in observe mode: it is\ninvoked and its assessment recorded (metrics + structured log), but the\nrequest/response is never blocked or masked.",
+                                "enum": [
+                                  "Audit",
+                                  "Reject"
+                                ],
+                                "type": "string"
+                              },
                               "identifier": {
                                 "description": "Identifier of the Guardrail policy to use for the backend.",
                                 "maxLength": 256,
@@ -431,12 +468,9 @@
                                       "requestTimeout": {
                                         "description": "Deadline for receiving a response from the backend.",
                                         "maxLength": 32,
+                                        "pattern": "^([0-9]{1,5}(h|m|s|ms)){1,4}$",
                                         "type": "string",
                                         "x-kubernetes-validations": [
-                                          {
-                                            "message": "invalid duration value",
-                                            "rule": "matches(self, '^([0-9]{1,5}(h|m|s|ms)){1,4}$')"
-                                          },
                                           {
                                             "message": "requestTimeout must be at least 1ms",
                                             "rule": "duration(self) >= duration('1ms')"
@@ -460,12 +494,9 @@
                                       "connectTimeout": {
                                         "description": "Deadline for establishing a connection to\nthe destination.",
                                         "maxLength": 32,
+                                        "pattern": "^([0-9]{1,5}(h|m|s|ms)){1,4}$",
                                         "type": "string",
                                         "x-kubernetes-validations": [
-                                          {
-                                            "message": "invalid duration value",
-                                            "rule": "matches(self, '^([0-9]{1,5}(h|m|s|ms)){1,4}$')"
-                                          },
                                           {
                                             "message": "connectTimeout must be at least 100ms",
                                             "rule": "duration(self) >= duration('100ms')"
@@ -478,12 +509,9 @@
                                           "interval": {
                                             "description": "Time between keepalive probes.\nIf unset, this defaults to 180s.",
                                             "maxLength": 32,
+                                            "pattern": "^([0-9]{1,5}(h|m|s|ms)){1,4}$",
                                             "type": "string",
                                             "x-kubernetes-validations": [
-                                              {
-                                                "message": "invalid duration value",
-                                                "rule": "matches(self, '^([0-9]{1,5}(h|m|s|ms)){1,4}$')"
-                                              },
                                               {
                                                 "message": "interval must be at least 1 second",
                                                 "rule": "duration(self) >= duration('1s')"
@@ -500,12 +528,9 @@
                                           "time": {
                                             "description": "Time a connection needs to be idle before keepalive probes start being sent.\nIf unset, this defaults to 180s.",
                                             "maxLength": 32,
+                                            "pattern": "^([0-9]{1,5}(h|m|s|ms)){1,4}$",
                                             "type": "string",
                                             "x-kubernetes-validations": [
-                                              {
-                                                "message": "invalid duration value",
-                                                "rule": "matches(self, '^([0-9]{1,5}(h|m|s|ms)){1,4}$')"
-                                              },
                                               {
                                                 "message": "time must be at least 1 second",
                                                 "rule": "duration(self) >= duration('1s')"
@@ -533,22 +558,44 @@
                                         "type": "array"
                                       },
                                       "caCertificateRefs": {
-                                        "description": "CA certificate `ConfigMap` to use to\nverify the server certificate.\nIf unset, the system's trusted certificates are used.",
+                                        "description": "CA certificate source to use to verify the server certificate. Omitted kind\nand `ConfigMap` select a ConfigMap; `Secret` selects a Secret. The `ca.crt`\nkey is required. If unset, the system's trusted certificates are used.",
                                         "items": {
-                                          "description": "LocalObjectReference contains enough information to let you locate the\nreferenced object inside the same namespace.",
+                                          "description": "LocalCACertificateRef references a same-namespace CA certificate source.\nAn omitted kind defaults to ConfigMap.",
                                           "properties": {
+                                            "kind": {
+                                              "default": "ConfigMap",
+                                              "description": "Kind of the referenced CA certificate source. Omitted defaults to ConfigMap.",
+                                              "enum": [
+                                                "ConfigMap",
+                                                "Secret"
+                                              ],
+                                              "type": "string"
+                                            },
                                             "name": {
-                                              "default": "",
-                                              "description": "Name of the referent",
+                                              "description": "Name of the referenced CA certificate source.",
+                                              "maxLength": 253,
+                                              "minLength": 1,
                                               "type": "string"
                                             }
                                           },
+                                          "required": [
+                                            "name"
+                                          ],
                                           "type": "object",
                                           "x-kubernetes-map-type": "atomic"
                                         },
                                         "maxItems": 1,
                                         "type": "array",
                                         "x-kubernetes-list-type": "atomic"
+                                      },
+                                      "certificateSource": {
+                                        "default": "Inline",
+                                        "description": "Source for the gateway's client identity and trust roots (`Inline` default, or `SPIFFE`).",
+                                        "enum": [
+                                          "Inline",
+                                          "SPIFFE"
+                                        ],
+                                        "type": "string"
                                       },
                                       "insecureSkipVerify": {
                                         "description": "Originates TLS but skips verification of the backend's certificate\nWARNING: insecure; only use if the risks are understood\n\nModes:\n* `All` disables all TLS verification\n* `Hostname` trusts the CA certificate but ignores hostname/SAN mismatches.\n  Still insecure; prefer `verifySubjectAltNames` where possible.",
@@ -637,6 +684,10 @@
                                         "rule": "has(self.insecureSkipVerify) ? !has(self.verifySubjectAltNames) : true"
                                       },
                                       {
+                                        "message": "certificateSource SPIFFE may not be combined with mtlsCertificateRef, caCertificateRefs, or insecureSkipVerify",
+                                        "rule": "!has(self.certificateSource) || self.certificateSource != 'SPIFFE' || (!has(self.mtlsCertificateRef) && !has(self.caCertificateRefs) && !has(self.insecureSkipVerify))"
+                                      },
+                                      {
                                         "message": "at most one of the fields in [verifySubjectAltNames insecureSkipVerify] may be set",
                                         "rule": "[has(self.verifySubjectAltNames),has(self.insecureSkipVerify)].filter(x,x==true).size() <= 1"
                                       }
@@ -646,7 +697,7 @@
                                     "description": "Settings for managing tunnel connections to the backend, like `HTTPS_PROXY`",
                                     "properties": {
                                       "backendRef": {
-                                        "description": "Proxy server to reach.\nSupported types: `Service` and `Backend`.",
+                                        "description": "`backendRef` selects a backend for this policy.\nMutually exclusive with `url`.",
                                         "properties": {
                                           "group": {
                                             "default": "",
@@ -694,12 +745,35 @@
                                             "rule": "(size(self.group) == 0 && self.kind == 'Service') ? has(self.port) : true"
                                           }
                                         ]
+                                      },
+                                      "mode": {
+                                        "default": "Auto",
+                                        "description": "How requests are sent through the proxy.\nDefaults to `Auto`.",
+                                        "enum": [
+                                          "Auto",
+                                          "Connect"
+                                        ],
+                                        "type": "string"
+                                      },
+                                      "url": {
+                                        "description": "`url` directly specifies the HTTP(S) endpoint for this policy.\nWhen the scheme is `https`, backend TLS is enabled automatically.\nMutually exclusive with `backendRef`.\nURLs are opaque; referencing a Kubernetes service hostname like `hello.ns.svc.cluster.local`\nwill not apply Service policies or load balancing.",
+                                        "maxLength": 1024,
+                                        "minLength": 1,
+                                        "pattern": "^https?://[^/?#@]+(/[^?#]*)?$",
+                                        "type": "string"
                                       }
                                     },
-                                    "required": [
-                                      "backendRef"
-                                    ],
-                                    "type": "object"
+                                    "type": "object",
+                                    "x-kubernetes-validations": [
+                                      {
+                                        "message": "exactly one of the fields in [backendRef url] must be set",
+                                        "rule": "[has(self.backendRef),has(self.url)].filter(x,x==true).size() == 1"
+                                      },
+                                      {
+                                        "message": "url must not include a path for backend tunnel",
+                                        "rule": "!has(self.url) || self.url.matches('^https?://[^/?#]+$')"
+                                      }
+                                    ]
                                   }
                                 },
                                 "type": "object",
@@ -733,6 +807,15 @@
                           "googleModelArmor": {
                             "description": "Google Model Armor settings for prompt guarding.",
                             "properties": {
+                              "action": {
+                                "default": "Reject",
+                                "description": "Action controls whether flagged content is rejected or only observed.\n`Reject` (the default) rejects flagged content; `Audit` records the\nwould-be rejection without blocking.",
+                                "enum": [
+                                  "Audit",
+                                  "Reject"
+                                ],
+                                "type": "string"
+                              },
                               "location": {
                                 "default": "us-central1",
                                 "description": "Google Cloud location, for example `us-central1`.\nDefaults to `us-central1` if not specified.",
@@ -823,12 +906,9 @@
                                       "requestTimeout": {
                                         "description": "Deadline for receiving a response from the backend.",
                                         "maxLength": 32,
+                                        "pattern": "^([0-9]{1,5}(h|m|s|ms)){1,4}$",
                                         "type": "string",
                                         "x-kubernetes-validations": [
-                                          {
-                                            "message": "invalid duration value",
-                                            "rule": "matches(self, '^([0-9]{1,5}(h|m|s|ms)){1,4}$')"
-                                          },
                                           {
                                             "message": "requestTimeout must be at least 1ms",
                                             "rule": "duration(self) >= duration('1ms')"
@@ -852,12 +932,9 @@
                                       "connectTimeout": {
                                         "description": "Deadline for establishing a connection to\nthe destination.",
                                         "maxLength": 32,
+                                        "pattern": "^([0-9]{1,5}(h|m|s|ms)){1,4}$",
                                         "type": "string",
                                         "x-kubernetes-validations": [
-                                          {
-                                            "message": "invalid duration value",
-                                            "rule": "matches(self, '^([0-9]{1,5}(h|m|s|ms)){1,4}$')"
-                                          },
                                           {
                                             "message": "connectTimeout must be at least 100ms",
                                             "rule": "duration(self) >= duration('100ms')"
@@ -870,12 +947,9 @@
                                           "interval": {
                                             "description": "Time between keepalive probes.\nIf unset, this defaults to 180s.",
                                             "maxLength": 32,
+                                            "pattern": "^([0-9]{1,5}(h|m|s|ms)){1,4}$",
                                             "type": "string",
                                             "x-kubernetes-validations": [
-                                              {
-                                                "message": "invalid duration value",
-                                                "rule": "matches(self, '^([0-9]{1,5}(h|m|s|ms)){1,4}$')"
-                                              },
                                               {
                                                 "message": "interval must be at least 1 second",
                                                 "rule": "duration(self) >= duration('1s')"
@@ -892,12 +966,9 @@
                                           "time": {
                                             "description": "Time a connection needs to be idle before keepalive probes start being sent.\nIf unset, this defaults to 180s.",
                                             "maxLength": 32,
+                                            "pattern": "^([0-9]{1,5}(h|m|s|ms)){1,4}$",
                                             "type": "string",
                                             "x-kubernetes-validations": [
-                                              {
-                                                "message": "invalid duration value",
-                                                "rule": "matches(self, '^([0-9]{1,5}(h|m|s|ms)){1,4}$')"
-                                              },
                                               {
                                                 "message": "time must be at least 1 second",
                                                 "rule": "duration(self) >= duration('1s')"
@@ -925,22 +996,44 @@
                                         "type": "array"
                                       },
                                       "caCertificateRefs": {
-                                        "description": "CA certificate `ConfigMap` to use to\nverify the server certificate.\nIf unset, the system's trusted certificates are used.",
+                                        "description": "CA certificate source to use to verify the server certificate. Omitted kind\nand `ConfigMap` select a ConfigMap; `Secret` selects a Secret. The `ca.crt`\nkey is required. If unset, the system's trusted certificates are used.",
                                         "items": {
-                                          "description": "LocalObjectReference contains enough information to let you locate the\nreferenced object inside the same namespace.",
+                                          "description": "LocalCACertificateRef references a same-namespace CA certificate source.\nAn omitted kind defaults to ConfigMap.",
                                           "properties": {
+                                            "kind": {
+                                              "default": "ConfigMap",
+                                              "description": "Kind of the referenced CA certificate source. Omitted defaults to ConfigMap.",
+                                              "enum": [
+                                                "ConfigMap",
+                                                "Secret"
+                                              ],
+                                              "type": "string"
+                                            },
                                             "name": {
-                                              "default": "",
-                                              "description": "Name of the referent",
+                                              "description": "Name of the referenced CA certificate source.",
+                                              "maxLength": 253,
+                                              "minLength": 1,
                                               "type": "string"
                                             }
                                           },
+                                          "required": [
+                                            "name"
+                                          ],
                                           "type": "object",
                                           "x-kubernetes-map-type": "atomic"
                                         },
                                         "maxItems": 1,
                                         "type": "array",
                                         "x-kubernetes-list-type": "atomic"
+                                      },
+                                      "certificateSource": {
+                                        "default": "Inline",
+                                        "description": "Source for the gateway's client identity and trust roots (`Inline` default, or `SPIFFE`).",
+                                        "enum": [
+                                          "Inline",
+                                          "SPIFFE"
+                                        ],
+                                        "type": "string"
                                       },
                                       "insecureSkipVerify": {
                                         "description": "Originates TLS but skips verification of the backend's certificate\nWARNING: insecure; only use if the risks are understood\n\nModes:\n* `All` disables all TLS verification\n* `Hostname` trusts the CA certificate but ignores hostname/SAN mismatches.\n  Still insecure; prefer `verifySubjectAltNames` where possible.",
@@ -1029,6 +1122,10 @@
                                         "rule": "has(self.insecureSkipVerify) ? !has(self.verifySubjectAltNames) : true"
                                       },
                                       {
+                                        "message": "certificateSource SPIFFE may not be combined with mtlsCertificateRef, caCertificateRefs, or insecureSkipVerify",
+                                        "rule": "!has(self.certificateSource) || self.certificateSource != 'SPIFFE' || (!has(self.mtlsCertificateRef) && !has(self.caCertificateRefs) && !has(self.insecureSkipVerify))"
+                                      },
+                                      {
                                         "message": "at most one of the fields in [verifySubjectAltNames insecureSkipVerify] may be set",
                                         "rule": "[has(self.verifySubjectAltNames),has(self.insecureSkipVerify)].filter(x,x==true).size() <= 1"
                                       }
@@ -1038,7 +1135,7 @@
                                     "description": "Settings for managing tunnel connections to the backend, like `HTTPS_PROXY`",
                                     "properties": {
                                       "backendRef": {
-                                        "description": "Proxy server to reach.\nSupported types: `Service` and `Backend`.",
+                                        "description": "`backendRef` selects a backend for this policy.\nMutually exclusive with `url`.",
                                         "properties": {
                                           "group": {
                                             "default": "",
@@ -1086,12 +1183,35 @@
                                             "rule": "(size(self.group) == 0 && self.kind == 'Service') ? has(self.port) : true"
                                           }
                                         ]
+                                      },
+                                      "mode": {
+                                        "default": "Auto",
+                                        "description": "How requests are sent through the proxy.\nDefaults to `Auto`.",
+                                        "enum": [
+                                          "Auto",
+                                          "Connect"
+                                        ],
+                                        "type": "string"
+                                      },
+                                      "url": {
+                                        "description": "`url` directly specifies the HTTP(S) endpoint for this policy.\nWhen the scheme is `https`, backend TLS is enabled automatically.\nMutually exclusive with `backendRef`.\nURLs are opaque; referencing a Kubernetes service hostname like `hello.ns.svc.cluster.local`\nwill not apply Service policies or load balancing.",
+                                        "maxLength": 1024,
+                                        "minLength": 1,
+                                        "pattern": "^https?://[^/?#@]+(/[^?#]*)?$",
+                                        "type": "string"
                                       }
                                     },
-                                    "required": [
-                                      "backendRef"
-                                    ],
-                                    "type": "object"
+                                    "type": "object",
+                                    "x-kubernetes-validations": [
+                                      {
+                                        "message": "exactly one of the fields in [backendRef url] must be set",
+                                        "rule": "[has(self.backendRef),has(self.url)].filter(x,x==true).size() == 1"
+                                      },
+                                      {
+                                        "message": "url must not include a path for backend tunnel",
+                                        "rule": "!has(self.url) || self.url.matches('^https?://[^/?#]+$')"
+                                      }
+                                    ]
                                   }
                                 },
                                 "type": "object",
@@ -1124,6 +1244,15 @@
                           "openAIModeration": {
                             "description": "Passes prompt data through the OpenAI Moderations\nendpoint.\nSee https://developers.openai.com/api/reference/resources/moderations for more information.",
                             "properties": {
+                              "action": {
+                                "default": "Reject",
+                                "description": "Action controls whether flagged content is rejected or only observed.\n`Reject` (the default) rejects flagged content; `Audit` records the\nwould-be rejection without blocking.",
+                                "enum": [
+                                  "Audit",
+                                  "Reject"
+                                ],
+                                "type": "string"
+                              },
                               "model": {
                                 "description": "Moderation model to use. For example,\n`omni-moderation`.",
                                 "type": "string"
@@ -1248,12 +1377,9 @@
                                       "requestTimeout": {
                                         "description": "Deadline for receiving a response from the backend.",
                                         "maxLength": 32,
+                                        "pattern": "^([0-9]{1,5}(h|m|s|ms)){1,4}$",
                                         "type": "string",
                                         "x-kubernetes-validations": [
-                                          {
-                                            "message": "invalid duration value",
-                                            "rule": "matches(self, '^([0-9]{1,5}(h|m|s|ms)){1,4}$')"
-                                          },
                                           {
                                             "message": "requestTimeout must be at least 1ms",
                                             "rule": "duration(self) >= duration('1ms')"
@@ -1277,12 +1403,9 @@
                                       "connectTimeout": {
                                         "description": "Deadline for establishing a connection to\nthe destination.",
                                         "maxLength": 32,
+                                        "pattern": "^([0-9]{1,5}(h|m|s|ms)){1,4}$",
                                         "type": "string",
                                         "x-kubernetes-validations": [
-                                          {
-                                            "message": "invalid duration value",
-                                            "rule": "matches(self, '^([0-9]{1,5}(h|m|s|ms)){1,4}$')"
-                                          },
                                           {
                                             "message": "connectTimeout must be at least 100ms",
                                             "rule": "duration(self) >= duration('100ms')"
@@ -1295,12 +1418,9 @@
                                           "interval": {
                                             "description": "Time between keepalive probes.\nIf unset, this defaults to 180s.",
                                             "maxLength": 32,
+                                            "pattern": "^([0-9]{1,5}(h|m|s|ms)){1,4}$",
                                             "type": "string",
                                             "x-kubernetes-validations": [
-                                              {
-                                                "message": "invalid duration value",
-                                                "rule": "matches(self, '^([0-9]{1,5}(h|m|s|ms)){1,4}$')"
-                                              },
                                               {
                                                 "message": "interval must be at least 1 second",
                                                 "rule": "duration(self) >= duration('1s')"
@@ -1317,12 +1437,9 @@
                                           "time": {
                                             "description": "Time a connection needs to be idle before keepalive probes start being sent.\nIf unset, this defaults to 180s.",
                                             "maxLength": 32,
+                                            "pattern": "^([0-9]{1,5}(h|m|s|ms)){1,4}$",
                                             "type": "string",
                                             "x-kubernetes-validations": [
-                                              {
-                                                "message": "invalid duration value",
-                                                "rule": "matches(self, '^([0-9]{1,5}(h|m|s|ms)){1,4}$')"
-                                              },
                                               {
                                                 "message": "time must be at least 1 second",
                                                 "rule": "duration(self) >= duration('1s')"
@@ -1350,22 +1467,44 @@
                                         "type": "array"
                                       },
                                       "caCertificateRefs": {
-                                        "description": "CA certificate `ConfigMap` to use to\nverify the server certificate.\nIf unset, the system's trusted certificates are used.",
+                                        "description": "CA certificate source to use to verify the server certificate. Omitted kind\nand `ConfigMap` select a ConfigMap; `Secret` selects a Secret. The `ca.crt`\nkey is required. If unset, the system's trusted certificates are used.",
                                         "items": {
-                                          "description": "LocalObjectReference contains enough information to let you locate the\nreferenced object inside the same namespace.",
+                                          "description": "LocalCACertificateRef references a same-namespace CA certificate source.\nAn omitted kind defaults to ConfigMap.",
                                           "properties": {
+                                            "kind": {
+                                              "default": "ConfigMap",
+                                              "description": "Kind of the referenced CA certificate source. Omitted defaults to ConfigMap.",
+                                              "enum": [
+                                                "ConfigMap",
+                                                "Secret"
+                                              ],
+                                              "type": "string"
+                                            },
                                             "name": {
-                                              "default": "",
-                                              "description": "Name of the referent",
+                                              "description": "Name of the referenced CA certificate source.",
+                                              "maxLength": 253,
+                                              "minLength": 1,
                                               "type": "string"
                                             }
                                           },
+                                          "required": [
+                                            "name"
+                                          ],
                                           "type": "object",
                                           "x-kubernetes-map-type": "atomic"
                                         },
                                         "maxItems": 1,
                                         "type": "array",
                                         "x-kubernetes-list-type": "atomic"
+                                      },
+                                      "certificateSource": {
+                                        "default": "Inline",
+                                        "description": "Source for the gateway's client identity and trust roots (`Inline` default, or `SPIFFE`).",
+                                        "enum": [
+                                          "Inline",
+                                          "SPIFFE"
+                                        ],
+                                        "type": "string"
                                       },
                                       "insecureSkipVerify": {
                                         "description": "Originates TLS but skips verification of the backend's certificate\nWARNING: insecure; only use if the risks are understood\n\nModes:\n* `All` disables all TLS verification\n* `Hostname` trusts the CA certificate but ignores hostname/SAN mismatches.\n  Still insecure; prefer `verifySubjectAltNames` where possible.",
@@ -1454,6 +1593,10 @@
                                         "rule": "has(self.insecureSkipVerify) ? !has(self.verifySubjectAltNames) : true"
                                       },
                                       {
+                                        "message": "certificateSource SPIFFE may not be combined with mtlsCertificateRef, caCertificateRefs, or insecureSkipVerify",
+                                        "rule": "!has(self.certificateSource) || self.certificateSource != 'SPIFFE' || (!has(self.mtlsCertificateRef) && !has(self.caCertificateRefs) && !has(self.insecureSkipVerify))"
+                                      },
+                                      {
                                         "message": "at most one of the fields in [verifySubjectAltNames insecureSkipVerify] may be set",
                                         "rule": "[has(self.verifySubjectAltNames),has(self.insecureSkipVerify)].filter(x,x==true).size() <= 1"
                                       }
@@ -1463,7 +1606,7 @@
                                     "description": "Settings for managing tunnel connections to the backend, like `HTTPS_PROXY`",
                                     "properties": {
                                       "backendRef": {
-                                        "description": "Proxy server to reach.\nSupported types: `Service` and `Backend`.",
+                                        "description": "`backendRef` selects a backend for this policy.\nMutually exclusive with `url`.",
                                         "properties": {
                                           "group": {
                                             "default": "",
@@ -1511,12 +1654,35 @@
                                             "rule": "(size(self.group) == 0 && self.kind == 'Service') ? has(self.port) : true"
                                           }
                                         ]
+                                      },
+                                      "mode": {
+                                        "default": "Auto",
+                                        "description": "How requests are sent through the proxy.\nDefaults to `Auto`.",
+                                        "enum": [
+                                          "Auto",
+                                          "Connect"
+                                        ],
+                                        "type": "string"
+                                      },
+                                      "url": {
+                                        "description": "`url` directly specifies the HTTP(S) endpoint for this policy.\nWhen the scheme is `https`, backend TLS is enabled automatically.\nMutually exclusive with `backendRef`.\nURLs are opaque; referencing a Kubernetes service hostname like `hello.ns.svc.cluster.local`\nwill not apply Service policies or load balancing.",
+                                        "maxLength": 1024,
+                                        "minLength": 1,
+                                        "pattern": "^https?://[^/?#@]+(/[^?#]*)?$",
+                                        "type": "string"
                                       }
                                     },
-                                    "required": [
-                                      "backendRef"
-                                    ],
-                                    "type": "object"
+                                    "type": "object",
+                                    "x-kubernetes-validations": [
+                                      {
+                                        "message": "exactly one of the fields in [backendRef url] must be set",
+                                        "rule": "[has(self.backendRef),has(self.url)].filter(x,x==true).size() == 1"
+                                      },
+                                      {
+                                        "message": "url must not include a path for backend tunnel",
+                                        "rule": "!has(self.url) || self.url.matches('^https?://[^/?#]+$')"
+                                      }
+                                    ]
                                   }
                                 },
                                 "type": "object",
@@ -1535,8 +1701,9 @@
                             "properties": {
                               "action": {
                                 "default": "Mask",
-                                "description": "The action to take if a regex pattern is matched in a request or response.\nThis setting applies only to request matches. `PromptguardResponse`\nmatches are always masked by default.\nDefaults to `Mask`.",
+                                "description": "The action to take if a regex pattern is matched in a request or response.\nThe action applies to request and response matches alike. Note that\n`Mask` is not applied to streamed responses: matched content in a\nstreamed response is passed through unmodified.\nDefaults to `Mask`.",
                                 "enum": [
+                                  "Audit",
                                   "Mask",
                                   "Reject"
                                 ],
@@ -1594,9 +1761,35 @@
                               }
                             ]
                           },
+                          "scope": {
+                            "description": "Which parts of the request this guard inspects. When unset, defaults to\n`SystemPrompt` and `Messages`. Tool call inputs and outputs are not\ninspected unless `ToolInput`/`ToolOutput` are listed explicitly.\nIn APIs that send tool arguments as opaque JSON, such as Completions, the\narguments are masked as a single string, meaning a prompt guard has the\npotential to rewrite the arguments into invalid JSON.",
+                            "items": {
+                              "description": "Which category of request content a prompt guard inspects.",
+                              "enum": [
+                                "Messages",
+                                "SystemPrompt",
+                                "ToolInput",
+                                "ToolOutput"
+                              ],
+                              "type": "string"
+                            },
+                            "maxItems": 4,
+                            "minItems": 1,
+                            "type": "array",
+                            "x-kubernetes-list-type": "set"
+                          },
                           "webhook": {
                             "description": "Webhook that receives requests for prompt guarding.",
                             "properties": {
+                              "action": {
+                                "default": "Reject",
+                                "description": "Action controls whether the webhook's verdict is enforced or only observed.\n`Reject` (the default) enforces it; `Audit` records the would-be action\nwithout blocking or masking.",
+                                "enum": [
+                                  "Audit",
+                                  "Reject"
+                                ],
+                                "type": "string"
+                              },
                               "backendRef": {
                                 "description": "Webhook server to reach.\n\nSupported types: Service and Backend.",
                                 "properties": {
@@ -1712,6 +1905,10 @@
                         "type": "object",
                         "x-kubernetes-validations": [
                           {
+                            "message": "scope: only regex and bedrockGuardrails guards support a non-default scope; other guard kinds always inspect the default (SystemPrompt + Messages)",
+                            "rule": "!has(self.scope) || has(self.regex) || has(self.bedrockGuardrails) || (self.scope.size() == 2 && 'SystemPrompt' in self.scope && 'Messages' in self.scope)"
+                          },
+                          {
                             "message": "exactly one of the fields in [regex webhook openAIModeration bedrockGuardrails googleModelArmor] must be set",
                             "rule": "[has(self.regex),has(self.webhook),has(self.openAIModeration),has(self.bedrockGuardrails),has(self.googleModelArmor)].filter(x,x==true).size() == 1"
                           }
@@ -1729,6 +1926,15 @@
                           "bedrockGuardrails": {
                             "description": "AWS Bedrock Guardrails settings for prompt\nguarding.",
                             "properties": {
+                              "action": {
+                                "default": "Reject",
+                                "description": "Action controls whether the guardrail's verdict is enforced or only\nobserved. `Reject` (the default) enforces the guardrail: a blocked\nassessment rejects the request/response and an anonymized assessment masks\nthe matched content. `Audit` runs the guardrail in observe mode: it is\ninvoked and its assessment recorded (metrics + structured log), but the\nrequest/response is never blocked or masked.",
+                                "enum": [
+                                  "Audit",
+                                  "Reject"
+                                ],
+                                "type": "string"
+                              },
                               "identifier": {
                                 "description": "Identifier of the Guardrail policy to use for the backend.",
                                 "maxLength": 256,
@@ -1986,12 +2192,9 @@
                                       "requestTimeout": {
                                         "description": "Deadline for receiving a response from the backend.",
                                         "maxLength": 32,
+                                        "pattern": "^([0-9]{1,5}(h|m|s|ms)){1,4}$",
                                         "type": "string",
                                         "x-kubernetes-validations": [
-                                          {
-                                            "message": "invalid duration value",
-                                            "rule": "matches(self, '^([0-9]{1,5}(h|m|s|ms)){1,4}$')"
-                                          },
                                           {
                                             "message": "requestTimeout must be at least 1ms",
                                             "rule": "duration(self) >= duration('1ms')"
@@ -2015,12 +2218,9 @@
                                       "connectTimeout": {
                                         "description": "Deadline for establishing a connection to\nthe destination.",
                                         "maxLength": 32,
+                                        "pattern": "^([0-9]{1,5}(h|m|s|ms)){1,4}$",
                                         "type": "string",
                                         "x-kubernetes-validations": [
-                                          {
-                                            "message": "invalid duration value",
-                                            "rule": "matches(self, '^([0-9]{1,5}(h|m|s|ms)){1,4}$')"
-                                          },
                                           {
                                             "message": "connectTimeout must be at least 100ms",
                                             "rule": "duration(self) >= duration('100ms')"
@@ -2033,12 +2233,9 @@
                                           "interval": {
                                             "description": "Time between keepalive probes.\nIf unset, this defaults to 180s.",
                                             "maxLength": 32,
+                                            "pattern": "^([0-9]{1,5}(h|m|s|ms)){1,4}$",
                                             "type": "string",
                                             "x-kubernetes-validations": [
-                                              {
-                                                "message": "invalid duration value",
-                                                "rule": "matches(self, '^([0-9]{1,5}(h|m|s|ms)){1,4}$')"
-                                              },
                                               {
                                                 "message": "interval must be at least 1 second",
                                                 "rule": "duration(self) >= duration('1s')"
@@ -2055,12 +2252,9 @@
                                           "time": {
                                             "description": "Time a connection needs to be idle before keepalive probes start being sent.\nIf unset, this defaults to 180s.",
                                             "maxLength": 32,
+                                            "pattern": "^([0-9]{1,5}(h|m|s|ms)){1,4}$",
                                             "type": "string",
                                             "x-kubernetes-validations": [
-                                              {
-                                                "message": "invalid duration value",
-                                                "rule": "matches(self, '^([0-9]{1,5}(h|m|s|ms)){1,4}$')"
-                                              },
                                               {
                                                 "message": "time must be at least 1 second",
                                                 "rule": "duration(self) >= duration('1s')"
@@ -2088,22 +2282,44 @@
                                         "type": "array"
                                       },
                                       "caCertificateRefs": {
-                                        "description": "CA certificate `ConfigMap` to use to\nverify the server certificate.\nIf unset, the system's trusted certificates are used.",
+                                        "description": "CA certificate source to use to verify the server certificate. Omitted kind\nand `ConfigMap` select a ConfigMap; `Secret` selects a Secret. The `ca.crt`\nkey is required. If unset, the system's trusted certificates are used.",
                                         "items": {
-                                          "description": "LocalObjectReference contains enough information to let you locate the\nreferenced object inside the same namespace.",
+                                          "description": "LocalCACertificateRef references a same-namespace CA certificate source.\nAn omitted kind defaults to ConfigMap.",
                                           "properties": {
+                                            "kind": {
+                                              "default": "ConfigMap",
+                                              "description": "Kind of the referenced CA certificate source. Omitted defaults to ConfigMap.",
+                                              "enum": [
+                                                "ConfigMap",
+                                                "Secret"
+                                              ],
+                                              "type": "string"
+                                            },
                                             "name": {
-                                              "default": "",
-                                              "description": "Name of the referent",
+                                              "description": "Name of the referenced CA certificate source.",
+                                              "maxLength": 253,
+                                              "minLength": 1,
                                               "type": "string"
                                             }
                                           },
+                                          "required": [
+                                            "name"
+                                          ],
                                           "type": "object",
                                           "x-kubernetes-map-type": "atomic"
                                         },
                                         "maxItems": 1,
                                         "type": "array",
                                         "x-kubernetes-list-type": "atomic"
+                                      },
+                                      "certificateSource": {
+                                        "default": "Inline",
+                                        "description": "Source for the gateway's client identity and trust roots (`Inline` default, or `SPIFFE`).",
+                                        "enum": [
+                                          "Inline",
+                                          "SPIFFE"
+                                        ],
+                                        "type": "string"
                                       },
                                       "insecureSkipVerify": {
                                         "description": "Originates TLS but skips verification of the backend's certificate\nWARNING: insecure; only use if the risks are understood\n\nModes:\n* `All` disables all TLS verification\n* `Hostname` trusts the CA certificate but ignores hostname/SAN mismatches.\n  Still insecure; prefer `verifySubjectAltNames` where possible.",
@@ -2192,6 +2408,10 @@
                                         "rule": "has(self.insecureSkipVerify) ? !has(self.verifySubjectAltNames) : true"
                                       },
                                       {
+                                        "message": "certificateSource SPIFFE may not be combined with mtlsCertificateRef, caCertificateRefs, or insecureSkipVerify",
+                                        "rule": "!has(self.certificateSource) || self.certificateSource != 'SPIFFE' || (!has(self.mtlsCertificateRef) && !has(self.caCertificateRefs) && !has(self.insecureSkipVerify))"
+                                      },
+                                      {
                                         "message": "at most one of the fields in [verifySubjectAltNames insecureSkipVerify] may be set",
                                         "rule": "[has(self.verifySubjectAltNames),has(self.insecureSkipVerify)].filter(x,x==true).size() <= 1"
                                       }
@@ -2201,7 +2421,7 @@
                                     "description": "Settings for managing tunnel connections to the backend, like `HTTPS_PROXY`",
                                     "properties": {
                                       "backendRef": {
-                                        "description": "Proxy server to reach.\nSupported types: `Service` and `Backend`.",
+                                        "description": "`backendRef` selects a backend for this policy.\nMutually exclusive with `url`.",
                                         "properties": {
                                           "group": {
                                             "default": "",
@@ -2249,12 +2469,35 @@
                                             "rule": "(size(self.group) == 0 && self.kind == 'Service') ? has(self.port) : true"
                                           }
                                         ]
+                                      },
+                                      "mode": {
+                                        "default": "Auto",
+                                        "description": "How requests are sent through the proxy.\nDefaults to `Auto`.",
+                                        "enum": [
+                                          "Auto",
+                                          "Connect"
+                                        ],
+                                        "type": "string"
+                                      },
+                                      "url": {
+                                        "description": "`url` directly specifies the HTTP(S) endpoint for this policy.\nWhen the scheme is `https`, backend TLS is enabled automatically.\nMutually exclusive with `backendRef`.\nURLs are opaque; referencing a Kubernetes service hostname like `hello.ns.svc.cluster.local`\nwill not apply Service policies or load balancing.",
+                                        "maxLength": 1024,
+                                        "minLength": 1,
+                                        "pattern": "^https?://[^/?#@]+(/[^?#]*)?$",
+                                        "type": "string"
                                       }
                                     },
-                                    "required": [
-                                      "backendRef"
-                                    ],
-                                    "type": "object"
+                                    "type": "object",
+                                    "x-kubernetes-validations": [
+                                      {
+                                        "message": "exactly one of the fields in [backendRef url] must be set",
+                                        "rule": "[has(self.backendRef),has(self.url)].filter(x,x==true).size() == 1"
+                                      },
+                                      {
+                                        "message": "url must not include a path for backend tunnel",
+                                        "rule": "!has(self.url) || self.url.matches('^https?://[^/?#]+$')"
+                                      }
+                                    ]
                                   }
                                 },
                                 "type": "object",
@@ -2288,6 +2531,15 @@
                           "googleModelArmor": {
                             "description": "Google Model Armor settings for prompt guarding.",
                             "properties": {
+                              "action": {
+                                "default": "Reject",
+                                "description": "Action controls whether flagged content is rejected or only observed.\n`Reject` (the default) rejects flagged content; `Audit` records the\nwould-be rejection without blocking.",
+                                "enum": [
+                                  "Audit",
+                                  "Reject"
+                                ],
+                                "type": "string"
+                              },
                               "location": {
                                 "default": "us-central1",
                                 "description": "Google Cloud location, for example `us-central1`.\nDefaults to `us-central1` if not specified.",
@@ -2378,12 +2630,9 @@
                                       "requestTimeout": {
                                         "description": "Deadline for receiving a response from the backend.",
                                         "maxLength": 32,
+                                        "pattern": "^([0-9]{1,5}(h|m|s|ms)){1,4}$",
                                         "type": "string",
                                         "x-kubernetes-validations": [
-                                          {
-                                            "message": "invalid duration value",
-                                            "rule": "matches(self, '^([0-9]{1,5}(h|m|s|ms)){1,4}$')"
-                                          },
                                           {
                                             "message": "requestTimeout must be at least 1ms",
                                             "rule": "duration(self) >= duration('1ms')"
@@ -2407,12 +2656,9 @@
                                       "connectTimeout": {
                                         "description": "Deadline for establishing a connection to\nthe destination.",
                                         "maxLength": 32,
+                                        "pattern": "^([0-9]{1,5}(h|m|s|ms)){1,4}$",
                                         "type": "string",
                                         "x-kubernetes-validations": [
-                                          {
-                                            "message": "invalid duration value",
-                                            "rule": "matches(self, '^([0-9]{1,5}(h|m|s|ms)){1,4}$')"
-                                          },
                                           {
                                             "message": "connectTimeout must be at least 100ms",
                                             "rule": "duration(self) >= duration('100ms')"
@@ -2425,12 +2671,9 @@
                                           "interval": {
                                             "description": "Time between keepalive probes.\nIf unset, this defaults to 180s.",
                                             "maxLength": 32,
+                                            "pattern": "^([0-9]{1,5}(h|m|s|ms)){1,4}$",
                                             "type": "string",
                                             "x-kubernetes-validations": [
-                                              {
-                                                "message": "invalid duration value",
-                                                "rule": "matches(self, '^([0-9]{1,5}(h|m|s|ms)){1,4}$')"
-                                              },
                                               {
                                                 "message": "interval must be at least 1 second",
                                                 "rule": "duration(self) >= duration('1s')"
@@ -2447,12 +2690,9 @@
                                           "time": {
                                             "description": "Time a connection needs to be idle before keepalive probes start being sent.\nIf unset, this defaults to 180s.",
                                             "maxLength": 32,
+                                            "pattern": "^([0-9]{1,5}(h|m|s|ms)){1,4}$",
                                             "type": "string",
                                             "x-kubernetes-validations": [
-                                              {
-                                                "message": "invalid duration value",
-                                                "rule": "matches(self, '^([0-9]{1,5}(h|m|s|ms)){1,4}$')"
-                                              },
                                               {
                                                 "message": "time must be at least 1 second",
                                                 "rule": "duration(self) >= duration('1s')"
@@ -2480,22 +2720,44 @@
                                         "type": "array"
                                       },
                                       "caCertificateRefs": {
-                                        "description": "CA certificate `ConfigMap` to use to\nverify the server certificate.\nIf unset, the system's trusted certificates are used.",
+                                        "description": "CA certificate source to use to verify the server certificate. Omitted kind\nand `ConfigMap` select a ConfigMap; `Secret` selects a Secret. The `ca.crt`\nkey is required. If unset, the system's trusted certificates are used.",
                                         "items": {
-                                          "description": "LocalObjectReference contains enough information to let you locate the\nreferenced object inside the same namespace.",
+                                          "description": "LocalCACertificateRef references a same-namespace CA certificate source.\nAn omitted kind defaults to ConfigMap.",
                                           "properties": {
+                                            "kind": {
+                                              "default": "ConfigMap",
+                                              "description": "Kind of the referenced CA certificate source. Omitted defaults to ConfigMap.",
+                                              "enum": [
+                                                "ConfigMap",
+                                                "Secret"
+                                              ],
+                                              "type": "string"
+                                            },
                                             "name": {
-                                              "default": "",
-                                              "description": "Name of the referent",
+                                              "description": "Name of the referenced CA certificate source.",
+                                              "maxLength": 253,
+                                              "minLength": 1,
                                               "type": "string"
                                             }
                                           },
+                                          "required": [
+                                            "name"
+                                          ],
                                           "type": "object",
                                           "x-kubernetes-map-type": "atomic"
                                         },
                                         "maxItems": 1,
                                         "type": "array",
                                         "x-kubernetes-list-type": "atomic"
+                                      },
+                                      "certificateSource": {
+                                        "default": "Inline",
+                                        "description": "Source for the gateway's client identity and trust roots (`Inline` default, or `SPIFFE`).",
+                                        "enum": [
+                                          "Inline",
+                                          "SPIFFE"
+                                        ],
+                                        "type": "string"
                                       },
                                       "insecureSkipVerify": {
                                         "description": "Originates TLS but skips verification of the backend's certificate\nWARNING: insecure; only use if the risks are understood\n\nModes:\n* `All` disables all TLS verification\n* `Hostname` trusts the CA certificate but ignores hostname/SAN mismatches.\n  Still insecure; prefer `verifySubjectAltNames` where possible.",
@@ -2584,6 +2846,10 @@
                                         "rule": "has(self.insecureSkipVerify) ? !has(self.verifySubjectAltNames) : true"
                                       },
                                       {
+                                        "message": "certificateSource SPIFFE may not be combined with mtlsCertificateRef, caCertificateRefs, or insecureSkipVerify",
+                                        "rule": "!has(self.certificateSource) || self.certificateSource != 'SPIFFE' || (!has(self.mtlsCertificateRef) && !has(self.caCertificateRefs) && !has(self.insecureSkipVerify))"
+                                      },
+                                      {
                                         "message": "at most one of the fields in [verifySubjectAltNames insecureSkipVerify] may be set",
                                         "rule": "[has(self.verifySubjectAltNames),has(self.insecureSkipVerify)].filter(x,x==true).size() <= 1"
                                       }
@@ -2593,7 +2859,7 @@
                                     "description": "Settings for managing tunnel connections to the backend, like `HTTPS_PROXY`",
                                     "properties": {
                                       "backendRef": {
-                                        "description": "Proxy server to reach.\nSupported types: `Service` and `Backend`.",
+                                        "description": "`backendRef` selects a backend for this policy.\nMutually exclusive with `url`.",
                                         "properties": {
                                           "group": {
                                             "default": "",
@@ -2641,12 +2907,35 @@
                                             "rule": "(size(self.group) == 0 && self.kind == 'Service') ? has(self.port) : true"
                                           }
                                         ]
+                                      },
+                                      "mode": {
+                                        "default": "Auto",
+                                        "description": "How requests are sent through the proxy.\nDefaults to `Auto`.",
+                                        "enum": [
+                                          "Auto",
+                                          "Connect"
+                                        ],
+                                        "type": "string"
+                                      },
+                                      "url": {
+                                        "description": "`url` directly specifies the HTTP(S) endpoint for this policy.\nWhen the scheme is `https`, backend TLS is enabled automatically.\nMutually exclusive with `backendRef`.\nURLs are opaque; referencing a Kubernetes service hostname like `hello.ns.svc.cluster.local`\nwill not apply Service policies or load balancing.",
+                                        "maxLength": 1024,
+                                        "minLength": 1,
+                                        "pattern": "^https?://[^/?#@]+(/[^?#]*)?$",
+                                        "type": "string"
                                       }
                                     },
-                                    "required": [
-                                      "backendRef"
-                                    ],
-                                    "type": "object"
+                                    "type": "object",
+                                    "x-kubernetes-validations": [
+                                      {
+                                        "message": "exactly one of the fields in [backendRef url] must be set",
+                                        "rule": "[has(self.backendRef),has(self.url)].filter(x,x==true).size() == 1"
+                                      },
+                                      {
+                                        "message": "url must not include a path for backend tunnel",
+                                        "rule": "!has(self.url) || self.url.matches('^https?://[^/?#]+$')"
+                                      }
+                                    ]
                                   }
                                 },
                                 "type": "object",
@@ -2681,8 +2970,9 @@
                             "properties": {
                               "action": {
                                 "default": "Mask",
-                                "description": "The action to take if a regex pattern is matched in a request or response.\nThis setting applies only to request matches. `PromptguardResponse`\nmatches are always masked by default.\nDefaults to `Mask`.",
+                                "description": "The action to take if a regex pattern is matched in a request or response.\nThe action applies to request and response matches alike. Note that\n`Mask` is not applied to streamed responses: matched content in a\nstreamed response is passed through unmodified.\nDefaults to `Mask`.",
                                 "enum": [
+                                  "Audit",
                                   "Mask",
                                   "Reject"
                                 ],
@@ -2743,6 +3033,15 @@
                           "webhook": {
                             "description": "Webhook that receives responses for prompt guarding.",
                             "properties": {
+                              "action": {
+                                "default": "Reject",
+                                "description": "Action controls whether the webhook's verdict is enforced or only observed.\n`Reject` (the default) enforces it; `Audit` records the would-be action\nwithout blocking or masking.",
+                                "enum": [
+                                  "Audit",
+                                  "Reject"
+                                ],
+                                "type": "string"
+                              },
                               "backendRef": {
                                 "description": "Webhook server to reach.\n\nSupported types: Service and Backend.",
                                 "properties": {
@@ -2891,6 +3190,8 @@
                       "Completions",
                       "Detect",
                       "Embeddings",
+                      "GeminiCountTokens",
+                      "GenerateContent",
                       "Messages",
                       "Models",
                       "Passthrough",
@@ -2935,8 +3236,8 @@
               "type": "object",
               "x-kubernetes-validations": [
                 {
-                  "message": "at least one of the fields in [defaults modelAliases overrides prompt promptCaching promptGuard routes transformations] must be set",
-                  "rule": "[has(self.defaults),has(self.modelAliases),has(self.overrides),has(self.prompt),has(self.promptCaching),has(self.promptGuard),has(self.routes),has(self.transformations)].filter(x,x==true).size() >= 1"
+                  "message": "at least one of the fields in [defaults finalTransformations modelAliases overrides prompt promptCaching promptGuard routes transformations] must be set",
+                  "rule": "[has(self.defaults),has(self.finalTransformations),has(self.modelAliases),has(self.overrides),has(self.prompt),has(self.promptCaching),has(self.promptGuard),has(self.routes),has(self.transformations)].filter(x,x==true).size() >= 1"
                 }
               ]
             },
@@ -3074,24 +3375,28 @@
                   "description": "Azure authentication method for the backend.",
                   "properties": {
                     "managedIdentity": {
-                      "description": "Managed identity authentication settings.",
+                      "description": "Managed identity authentication settings. Leave this object empty to use\nthe system-assigned identity. To use a user-assigned identity, set one of\n`clientId`, `objectId`, or `resourceId`.",
                       "properties": {
                         "clientId": {
+                          "description": "Client ID of the user-assigned managed identity.",
                           "type": "string"
                         },
                         "objectId": {
+                          "description": "Object ID of the user-assigned managed identity.",
                           "type": "string"
                         },
                         "resourceId": {
+                          "description": "Resource ID of the user-assigned managed identity.",
                           "type": "string"
                         }
                       },
-                      "required": [
-                        "clientId",
-                        "objectId",
-                        "resourceId"
-                      ],
-                      "type": "object"
+                      "type": "object",
+                      "x-kubernetes-validations": [
+                        {
+                          "message": "at most one of the fields in [clientId objectId resourceId] may be set",
+                          "rule": "[has(self.clientId),has(self.objectId),has(self.resourceId)].filter(x,x==true).size() <= 1"
+                        }
+                      ]
                     },
                     "secretRef": {
                       "description": "Credential source for Azure credentials, defaulting to a Kubernetes\n`Secret`. The default Secret resolver expects `clientID`, `tenantID`, and\n`clientSecret` keys.",
@@ -3250,6 +3555,14 @@
                 "crossAppAccess": {
                   "description": "Cross App Access (Identity Assertion / ID-JAG) authentication.",
                   "properties": {
+                    "accessTokenScopes": {
+                      "description": "Scopes requested when exchanging the ID-JAG for an access token.\nWhen omitted, defaults to Scopes. Set to an empty list to omit scope.",
+                      "items": {
+                        "type": "string"
+                      },
+                      "maxItems": 64,
+                      "type": "array"
+                    },
                     "audience": {
                       "description": "Identifier of the resource authorization server. The issued ID-JAG is bound to this audience.",
                       "maxLength": 256,
@@ -3263,7 +3576,15 @@
                           "properties": {
                             "defaultTtl": {
                               "description": "TTL used when the token endpoint omits expires_in. Default 300s.",
-                              "type": "string"
+                              "maxLength": 32,
+                              "pattern": "^([0-9]{1,5}(h|m|s|ms)){1,4}$",
+                              "type": "string",
+                              "x-kubernetes-validations": [
+                                {
+                                  "message": "defaultTtl must be at least 1 second",
+                                  "rule": "duration(self) >= duration('1s')"
+                                }
+                              ]
                             },
                             "maxEntries": {
                               "description": "Default 8192; 0 disables the cache.",
@@ -3280,7 +3601,7 @@
                       "description": "User identity provider authorization server, used for the RFC 8693 ID-JAG exchange.",
                       "properties": {
                         "backendRef": {
-                          "description": "Token endpoint backend.",
+                          "description": "`backendRef` selects a backend for this policy.\nMutually exclusive with `url`.",
                           "properties": {
                             "group": {
                               "default": "",
@@ -3523,19 +3844,35 @@
                           "description": "Token endpoint path; defaults to \"/\". Must start with \"/\".",
                           "pattern": "^/",
                           "type": "string"
+                        },
+                        "url": {
+                          "description": "`url` directly specifies the HTTP(S) endpoint for this policy.\nWhen the scheme is `https`, backend TLS is enabled automatically.\nMutually exclusive with `backendRef`.\nURLs are opaque; referencing a Kubernetes service hostname like `hello.ns.svc.cluster.local`\nwill not apply Service policies or load balancing.",
+                          "maxLength": 1024,
+                          "minLength": 1,
+                          "pattern": "^https?://[^/?#@]+(/[^?#]*)?$",
+                          "type": "string"
                         }
                       },
                       "required": [
-                        "backendRef",
                         "clientAuth"
                       ],
-                      "type": "object"
+                      "type": "object",
+                      "x-kubernetes-validations": [
+                        {
+                          "message": "path may not be set when url is set",
+                          "rule": "has(self.url) ? !has(self.path) : true"
+                        },
+                        {
+                          "message": "exactly one of the fields in [backendRef url] must be set",
+                          "rule": "[has(self.backendRef),has(self.url)].filter(x,x==true).size() == 1"
+                        }
+                      ]
                     },
                     "resourceAuthorizationServer": {
                       "description": "Resource authorization server, used for the RFC 7523 jwt-bearer exchange.",
                       "properties": {
                         "backendRef": {
-                          "description": "Token endpoint backend.",
+                          "description": "`backendRef` selects a backend for this policy.\nMutually exclusive with `url`.",
                           "properties": {
                             "group": {
                               "default": "",
@@ -3778,13 +4115,29 @@
                           "description": "Token endpoint path; defaults to \"/\". Must start with \"/\".",
                           "pattern": "^/",
                           "type": "string"
+                        },
+                        "url": {
+                          "description": "`url` directly specifies the HTTP(S) endpoint for this policy.\nWhen the scheme is `https`, backend TLS is enabled automatically.\nMutually exclusive with `backendRef`.\nURLs are opaque; referencing a Kubernetes service hostname like `hello.ns.svc.cluster.local`\nwill not apply Service policies or load balancing.",
+                          "maxLength": 1024,
+                          "minLength": 1,
+                          "pattern": "^https?://[^/?#@]+(/[^?#]*)?$",
+                          "type": "string"
                         }
                       },
                       "required": [
-                        "backendRef",
                         "clientAuth"
                       ],
-                      "type": "object"
+                      "type": "object",
+                      "x-kubernetes-validations": [
+                        {
+                          "message": "path may not be set when url is set",
+                          "rule": "has(self.url) ? !has(self.path) : true"
+                        },
+                        {
+                          "message": "exactly one of the fields in [backendRef url] must be set",
+                          "rule": "[has(self.backendRef),has(self.url)].filter(x,x==true).size() == 1"
+                        }
+                      ]
                     },
                     "resources": {
                       "description": "Resources sent to the token endpoint.",
@@ -3796,7 +4149,7 @@
                       "type": "array"
                     },
                     "scopes": {
-                      "description": "Scopes sent to the token endpoint.",
+                      "description": "Scopes requested when obtaining the ID-JAG from the identity provider.",
                       "items": {
                         "type": "string"
                       },
@@ -3870,9 +4223,19 @@
                               "rule": "[has(self.header),has(self.queryParameter),has(self.cookie),has(self.expression)].filter(x,x==true).size() == 1"
                             }
                           ]
+                        },
+                        "tokenType": {
+                          "description": "OAuth RFC 8693 subject token type. Defaults to IdToken",
+                          "type": "string"
                         }
                       },
-                      "type": "object"
+                      "type": "object",
+                      "x-kubernetes-validations": [
+                        {
+                          "message": "tokenType IdJag is not supported by crossAppAccess",
+                          "rule": "!has(self.tokenType) || (self.tokenType != 'IdJag' && self.tokenType != 'urn:ietf:params:oauth:token-type:id-jag')"
+                        }
+                      ]
                     }
                   },
                   "required": [
@@ -3943,6 +4306,138 @@
                       "rule": "has(self.audience) ? self.type == 'IdToken' : true"
                     }
                   ]
+                },
+                "jwtSign": {
+                  "description": "Signs a short-lived JWT with a private key on each request and sends it\nto the backend, for upstreams that require per-request keypair JWTs\n(e.g. the Snowflake SQL API) rather than a static credential.",
+                  "properties": {
+                    "alg": {
+                      "description": "JWS signing algorithm. Defaults to RS256.",
+                      "enum": [
+                        "ES256",
+                        "ES384",
+                        "PS256",
+                        "RS256",
+                        "RS384",
+                        "RS512"
+                      ],
+                      "type": "string"
+                    },
+                    "claims": {
+                      "additionalProperties": {
+                        "x-kubernetes-preserve-unknown-fields": true
+                      },
+                      "description": "Static claims added to every token (e.g. iss, sub, aud). Values may be\nany JSON value (e.g. a string, number, bool, or array). iat, exp, and\nnbf are reserved for the signer and cannot be configured here; the\ncontroller rejects them at translation time.",
+                      "type": "object"
+                    },
+                    "kid": {
+                      "description": "Optional JWS key ID header.",
+                      "type": "string"
+                    },
+                    "location": {
+                      "description": "Where the signed token is written on the backend request.\nDefaults to the Authorization header with a \"Bearer \" prefix.",
+                      "properties": {
+                        "cookie": {
+                          "properties": {
+                            "name": {
+                              "maxLength": 256,
+                              "minLength": 1,
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "name"
+                          ],
+                          "type": "object"
+                        },
+                        "header": {
+                          "properties": {
+                            "name": {
+                              "description": "Name of an HTTP header. HTTP/2 pseudo-headers (names beginning with `:`) are not supported",
+                              "maxLength": 256,
+                              "minLength": 1,
+                              "pattern": "^[A-Za-z0-9!#$%&'*+\\-.^_\\x60|~]+$",
+                              "type": "string"
+                            },
+                            "prefix": {
+                              "maxLength": 256,
+                              "minLength": 1,
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "name"
+                          ],
+                          "type": "object"
+                        },
+                        "queryParameter": {
+                          "properties": {
+                            "name": {
+                              "maxLength": 256,
+                              "minLength": 1,
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "name"
+                          ],
+                          "type": "object"
+                        }
+                      },
+                      "type": "object",
+                      "x-kubernetes-validations": [
+                        {
+                          "message": "exactly one of the fields in [header queryParameter cookie] must be set",
+                          "rule": "[has(self.header),has(self.queryParameter),has(self.cookie)].filter(x,x==true).size() == 1"
+                        }
+                      ]
+                    },
+                    "signingKeyRef": {
+                      "description": "Secret providing the `signingKey` key with a PEM-encoded RSA or EC private key.",
+                      "properties": {
+                        "group": {
+                          "description": "API group of the referenced credential; empty selects the core API group",
+                          "type": "string"
+                        },
+                        "kind": {
+                          "description": "Kind of the referenced credential; empty defaults to `Secret`",
+                          "type": "string"
+                        },
+                        "name": {
+                          "description": "Name of the referenced credential",
+                          "maxLength": 253,
+                          "minLength": 1,
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "name"
+                      ],
+                      "type": "object",
+                      "x-kubernetes-map-type": "atomic",
+                      "x-kubernetes-validations": [
+                        {
+                          "message": "custom credential refs must set both group and kind",
+                          "rule": "(!has(self.group) || size(self.group) == 0) ? (!has(self.kind) || size(self.kind) == 0 || self.kind == 'Secret') : (has(self.kind) && size(self.kind) > 0)"
+                        }
+                      ]
+                    },
+                    "ttl": {
+                      "description": "Token lifetime used for exp. Defaults to 300s.",
+                      "maxLength": 32,
+                      "pattern": "^([0-9]{1,5}(h|m|s|ms)){1,4}$",
+                      "type": "string",
+                      "x-kubernetes-validations": [
+                        {
+                          "message": "ttl must be at least 1 second",
+                          "rule": "duration(self) >= duration('1s')"
+                        }
+                      ]
+                    }
+                  },
+                  "required": [
+                    "signingKeyRef"
+                  ],
+                  "type": "object"
                 },
                 "key": {
                   "description": "Inline key to use as the value of the\n`Authorization` header. This option is the least secure; usage of a\n`Secret` is preferred.",
@@ -4123,7 +4618,7 @@
                       "type": "array"
                     },
                     "backendRef": {
-                      "description": "RFC 8693 token endpoint backend.",
+                      "description": "`backendRef` selects a backend for this policy.\nMutually exclusive with `url`.",
                       "properties": {
                         "group": {
                           "default": "",
@@ -4179,7 +4674,15 @@
                           "properties": {
                             "defaultTtl": {
                               "description": "TTL used when the token endpoint omits expires_in. Default 300s.",
-                              "type": "string"
+                              "maxLength": 32,
+                              "pattern": "^([0-9]{1,5}(h|m|s|ms)){1,4}$",
+                              "type": "string",
+                              "x-kubernetes-validations": [
+                                {
+                                  "message": "defaultTtl must be at least 1 second",
+                                  "rule": "duration(self) >= duration('1s')"
+                                }
+                              ]
                             },
                             "maxEntries": {
                               "description": "Default 8192; 0 disables the cache.",
@@ -4554,11 +5057,15 @@
                         }
                       },
                       "type": "object"
+                    },
+                    "url": {
+                      "description": "`url` directly specifies the HTTP(S) endpoint for this policy.\nWhen the scheme is `https`, backend TLS is enabled automatically.\nMutually exclusive with `backendRef`.\nURLs are opaque; referencing a Kubernetes service hostname like `hello.ns.svc.cluster.local`\nwill not apply Service policies or load balancing.",
+                      "maxLength": 1024,
+                      "minLength": 1,
+                      "pattern": "^https?://[^/?#@]+(/[^?#]*)?$",
+                      "type": "string"
                     }
                   },
-                  "required": [
-                    "backendRef"
-                  ],
                   "type": "object",
                   "x-kubernetes-validations": [
                     {
@@ -4572,6 +5079,14 @@
                     {
                       "message": "requestedTokenType IdJag is only supported by crossAppAccess",
                       "rule": "!has(self.requestedTokenType) || self.requestedTokenType != 'IdJag'"
+                    },
+                    {
+                      "message": "path may not be set when url is set",
+                      "rule": "has(self.url) ? !has(self.path) : true"
+                    },
+                    {
+                      "message": "exactly one of the fields in [backendRef url] must be set",
+                      "rule": "[has(self.backendRef),has(self.url)].filter(x,x==true).size() == 1"
                     }
                   ]
                 },
@@ -4619,16 +5134,16 @@
               "type": "object",
               "x-kubernetes-validations": [
                 {
-                  "message": "must specify credentials, or at most one of key/secretRef/passthrough/aws/azure/gcp/oauthTokenExchange/crossAppAccess (credentials may be combined with a primary auth kind)",
-                  "rule": "has(self.credentials) || has(self.key) || has(self.secretRef) || has(self.passthrough) || has(self.aws) || has(self.azure) || has(self.gcp) || has(self.oauthTokenExchange) || has(self.crossAppAccess)"
+                  "message": "must specify credentials, or at most one of key/secretRef/passthrough/aws/azure/gcp/oauthTokenExchange/crossAppAccess/jwtSign (credentials may be combined with a primary auth kind)",
+                  "rule": "has(self.credentials) || has(self.key) || has(self.secretRef) || has(self.passthrough) || has(self.aws) || has(self.azure) || has(self.gcp) || has(self.oauthTokenExchange) || has(self.crossAppAccess) || has(self.jwtSign)"
                 },
                 {
                   "message": "location may only be set for key, secretRef, or passthrough auth",
                   "rule": "has(self.location) ? has(self.key) || has(self.secretRef) || has(self.passthrough) : true"
                 },
                 {
-                  "message": "at most one of the fields in [key secretRef passthrough aws azure gcp oauthTokenExchange crossAppAccess] may be set",
-                  "rule": "[has(self.key),has(self.secretRef),has(self.passthrough),has(self.aws),has(self.azure),has(self.gcp),has(self.oauthTokenExchange),has(self.crossAppAccess)].filter(x,x==true).size() <= 1"
+                  "message": "at most one of the fields in [key secretRef passthrough aws azure gcp oauthTokenExchange crossAppAccess jwtSign] may be set",
+                  "rule": "[has(self.key),has(self.secretRef),has(self.passthrough),has(self.aws),has(self.azure),has(self.gcp),has(self.oauthTokenExchange),has(self.crossAppAccess),has(self.jwtSign)].filter(x,x==true).size() <= 1"
                 }
               ]
             },
@@ -4636,7 +5151,7 @@
               "description": "External authentication configuration for requests\nsent to this backend.",
               "properties": {
                 "backendRef": {
-                  "description": "External Authorization server to reach.\n\nSupported types: `Service` and `Backend`.",
+                  "description": "`backendRef` selects a backend for this policy.\nMutually exclusive with `url`.",
                   "properties": {
                     "group": {
                       "default": "",
@@ -4847,13 +5362,32 @@
                     }
                   },
                   "type": "object"
+                },
+                "url": {
+                  "description": "`url` directly specifies the HTTP(S) endpoint for this policy.\nWhen the scheme is `https`, backend TLS is enabled automatically.\nMutually exclusive with `backendRef`.\nURLs are opaque; referencing a Kubernetes service hostname like `hello.ns.svc.cluster.local`\nwill not apply Service policies or load balancing.",
+                  "maxLength": 1024,
+                  "minLength": 1,
+                  "pattern": "^https?://[^/?#@]+(/[^?#]*)?$",
+                  "type": "string"
                 }
               },
               "type": "object",
               "x-kubernetes-validations": [
                 {
+                  "message": "exactly one of backendRef or url must be set",
+                  "rule": "[has(self.backendRef),has(self.url)].filter(x,x==true).size() == 1"
+                },
+                {
                   "message": "forwardBody cannot be used with http.body",
                   "rule": "!(has(self.forwardBody) && has(self.http) && has(self.http.body))"
+                },
+                {
+                  "message": "url path is only valid with http",
+                  "rule": "!has(self.url) || !self.url.matches('^https?://[^/?#]+/') || has(self.http)"
+                },
+                {
+                  "message": "http.path may not be set when url includes a path",
+                  "rule": "!has(self.url) || !self.url.matches('^https?://[^/?#]+/') || !has(self.http) || !has(self.http.path)"
                 }
               ]
             },
@@ -4873,14 +5407,11 @@
                       "default": "3s",
                       "description": "Base time a backend should be evicted after being marked unhealthy.\nSubsequent evictions use multiplicative backoff (duration * times_evicted).\nIf all endpoints are evicted, the load balancer falls back to returning evicted endpoints\nrather than failing entirely.\nIf unset, defaults to `3s`.",
                       "maxLength": 32,
+                      "pattern": "^([0-9]{1,5}(h|m|s|ms)){1,4}$",
                       "type": "string",
                       "x-kubernetes-validations": [
                         {
-                          "message": "invalid duration value",
-                          "rule": "matches(self, '^([0-9]{1,5}(h|m|s|ms)){1,4}$')"
-                        },
-                        {
-                          "message": "evictionDuration must be at least 1 second",
+                          "message": "duration must be at least 1 second",
                           "rule": "duration(self) >= duration('1s')"
                         }
                       ]
@@ -4917,12 +5448,9 @@
                 "requestTimeout": {
                   "description": "Deadline for receiving a response from the backend.",
                   "maxLength": 32,
+                  "pattern": "^([0-9]{1,5}(h|m|s|ms)){1,4}$",
                   "type": "string",
                   "x-kubernetes-validations": [
-                    {
-                      "message": "invalid duration value",
-                      "rule": "matches(self, '^([0-9]{1,5}(h|m|s|ms)){1,4}$')"
-                    },
                     {
                       "message": "requestTimeout must be at least 1ms",
                       "rule": "duration(self) >= duration('1ms')"
@@ -5005,7 +5533,7 @@
                       "description": "Remote JSON Web Key used to validate the signature of\nthe JWT.",
                       "properties": {
                         "backendRef": {
-                          "description": "Remote JWKS server to reach.\nSupported types are `Service` and static `Backend`. An\n`AgentgatewayPolicy` containing backend TLS config can then be attached\nto the `Service` or `Backend` in order to set TLS options for a\nconnection to the remote `jwks` source.",
+                          "description": "`backendRef` selects a backend for this policy.\nMutually exclusive with `url`.",
                           "properties": {
                             "group": {
                               "default": "",
@@ -5056,13 +5584,11 @@
                         },
                         "cacheDuration": {
                           "default": "5m",
+                          "description": "How long a fetched `jwks` document is used before it is re-fetched from the IdP.",
                           "maxLength": 32,
+                          "pattern": "^([0-9]{1,5}(h|m|s|ms)){1,4}$",
                           "type": "string",
                           "x-kubernetes-validations": [
-                            {
-                              "message": "invalid duration value",
-                              "rule": "matches(self, '^([0-9]{1,5}(h|m|s|ms)){1,4}$')"
-                            },
                             {
                               "message": "cacheDuration must be at least 5m.",
                               "rule": "duration(self) >= duration('5m')"
@@ -5071,16 +5597,33 @@
                         },
                         "jwksPath": {
                           "description": "Path to the IdP `jwks` endpoint, relative to the root, commonly\n`\".well-known/jwks.json\"`.",
-                          "maxLength": 2000,
+                          "maxLength": 1024,
                           "minLength": 1,
+                          "type": "string"
+                        },
+                        "url": {
+                          "description": "`url` directly specifies the HTTP(S) endpoint for this policy.\nWhen the scheme is `https`, backend TLS is enabled automatically.\nMutually exclusive with `backendRef`.\nURLs are opaque; referencing a Kubernetes service hostname like `hello.ns.svc.cluster.local`\nwill not apply Service policies or load balancing.",
+                          "maxLength": 1024,
+                          "minLength": 1,
+                          "pattern": "^https?://[^/?#@]+(/[^?#]*)?$",
                           "type": "string"
                         }
                       },
-                      "required": [
-                        "backendRef",
-                        "jwksPath"
-                      ],
-                      "type": "object"
+                      "type": "object",
+                      "x-kubernetes-validations": [
+                        {
+                          "message": "jwksPath is required when backendRef is set",
+                          "rule": "has(self.backendRef) ? has(self.jwksPath) : true"
+                        },
+                        {
+                          "message": "jwksPath may not be set when url is set",
+                          "rule": "has(self.url) ? !has(self.jwksPath) : true"
+                        },
+                        {
+                          "message": "exactly one of the fields in [backendRef url] must be set",
+                          "rule": "[has(self.backendRef),has(self.url)].filter(x,x==true).size() == 1"
+                        }
+                      ]
                     },
                     "mode": {
                       "default": "Strict",
@@ -5210,7 +5753,7 @@
                                 "x-kubernetes-list-type": "set"
                               },
                               "backendRef": {
-                                "description": "`backendRef` references the remote guardrails policy server.\nSupported types: `Service` and `Backend`.",
+                                "description": "`backendRef` selects a backend for this policy.\nMutually exclusive with `url`.",
                                 "properties": {
                                   "group": {
                                     "default": "",
@@ -5296,12 +5839,26 @@
                                 "description": "`metadata` is static or CEL-evaluated context surfaced to the policy\nserver as fields of the `metadata_context` google.protobuf.Struct,\nkeyed by config key. Values are CEL expressions.",
                                 "maxProperties": 64,
                                 "type": "object"
+                              },
+                              "url": {
+                                "description": "`url` directly specifies the HTTP(S) endpoint for this policy.\nWhen the scheme is `https`, backend TLS is enabled automatically.\nMutually exclusive with `backendRef`.\nURLs are opaque; referencing a Kubernetes service hostname like `hello.ns.svc.cluster.local`\nwill not apply Service policies or load balancing.",
+                                "maxLength": 1024,
+                                "minLength": 1,
+                                "pattern": "^https?://[^/?#@]+(/[^?#]*)?$",
+                                "type": "string"
                               }
                             },
-                            "required": [
-                              "backendRef"
-                            ],
-                            "type": "object"
+                            "type": "object",
+                            "x-kubernetes-validations": [
+                              {
+                                "message": "url must not include a path",
+                                "rule": "!has(self.url) || self.url.matches('^https?://[^/?#]+$')"
+                              },
+                              {
+                                "message": "exactly one of the fields in [backendRef url] must be set",
+                                "rule": "[has(self.backendRef),has(self.url)].filter(x,x==true).size() == 1"
+                              }
+                            ]
                           }
                         },
                         "required": [
@@ -5340,12 +5897,9 @@
                 "connectTimeout": {
                   "description": "Deadline for establishing a connection to\nthe destination.",
                   "maxLength": 32,
+                  "pattern": "^([0-9]{1,5}(h|m|s|ms)){1,4}$",
                   "type": "string",
                   "x-kubernetes-validations": [
-                    {
-                      "message": "invalid duration value",
-                      "rule": "matches(self, '^([0-9]{1,5}(h|m|s|ms)){1,4}$')"
-                    },
                     {
                       "message": "connectTimeout must be at least 100ms",
                       "rule": "duration(self) >= duration('100ms')"
@@ -5358,12 +5912,9 @@
                     "interval": {
                       "description": "Time between keepalive probes.\nIf unset, this defaults to 180s.",
                       "maxLength": 32,
+                      "pattern": "^([0-9]{1,5}(h|m|s|ms)){1,4}$",
                       "type": "string",
                       "x-kubernetes-validations": [
-                        {
-                          "message": "invalid duration value",
-                          "rule": "matches(self, '^([0-9]{1,5}(h|m|s|ms)){1,4}$')"
-                        },
                         {
                           "message": "interval must be at least 1 second",
                           "rule": "duration(self) >= duration('1s')"
@@ -5380,12 +5931,9 @@
                     "time": {
                       "description": "Time a connection needs to be idle before keepalive probes start being sent.\nIf unset, this defaults to 180s.",
                       "maxLength": 32,
+                      "pattern": "^([0-9]{1,5}(h|m|s|ms)){1,4}$",
                       "type": "string",
                       "x-kubernetes-validations": [
-                        {
-                          "message": "invalid duration value",
-                          "rule": "matches(self, '^([0-9]{1,5}(h|m|s|ms)){1,4}$')"
-                        },
                         {
                           "message": "time must be at least 1 second",
                           "rule": "duration(self) >= duration('1s')"
@@ -5413,22 +5961,44 @@
                   "type": "array"
                 },
                 "caCertificateRefs": {
-                  "description": "CA certificate `ConfigMap` to use to\nverify the server certificate.\nIf unset, the system's trusted certificates are used.",
+                  "description": "CA certificate source to use to verify the server certificate. Omitted kind\nand `ConfigMap` select a ConfigMap; `Secret` selects a Secret. The `ca.crt`\nkey is required. If unset, the system's trusted certificates are used.",
                   "items": {
-                    "description": "LocalObjectReference contains enough information to let you locate the\nreferenced object inside the same namespace.",
+                    "description": "LocalCACertificateRef references a same-namespace CA certificate source.\nAn omitted kind defaults to ConfigMap.",
                     "properties": {
+                      "kind": {
+                        "default": "ConfigMap",
+                        "description": "Kind of the referenced CA certificate source. Omitted defaults to ConfigMap.",
+                        "enum": [
+                          "ConfigMap",
+                          "Secret"
+                        ],
+                        "type": "string"
+                      },
                       "name": {
-                        "default": "",
-                        "description": "Name of the referent",
+                        "description": "Name of the referenced CA certificate source.",
+                        "maxLength": 253,
+                        "minLength": 1,
                         "type": "string"
                       }
                     },
+                    "required": [
+                      "name"
+                    ],
                     "type": "object",
                     "x-kubernetes-map-type": "atomic"
                   },
                   "maxItems": 1,
                   "type": "array",
                   "x-kubernetes-list-type": "atomic"
+                },
+                "certificateSource": {
+                  "default": "Inline",
+                  "description": "Source for the gateway's client identity and trust roots (`Inline` default, or `SPIFFE`).",
+                  "enum": [
+                    "Inline",
+                    "SPIFFE"
+                  ],
+                  "type": "string"
                 },
                 "insecureSkipVerify": {
                   "description": "Originates TLS but skips verification of the backend's certificate\nWARNING: insecure; only use if the risks are understood\n\nModes:\n* `All` disables all TLS verification\n* `Hostname` trusts the CA certificate but ignores hostname/SAN mismatches.\n  Still insecure; prefer `verifySubjectAltNames` where possible.",
@@ -5515,6 +6085,10 @@
                 {
                   "message": "insecureSkipVerify and verifySubjectAltNames may not be set together",
                   "rule": "has(self.insecureSkipVerify) ? !has(self.verifySubjectAltNames) : true"
+                },
+                {
+                  "message": "certificateSource SPIFFE may not be combined with mtlsCertificateRef, caCertificateRefs, or insecureSkipVerify",
+                  "rule": "!has(self.certificateSource) || self.certificateSource != 'SPIFFE' || (!has(self.mtlsCertificateRef) && !has(self.caCertificateRefs) && !has(self.insecureSkipVerify))"
                 },
                 {
                   "message": "at most one of the fields in [verifySubjectAltNames insecureSkipVerify] may be set",
@@ -5790,7 +6364,7 @@
               "description": "Settings for managing tunnel connections to the backend, like `HTTPS_PROXY`",
               "properties": {
                 "backendRef": {
-                  "description": "Proxy server to reach.\nSupported types: `Service` and `Backend`.",
+                  "description": "`backendRef` selects a backend for this policy.\nMutually exclusive with `url`.",
                   "properties": {
                     "group": {
                       "default": "",
@@ -5838,12 +6412,35 @@
                       "rule": "(size(self.group) == 0 && self.kind == 'Service') ? has(self.port) : true"
                     }
                   ]
+                },
+                "mode": {
+                  "default": "Auto",
+                  "description": "How requests are sent through the proxy.\nDefaults to `Auto`.",
+                  "enum": [
+                    "Auto",
+                    "Connect"
+                  ],
+                  "type": "string"
+                },
+                "url": {
+                  "description": "`url` directly specifies the HTTP(S) endpoint for this policy.\nWhen the scheme is `https`, backend TLS is enabled automatically.\nMutually exclusive with `backendRef`.\nURLs are opaque; referencing a Kubernetes service hostname like `hello.ns.svc.cluster.local`\nwill not apply Service policies or load balancing.",
+                  "maxLength": 1024,
+                  "minLength": 1,
+                  "pattern": "^https?://[^/?#@]+(/[^?#]*)?$",
+                  "type": "string"
                 }
               },
-              "required": [
-                "backendRef"
-              ],
-              "type": "object"
+              "type": "object",
+              "x-kubernetes-validations": [
+                {
+                  "message": "exactly one of the fields in [backendRef url] must be set",
+                  "rule": "[has(self.backendRef),has(self.url)].filter(x,x==true).size() == 1"
+                },
+                {
+                  "message": "url must not include a path for backend tunnel",
+                  "rule": "!has(self.url) || self.url.matches('^https?://[^/?#]+$')"
+                }
+              ]
             }
           },
           "type": "object",
@@ -5966,7 +6563,7 @@
                       ]
                     },
                     "backendRef": {
-                      "description": "OTLP server to send access logs to.\nSupported types: `Service` and `AgentgatewayBackend`.",
+                      "description": "`backendRef` selects a backend for this policy.\nMutually exclusive with `url`.",
                       "properties": {
                         "group": {
                           "default": "",
@@ -6035,11 +6632,15 @@
                         "HTTP"
                       ],
                       "type": "string"
+                    },
+                    "url": {
+                      "description": "`url` directly specifies the HTTP(S) endpoint for this policy.\nWhen the scheme is `https`, backend TLS is enabled automatically.\nMutually exclusive with `backendRef`.\nURLs are opaque; referencing a Kubernetes service hostname like `hello.ns.svc.cluster.local`\nwill not apply Service policies or load balancing.",
+                      "maxLength": 1024,
+                      "minLength": 1,
+                      "pattern": "^https?://[^/?#@]+(/[^?#]*)?$",
+                      "type": "string"
                     }
                   },
-                  "required": [
-                    "backendRef"
-                  ],
                   "type": "object",
                   "x-kubernetes-validations": [
                     {
@@ -6049,6 +6650,14 @@
                     {
                       "message": "path must start with /",
                       "rule": "!has(self.path) || self.path.startsWith('/')"
+                    },
+                    {
+                      "message": "url path is only valid with protocol HTTP",
+                      "rule": "!has(self.url) || !self.url.matches('^https?://[^/?#]+/') || (has(self.protocol) && self.protocol == 'HTTP')"
+                    },
+                    {
+                      "message": "exactly one of the fields in [backendRef url] must be set",
+                      "rule": "[has(self.backendRef),has(self.url)].filter(x,x==true).size() == 1"
                     }
                   ]
                 }
@@ -6087,12 +6696,9 @@
                 "http1IdleTimeout": {
                   "description": "Timeout before an unused connection is\nclosed.\nIf unset, this defaults to 10 minutes.",
                   "maxLength": 32,
+                  "pattern": "^([0-9]{1,5}(h|m|s|ms)){1,4}$",
                   "type": "string",
                   "x-kubernetes-validations": [
-                    {
-                      "message": "invalid duration value",
-                      "rule": "matches(self, '^([0-9]{1,5}(h|m|s|ms)){1,4}$')"
-                    },
                     {
                       "message": "http1IdleTimeout must be at least 1 second",
                       "rule": "duration(self) >= duration('1s')"
@@ -6157,13 +6763,11 @@
                   ]
                 },
                 "http2KeepaliveInterval": {
+                  "description": "Interval between `HTTP/2` keepalive pings.\nIf unset, keepalive pings are not sent.",
                   "maxLength": 32,
+                  "pattern": "^([0-9]{1,5}(h|m|s|ms)){1,4}$",
                   "type": "string",
                   "x-kubernetes-validations": [
-                    {
-                      "message": "invalid duration value",
-                      "rule": "matches(self, '^([0-9]{1,5}(h|m|s|ms)){1,4}$')"
-                    },
                     {
                       "message": "http2KeepaliveInterval must be at least 1 second",
                       "rule": "duration(self) >= duration('1s')"
@@ -6171,13 +6775,11 @@
                   ]
                 },
                 "http2KeepaliveTimeout": {
+                  "description": "Time to wait for a response to an `HTTP/2` keepalive ping before the connection is closed.\nOnly applies when `http2KeepaliveInterval` is set.",
                   "maxLength": 32,
+                  "pattern": "^([0-9]{1,5}(h|m|s|ms)){1,4}$",
                   "type": "string",
                   "x-kubernetes-validations": [
-                    {
-                      "message": "invalid duration value",
-                      "rule": "matches(self, '^([0-9]{1,5}(h|m|s|ms)){1,4}$')"
-                    },
                     {
                       "message": "http2KeepaliveTimeout must be at least 1 second",
                       "rule": "duration(self) >= duration('1s')"
@@ -6247,15 +6849,18 @@
                     }
                   ]
                 },
+                "maxConcurrentRequests": {
+                  "description": "Maximum number of in-flight HTTP requests across this gateway/port.\nThis includes HTTP/1 requests and HTTP/2 streams. Requests over the limit\nare rejected immediately with a 503 response. Unset means unlimited.",
+                  "format": "int32",
+                  "minimum": 1,
+                  "type": "integer"
+                },
                 "maxConnectionDuration": {
                   "description": "Maximum time a connection is allowed to remain open.\nAfter this duration, the connection is gracefully closed after the current in-flight request completes.\nUseful for ensuring even traffic distribution behind load balancers during scaling events.",
                   "maxLength": 32,
+                  "pattern": "^([0-9]{1,5}(h|m|s|ms)){1,4}$",
                   "type": "string",
                   "x-kubernetes-validations": [
-                    {
-                      "message": "invalid duration value",
-                      "rule": "matches(self, '^([0-9]{1,5}(h|m|s|ms)){1,4}$')"
-                    },
                     {
                       "message": "maxConnectionDuration must be at least 1 second",
                       "rule": "duration(self) >= duration('1s')"
@@ -6266,8 +6871,8 @@
               "type": "object",
               "x-kubernetes-validations": [
                 {
-                  "message": "at least one of the fields in [http1HeaderCase http1IdleTimeout http1MaxHeaders http2ConnectionWindowSize http2FrameSize http2KeepaliveInterval http2KeepaliveTimeout http2MaxHeaderSize http2WindowSize maxBufferSize maxConnectionDuration] must be set",
-                  "rule": "[has(self.http1HeaderCase),has(self.http1IdleTimeout),has(self.http1MaxHeaders),has(self.http2ConnectionWindowSize),has(self.http2FrameSize),has(self.http2KeepaliveInterval),has(self.http2KeepaliveTimeout),has(self.http2MaxHeaderSize),has(self.http2WindowSize),has(self.maxBufferSize),has(self.maxConnectionDuration)].filter(x,x==true).size() >= 1"
+                  "message": "at least one of the fields in [http1HeaderCase http1IdleTimeout http1MaxHeaders http2ConnectionWindowSize http2FrameSize http2KeepaliveInterval http2KeepaliveTimeout http2MaxHeaderSize http2WindowSize maxBufferSize maxConcurrentRequests maxConnectionDuration] must be set",
+                  "rule": "[has(self.http1HeaderCase),has(self.http1IdleTimeout),has(self.http1MaxHeaders),has(self.http2ConnectionWindowSize),has(self.http2FrameSize),has(self.http2KeepaliveInterval),has(self.http2KeepaliveTimeout),has(self.http2MaxHeaderSize),has(self.http2WindowSize),has(self.maxBufferSize),has(self.maxConcurrentRequests),has(self.maxConnectionDuration)].filter(x,x==true).size() >= 1"
                 }
               ]
             },
@@ -6396,12 +7001,9 @@
                     "interval": {
                       "description": "Time between keepalive probes.\nIf unset, this defaults to 180s.",
                       "maxLength": 32,
+                      "pattern": "^([0-9]{1,5}(h|m|s|ms)){1,4}$",
                       "type": "string",
                       "x-kubernetes-validations": [
-                        {
-                          "message": "invalid duration value",
-                          "rule": "matches(self, '^([0-9]{1,5}(h|m|s|ms)){1,4}$')"
-                        },
                         {
                           "message": "interval must be at least 1 second",
                           "rule": "duration(self) >= duration('1s')"
@@ -6418,12 +7020,9 @@
                     "time": {
                       "description": "Time a connection needs to be idle before keepalive probes start being sent.\nIf unset, this defaults to 180s.",
                       "maxLength": 32,
+                      "pattern": "^([0-9]{1,5}(h|m|s|ms)){1,4}$",
                       "type": "string",
                       "x-kubernetes-validations": [
-                        {
-                          "message": "invalid duration value",
-                          "rule": "matches(self, '^([0-9]{1,5}(h|m|s|ms)){1,4}$')"
-                        },
                         {
                           "message": "time must be at least 1 second",
                           "rule": "duration(self) >= duration('1s')"
@@ -6432,13 +7031,19 @@
                     }
                   },
                   "type": "object"
+                },
+                "maxConnections": {
+                  "description": "Maximum number of active downstream connections on this gateway/port.\nConnections over the limit are closed immediately. Unset means unlimited.",
+                  "format": "int32",
+                  "minimum": 1,
+                  "type": "integer"
                 }
               },
               "type": "object",
               "x-kubernetes-validations": [
                 {
-                  "message": "at least one of the fields in [keepalive] must be set",
-                  "rule": "[has(self.keepalive)].filter(x,x==true).size() >= 1"
+                  "message": "at least one of the fields in [keepalive maxConnections] must be set",
+                  "rule": "[has(self.keepalive),has(self.maxConnections)].filter(x,x==true).size() >= 1"
                 }
               ]
             },
@@ -6477,12 +7082,9 @@
                 "handshakeTimeout": {
                   "description": "Deadline for a TLS handshake to\ncomplete. If unset, this defaults to `15s`.",
                   "maxLength": 32,
+                  "pattern": "^([0-9]{1,5}(h|m|s|ms)){1,4}$",
                   "type": "string",
                   "x-kubernetes-validations": [
-                    {
-                      "message": "invalid duration value",
-                      "rule": "matches(self, '^([0-9]{1,5}(h|m|s|ms)){1,4}$')"
-                    },
                     {
                       "message": "handshakeTimeout must be at least 100ms",
                       "rule": "duration(self) >= duration('100ms')"
@@ -6579,7 +7181,7 @@
                   ]
                 },
                 "backendRef": {
-                  "description": "OTLP server to reach.\nSupported types: `Service` and `AgentgatewayBackend`.",
+                  "description": "`backendRef` selects a backend for this policy.\nMutually exclusive with `url`.",
                   "properties": {
                     "group": {
                       "default": "",
@@ -6684,11 +7286,15 @@
                     "type": "object"
                   },
                   "type": "array"
+                },
+                "url": {
+                  "description": "`url` directly specifies the HTTP(S) endpoint for this policy.\nWhen the scheme is `https`, backend TLS is enabled automatically.\nMutually exclusive with `backendRef`.\nURLs are opaque; referencing a Kubernetes service hostname like `hello.ns.svc.cluster.local`\nwill not apply Service policies or load balancing.",
+                  "maxLength": 1024,
+                  "minLength": 1,
+                  "pattern": "^https?://[^/?#@]+(/[^?#]*)?$",
+                  "type": "string"
                 }
               },
-              "required": [
-                "backendRef"
-              ],
               "type": "object",
               "x-kubernetes-validations": [
                 {
@@ -6698,6 +7304,14 @@
                 {
                   "message": "path must start with /",
                   "rule": "!has(self.path) || self.path.startsWith('/')"
+                },
+                {
+                  "message": "url path is only valid with protocol HTTP",
+                  "rule": "!has(self.url) || !self.url.matches('^https?://[^/?#]+/') || (has(self.protocol) && self.protocol == 'HTTP')"
+                },
+                {
+                  "message": "exactly one of the fields in [backendRef url] must be set",
+                  "rule": "[has(self.backendRef),has(self.url)].filter(x,x==true).size() == 1"
                 }
               ]
             }
@@ -7561,7 +8175,7 @@
               "description": "External authentication configuration for the policy.\nThis selects the external server to send requests to for authentication.\n\nAn extAuth policy can be conditionally set by nesting configuration under the `conditional` field.",
               "properties": {
                 "backendRef": {
-                  "description": "External Authorization server to reach.\n\nSupported types: `Service` and `Backend`.",
+                  "description": "`backendRef` selects a backend for this policy.\nMutually exclusive with `url`.",
                   "properties": {
                     "group": {
                       "default": "",
@@ -7658,7 +8272,7 @@
                         "description": "Policy to apply when the condition matches.",
                         "properties": {
                           "backendRef": {
-                            "description": "External Authorization server to reach.\n\nSupported types: `Service` and `Backend`.",
+                            "description": "`backendRef` selects a backend for this policy.\nMutually exclusive with `url`.",
                             "properties": {
                               "group": {
                                 "default": "",
@@ -7869,13 +8483,20 @@
                               }
                             },
                             "type": "object"
+                          },
+                          "url": {
+                            "description": "`url` directly specifies the HTTP(S) endpoint for this policy.\nWhen the scheme is `https`, backend TLS is enabled automatically.\nMutually exclusive with `backendRef`.\nURLs are opaque; referencing a Kubernetes service hostname like `hello.ns.svc.cluster.local`\nwill not apply Service policies or load balancing.",
+                            "maxLength": 1024,
+                            "minLength": 1,
+                            "pattern": "^https?://[^/?#@]+(/[^?#]*)?$",
+                            "type": "string"
                           }
                         },
                         "type": "object",
                         "x-kubernetes-validations": [
                           {
-                            "message": "backendRef is required",
-                            "rule": "has(self.backendRef)"
+                            "message": "exactly one of backendRef or url is required",
+                            "rule": "[has(self.backendRef),has(self.url)].filter(x,x==true).size() == 1"
                           },
                           {
                             "message": "exactly one of the fields in [grpc http] must be set",
@@ -7884,6 +8505,14 @@
                           {
                             "message": "forwardBody cannot be used with http.body",
                             "rule": "!(has(self.forwardBody) && has(self.http) && has(self.http.body))"
+                          },
+                          {
+                            "message": "url path is only valid with http",
+                            "rule": "!has(self.url) || !self.url.matches('^https?://[^/?#]+/') || has(self.http)"
+                          },
+                          {
+                            "message": "http.path may not be set when url includes a path",
+                            "rule": "!has(self.url) || !self.url.matches('^https?://[^/?#]+/') || !has(self.http) || !has(self.http.path)"
                           }
                         ]
                       }
@@ -8031,10 +8660,21 @@
                     }
                   },
                   "type": "object"
+                },
+                "url": {
+                  "description": "`url` directly specifies the HTTP(S) endpoint for this policy.\nWhen the scheme is `https`, backend TLS is enabled automatically.\nMutually exclusive with `backendRef`.\nURLs are opaque; referencing a Kubernetes service hostname like `hello.ns.svc.cluster.local`\nwill not apply Service policies or load balancing.",
+                  "maxLength": 1024,
+                  "minLength": 1,
+                  "pattern": "^https?://[^/?#@]+(/[^?#]*)?$",
+                  "type": "string"
                 }
               },
               "type": "object",
               "x-kubernetes-validations": [
+                {
+                  "message": "exactly one of backendRef or url must be set unless conditional is set",
+                  "rule": "has(self.conditional) ? (!has(self.backendRef) && !has(self.url)) : [has(self.backendRef),has(self.url)].filter(x,x==true).size() == 1"
+                },
                 {
                   "message": "exactly one of the fields in [grpc http] must be set",
                   "rule": "has(self.conditional) || [has(self.grpc),has(self.http)].filter(x,x==true).size() == 1"
@@ -8044,12 +8684,16 @@
                   "rule": "!(has(self.forwardBody) && has(self.http) && has(self.http.body))"
                 },
                 {
-                  "message": "conditional cannot be set with any other field",
-                  "rule": "has(self.conditional) ? [has(self.backendRef),has(self.cache),has(self.failureMode),has(self.forwardBody),has(self.grpc),has(self.http)].filter(x,x==true).size() == 0 : true"
+                  "message": "url path is only valid with http",
+                  "rule": "!has(self.url) || !self.url.matches('^https?://[^/?#]+/') || has(self.http)"
                 },
                 {
-                  "message": "backendRef: Required value",
-                  "rule": "has(self.conditional) ? true : has(self.backendRef)"
+                  "message": "http.path may not be set when url includes a path",
+                  "rule": "!has(self.url) || !self.url.matches('^https?://[^/?#]+/') || !has(self.http) || !has(self.http.path)"
+                },
+                {
+                  "message": "conditional cannot be set with any other field",
+                  "rule": "has(self.conditional) ? [has(self.backendRef),has(self.cache),has(self.failureMode),has(self.forwardBody),has(self.grpc),has(self.http),has(self.url)].filter(x,x==true).size() == 0 : true"
                 }
               ]
             },
@@ -8057,7 +8701,7 @@
               "description": "External processing configuration for the policy.",
               "properties": {
                 "backendRef": {
-                  "description": "External Processor server to reach.\nSupported types: `Service` and `Backend`.",
+                  "description": "`backendRef` selects a backend for this policy.\nMutually exclusive with `url`.",
                   "properties": {
                     "group": {
                       "default": "",
@@ -8120,7 +8764,7 @@
                         "description": "Policy to apply when the condition matches.",
                         "properties": {
                           "backendRef": {
-                            "description": "External Processor server to reach.\nSupported types: `Service` and `Backend`.",
+                            "description": "`backendRef` selects a backend for this policy.\nMutually exclusive with `url`.",
                             "properties": {
                               "group": {
                                 "default": "",
@@ -8202,7 +8846,7 @@
                               },
                               "requestBodyMode": {
                                 "default": "FullDuplexStreamed",
-                                "description": "How request bodies are sent to the external processor.\n`Buffered` buffers the full body and returns an error if it exceeds 8KB.\n`BufferedPartial` buffers up to 8KB and sends the buffered prefix if the\nbody exceeds that limit. Defaults to `FullDuplexStreamed`.",
+                                "description": "How request bodies are sent to the external processor.\nDefaults to `FullDuplexStreamed`.",
                                 "enum": [
                                   "Buffered",
                                   "BufferedPartial",
@@ -8231,7 +8875,7 @@
                               },
                               "responseBodyMode": {
                                 "default": "FullDuplexStreamed",
-                                "description": "How response bodies are sent to the external processor.\n`Buffered` buffers the full body and returns an error if it exceeds 8KB.\n`BufferedPartial` buffers up to 8KB and sends the buffered prefix if the\nbody exceeds that limit. Defaults to `FullDuplexStreamed`.",
+                                "description": "How response bodies are sent to the external processor.\nDefaults to `FullDuplexStreamed`.",
                                 "enum": [
                                   "Buffered",
                                   "BufferedPartial",
@@ -8282,13 +8926,24 @@
                             "description": "Response attributes to send to the external processor in the response\n`attributes` field of the ProcessingRequest. Values are CEL expressions\nevaluated per response.",
                             "maxProperties": 64,
                             "type": "object"
+                          },
+                          "url": {
+                            "description": "`url` directly specifies the HTTP(S) endpoint for this policy.\nWhen the scheme is `https`, backend TLS is enabled automatically.\nMutually exclusive with `backendRef`.\nURLs are opaque; referencing a Kubernetes service hostname like `hello.ns.svc.cluster.local`\nwill not apply Service policies or load balancing.",
+                            "maxLength": 1024,
+                            "minLength": 1,
+                            "pattern": "^https?://[^/?#@]+(/[^?#]*)?$",
+                            "type": "string"
                           }
                         },
                         "type": "object",
                         "x-kubernetes-validations": [
                           {
-                            "message": "backendRef is required",
-                            "rule": "has(self.backendRef)"
+                            "message": "exactly one of backendRef or url is required",
+                            "rule": "[has(self.backendRef),has(self.url)].filter(x,x==true).size() == 1"
+                          },
+                          {
+                            "message": "url must not include a path",
+                            "rule": "!has(self.url) || self.url.matches('^https?://[^/?#]+$')"
                           }
                         ]
                       }
@@ -8341,7 +8996,7 @@
                     },
                     "requestBodyMode": {
                       "default": "FullDuplexStreamed",
-                      "description": "How request bodies are sent to the external processor.\n`Buffered` buffers the full body and returns an error if it exceeds 8KB.\n`BufferedPartial` buffers up to 8KB and sends the buffered prefix if the\nbody exceeds that limit. Defaults to `FullDuplexStreamed`.",
+                      "description": "How request bodies are sent to the external processor.\nDefaults to `FullDuplexStreamed`.",
                       "enum": [
                         "Buffered",
                         "BufferedPartial",
@@ -8370,7 +9025,7 @@
                     },
                     "responseBodyMode": {
                       "default": "FullDuplexStreamed",
-                      "description": "How response bodies are sent to the external processor.\n`Buffered` buffers the full body and returns an error if it exceeds 8KB.\n`BufferedPartial` buffers up to 8KB and sends the buffered prefix if the\nbody exceeds that limit. Defaults to `FullDuplexStreamed`.",
+                      "description": "How response bodies are sent to the external processor.\nDefaults to `FullDuplexStreamed`.",
                       "enum": [
                         "Buffered",
                         "BufferedPartial",
@@ -8421,17 +9076,28 @@
                   "description": "Response attributes to send to the external processor in the response\n`attributes` field of the ProcessingRequest. Values are CEL expressions\nevaluated per response.",
                   "maxProperties": 64,
                   "type": "object"
+                },
+                "url": {
+                  "description": "`url` directly specifies the HTTP(S) endpoint for this policy.\nWhen the scheme is `https`, backend TLS is enabled automatically.\nMutually exclusive with `backendRef`.\nURLs are opaque; referencing a Kubernetes service hostname like `hello.ns.svc.cluster.local`\nwill not apply Service policies or load balancing.",
+                  "maxLength": 1024,
+                  "minLength": 1,
+                  "pattern": "^https?://[^/?#@]+(/[^?#]*)?$",
+                  "type": "string"
                 }
               },
               "type": "object",
               "x-kubernetes-validations": [
                 {
-                  "message": "conditional cannot be set with any other field",
-                  "rule": "has(self.conditional) ? [has(self.backendRef),has(self.failureMode),has(self.metadataContext),has(self.processingOptions),has(self.requestAttributes),has(self.responseAttributes)].filter(x,x==true).size() == 0 : true"
+                  "message": "exactly one of backendRef or url must be set unless conditional is set",
+                  "rule": "has(self.conditional) ? (!has(self.backendRef) && !has(self.url)) : [has(self.backendRef),has(self.url)].filter(x,x==true).size() == 1"
                 },
                 {
-                  "message": "backendRef: Required value",
-                  "rule": "has(self.conditional) ? true : has(self.backendRef)"
+                  "message": "url must not include a path",
+                  "rule": "!has(self.url) || self.url.matches('^https?://[^/?#]+$')"
+                },
+                {
+                  "message": "conditional cannot be set with any other field",
+                  "rule": "has(self.conditional) ? [has(self.backendRef),has(self.failureMode),has(self.metadataContext),has(self.processingOptions),has(self.requestAttributes),has(self.responseAttributes),has(self.url)].filter(x,x==true).size() == 0 : true"
                 }
               ]
             },
@@ -8728,6 +9394,10 @@
                   ],
                   "type": "string"
                 },
+                "preserveToken": {
+                  "description": "Keeps a successfully validated JWT in its original location. By default, the gateway removes\nthe JWT after validation. When the token only needs to be forwarded to the selected backend,\nprefer `backendAuth.passthrough` so it is not exposed to other policies in the request path.",
+                  "type": "boolean"
+                },
                 "providers": {
                   "items": {
                     "properties": {
@@ -8759,7 +9429,7 @@
                             "description": "How to reach the JSON Web Key Set from a remote\naddress.",
                             "properties": {
                               "backendRef": {
-                                "description": "Remote JWKS server to reach.\nSupported types are `Service` and static `Backend`. An\n`AgentgatewayPolicy` containing backend TLS config can then be attached\nto the `Service` or `Backend` in order to set TLS options for a\nconnection to the remote `jwks` source.",
+                                "description": "`backendRef` selects a backend for this policy.\nMutually exclusive with `url`.",
                                 "properties": {
                                   "group": {
                                     "default": "",
@@ -8810,13 +9480,11 @@
                               },
                               "cacheDuration": {
                                 "default": "5m",
+                                "description": "How long a fetched `jwks` document is used before it is re-fetched from the IdP.",
                                 "maxLength": 32,
+                                "pattern": "^([0-9]{1,5}(h|m|s|ms)){1,4}$",
                                 "type": "string",
                                 "x-kubernetes-validations": [
-                                  {
-                                    "message": "invalid duration value",
-                                    "rule": "matches(self, '^([0-9]{1,5}(h|m|s|ms)){1,4}$')"
-                                  },
                                   {
                                     "message": "cacheDuration must be at least 5m.",
                                     "rule": "duration(self) >= duration('5m')"
@@ -8825,16 +9493,33 @@
                               },
                               "jwksPath": {
                                 "description": "Path to the IdP `jwks` endpoint, relative to the root, commonly\n`\".well-known/jwks.json\"`.",
-                                "maxLength": 2000,
+                                "maxLength": 1024,
                                 "minLength": 1,
+                                "type": "string"
+                              },
+                              "url": {
+                                "description": "`url` directly specifies the HTTP(S) endpoint for this policy.\nWhen the scheme is `https`, backend TLS is enabled automatically.\nMutually exclusive with `backendRef`.\nURLs are opaque; referencing a Kubernetes service hostname like `hello.ns.svc.cluster.local`\nwill not apply Service policies or load balancing.",
+                                "maxLength": 1024,
+                                "minLength": 1,
+                                "pattern": "^https?://[^/?#@]+(/[^?#]*)?$",
                                 "type": "string"
                               }
                             },
-                            "required": [
-                              "backendRef",
-                              "jwksPath"
-                            ],
-                            "type": "object"
+                            "type": "object",
+                            "x-kubernetes-validations": [
+                              {
+                                "message": "jwksPath is required when backendRef is set",
+                                "rule": "has(self.backendRef) ? has(self.jwksPath) : true"
+                              },
+                              {
+                                "message": "jwksPath may not be set when url is set",
+                                "rule": "has(self.url) ? !has(self.jwksPath) : true"
+                              },
+                              {
+                                "message": "exactly one of the fields in [backendRef url] must be set",
+                                "rule": "[has(self.backendRef),has(self.url)].filter(x,x==true).size() == 1"
+                              }
+                            ]
                           }
                         },
                         "type": "object",
@@ -8900,7 +9585,7 @@
                             "description": "Global rate limiting policy using an external service.",
                             "properties": {
                               "backendRef": {
-                                "description": "Rate limit server to reach.\nSupported types: `Service` and `Backend`.",
+                                "description": "`backendRef` selects a backend for this policy.\nMutually exclusive with `url`.",
                                 "properties": {
                                   "group": {
                                     "default": "",
@@ -8987,6 +9672,12 @@
                                       "minItems": 1,
                                       "type": "array"
                                     },
+                                    "limitOverride": {
+                                      "description": "Common Expression Language (`CEL`) expression that returns a dynamic\nlimit override for this descriptor. The expression must evaluate to an\nobject containing `unit` and `requestsPerUnit`, for example\n`{\"unit\":\"minute\",\"requestsPerUnit\":5}`.\n\nSee https://agentgateway.dev/docs/standalone/latest/reference/cel/ for more info.",
+                                      "maxLength": 16384,
+                                      "minLength": 1,
+                                      "type": "string"
+                                    },
                                     "unit": {
                                       "description": "Cost unit. If unspecified,\n`Requests` is used.",
                                       "enum": [
@@ -9018,14 +9709,30 @@
                                   "FailOpen"
                                 ],
                                 "type": "string"
+                              },
+                              "url": {
+                                "description": "`url` directly specifies the HTTP(S) endpoint for this policy.\nWhen the scheme is `https`, backend TLS is enabled automatically.\nMutually exclusive with `backendRef`.\nURLs are opaque; referencing a Kubernetes service hostname like `hello.ns.svc.cluster.local`\nwill not apply Service policies or load balancing.",
+                                "maxLength": 1024,
+                                "minLength": 1,
+                                "pattern": "^https?://[^/?#@]+(/[^?#]*)?$",
+                                "type": "string"
                               }
                             },
                             "required": [
-                              "backendRef",
                               "descriptors",
                               "domain"
                             ],
-                            "type": "object"
+                            "type": "object",
+                            "x-kubernetes-validations": [
+                              {
+                                "message": "url must not include a path",
+                                "rule": "!has(self.url) || self.url.matches('^https?://[^/?#]+$')"
+                              },
+                              {
+                                "message": "exactly one of the fields in [backendRef url] must be set",
+                                "rule": "[has(self.backendRef),has(self.url)].filter(x,x==true).size() == 1"
+                              }
+                            ]
                           },
                           "local": {
                             "description": "Local rate limiting policy.",
@@ -9035,6 +9742,7 @@
                                 "burst": {
                                   "description": "Allowance of requests above the request-per-unit\nthat should be allowed within a short period of time.",
                                   "format": "int32",
+                                  "minimum": 0,
                                   "type": "integer"
                                 },
                                 "requests": {
@@ -9103,7 +9811,7 @@
                   "description": "Global rate limiting policy using an external service.",
                   "properties": {
                     "backendRef": {
-                      "description": "Rate limit server to reach.\nSupported types: `Service` and `Backend`.",
+                      "description": "`backendRef` selects a backend for this policy.\nMutually exclusive with `url`.",
                       "properties": {
                         "group": {
                           "default": "",
@@ -9190,6 +9898,12 @@
                             "minItems": 1,
                             "type": "array"
                           },
+                          "limitOverride": {
+                            "description": "Common Expression Language (`CEL`) expression that returns a dynamic\nlimit override for this descriptor. The expression must evaluate to an\nobject containing `unit` and `requestsPerUnit`, for example\n`{\"unit\":\"minute\",\"requestsPerUnit\":5}`.\n\nSee https://agentgateway.dev/docs/standalone/latest/reference/cel/ for more info.",
+                            "maxLength": 16384,
+                            "minLength": 1,
+                            "type": "string"
+                          },
                           "unit": {
                             "description": "Cost unit. If unspecified,\n`Requests` is used.",
                             "enum": [
@@ -9221,14 +9935,30 @@
                         "FailOpen"
                       ],
                       "type": "string"
+                    },
+                    "url": {
+                      "description": "`url` directly specifies the HTTP(S) endpoint for this policy.\nWhen the scheme is `https`, backend TLS is enabled automatically.\nMutually exclusive with `backendRef`.\nURLs are opaque; referencing a Kubernetes service hostname like `hello.ns.svc.cluster.local`\nwill not apply Service policies or load balancing.",
+                      "maxLength": 1024,
+                      "minLength": 1,
+                      "pattern": "^https?://[^/?#@]+(/[^?#]*)?$",
+                      "type": "string"
                     }
                   },
                   "required": [
-                    "backendRef",
                     "descriptors",
                     "domain"
                   ],
-                  "type": "object"
+                  "type": "object",
+                  "x-kubernetes-validations": [
+                    {
+                      "message": "url must not include a path",
+                      "rule": "!has(self.url) || self.url.matches('^https?://[^/?#]+$')"
+                    },
+                    {
+                      "message": "exactly one of the fields in [backendRef url] must be set",
+                      "rule": "[has(self.backendRef),has(self.url)].filter(x,x==true).size() == 1"
+                    }
+                  ]
                 },
                 "local": {
                   "description": "Local rate limiting policy.",
@@ -9238,6 +9968,7 @@
                       "burst": {
                         "description": "Allowance of requests above the request-per-unit\nthat should be allowed within a short period of time.",
                         "format": "int32",
+                        "minimum": 0,
                         "type": "integer"
                       },
                       "requests": {
@@ -9335,20 +10066,23 @@
                 "request": {
                   "description": "Timeout for an individual request from the gateway to a backend. This covers the time from when\nthe request first starts being sent from the gateway to when the full response has been received from the backend.",
                   "maxLength": 32,
+                  "pattern": "^([0-9]{1,5}(h|m|s|ms)){1,4}$",
                   "type": "string",
                   "x-kubernetes-validations": [
                     {
-                      "message": "invalid duration value",
-                      "rule": "matches(self, '^([0-9]{1,5}(h|m|s|ms)){1,4}$')"
-                    },
-                    {
                       "message": "request must be at least 1ms",
-                      "rule": "duration(self) >= duration('100ms')"
+                      "rule": "duration(self) >= duration('1ms')"
                     }
                   ]
                 }
               },
-              "type": "object"
+              "type": "object",
+              "x-kubernetes-validations": [
+                {
+                  "message": "at least one of the fields in [request] must be set",
+                  "rule": "[has(self.request)].filter(x,x==true).size() >= 1"
+                }
+              ]
             },
             "transformation": {
               "description": "Mutates and transforms requests and responses\nbefore forwarding them to the destination.",
@@ -9983,6 +10717,14 @@
         {
           "message": "the 'traffic.phase=PreRouting' field can only target a Gateway or ListenerSet",
           "rule": "has(self.targetSelectors) && has(self.traffic) && has(self.traffic.phase) && self.traffic.phase == 'PreRouting' ? self.targetSelectors.all(t, t.kind in ['Gateway', 'ListenerSet']) : true"
+        },
+        {
+          "message": "Service sectionName must be a numeric port from 1 to 65535",
+          "rule": "!has(self.targetRefs) || self.targetRefs.all(t, t.kind != 'Service' || !has(t.sectionName) || (int(t.sectionName) >= 1 && int(t.sectionName) <= 65535))"
+        },
+        {
+          "message": "Service sectionName must be a numeric port from 1 to 65535",
+          "rule": "!has(self.targetSelectors) || self.targetSelectors.all(t, t.kind != 'Service' || !has(t.sectionName) || (int(t.sectionName) >= 1 && int(t.sectionName) <= 65535))"
         },
         {
           "message": "exactly one of the fields in [targetRefs targetSelectors] must be set",

@@ -62,6 +62,14 @@
           ],
           "type": "object"
         },
+        "backend": {
+          "description": "Backend selects the execution backend for this run.\n\"job\" (default, implicit): standard Kubernetes Job backend.\n\"celln\": hardware-isolated Celln dispatcher (hermetic; no ensembles, no\n  delegation, no shared memory, no IPC, no streaming; the agent receives\n  the task string and produces a bounded output). Tasks that require\n  multiple tools, sub-agents, or workflow state must use \"job\".\n\nCelln is selected for individual high-risk or bounded computations;\nensembles and workflows always use the Job backend.",
+          "enum": [
+            "job",
+            "celln"
+          ],
+          "type": "string"
+        },
         "canaryMode": {
           "description": "CanaryMode runs built-in health checks instead of the LLM conversation\nloop. The agent executes deterministic platform checks (API server,\ncluster info, k8s resources) and one minimal LLM call to verify\nprovider connectivity, then outputs a structured JSON result.",
           "type": "boolean"
@@ -558,8 +566,8 @@
           "type": "string"
         },
         "task": {
-          "description": "Task is the task description for the agent.",
-          "type": "string"
+          "description": "Task is the polymorphic task description for the agent. It accepts\neither a string (legacy Path A: the prompt passed to the LLM via\nthe TASK env var) or an object describing an orchestration mode\n(e.g. {mode: \"sidecar-driven\", tool: \"...\", parameters: {...}}).\nThe controller dispatches by the mode field for object form.\n\nString form preserves backward compatibility with every\npre-existing AgentRun. Object form lets external contributors add\nnew orchestration modes (sidecar-driven today, others tomorrow)\nby registering a TaskModeHandler — no changes to the central\ncontroller logic required.\n\nThe CRD schema is intentionally typeless (no `type:` is emitted)\nto accept either a string (legacy Path A) or an object describing\nan orchestration mode (Path B). The combination of\n`+kubebuilder:validation:Schemaless` (drops the auto-generated\n`type: object` plus the unused `properties` block) and\n`+kubebuilder:validation:XPreserveUnknownFields` (preserves unknown\nfields on the apiserver side) reproduces the polymorphic shape\nthe field actually has — verified via `--dry-run=server` against\na real apiserver that string-form tasks were previously rejected\nby the schema with \"spec.task: must be of type object\".\n\nSee: PR #302 review (issuecomment 5033007953).",
+          "x-kubernetes-preserve-unknown-fields": true
         },
         "timeout": {
           "description": "Timeout is the maximum duration for this agent run.",
@@ -584,6 +592,11 @@
             }
           },
           "type": "object"
+        },
+        "useContext": {
+          "default": true,
+          "description": "UseContext controls whether the agent-runner preserves conversation\nhistory between LLM calls. Set to false to force every prompt — including\nthose issued via the sidecar-initiated prompt channel — to be answered\nin isolation. Default (nil) is true; matches the historical behaviour for\nruns that pre-date this field.\nSettable only on this CR; the sidecar cannot override it.",
+          "type": "boolean"
         },
         "volumeMounts": {
           "description": "VolumeMounts are additional volume mounts applied to the main\nagent container. Names must reference entries in Volumes (or any\nother volume present on the pod).",
@@ -2102,14 +2115,17 @@
         "agentId",
         "agentRef",
         "model",
-        "sessionKey",
-        "task"
+        "sessionKey"
       ],
       "type": "object"
     },
     "status": {
       "description": "AgentRunStatus defines the observed state of AgentRun.",
       "properties": {
+        "cellnActionId": {
+          "description": "CellnActionID is the execution identifier returned by the Celln dispatcher\nwhen this run is dispatched through the Celln backend. Empty for\nnon-Celln backends. The controller polls /v1/executions/<id> on the\nrouter to track progress.",
+          "type": "string"
+        },
         "completedAt": {
           "description": "CompletedAt is when the agent run completed.",
           "format": "date-time",

@@ -29,6 +29,15 @@
           ],
           "type": "string"
         },
+        "firstTick": {
+          "default": "immediate",
+          "description": "FirstTick controls whether a schedule that has never fired runs straight\naway. \"immediate\" (default) backdates the first tick by one interval so\nit is already due; \"afterInterval\" anchors to the schedule's creation\ntime so the first run lands one full interval later.",
+          "enum": [
+            "immediate",
+            "afterInterval"
+          ],
+          "type": "string"
+        },
         "includeMemory": {
           "default": true,
           "description": "IncludeMemory injects the instance's MEMORY.md as context for each run.",

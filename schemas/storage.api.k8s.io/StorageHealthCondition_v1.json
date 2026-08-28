@@ -1,0 +1,36 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "io.k8s.api.storage.v1.StorageHealthCondition",
+  "description": "StorageHealthCondition represents an adverse health condition reported by a CSI driver for its storage backend on a node.",
+  "type": "object",
+  "properties": {
+    "accessMode": {
+      "description": "accessMode is the access mode affected. Nil means all access modes are affected.",
+      "type": "string"
+    },
+    "lastTransitionTime": {
+      "$ref": "../meta.api.k8s.io/Time_v1.json",
+      "description": "lastTransitionTime is when this condition first appeared at its current state."
+    },
+    "message": {
+      "description": "message is a human-readable description. Maximum permitted length of a message is 1024 characters.",
+      "type": "string"
+    },
+    "reason": {
+      "description": "reason is a brief CamelCase machine-parseable reason. Maximum permitted length of a reason is 256 characters.",
+      "type": "string"
+    },
+    "status": {
+      "description": "status is the health status category. One of \"StorageUnreachable\", \"StorageDegraded\".",
+      "type": "string"
+    },
+    "volumeMode": {
+      "description": "volumeMode is the volume mode affected. Nil means both are affected.",
+      "type": "string"
+    }
+  },
+  "required": [
+    "status",
+    "reason"
+  ]
+}

@@ -24,5 +24,8 @@
       "$ref": "DeploymentStatus_v1.json",
       "description": "Most recently observed status of the Deployment."
     }
-  }
+  },
+  "required": [
+    "spec"
+  ]
 }

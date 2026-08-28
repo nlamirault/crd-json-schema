@@ -27,6 +27,6 @@
     }
   },
   "required": [
-    "revision"
+    "data"
   ]
 }

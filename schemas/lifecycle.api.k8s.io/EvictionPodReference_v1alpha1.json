@@ -1,0 +1,20 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "io.k8s.api.lifecycle.v1alpha1.EvictionPodReference",
+  "description": "EvictionPodReference contains enough information to locate the referenced pod inside the same namespace.",
+  "type": "object",
+  "properties": {
+    "name": {
+      "description": "name of the target. This field is required.",
+      "type": "string"
+    },
+    "uid": {
+      "description": "uid of the target. It can be found in .metadata.uid of the target and is a lowercase UUID in 8-4-4-4-12 format. This field is required.",
+      "type": "string"
+    }
+  },
+  "required": [
+    "name",
+    "uid"
+  ]
+}

@@ -23,5 +23,8 @@
       "format": "int32",
       "type": "integer"
     }
-  }
+  },
+  "required": [
+    "limitResponse"
+  ]
 }

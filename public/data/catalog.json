@@ -339,6 +339,15 @@
       },
       {
         "kind": "MutatingAdmissionPolicyBindingList",
+        "version": "v1",
+        "file": "admissionregistration.api.k8s.io/MutatingAdmissionPolicyBindingList_v1.json",
+        "slug": "admissionregistration.api.k8s.io/v1/MutatingAdmissionPolicyBindingList",
+        "category": "Kubernetes",
+        "upstream": "kubernetes/kubernetes",
+        "cncf_maturity": "graduated"
+      },
+      {
+        "kind": "MutatingAdmissionPolicyBindingList",
         "version": "v1alpha1",
         "file": "admissionregistration.api.k8s.io/MutatingAdmissionPolicyBindingList_v1alpha1.json",
         "slug": "admissionregistration.api.k8s.io/v1alpha1/MutatingAdmissionPolicyBindingList",
@@ -369,6 +378,15 @@
         "version": "v1beta1",
         "file": "admissionregistration.api.k8s.io/MutatingAdmissionPolicyBindingSpec_v1beta1.json",
         "slug": "admissionregistration.api.k8s.io/v1beta1/MutatingAdmissionPolicyBindingSpec",
+        "category": "Kubernetes",
+        "upstream": "kubernetes/kubernetes",
+        "cncf_maturity": "graduated"
+      },
+      {
+        "kind": "MutatingAdmissionPolicyList",
+        "version": "v1",
+        "file": "admissionregistration.api.k8s.io/MutatingAdmissionPolicyList_v1.json",
+        "slug": "admissionregistration.api.k8s.io/v1/MutatingAdmissionPolicyList",
         "category": "Kubernetes",
         "upstream": "kubernetes/kubernetes",
         "cncf_maturity": "graduated"
@@ -432,6 +450,15 @@
         "version": "v1",
         "file": "admissionregistration.api.k8s.io/MutatingWebhookConfigurationList_v1.json",
         "slug": "admissionregistration.api.k8s.io/v1/MutatingWebhookConfigurationList",
+        "category": "Kubernetes",
+        "upstream": "kubernetes/kubernetes",
+        "cncf_maturity": "graduated"
+      },
+      {
+        "kind": "Mutation",
+        "version": "v1",
+        "file": "admissionregistration.api.k8s.io/Mutation_v1.json",
+        "slug": "admissionregistration.api.k8s.io/v1/Mutation",
         "category": "Kubernetes",
         "upstream": "kubernetes/kubernetes",
         "cncf_maturity": "graduated"
@@ -5858,6 +5885,15 @@
       },
       {
         "kind": "ClusterTrustBundle",
+        "version": "v1",
+        "file": "certificates.api.k8s.io/ClusterTrustBundle_v1.json",
+        "slug": "certificates.api.k8s.io/v1/ClusterTrustBundle",
+        "category": "Kubernetes",
+        "upstream": "kubernetes/kubernetes",
+        "cncf_maturity": "graduated"
+      },
+      {
+        "kind": "ClusterTrustBundle",
         "version": "v1alpha1",
         "file": "certificates.api.k8s.io/ClusterTrustBundle_v1alpha1.json",
         "slug": "certificates.api.k8s.io/v1alpha1/ClusterTrustBundle",
@@ -5870,6 +5906,15 @@
         "version": "v1beta1",
         "file": "certificates.api.k8s.io/ClusterTrustBundle_v1beta1.json",
         "slug": "certificates.api.k8s.io/v1beta1/ClusterTrustBundle",
+        "category": "Kubernetes",
+        "upstream": "kubernetes/kubernetes",
+        "cncf_maturity": "graduated"
+      },
+      {
+        "kind": "ClusterTrustBundleList",
+        "version": "v1",
+        "file": "certificates.api.k8s.io/ClusterTrustBundleList_v1.json",
+        "slug": "certificates.api.k8s.io/v1/ClusterTrustBundleList",
         "category": "Kubernetes",
         "upstream": "kubernetes/kubernetes",
         "cncf_maturity": "graduated"
@@ -5894,6 +5939,15 @@
       },
       {
         "kind": "ClusterTrustBundleSpec",
+        "version": "v1",
+        "file": "certificates.api.k8s.io/ClusterTrustBundleSpec_v1.json",
+        "slug": "certificates.api.k8s.io/v1/ClusterTrustBundleSpec",
+        "category": "Kubernetes",
+        "upstream": "kubernetes/kubernetes",
+        "cncf_maturity": "graduated"
+      },
+      {
+        "kind": "ClusterTrustBundleSpec",
         "version": "v1alpha1",
         "file": "certificates.api.k8s.io/ClusterTrustBundleSpec_v1alpha1.json",
         "slug": "certificates.api.k8s.io/v1alpha1/ClusterTrustBundleSpec",
@@ -5912,6 +5966,15 @@
       },
       {
         "kind": "PodCertificateRequest",
+        "version": "v1",
+        "file": "certificates.api.k8s.io/PodCertificateRequest_v1.json",
+        "slug": "certificates.api.k8s.io/v1/PodCertificateRequest",
+        "category": "Kubernetes",
+        "upstream": "kubernetes/kubernetes",
+        "cncf_maturity": "graduated"
+      },
+      {
+        "kind": "PodCertificateRequest",
         "version": "v1beta1",
         "file": "certificates.api.k8s.io/PodCertificateRequest_v1beta1.json",
         "slug": "certificates.api.k8s.io/v1beta1/PodCertificateRequest",
@@ -5921,9 +5984,27 @@
       },
       {
         "kind": "PodCertificateRequestList",
+        "version": "v1",
+        "file": "certificates.api.k8s.io/PodCertificateRequestList_v1.json",
+        "slug": "certificates.api.k8s.io/v1/PodCertificateRequestList",
+        "category": "Kubernetes",
+        "upstream": "kubernetes/kubernetes",
+        "cncf_maturity": "graduated"
+      },
+      {
+        "kind": "PodCertificateRequestList",
         "version": "v1beta1",
         "file": "certificates.api.k8s.io/PodCertificateRequestList_v1beta1.json",
         "slug": "certificates.api.k8s.io/v1beta1/PodCertificateRequestList",
+        "category": "Kubernetes",
+        "upstream": "kubernetes/kubernetes",
+        "cncf_maturity": "graduated"
+      },
+      {
+        "kind": "PodCertificateRequestSpec",
+        "version": "v1",
+        "file": "certificates.api.k8s.io/PodCertificateRequestSpec_v1.json",
+        "slug": "certificates.api.k8s.io/v1/PodCertificateRequestSpec",
         "category": "Kubernetes",
         "upstream": "kubernetes/kubernetes",
         "cncf_maturity": "graduated"
@@ -9473,6 +9554,15 @@
         "cncf_maturity": "graduated"
       },
       {
+        "kind": "EvictionResponder",
+        "version": "v1",
+        "file": "core.api.k8s.io/EvictionResponder_v1.json",
+        "slug": "core.api.k8s.io/v1/EvictionResponder",
+        "category": "Kubernetes",
+        "upstream": "kubernetes/kubernetes",
+        "cncf_maturity": "graduated"
+      },
+      {
         "kind": "ExecAction",
         "version": "v1",
         "file": "core.api.k8s.io/ExecAction_v1.json",
@@ -9639,6 +9729,15 @@
         "version": "v1",
         "file": "core.api.k8s.io/ImageVolumeSource_v1.json",
         "slug": "core.api.k8s.io/v1/ImageVolumeSource",
+        "category": "Kubernetes",
+        "upstream": "kubernetes/kubernetes",
+        "cncf_maturity": "graduated"
+      },
+      {
+        "kind": "ImageVolumeStatus",
+        "version": "v1",
+        "file": "core.api.k8s.io/ImageVolumeStatus_v1.json",
+        "slug": "core.api.k8s.io/v1/ImageVolumeStatus",
         "category": "Kubernetes",
         "upstream": "kubernetes/kubernetes",
         "cncf_maturity": "graduated"
@@ -9837,6 +9936,33 @@
         "version": "v1",
         "file": "core.api.k8s.io/NodeAffinity_v1.json",
         "slug": "core.api.k8s.io/v1/NodeAffinity",
+        "category": "Kubernetes",
+        "upstream": "kubernetes/kubernetes",
+        "cncf_maturity": "graduated"
+      },
+      {
+        "kind": "NodeAllocatableMappedResources",
+        "version": "v1",
+        "file": "core.api.k8s.io/NodeAllocatableMappedResources_v1.json",
+        "slug": "core.api.k8s.io/v1/NodeAllocatableMappedResources",
+        "category": "Kubernetes",
+        "upstream": "kubernetes/kubernetes",
+        "cncf_maturity": "graduated"
+      },
+      {
+        "kind": "NodeAllocatableOverheadResources",
+        "version": "v1",
+        "file": "core.api.k8s.io/NodeAllocatableOverheadResources_v1.json",
+        "slug": "core.api.k8s.io/v1/NodeAllocatableOverheadResources",
+        "category": "Kubernetes",
+        "upstream": "kubernetes/kubernetes",
+        "cncf_maturity": "graduated"
+      },
+      {
+        "kind": "NodeAllocatableResourceClaimStatus",
+        "version": "v1",
+        "file": "core.api.k8s.io/NodeAllocatableResourceClaimStatus_v1.json",
+        "slug": "core.api.k8s.io/v1/NodeAllocatableResourceClaimStatus",
         "category": "Kubernetes",
         "upstream": "kubernetes/kubernetes",
         "cncf_maturity": "graduated"
@@ -10296,6 +10422,15 @@
         "version": "v1",
         "file": "core.api.k8s.io/PodTemplateSpec_v1.json",
         "slug": "core.api.k8s.io/v1/PodTemplateSpec",
+        "category": "Kubernetes",
+        "upstream": "kubernetes/kubernetes",
+        "cncf_maturity": "graduated"
+      },
+      {
+        "kind": "PodVolumeHealth",
+        "version": "v1",
+        "file": "core.api.k8s.io/PodVolumeHealth_v1.json",
+        "slug": "core.api.k8s.io/v1/PodVolumeHealth",
         "category": "Kubernetes",
         "upstream": "kubernetes/kubernetes",
         "cncf_maturity": "graduated"
@@ -10827,6 +10962,15 @@
         "version": "v1",
         "file": "core.api.k8s.io/VolumeDevice_v1.json",
         "slug": "core.api.k8s.io/v1/VolumeDevice",
+        "category": "Kubernetes",
+        "upstream": "kubernetes/kubernetes",
+        "cncf_maturity": "graduated"
+      },
+      {
+        "kind": "VolumeHealthCondition",
+        "version": "v1",
+        "file": "core.api.k8s.io/VolumeHealthCondition_v1.json",
+        "slug": "core.api.k8s.io/v1/VolumeHealthCondition",
         "category": "Kubernetes",
         "upstream": "kubernetes/kubernetes",
         "cncf_maturity": "graduated"
@@ -16939,6 +17083,74 @@
         "cncf_maturity": "sandbox"
       }
     ],
+    "lifecycle.api.k8s.io": [
+      {
+        "kind": "Eviction",
+        "version": "v1alpha1",
+        "file": "lifecycle.api.k8s.io/Eviction_v1alpha1.json",
+        "slug": "lifecycle.api.k8s.io/v1alpha1/Eviction"
+      },
+      {
+        "kind": "EvictionList",
+        "version": "v1alpha1",
+        "file": "lifecycle.api.k8s.io/EvictionList_v1alpha1.json",
+        "slug": "lifecycle.api.k8s.io/v1alpha1/EvictionList"
+      },
+      {
+        "kind": "EvictionPodReference",
+        "version": "v1alpha1",
+        "file": "lifecycle.api.k8s.io/EvictionPodReference_v1alpha1.json",
+        "slug": "lifecycle.api.k8s.io/v1alpha1/EvictionPodReference"
+      },
+      {
+        "kind": "EvictionRequest",
+        "version": "v1alpha1",
+        "file": "lifecycle.api.k8s.io/EvictionRequest_v1alpha1.json",
+        "slug": "lifecycle.api.k8s.io/v1alpha1/EvictionRequest"
+      },
+      {
+        "kind": "EvictionRequestList",
+        "version": "v1alpha1",
+        "file": "lifecycle.api.k8s.io/EvictionRequestList_v1alpha1.json",
+        "slug": "lifecycle.api.k8s.io/v1alpha1/EvictionRequestList"
+      },
+      {
+        "kind": "EvictionRequestPodReference",
+        "version": "v1alpha1",
+        "file": "lifecycle.api.k8s.io/EvictionRequestPodReference_v1alpha1.json",
+        "slug": "lifecycle.api.k8s.io/v1alpha1/EvictionRequestPodReference"
+      },
+      {
+        "kind": "EvictionRequestSpec",
+        "version": "v1alpha1",
+        "file": "lifecycle.api.k8s.io/EvictionRequestSpec_v1alpha1.json",
+        "slug": "lifecycle.api.k8s.io/v1alpha1/EvictionRequestSpec"
+      },
+      {
+        "kind": "EvictionSpec",
+        "version": "v1alpha1",
+        "file": "lifecycle.api.k8s.io/EvictionSpec_v1alpha1.json",
+        "slug": "lifecycle.api.k8s.io/v1alpha1/EvictionSpec"
+      },
+      {
+        "kind": "Requester",
+        "version": "v1alpha1",
+        "file": "lifecycle.api.k8s.io/Requester_v1alpha1.json",
+        "slug": "lifecycle.api.k8s.io/v1alpha1/Requester"
+      },
+      {
+        "kind": "ResponderStatus",
+        "version": "v1alpha1",
+        "file": "lifecycle.api.k8s.io/ResponderStatus_v1alpha1.json",
+        "slug": "lifecycle.api.k8s.io/v1alpha1/ResponderStatus"
+      },
+      {
+        "kind": "TargetResponder",
+        "version": "v1alpha1",
+        "file": "lifecycle.api.k8s.io/TargetResponder_v1alpha1.json",
+        "slug": "lifecycle.api.k8s.io/v1alpha1/TargetResponder"
+      }
+    ],
     "logging.cnrm.cloud.google.com": [
       {
         "kind": "logginglink",
@@ -17482,6 +17694,15 @@
         "version": "v1",
         "file": "meta.api.k8s.io/ServerAddressByClientCIDR_v1.json",
         "slug": "meta.api.k8s.io/v1/ServerAddressByClientCIDR",
+        "category": "Kubernetes",
+        "upstream": "kubernetes/kubernetes",
+        "cncf_maturity": "graduated"
+      },
+      {
+        "kind": "ShardInfo",
+        "version": "v1",
+        "file": "meta.api.k8s.io/ShardInfo_v1.json",
+        "slug": "meta.api.k8s.io/v1/ShardInfo",
         "category": "Kubernetes",
         "upstream": "kubernetes/kubernetes",
         "cncf_maturity": "graduated"
@@ -22275,6 +22496,33 @@
         "cncf_maturity": "graduated"
       },
       {
+        "kind": "DeviceDerivedAttribute",
+        "version": "v1",
+        "file": "resource.api.k8s.io/DeviceDerivedAttribute_v1.json",
+        "slug": "resource.api.k8s.io/v1/DeviceDerivedAttribute",
+        "category": "Kubernetes",
+        "upstream": "kubernetes/kubernetes",
+        "cncf_maturity": "graduated"
+      },
+      {
+        "kind": "DeviceDerivedAttribute",
+        "version": "v1beta1",
+        "file": "resource.api.k8s.io/DeviceDerivedAttribute_v1beta1.json",
+        "slug": "resource.api.k8s.io/v1beta1/DeviceDerivedAttribute",
+        "category": "Kubernetes",
+        "upstream": "kubernetes/kubernetes",
+        "cncf_maturity": "graduated"
+      },
+      {
+        "kind": "DeviceDerivedAttribute",
+        "version": "v1beta2",
+        "file": "resource.api.k8s.io/DeviceDerivedAttribute_v1beta2.json",
+        "slug": "resource.api.k8s.io/v1beta2/DeviceDerivedAttribute",
+        "category": "Kubernetes",
+        "upstream": "kubernetes/kubernetes",
+        "cncf_maturity": "graduated"
+      },
+      {
         "kind": "DeviceRequest",
         "version": "v1",
         "file": "resource.api.k8s.io/DeviceRequest_v1.json",
@@ -22420,9 +22668,36 @@
       },
       {
         "kind": "DeviceTaintRule",
+        "version": "v1",
+        "file": "resource.api.k8s.io/DeviceTaintRule_v1.json",
+        "slug": "resource.api.k8s.io/v1/DeviceTaintRule",
+        "category": "Kubernetes",
+        "upstream": "kubernetes/kubernetes",
+        "cncf_maturity": "graduated"
+      },
+      {
+        "kind": "DeviceTaintRule",
         "version": "v1alpha3",
         "file": "resource.api.k8s.io/DeviceTaintRule_v1alpha3.json",
         "slug": "resource.api.k8s.io/v1alpha3/DeviceTaintRule",
+        "category": "Kubernetes",
+        "upstream": "kubernetes/kubernetes",
+        "cncf_maturity": "graduated"
+      },
+      {
+        "kind": "DeviceTaintRule",
+        "version": "v1beta2",
+        "file": "resource.api.k8s.io/DeviceTaintRule_v1beta2.json",
+        "slug": "resource.api.k8s.io/v1beta2/DeviceTaintRule",
+        "category": "Kubernetes",
+        "upstream": "kubernetes/kubernetes",
+        "cncf_maturity": "graduated"
+      },
+      {
+        "kind": "DeviceTaintRuleList",
+        "version": "v1",
+        "file": "resource.api.k8s.io/DeviceTaintRuleList_v1.json",
+        "slug": "resource.api.k8s.io/v1/DeviceTaintRuleList",
         "category": "Kubernetes",
         "upstream": "kubernetes/kubernetes",
         "cncf_maturity": "graduated"
@@ -22437,10 +22712,37 @@
         "cncf_maturity": "graduated"
       },
       {
+        "kind": "DeviceTaintRuleList",
+        "version": "v1beta2",
+        "file": "resource.api.k8s.io/DeviceTaintRuleList_v1beta2.json",
+        "slug": "resource.api.k8s.io/v1beta2/DeviceTaintRuleList",
+        "category": "Kubernetes",
+        "upstream": "kubernetes/kubernetes",
+        "cncf_maturity": "graduated"
+      },
+      {
+        "kind": "DeviceTaintRuleSpec",
+        "version": "v1",
+        "file": "resource.api.k8s.io/DeviceTaintRuleSpec_v1.json",
+        "slug": "resource.api.k8s.io/v1/DeviceTaintRuleSpec",
+        "category": "Kubernetes",
+        "upstream": "kubernetes/kubernetes",
+        "cncf_maturity": "graduated"
+      },
+      {
         "kind": "DeviceTaintRuleSpec",
         "version": "v1alpha3",
         "file": "resource.api.k8s.io/DeviceTaintRuleSpec_v1alpha3.json",
         "slug": "resource.api.k8s.io/v1alpha3/DeviceTaintRuleSpec",
+        "category": "Kubernetes",
+        "upstream": "kubernetes/kubernetes",
+        "cncf_maturity": "graduated"
+      },
+      {
+        "kind": "DeviceTaintRuleSpec",
+        "version": "v1beta2",
+        "file": "resource.api.k8s.io/DeviceTaintRuleSpec_v1beta2.json",
+        "slug": "resource.api.k8s.io/v1beta2/DeviceTaintRuleSpec",
         "category": "Kubernetes",
         "upstream": "kubernetes/kubernetes",
         "cncf_maturity": "graduated"
@@ -22558,6 +22860,24 @@
         "version": "v1beta2",
         "file": "resource.api.k8s.io/OpaqueDeviceConfiguration_v1beta2.json",
         "slug": "resource.api.k8s.io/v1beta2/OpaqueDeviceConfiguration",
+        "category": "Kubernetes",
+        "upstream": "kubernetes/kubernetes",
+        "cncf_maturity": "graduated"
+      },
+      {
+        "kind": "PartitionTypeStatus",
+        "version": "v1alpha3",
+        "file": "resource.api.k8s.io/PartitionTypeStatus_v1alpha3.json",
+        "slug": "resource.api.k8s.io/v1alpha3/PartitionTypeStatus",
+        "category": "Kubernetes",
+        "upstream": "kubernetes/kubernetes",
+        "cncf_maturity": "graduated"
+      },
+      {
+        "kind": "PoolStatus",
+        "version": "v1alpha3",
+        "file": "resource.api.k8s.io/PoolStatus_v1alpha3.json",
+        "slug": "resource.api.k8s.io/v1alpha3/PoolStatus",
         "category": "Kubernetes",
         "upstream": "kubernetes/kubernetes",
         "cncf_maturity": "graduated"
@@ -22806,6 +23126,42 @@
         "cncf_maturity": "graduated"
       },
       {
+        "kind": "ResourcePoolStatusRequest",
+        "version": "v1alpha3",
+        "file": "resource.api.k8s.io/ResourcePoolStatusRequest_v1alpha3.json",
+        "slug": "resource.api.k8s.io/v1alpha3/ResourcePoolStatusRequest",
+        "category": "Kubernetes",
+        "upstream": "kubernetes/kubernetes",
+        "cncf_maturity": "graduated"
+      },
+      {
+        "kind": "ResourcePoolStatusRequestList",
+        "version": "v1alpha3",
+        "file": "resource.api.k8s.io/ResourcePoolStatusRequestList_v1alpha3.json",
+        "slug": "resource.api.k8s.io/v1alpha3/ResourcePoolStatusRequestList",
+        "category": "Kubernetes",
+        "upstream": "kubernetes/kubernetes",
+        "cncf_maturity": "graduated"
+      },
+      {
+        "kind": "ResourcePoolStatusRequestSpec",
+        "version": "v1alpha3",
+        "file": "resource.api.k8s.io/ResourcePoolStatusRequestSpec_v1alpha3.json",
+        "slug": "resource.api.k8s.io/v1alpha3/ResourcePoolStatusRequestSpec",
+        "category": "Kubernetes",
+        "upstream": "kubernetes/kubernetes",
+        "cncf_maturity": "graduated"
+      },
+      {
+        "kind": "ResourcePoolStatusRequestStatus",
+        "version": "v1alpha3",
+        "file": "resource.api.k8s.io/ResourcePoolStatusRequestStatus_v1alpha3.json",
+        "slug": "resource.api.k8s.io/v1alpha3/ResourcePoolStatusRequestStatus",
+        "category": "Kubernetes",
+        "upstream": "kubernetes/kubernetes",
+        "cncf_maturity": "graduated"
+      },
+      {
         "kind": "ResourceSlice",
         "version": "v1",
         "file": "resource.api.k8s.io/ResourceSlice_v1.json",
@@ -22882,6 +23238,24 @@
         "version": "v1beta2",
         "file": "resource.api.k8s.io/ResourceSliceSpec_v1beta2.json",
         "slug": "resource.api.k8s.io/v1beta2/ResourceSliceSpec",
+        "category": "Kubernetes",
+        "upstream": "kubernetes/kubernetes",
+        "cncf_maturity": "graduated"
+      },
+      {
+        "kind": "ShareableCapacityStatus",
+        "version": "v1alpha3",
+        "file": "resource.api.k8s.io/ShareableCapacityStatus_v1alpha3.json",
+        "slug": "resource.api.k8s.io/v1alpha3/ShareableCapacityStatus",
+        "category": "Kubernetes",
+        "upstream": "kubernetes/kubernetes",
+        "cncf_maturity": "graduated"
+      },
+      {
+        "kind": "ShareableSummaryStatus",
+        "version": "v1alpha3",
+        "file": "resource.api.k8s.io/ShareableSummaryStatus_v1alpha3.json",
+        "slug": "resource.api.k8s.io/v1alpha3/ShareableSummaryStatus",
         "category": "Kubernetes",
         "upstream": "kubernetes/kubernetes",
         "cncf_maturity": "graduated"
@@ -23264,10 +23638,91 @@
         "cncf_maturity": "graduated"
       },
       {
+        "kind": "CompositeGangSchedulingPolicy",
+        "version": "v1alpha3",
+        "file": "scheduling.api.k8s.io/CompositeGangSchedulingPolicy_v1alpha3.json",
+        "slug": "scheduling.api.k8s.io/v1alpha3/CompositeGangSchedulingPolicy",
+        "category": "Kubernetes",
+        "upstream": "kubernetes/kubernetes",
+        "cncf_maturity": "graduated"
+      },
+      {
+        "kind": "CompositeGangSchedulingPolicy",
+        "version": "v1beta1",
+        "file": "scheduling.api.k8s.io/CompositeGangSchedulingPolicy_v1beta1.json",
+        "slug": "scheduling.api.k8s.io/v1beta1/CompositeGangSchedulingPolicy",
+        "category": "Kubernetes",
+        "upstream": "kubernetes/kubernetes",
+        "cncf_maturity": "graduated"
+      },
+      {
+        "kind": "CompositePodGroup",
+        "version": "v1alpha3",
+        "file": "scheduling.api.k8s.io/CompositePodGroup_v1alpha3.json",
+        "slug": "scheduling.api.k8s.io/v1alpha3/CompositePodGroup",
+        "category": "Kubernetes",
+        "upstream": "kubernetes/kubernetes",
+        "cncf_maturity": "graduated"
+      },
+      {
+        "kind": "CompositePodGroupList",
+        "version": "v1alpha3",
+        "file": "scheduling.api.k8s.io/CompositePodGroupList_v1alpha3.json",
+        "slug": "scheduling.api.k8s.io/v1alpha3/CompositePodGroupList",
+        "category": "Kubernetes",
+        "upstream": "kubernetes/kubernetes",
+        "cncf_maturity": "graduated"
+      },
+      {
+        "kind": "CompositePodGroupSpec",
+        "version": "v1alpha3",
+        "file": "scheduling.api.k8s.io/CompositePodGroupSpec_v1alpha3.json",
+        "slug": "scheduling.api.k8s.io/v1alpha3/CompositePodGroupSpec",
+        "category": "Kubernetes",
+        "upstream": "kubernetes/kubernetes",
+        "cncf_maturity": "graduated"
+      },
+      {
+        "kind": "CompositePodGroupTemplate",
+        "version": "v1alpha3",
+        "file": "scheduling.api.k8s.io/CompositePodGroupTemplate_v1alpha3.json",
+        "slug": "scheduling.api.k8s.io/v1alpha3/CompositePodGroupTemplate",
+        "category": "Kubernetes",
+        "upstream": "kubernetes/kubernetes",
+        "cncf_maturity": "graduated"
+      },
+      {
+        "kind": "CompositePodGroupTemplate",
+        "version": "v1beta1",
+        "file": "scheduling.api.k8s.io/CompositePodGroupTemplate_v1beta1.json",
+        "slug": "scheduling.api.k8s.io/v1beta1/CompositePodGroupTemplate",
+        "category": "Kubernetes",
+        "upstream": "kubernetes/kubernetes",
+        "cncf_maturity": "graduated"
+      },
+      {
         "kind": "GangSchedulingPolicy",
         "version": "v1alpha1",
         "file": "scheduling.api.k8s.io/GangSchedulingPolicy_v1alpha1.json",
         "slug": "scheduling.api.k8s.io/v1alpha1/GangSchedulingPolicy",
+        "category": "Kubernetes",
+        "upstream": "kubernetes/kubernetes",
+        "cncf_maturity": "graduated"
+      },
+      {
+        "kind": "GangSchedulingPolicy",
+        "version": "v1alpha3",
+        "file": "scheduling.api.k8s.io/GangSchedulingPolicy_v1alpha3.json",
+        "slug": "scheduling.api.k8s.io/v1alpha3/GangSchedulingPolicy",
+        "category": "Kubernetes",
+        "upstream": "kubernetes/kubernetes",
+        "cncf_maturity": "graduated"
+      },
+      {
+        "kind": "GangSchedulingPolicy",
+        "version": "v1beta1",
+        "file": "scheduling.api.k8s.io/GangSchedulingPolicy_v1beta1.json",
+        "slug": "scheduling.api.k8s.io/v1beta1/GangSchedulingPolicy",
         "category": "Kubernetes",
         "upstream": "kubernetes/kubernetes",
         "cncf_maturity": "graduated"
@@ -23282,10 +23737,118 @@
         "cncf_maturity": "graduated"
       },
       {
+        "kind": "PodGroup",
+        "version": "v1alpha3",
+        "file": "scheduling.api.k8s.io/PodGroup_v1alpha3.json",
+        "slug": "scheduling.api.k8s.io/v1alpha3/PodGroup",
+        "category": "Kubernetes",
+        "upstream": "kubernetes/kubernetes",
+        "cncf_maturity": "graduated"
+      },
+      {
+        "kind": "PodGroup",
+        "version": "v1beta1",
+        "file": "scheduling.api.k8s.io/PodGroup_v1beta1.json",
+        "slug": "scheduling.api.k8s.io/v1beta1/PodGroup",
+        "category": "Kubernetes",
+        "upstream": "kubernetes/kubernetes",
+        "cncf_maturity": "graduated"
+      },
+      {
+        "kind": "PodGroupList",
+        "version": "v1alpha3",
+        "file": "scheduling.api.k8s.io/PodGroupList_v1alpha3.json",
+        "slug": "scheduling.api.k8s.io/v1alpha3/PodGroupList",
+        "category": "Kubernetes",
+        "upstream": "kubernetes/kubernetes",
+        "cncf_maturity": "graduated"
+      },
+      {
+        "kind": "PodGroupList",
+        "version": "v1beta1",
+        "file": "scheduling.api.k8s.io/PodGroupList_v1beta1.json",
+        "slug": "scheduling.api.k8s.io/v1beta1/PodGroupList",
+        "category": "Kubernetes",
+        "upstream": "kubernetes/kubernetes",
+        "cncf_maturity": "graduated"
+      },
+      {
         "kind": "PodGroupPolicy",
         "version": "v1alpha1",
         "file": "scheduling.api.k8s.io/PodGroupPolicy_v1alpha1.json",
         "slug": "scheduling.api.k8s.io/v1alpha1/PodGroupPolicy",
+        "category": "Kubernetes",
+        "upstream": "kubernetes/kubernetes",
+        "cncf_maturity": "graduated"
+      },
+      {
+        "kind": "PodGroupResourceClaim",
+        "version": "v1alpha3",
+        "file": "scheduling.api.k8s.io/PodGroupResourceClaim_v1alpha3.json",
+        "slug": "scheduling.api.k8s.io/v1alpha3/PodGroupResourceClaim",
+        "category": "Kubernetes",
+        "upstream": "kubernetes/kubernetes",
+        "cncf_maturity": "graduated"
+      },
+      {
+        "kind": "PodGroupResourceClaim",
+        "version": "v1beta1",
+        "file": "scheduling.api.k8s.io/PodGroupResourceClaim_v1beta1.json",
+        "slug": "scheduling.api.k8s.io/v1beta1/PodGroupResourceClaim",
+        "category": "Kubernetes",
+        "upstream": "kubernetes/kubernetes",
+        "cncf_maturity": "graduated"
+      },
+      {
+        "kind": "PodGroupResourceClaimStatus",
+        "version": "v1alpha3",
+        "file": "scheduling.api.k8s.io/PodGroupResourceClaimStatus_v1alpha3.json",
+        "slug": "scheduling.api.k8s.io/v1alpha3/PodGroupResourceClaimStatus",
+        "category": "Kubernetes",
+        "upstream": "kubernetes/kubernetes",
+        "cncf_maturity": "graduated"
+      },
+      {
+        "kind": "PodGroupResourceClaimStatus",
+        "version": "v1beta1",
+        "file": "scheduling.api.k8s.io/PodGroupResourceClaimStatus_v1beta1.json",
+        "slug": "scheduling.api.k8s.io/v1beta1/PodGroupResourceClaimStatus",
+        "category": "Kubernetes",
+        "upstream": "kubernetes/kubernetes",
+        "cncf_maturity": "graduated"
+      },
+      {
+        "kind": "PodGroupSpec",
+        "version": "v1alpha3",
+        "file": "scheduling.api.k8s.io/PodGroupSpec_v1alpha3.json",
+        "slug": "scheduling.api.k8s.io/v1alpha3/PodGroupSpec",
+        "category": "Kubernetes",
+        "upstream": "kubernetes/kubernetes",
+        "cncf_maturity": "graduated"
+      },
+      {
+        "kind": "PodGroupSpec",
+        "version": "v1beta1",
+        "file": "scheduling.api.k8s.io/PodGroupSpec_v1beta1.json",
+        "slug": "scheduling.api.k8s.io/v1beta1/PodGroupSpec",
+        "category": "Kubernetes",
+        "upstream": "kubernetes/kubernetes",
+        "cncf_maturity": "graduated"
+      },
+      {
+        "kind": "PodGroupTemplate",
+        "version": "v1alpha3",
+        "file": "scheduling.api.k8s.io/PodGroupTemplate_v1alpha3.json",
+        "slug": "scheduling.api.k8s.io/v1alpha3/PodGroupTemplate",
+        "category": "Kubernetes",
+        "upstream": "kubernetes/kubernetes",
+        "cncf_maturity": "graduated"
+      },
+      {
+        "kind": "PodGroupTemplate",
+        "version": "v1beta1",
+        "file": "scheduling.api.k8s.io/PodGroupTemplate_v1beta1.json",
+        "slug": "scheduling.api.k8s.io/v1beta1/PodGroupTemplate",
         "category": "Kubernetes",
         "upstream": "kubernetes/kubernetes",
         "cncf_maturity": "graduated"
@@ -23309,10 +23872,46 @@
         "cncf_maturity": "graduated"
       },
       {
+        "kind": "TopologyConstraint",
+        "version": "v1alpha3",
+        "file": "scheduling.api.k8s.io/TopologyConstraint_v1alpha3.json",
+        "slug": "scheduling.api.k8s.io/v1alpha3/TopologyConstraint",
+        "category": "Kubernetes",
+        "upstream": "kubernetes/kubernetes",
+        "cncf_maturity": "graduated"
+      },
+      {
+        "kind": "TopologyConstraint",
+        "version": "v1beta1",
+        "file": "scheduling.api.k8s.io/TopologyConstraint_v1beta1.json",
+        "slug": "scheduling.api.k8s.io/v1beta1/TopologyConstraint",
+        "category": "Kubernetes",
+        "upstream": "kubernetes/kubernetes",
+        "cncf_maturity": "graduated"
+      },
+      {
         "kind": "TypedLocalObjectReference",
         "version": "v1alpha1",
         "file": "scheduling.api.k8s.io/TypedLocalObjectReference_v1alpha1.json",
         "slug": "scheduling.api.k8s.io/v1alpha1/TypedLocalObjectReference",
+        "category": "Kubernetes",
+        "upstream": "kubernetes/kubernetes",
+        "cncf_maturity": "graduated"
+      },
+      {
+        "kind": "TypedLocalObjectReference",
+        "version": "v1alpha3",
+        "file": "scheduling.api.k8s.io/TypedLocalObjectReference_v1alpha3.json",
+        "slug": "scheduling.api.k8s.io/v1alpha3/TypedLocalObjectReference",
+        "category": "Kubernetes",
+        "upstream": "kubernetes/kubernetes",
+        "cncf_maturity": "graduated"
+      },
+      {
+        "kind": "TypedLocalObjectReference",
+        "version": "v1beta1",
+        "file": "scheduling.api.k8s.io/TypedLocalObjectReference_v1beta1.json",
+        "slug": "scheduling.api.k8s.io/v1beta1/TypedLocalObjectReference",
         "category": "Kubernetes",
         "upstream": "kubernetes/kubernetes",
         "cncf_maturity": "graduated"
@@ -23327,10 +23926,73 @@
         "cncf_maturity": "graduated"
       },
       {
+        "kind": "Workload",
+        "version": "v1alpha3",
+        "file": "scheduling.api.k8s.io/Workload_v1alpha3.json",
+        "slug": "scheduling.api.k8s.io/v1alpha3/Workload",
+        "category": "Kubernetes",
+        "upstream": "kubernetes/kubernetes",
+        "cncf_maturity": "graduated"
+      },
+      {
+        "kind": "Workload",
+        "version": "v1beta1",
+        "file": "scheduling.api.k8s.io/Workload_v1beta1.json",
+        "slug": "scheduling.api.k8s.io/v1beta1/Workload",
+        "category": "Kubernetes",
+        "upstream": "kubernetes/kubernetes",
+        "cncf_maturity": "graduated"
+      },
+      {
         "kind": "WorkloadList",
         "version": "v1alpha1",
         "file": "scheduling.api.k8s.io/WorkloadList_v1alpha1.json",
         "slug": "scheduling.api.k8s.io/v1alpha1/WorkloadList",
+        "category": "Kubernetes",
+        "upstream": "kubernetes/kubernetes",
+        "cncf_maturity": "graduated"
+      },
+      {
+        "kind": "WorkloadList",
+        "version": "v1alpha3",
+        "file": "scheduling.api.k8s.io/WorkloadList_v1alpha3.json",
+        "slug": "scheduling.api.k8s.io/v1alpha3/WorkloadList",
+        "category": "Kubernetes",
+        "upstream": "kubernetes/kubernetes",
+        "cncf_maturity": "graduated"
+      },
+      {
+        "kind": "WorkloadList",
+        "version": "v1beta1",
+        "file": "scheduling.api.k8s.io/WorkloadList_v1beta1.json",
+        "slug": "scheduling.api.k8s.io/v1beta1/WorkloadList",
+        "category": "Kubernetes",
+        "upstream": "kubernetes/kubernetes",
+        "cncf_maturity": "graduated"
+      },
+      {
+        "kind": "WorkloadPodGroupResourceClaim",
+        "version": "v1alpha3",
+        "file": "scheduling.api.k8s.io/WorkloadPodGroupResourceClaim_v1alpha3.json",
+        "slug": "scheduling.api.k8s.io/v1alpha3/WorkloadPodGroupResourceClaim",
+        "category": "Kubernetes",
+        "upstream": "kubernetes/kubernetes",
+        "cncf_maturity": "graduated"
+      },
+      {
+        "kind": "WorkloadReference",
+        "version": "v1alpha3",
+        "file": "scheduling.api.k8s.io/WorkloadReference_v1alpha3.json",
+        "slug": "scheduling.api.k8s.io/v1alpha3/WorkloadReference",
+        "category": "Kubernetes",
+        "upstream": "kubernetes/kubernetes",
+        "cncf_maturity": "graduated"
+      },
+      {
+        "kind": "WorkloadReference",
+        "version": "v1beta1",
+        "file": "scheduling.api.k8s.io/WorkloadReference_v1beta1.json",
+        "slug": "scheduling.api.k8s.io/v1beta1/WorkloadReference",
         "category": "Kubernetes",
         "upstream": "kubernetes/kubernetes",
         "cncf_maturity": "graduated"
@@ -25059,6 +25721,24 @@
         "cncf_maturity": "graduated"
       },
       {
+        "kind": "StorageHealth",
+        "version": "v1",
+        "file": "storage.api.k8s.io/StorageHealth_v1.json",
+        "slug": "storage.api.k8s.io/v1/StorageHealth",
+        "category": "Kubernetes",
+        "upstream": "kubernetes/kubernetes",
+        "cncf_maturity": "graduated"
+      },
+      {
+        "kind": "StorageHealthCondition",
+        "version": "v1",
+        "file": "storage.api.k8s.io/StorageHealthCondition_v1.json",
+        "slug": "storage.api.k8s.io/v1/StorageHealthCondition",
+        "category": "Kubernetes",
+        "upstream": "kubernetes/kubernetes",
+        "cncf_maturity": "graduated"
+      },
+      {
         "kind": "TokenRequest",
         "version": "v1",
         "file": "storage.api.k8s.io/TokenRequest_v1.json",
@@ -26247,9 +26927,27 @@
       },
       {
         "kind": "StorageVersionMigrationList",
+        "version": "v1",
+        "file": "storagemigration.api.k8s.io/StorageVersionMigrationList_v1.json",
+        "slug": "storagemigration.api.k8s.io/v1/StorageVersionMigrationList",
+        "category": "Kubernetes",
+        "upstream": "kubernetes/kubernetes",
+        "cncf_maturity": "graduated"
+      },
+      {
+        "kind": "StorageVersionMigrationList",
         "version": "v1beta1",
         "file": "storagemigration.api.k8s.io/StorageVersionMigrationList_v1beta1.json",
         "slug": "storagemigration.api.k8s.io/v1beta1/StorageVersionMigrationList",
+        "category": "Kubernetes",
+        "upstream": "kubernetes/kubernetes",
+        "cncf_maturity": "graduated"
+      },
+      {
+        "kind": "StorageVersionMigrationSpec",
+        "version": "v1",
+        "file": "storagemigration.api.k8s.io/StorageVersionMigrationSpec_v1.json",
+        "slug": "storagemigration.api.k8s.io/v1/StorageVersionMigrationSpec",
         "category": "Kubernetes",
         "upstream": "kubernetes/kubernetes",
         "cncf_maturity": "graduated"

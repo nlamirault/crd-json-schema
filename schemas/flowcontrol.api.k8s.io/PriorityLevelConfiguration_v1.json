@@ -24,5 +24,8 @@
       "$ref": "PriorityLevelConfigurationStatus_v1.json",
       "description": "`status` is the current status of a \"request-priority\". More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status"
     }
-  }
+  },
+  "required": [
+    "spec"
+  ]
 }

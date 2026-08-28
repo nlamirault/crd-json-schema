@@ -1,0 +1,15 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "io.k8s.api.lifecycle.v1alpha1.EvictionSpec",
+  "description": "EvictionSpec is a specification of an Eviction.",
+  "type": "object",
+  "properties": {
+    "target": {
+      "$ref": "#/definitions/io.k8s.api.lifecycle.v1alpha1.EvictionTarget",
+      "description": "target contains a reference to an object (e.g. a pod) that should be evicted. This field is required and immutable."
+    }
+  },
+  "required": [
+    "target"
+  ]
+}
